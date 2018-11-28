@@ -8,6 +8,9 @@ Vue.config.productionTip = false
 // Vue Router config
 import router from '../imports/api/routes'
 
+// Vuex config
+import store from '../imports/api/store'
+
 // Vuetify CSS
 Vue.use(Vuetify)
 import 'vuetify/dist/vuetify.min.css'
@@ -16,7 +19,8 @@ import 'vuetify/dist/vuetify.min.css'
 Meteor.startup(() => {
     new Vue({
         render: h => h(App),
-        router
+        router,
+        store
     }).$mount('app')
 });
 // comentario forzado

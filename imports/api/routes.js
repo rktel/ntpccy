@@ -9,7 +9,7 @@ const routes = [
     { name: 'Login', path: '/login', component: Login }
 ]
 
-export default router = new VueRouter({
+export default new VueRouter({
     mode: 'history',
     routes
 }) 
