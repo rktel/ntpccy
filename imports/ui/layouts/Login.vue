@@ -11,7 +11,7 @@
                             <v-text-field append-icon="lock" name="password" label="Password" placeholder="Introduce tu password" type="password"></v-text-field>
                         </v-card-text>
                         <v-card-actions class="text-xs-center">
-                            <v-btn block>login</v-btn>
+                            <v-btn block dark>entrar</v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-flex>
