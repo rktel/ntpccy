@@ -4,7 +4,7 @@
             <v-container fluid fill-height>
                 <v-layout align-center justify-center>
                 <v-flex xs12 sm8 md4>
-                    <v-card class="elevation-24">
+                    <v-card hover>
                         <v-card-text>
                             <v-form>
                             <v-text-field prepend-icon="person" name="login" label="Usuario" type="text"></v-text-field>
