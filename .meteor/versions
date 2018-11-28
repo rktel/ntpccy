@@ -1,3 +1,6 @@
+akryum:vue-component@0.14.1
+akryum:vue-component-dev-client@0.4.3
+akryum:vue-component-dev-server@0.1.2
 allow-deny@1.1.0
 autoupdate@1.5.0
 babel-compiler@7.2.3
