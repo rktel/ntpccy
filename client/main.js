@@ -14,3 +14,4 @@ Meteor.startup(() => {
         router
     }).$mount('app')
 });
+// comentario forzado
