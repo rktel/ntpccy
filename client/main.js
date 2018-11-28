@@ -1,11 +1,16 @@
 import Vue from 'vue'
-
+import Vuetify from 'vuetify'
 import App from '/imports/ui/App.vue'
 
 // Quitamos mensaje Vue Development de consola del navegador
 Vue.config.productionTip = false
 
+// Vue Router config
 import router from '../imports/api/routes'
+
+// Vuetify CSS
+Vue.use(Vuetify)
+import 'vuetify/dist/vuetify.min.css'
 
 // Inicio de Vue en Meteor Client Side
 Meteor.startup(() => {
