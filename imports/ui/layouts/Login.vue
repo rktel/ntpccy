@@ -37,21 +37,28 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 export default {
   name: "Login",
   data() {
     return {
-      username: '',
-      password: ''
+      username: "",
+      password: ""
     };
   },
   methods: {
+    ...mapMutations(["SET_USERNAME"]),
+    setUsername() {
+      this.SET_USERNAME(this.username);
+    },
     onLogin() {
       const { username, password } = this;
       if (username.length > 0 && password.length > 0) {
         Meteor.loginWithPassword(username, password, error => {
           if (!error) {
             this.$router.push({ name: "Home" });
+            this.setUsername;
           }
         });
       }
