@@ -22,6 +22,7 @@
                   placeholder="Introduce tu password"
                   type="password"
                   v-model="password"
+                  @keyup.enter="onLogin"
                 ></v-text-field>
               </v-card-text>
               <v-card-actions class="text-xs-center">
