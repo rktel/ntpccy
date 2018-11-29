@@ -22,6 +22,6 @@ export default new Vuex.Store({
         }
     },
     actions:{
-
+        //END VUEX PRACTICE
     }
 })
