@@ -5,6 +5,16 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state:{
-        username: 'nikita'
+       names: ['Sophia','Deysi','Carmen','Milleny']
+    },
+    getters:{
+        countNames: state => {
+            return state.names.length
+        }
+    },
+    mutations:{
+        ADD_NAME: (state,name) => {
+            state.names.push(name)
+        }
     }
 })
