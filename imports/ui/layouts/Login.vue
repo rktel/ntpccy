@@ -26,7 +26,7 @@
                 ></v-text-field>
               </v-card-text>
               <v-card-actions class="text-xs-center">
-                <v-btn block dark @click="onLogin">entrar</v-btn>
+                <v-btn block @click="onLogin">entrar</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
