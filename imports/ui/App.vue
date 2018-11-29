@@ -4,7 +4,11 @@
 
 <script>
 export default {
-
+  mounted() {
+    Meteor.userId()
+      ? this.$router.push({ name: "Home" })
+      : this.$router.push({ name: "Login" });
+  }
 }
 </script>
 
