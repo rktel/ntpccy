@@ -13,6 +13,7 @@
                   label="Usuario"
                   placeholder="Introduce tu usuario"
                   type="text"
+                  v-model="username"
                 ></v-text-field>
                 <v-text-field
                   append-icon="lock"
@@ -20,6 +21,7 @@
                   label="Password"
                   placeholder="Introduce tu password"
                   type="password"
+                  v-model="password"
                 ></v-text-field>
               </v-card-text>
               <v-card-actions class="text-xs-center">
@@ -38,8 +40,8 @@ export default {
   name: "Login",
   data() {
     return {
-      username: null,
-      password: null
+      username: '',
+      password: ''
     };
   },
   methods: {
