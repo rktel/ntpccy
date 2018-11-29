@@ -2,6 +2,7 @@
   <v-app>
     <v-content>
       <v-container>
+        <h1>Bienvenido {{username}}</h1>
         <h1>Nombres [{{countNames}}]</h1>
         <input type="text" placeholder="New Name" v-model="newname" @keyup.enter="addNameToNames">
         <ul>
@@ -22,7 +23,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["names"]),
+    ...mapState(["names","username"]),
     ...mapGetters(["countNames"])
   },
   methods: {
