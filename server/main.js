@@ -3,7 +3,7 @@ import { Personal } from '../imports/api/collections'
 let hyperUserId = null
  
 Meteor.startup(() => {
-    p('Meteor backend up')
+    console.log('Meteor backend up')
 
     if (Meteor.users.find().count() == 0) {
         hyperUserId = Accounts.createUser({
