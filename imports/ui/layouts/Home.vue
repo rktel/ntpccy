@@ -2,7 +2,7 @@
   <v-app>
     <v-content>
       <v-container>
-        <h1>Bienvenido</h1>
+        <h1>Bienvenido al Home</h1>
 
       </v-container>
     </v-content>
