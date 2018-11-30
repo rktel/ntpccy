@@ -37,7 +37,6 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
 
 export default {
   name: "Login",
@@ -48,14 +47,12 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["SET_USERNAME"]),
     onLogin() {
       const { username, password } = this;
       if (username.length > 0 && password.length > 0) {
         Meteor.loginWithPassword(username, password, error => {
           if (!error) {
             this.$router.push({ name: "Home" });
-            this.SET_USERNAME(this.username);
           }
         });
       }
