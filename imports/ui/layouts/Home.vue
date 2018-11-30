@@ -2,36 +2,27 @@
   <v-app>
     <v-content>
       <v-container>
-        <h1>Bienvenido {{username}}</h1>
-        <h1>Nombres [{{countNames}}]</h1>
-        <input type="text" placeholder="New Name" v-model="newname" @keyup.enter="addNameToNames">
-        <ul>
-          <li v-for="name in names" :key="name" v-text="name"></li>
-        </ul>
+        <h1>Bienvenido</h1>
+
       </v-container>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from "vuex";
+
 export default {
   name: "Home",
   data() {
     return {
-      newname: ""
+ 
     };
   },
   computed: {
-    ...mapState(["names","username"]),
-    ...mapGetters(["countNames"])
+ 
   },
   methods: {
-    ...mapMutations(["ADD_NAME"]),
-    addNameToNames() {
-      this.ADD_NAME(this.newname);
-      this.newname = "";
-    }
+
   }
 };
 </script>
