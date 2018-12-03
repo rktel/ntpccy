@@ -49,7 +49,6 @@ export default {
     logout() {
       Meteor.logout(error => {
         if (!error) {
-          this.$stopMeteor()
           this.$router.push({ name: "Login" });
         }
       });
