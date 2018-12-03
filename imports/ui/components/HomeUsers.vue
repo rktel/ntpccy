@@ -1,5 +1,5 @@
 <template>
-  <v-layout row justify-center>
+  <v-layout justify-center align-center>
     <v-dialog v-model="userDialog" fullscreen hide-overlay transition="dialog-bottom-transition">
       <v-card>
         <v-toolbar dark color="black" dense>
