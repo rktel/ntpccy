@@ -19,8 +19,8 @@
             </form>
         </template>
         <v-divider></v-divider>
-        <v-list>
-          <v-header>Lista de Usuarios [0]</v-header>
+        <v-list subheader>
+          <v-subheader>Lista de Usuarios [0]</v-subheader>
           <v-list-tile>
 
             <v-list-tile-content>
@@ -29,7 +29,7 @@
 
             <v-list-tile-action>
               <v-btn icon ripple>
-                <v-icon color="red lighten-1">info</v-icon>
+                <v-icon color="red lighten-1">delete_forever</v-icon>
               </v-btn>
             </v-list-tile-action>
           </v-list-tile>
