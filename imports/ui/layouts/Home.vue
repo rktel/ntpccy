@@ -3,7 +3,7 @@
     <v-toolbar app fixed clipped-left dense>
       <v-toolbar-title>Generador de Reportes</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon>
+      <v-btn icon v-if="userProfile.role == 'Hyperadmin'">
         <v-icon color="blue">supervised_user_circle</v-icon>
       </v-btn>
       <v-btn icon @click="logout">
