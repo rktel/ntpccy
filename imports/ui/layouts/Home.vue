@@ -3,7 +3,7 @@
     <v-toolbar app fixed clipped-left dense>
       <v-toolbar-title>Generador de Reportes</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon v-if="userProfile.role == 'Hyperadmin'" title="Usuarios">
+      <v-btn icon v-if="userProfile.role == 'Hyperadmin'" title="Usuarios" @click="showUserDialog">
         <v-icon color="blue">supervised_user_circle</v-icon>
       </v-btn>
       <v-btn icon @click="logout" title="Cerrar sesion">
@@ -13,23 +13,25 @@
 
     <v-content>
       <v-system-bar status lights-out>
-          <v-spacer></v-spacer>
-          <span>Bienvenido {{userProfile.firstname}}</span>
+        <v-spacer></v-spacer>
+        <span>Bienvenido {{userProfile.firstname}}</span>
       </v-system-bar>
       <v-container>
         <h1>Bienvenido al Home</h1>
-
+        <home-users></home-users>
       </v-container>
     </v-content>
-
   </v-app>
 </template>
 
 <script>
 import { mapState, mapMutations } from "vuex";
-
+import HomeUsers from '../components/HomeUsers.vue'
 export default {
   name: "Home",
+  components:{
+    HomeUsers
+  },
   mounted() {
     Meteor.call("getPersonal", (error, persona) => {
       if (!error) {
@@ -37,22 +39,21 @@ export default {
       }
     });
   },
-  data() {
-    return {
- 
-    };
-  },
+  data: () => ({}),
   computed: {
-    ...mapState(["userProfile"]),
+    ...mapState(["userProfile"])
   },
   methods: {
-    ...mapMutations(["SET_USERPROFILE"]),
+    ...mapMutations(["SET_USERPROFILE","SHOW_USERDIALOG"]),
     logout() {
       Meteor.logout(error => {
         if (!error) {
           this.$router.push({ name: "Login" });
         }
       });
+    },
+    showUserDialog(){
+        this.SHOW_USERDIALOG()
     },
   }
 };
