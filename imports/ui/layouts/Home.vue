@@ -13,8 +13,7 @@
 
     <v-content>
       <section>
-        <v-spacer></v-spacer>
-        <span>Bienvenido {{userProfile.firstname}}</span>
+        <p class="text-xs-right">Bienvenido {{userProfile.firstname}}</p>
       </section>
       <v-container>
         <h1>Bienvenido al Home</h1>
