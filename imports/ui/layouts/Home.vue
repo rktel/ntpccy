@@ -1,21 +1,21 @@
 <template>
   <v-app>
-    <v-toolbar app fixed clipped-left>
+    <v-toolbar app fixed clipped-left dense>
       <v-toolbar-title>Generador de Reportes</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon>
-        <v-icon>supervised_user_circle</v-icon>
+        <v-icon color="blue">supervised_user_circle</v-icon>
       </v-btn>
       <v-btn icon @click="logout">
-        <v-icon>power_settings_new</v-icon>
+        <v-icon color="red">power_settings_new</v-icon>
       </v-btn>
     </v-toolbar>
-     <v-system-bar status color="primary">
-        <v-spacer></v-spacer>
-        <span>username</span>
-    </v-system-bar>
 
     <v-content>
+      <v-system-bar status color="primary">
+          <v-spacer></v-spacer>
+          <span>username</span>
+      </v-system-bar>
       <v-container>
         <h1>Bienvenido al Home</h1>
 
