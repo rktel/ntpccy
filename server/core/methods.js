@@ -24,6 +24,7 @@ Meteor.methods({
     }
 })
 //PERSONAL-USER
+/*
 Meteor.methods({
     createPersonalUser: function (personal) {
         const { username, password } = createCredentials(personal)
@@ -31,7 +32,7 @@ Meteor.methods({
         return Personal.upsert({ _id: personal._id }, { $set: { userId, username, password } })
     }
 })
-
+*/
 //FUNCTIONS HELPERS
 function createCredentials(personal) {
     const { firstname, lastname } = personal
