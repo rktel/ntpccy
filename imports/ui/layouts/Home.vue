@@ -3,16 +3,16 @@
     <v-toolbar app fixed clipped-left dense>
       <v-toolbar-title>Generador de Reportes</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon v-if="userProfile.role == 'Hyperadmin'">
+      <v-btn icon v-if="userProfile.role == 'Hyperadmin'" title="Usuarios">
         <v-icon color="blue">supervised_user_circle</v-icon>
       </v-btn>
-      <v-btn icon @click="logout">
+      <v-btn icon @click="logout" title="Cerrar sesion">
         <v-icon color="red">power_settings_new</v-icon>
       </v-btn>
     </v-toolbar>
 
     <v-content>
-      <v-system-bar status color="primary" lights-out dark>
+      <v-system-bar status lights-out dark fixed>
           <v-spacer></v-spacer>
           <span>Bienvenido {{userProfile.firstname}}</span>
       </v-system-bar>
