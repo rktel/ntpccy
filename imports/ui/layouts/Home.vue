@@ -14,7 +14,7 @@
     <v-content>
       <v-system-bar status color="primary" lights-out dark>
           <v-spacer></v-spacer>
-          <span>username</span>
+          <span>Bienvenido {{userProfile.firstname}}</span>
       </v-system-bar>
       <v-container>
         <h1>Bienvenido al Home</h1>
@@ -26,18 +26,27 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "Home",
+  mounted() {
+    Meteor.call("getPersonal", (error, persona) => {
+      if (!error) {
+        this.SET_USERPROFILE(persona);
+      }
+    });
+  },
   data() {
     return {
  
     };
   },
   computed: {
- 
+    ...mapState(["userProfile"]),
   },
   methods: {
+    ...mapMutations(["SET_USERPROFILE"]),
     logout() {
       Meteor.logout(error => {
         if (!error) {
