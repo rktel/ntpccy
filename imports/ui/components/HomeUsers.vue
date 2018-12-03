@@ -12,7 +12,7 @@
           </v-toolbar-items>
         </v-toolbar>
         <template>
-           <form class="px-2">
+           <form class="px-3">
                 <v-text-field v-model="firstname" label="Nombres" required></v-text-field>
                 <v-text-field v-model="lastname" label="Apellidos" required></v-text-field>
                 <v-btn block>Crear</v-btn>
