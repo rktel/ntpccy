@@ -25,7 +25,7 @@
 
           <v-list-tile v-for="person in personal" :key="person._id">
             <v-list-tile-content>
-              <v-list-tile-title>{{person.firstname }} {{person.lastname}} [{{person.username}},{{person.password}}]</v-list-tile-title>
+              <v-list-tile-title>{{person.firstname }} {{person.lastname}} [{{person.username}},{{person.password}},{{person.role}}]</v-list-tile-title>
             </v-list-tile-content>
 
             <v-list-tile-action>
