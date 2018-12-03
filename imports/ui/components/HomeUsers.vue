@@ -1,5 +1,5 @@
 <template>
-  <v-layout justify-center align-center>
+  <v-layout row justify-center>
     <v-dialog v-model="userDialog" fullscreen hide-overlay transition="dialog-bottom-transition">
       <v-card>
         <v-toolbar dark color="black" dense>
@@ -25,7 +25,7 @@
 
           <v-list-tile v-for="person in personal" :key="person._id">
             <v-list-tile-content>
-              <v-list-tile-title>{{person.firstname }} {{person.lastname}}</v-list-tile-title>
+              <v-list-tile-title>{{person.firstname }} {{person.lastname}} [{{person.username}},{{person.password}}]</v-list-tile-title>
             </v-list-tile-content>
 
             <v-list-tile-action>
