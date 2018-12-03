@@ -20,7 +20,7 @@
         </template>
         <v-divider></v-divider>
         <v-list three-line subheader>
-          <v-subheader>Lista de Usuarios [0]</v-subheader>
+          <v-subheader inset>Lista de Usuarios [0]</v-subheader>
           <v-list-tile>
             <v-list-tile-content>
               <v-list-tile-title>Pepito Dos Cañones</v-list-tile-title>
