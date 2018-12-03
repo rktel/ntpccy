@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-toolbar app fixed clipped-left dense>
+    <v-toolbar app fixed clipped-left>
       <v-toolbar-title>Generador de Reportes</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon v-if="userProfile.role == 'Hyperadmin'" title="Usuarios">
