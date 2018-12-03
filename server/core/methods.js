@@ -9,7 +9,7 @@ Meteor.methods({
         const { username, password } = createCredentials(personal)
         const userId = Accounts.createUser({ username, password })
         const { firstname, lastname, role } = personal
-        return Personal.insert({ firstname, lastname, role },{ $set: { userId, username, password } })
+        return Personal.insert({ firstname, lastname, role, userId, username, password  })
     },
     removePersonal: function (personal) {
         const { _id, userId } = personal
