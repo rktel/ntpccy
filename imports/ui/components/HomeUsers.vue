@@ -15,12 +15,13 @@
            <form class="px-3">
                 <v-text-field v-model="firstname" label="Nombres" required></v-text-field>
                 <v-text-field v-model="lastname" label="Apellidos" required></v-text-field>
-                <v-btn block>Crear</v-btn>
+                <v-select :items="roleItems" v-model="roleSelect" label="Rol" required></v-select>
+                <v-btn block @click="savePersonal">Crear</v-btn>
             </form>
         </template>
         <v-divider></v-divider>
         <v-list subheader>
-          <v-subheader>Lista de Usuarios [0]</v-subheader>
+          <v-subheader>Lista de Usuarios [{{personal.length}}]</v-subheader>
           <v-list-tile>
 
             <v-list-tile-content>
@@ -40,12 +41,24 @@
 </template>
 
 <script>
+import { Personal } from "../../api/collections.js";
 import { mapState, mapMutations } from "vuex";
 export default {
   name: "HomeUsers",
   data: ()=>({
-
+    firstname: "",
+    lastname: "",
+    roleItems: Meteor.settings.public.roles,
+    roleSelect: null,
   }),
+    meteor: {
+    $subscribe: {
+      personal: []
+    },
+    personal() {
+      return Personal.find({});
+    }
+  },
   computed: {
     ...mapState(["userDialog"])
   },
@@ -54,6 +67,26 @@ export default {
     hideUserDialog(){
         this.HIDE_USERDIALOG()
     },
+    savePersonal() {
+      if (this.firstname && this.lastname && this.roleSelect) {
+        const personal = {
+          firstname: this.firstname,
+          lastname: this.lastname,
+          role: this.roleSelect
+        };
+        Meteor.call("createPersonal", personal, (error, id) => {
+          if (!error) {
+            this.clear();
+          }
+        });
+      } 
+    },
+    clear() {
+      this.firstname = "";
+      this.lastname = "";
+      this.roleSelect = null;
+      this.idPersonal = null;
+    }
   }
 };
 </script>
