@@ -15,6 +15,10 @@ import store from '../imports/api/store'
 Vue.use(Vuetify)
 import 'vuetify/dist/vuetify.min.css'
 
+// Meteor Tracker
+import VueMeteorTracker from 'vue-meteor-tracker'
+Vue.use(VueMeteorTracker)
+
 // Inicio de Vue en Meteor Client Side
 Meteor.startup(() => {
     new Vue({
