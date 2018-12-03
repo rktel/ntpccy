@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-toolbar app fixed clipped-left>
+    <v-toolbar app fixed clipped-left dense>
       <v-toolbar-title>Generador de Reportes</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon v-if="userProfile.role == 'Hyperadmin'" title="Usuarios">
@@ -12,7 +12,7 @@
     </v-toolbar>
 
     <v-content>
-      <v-system-bar status lights-out dark fixed>
+      <v-system-bar status lights-out>
           <v-spacer></v-spacer>
           <span>Bienvenido {{userProfile.firstname}}</span>
       </v-system-bar>
