@@ -23,7 +23,7 @@
           <v-subheader>Lista de Usuarios [0]</v-subheader>
           <v-list-tile>
             <v-list-tile-content>
-              <v-list-tile-sub-title>Pepito Dos Cañones</v-list-tile-sub-title>
+              <v-list-tile-title>Pepito Dos Cañones</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
