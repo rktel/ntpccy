@@ -12,10 +12,10 @@
     </v-toolbar>
 
     <v-content>
-      <v-system-bar status lights-out>
+      <section>
         <v-spacer></v-spacer>
         <span>Bienvenido {{userProfile.firstname}}</span>
-      </v-system-bar>
+      </section>
       <v-container>
         <h1>Bienvenido al Home</h1>
         <home-users></home-users>
