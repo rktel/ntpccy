@@ -12,7 +12,7 @@
     </v-toolbar>
 
     <v-content>
-      <v-system-bar status color="primary" lights-out>
+      <v-system-bar status color="primary" lights-out dark>
           <v-spacer></v-spacer>
           <span>username</span>
       </v-system-bar>
