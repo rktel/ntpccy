@@ -6,7 +6,7 @@
       <v-btn icon>
         <v-icon>supervised_user_circle</v-icon>
       </v-btn>
-      <v-btn icon>
+      <v-btn icon @click="logout">
         <v-icon>power_settings_new</v-icon>
       </v-btn>
     </v-toolbar>
@@ -38,7 +38,13 @@ export default {
  
   },
   methods: {
-
+    logout() {
+      Meteor.logout(error => {
+        if (!error) {
+          this.$router.push({ name: "Login" });
+        }
+      });
+    },
   }
 };
 </script>
