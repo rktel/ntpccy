@@ -15,9 +15,13 @@
       <section>
         <p class="text-xs-right pa-3">Bienvenido {{userProfile.firstname}}</p>
       </section>
-      <v-container>
-        <home-form></home-form>
-        <home-users></home-users>
+      <v-container fluid fill-height>
+        <v-layout justify-center align-center>
+          <v-flex shrink xs12 sm8 md6>
+            <home-form></home-form>
+            <home-users></home-users>
+          </v-flex>
+        </v-layout>          
       </v-container>
     </v-content>
   </v-app>

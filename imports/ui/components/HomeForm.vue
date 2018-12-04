@@ -1,5 +1,7 @@
 <template>
-    <h1>Formulario</h1>
+    <section>
+        
+    </section>
 </template>
 
 <script>
