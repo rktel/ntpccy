@@ -12,7 +12,7 @@
     </v-toolbar>
 
     <v-content>
-      <section>
+      <section style="{'position':'absolute', 'right':'20px', 'top':'52px'}">
         <p class="text-xs-right pa-3">Bienvenido {{userProfile.firstname}}</p>
       </section>
       <v-container fluid fill-height>
