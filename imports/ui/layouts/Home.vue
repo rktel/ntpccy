@@ -30,7 +30,7 @@ import HomeForm from '../components/HomeForm.vue'
 export default {
   name: "Home",
   components:{
-    HomeUsers, Form
+    HomeUsers, HomeForm
   },
   mounted() {
     Meteor.call("getPersonal", (error, persona) => {
