@@ -88,7 +88,6 @@ export default {
       this.firstname = "";
       this.lastname = "";
       this.roleSelect = null;
-      this.idPersonal = null;
     }
   }
 };

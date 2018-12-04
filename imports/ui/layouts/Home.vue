@@ -16,7 +16,7 @@
         <p class="text-xs-right pa-3">Bienvenido {{userProfile.firstname}}</p>
       </section>
       <v-container>
-        <h1>Bienvenido al Home</h1>
+        <home-form></home-form>
         <home-users></home-users>
       </v-container>
     </v-content>
@@ -26,10 +26,11 @@
 <script>
 import { mapState, mapMutations } from "vuex";
 import HomeUsers from '../components/HomeUsers.vue'
+import HomeForm from '../components/HomeForm.vue'
 export default {
   name: "Home",
   components:{
-    HomeUsers
+    HomeUsers, Form
   },
   mounted() {
     Meteor.call("getPersonal", (error, persona) => {
