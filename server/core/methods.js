@@ -1,4 +1,5 @@
 import { Personal } from '../../imports/api/collections'
+import { Plates } from '../../imports/api/collections'
 
 // PERSONAL
 Meteor.methods({
@@ -33,6 +34,13 @@ Meteor.methods({
     }
 })
 */
+Meteor.methods({
+    getPlates: function(){
+        const plates = Plates.rawCollection().distinct('events.vehicle')
+        console.log(plates)
+    }
+})
+
 //FUNCTIONS HELPERS
 function createCredentials(personal) {
     const { firstname, lastname } = personal
