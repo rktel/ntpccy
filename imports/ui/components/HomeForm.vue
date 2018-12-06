@@ -1,7 +1,13 @@
 <template>
   <section>
       <template>
-          <v-combobox v-model="selectPlates" :items="plates" label="Seleccione unidades" multiple></v-combobox>
+          <v-combobox 
+          v-model="selectPlates" 
+          :items="plates" 
+          label="Seleccione unidades" 
+          multiple
+          small-chips
+          solo></v-combobox>
       </template>
       <template></template>
   </section>
