@@ -20,11 +20,11 @@ Meteor.startup(() => {
             userId: hyperUserId
         })
     }
-
+/*
     Meteor.call('getPlates', (error, plates) => {
         if(!error){
             console.log(plates)
         }
     })
-
+*/
 })
