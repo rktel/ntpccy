@@ -40,16 +40,22 @@ Meteor.methods({
         const plates = await Antapaccay.rawCollection().distinct('events.vehicle')
         return plates
     },
-     async queryRangeDatePlates(plates, dateTimeStart, dateTimeEnd){
+     queryRangeDatePlates(plates, dateTimeStart, dateTimeEnd){
         console.log(plates, dateTimeStart, dateTimeEnd)
-        const rangeDate = await Antapaccay.rawCollection().find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}},{'events':1,'_id':0})
-        rangeDate.foreach(e=>console.log(e))
+        Antapaccay.rawCollection()
+        .find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}},{'events':1,'_id':0})
+        .map(element => {
+            console.log(element)
+        });
         /*
                 .find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}},{'events':1,'_id':0})
         .sort({'events.vehicle':1,'events.created':1}, function(err, docs){
             console.log('error: ', err)
             console.log('docs: ', docs)
         })
+                .forEach(element => {
+            console.log(element)
+        });
          */
 
         
