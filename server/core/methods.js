@@ -44,7 +44,7 @@ Meteor.methods({
         console.log(plates, dateTimeStart, dateTimeEnd)
         Antapaccay.rawCollection()
         .find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}},{'events':1,'_id':0})
-        .forEach(element => {
+        .map(element => {
             console.log(element)
         });
         /*
