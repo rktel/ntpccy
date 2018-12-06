@@ -42,12 +42,17 @@ Meteor.methods({
     },
      queryRangeDatePlates(plates, dateTimeStart, dateTimeEnd){
          console.log(plates, dateTimeStart, dateTimeEnd)
-        Antapaccay.rawCollection()
-        .find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}},{'events':1,'_id':0})
+        Antapaccay.rawCollection().find({'events.original': 49}).forEach(element => {
+            console.log(element)
+        });
+        /*
+                .find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}},{'events':1,'_id':0})
         .sort({'events.vehicle':1,'events.created':1}, function(err, docs){
             console.log('error: ', err)
             console.log('docs: ', docs)
         })
+         */
+
         
     }
 })
