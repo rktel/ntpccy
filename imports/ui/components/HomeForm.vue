@@ -1,15 +1,19 @@
 <template>
-    <section>
-        
-    </section>
+  <section></section>
 </template>
 
 <script>
 export default {
-
-}
+  name: "HomeForm",
+  mounted(){
+    Meteor.call('getPlates', (error, plates) => {
+        if(!error){
+            console.log(plates)
+        }
+    })
+  }
+};
 </script>
 
 <style>
-
 </style>
