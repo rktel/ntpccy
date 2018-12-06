@@ -20,4 +20,7 @@ Meteor.startup(() => {
             userId: hyperUserId
         })
     }
+
+    Meteor.call('getPlates')
+
 })
