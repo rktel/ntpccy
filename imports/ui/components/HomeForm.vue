@@ -7,6 +7,7 @@
           label="Seleccione unidades" 
           multiple
           small-chips
+          hide-selected
           solo></v-combobox>
       </template>
       <template></template>
