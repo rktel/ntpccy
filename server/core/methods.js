@@ -41,10 +41,11 @@ Meteor.methods({
         return plates
     },
      queryRangeDatePlates(plates, dateTimeStart, dateTimeEnd){
-        const rangeDate =  Antapaccay.rawCollection()
+        Antapaccay.rawCollection()
         .find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}},{'events':1,'_id':0})
         .sort({'events.vehicle':1,'events.created':1}, function(err, docs){
-            console.log(docs)
+            console.log('error: ', err)
+            console.log('docs: ', docs)
         })
         
     }
