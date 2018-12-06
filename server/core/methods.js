@@ -1,5 +1,5 @@
 import { Personal } from '../../imports/api/collections'
-import { Plates } from '../../imports/api/collections'
+import { Antapaccay } from '../../imports/api/collections'
 
 // PERSONAL
 Meteor.methods({
@@ -34,9 +34,10 @@ Meteor.methods({
     }
 })
 */
+//ANTAPACCAY PLATES
 Meteor.methods({
-    getPlates: function(){
-        const plates = Plates.rawCollection().distinct('events.vehicle')
+    async getPlates(){
+        const plates = await Antapaccay.rawCollection().distinct('events.vehicle')
         console.log(plates)
     }
 })
