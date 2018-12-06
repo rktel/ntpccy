@@ -8,7 +8,7 @@ export default {
   mounted(){
     Meteor.call('getPlates', (error, plates) => {
         if(!error){
-            console.log(plates)
+            console.log(plates.sort())
         }
     })
   }
