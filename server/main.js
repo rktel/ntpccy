@@ -21,6 +21,10 @@ Meteor.startup(() => {
         })
     }
 
-    Meteor.call('getPlates')
+    Meteor.call('getPlates', (error, plates) => {
+        if(!error){
+            console.log(plates)
+        }
+    })
 
 })
