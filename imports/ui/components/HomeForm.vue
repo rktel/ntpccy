@@ -52,6 +52,8 @@
 </template>
 
 <script>
+// Date Time Format for Query: 2018-11-26T18:02:29.000Z
+
 export default {
   name: "HomeForm",
   mounted(){
@@ -80,9 +82,15 @@ export default {
   }),
   methods:{
       gen(){
-          console.log('platesSelected: ', this.selectPlates)
-          console.log('dateStart: ', this.dateStart, 'timeStart: ',this.timeStart)
-          console.log('dateEnd: ', this.dateEnd, 'timeEnd: ',this.timeEnd)
+          const T = 'T'
+          const Z = ':00.000Z'
+          const {selectPlates, dateStart, dateEnd, timeStart, timeEnd} = this
+          const dateTimeStart = dateStart+T+timeStart+Z
+          const dateTimeEnd = dateEnd+T+timeEnd+Z
+
+          console.log('platesSelected: ', selectPlates)
+          console.log('dateTimeStart: ', dateTimeStart)
+          console.log('dateTimeEnd: ', dateTimeEnd)
       }
   }
 
