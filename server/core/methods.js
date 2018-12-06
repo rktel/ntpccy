@@ -44,7 +44,7 @@ Meteor.methods({
         const rangeDate = await Antapaccay.rawCollection()
         .find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}},{'events':1,'_id':0})
         .sort({'events.vehicle':1,'events.created':1})
-        console.log(rangeDate) 
+        return rangeDate 
     }
 })
 
