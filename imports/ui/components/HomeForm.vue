@@ -88,9 +88,7 @@ export default {
           const dateTimeStart = dateStart+T+timeStart+Z
           const dateTimeEnd = dateEnd+T+timeEnd+Z
 
-          console.log('platesSelected: ', selectPlates)
-          console.log('dateTimeStart: ', dateTimeStart)
-          console.log('dateTimeEnd: ', dateTimeEnd)
+          Meteor.call('queryRangeDatePlates', selectPlates, dateTimeStart, dateTimeEnd)
       }
   }
 
