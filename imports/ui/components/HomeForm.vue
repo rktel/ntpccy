@@ -11,6 +11,7 @@
           solo></v-combobox>
       </template>
       <template>
+          <section>
             <v-menu ref="menuDS" :close-on-content-click="false" v-model="pickerDS" :nudge-right="40" :return-value.sync="dateStart" lazy transition="scale-transition" offset-y min-width="290px">
                 <v-text-field slot="activator" v-model="dateStart" label="Fecha de Inicio" prepend-icon="event" readonly></v-text-field>
                 <v-date-picker v-model="dateStart" @input="$refs.menuDS.save(dateStart)"></v-date-picker>
@@ -18,9 +19,11 @@
             <v-menu ref="menuTS" :close-on-content-click="false" v-model="pickerTS" :nudge-right="40" :return-value.sync="timeStart" lazy transition="scale-transition" offset-y max-width="290px" min-width="290px">
                 <v-text-field slot="activator" v-model="timeStart" label="Tiempo de Inicio" prepend-icon="access_time" readonly> </v-text-field>
                 <v-time-picker v-if="pickerTS" v-model="timeStart" @change="$refs.menuTS.save(timeStart)" format="24hr"> </v-time-picker>
-            </v-menu>          
+            </v-menu> 
+          </section>
       </template>
       <template>
+          <section>
             <v-menu ref="menuDE" :close-on-content-click="false" v-model="pickerDE" :nudge-right="40" :return-value.sync="dateEnd" lazy transition="scale-transition" offset-y min-width="290px">
                 <v-text-field slot="activator" v-model="dateEnd" label="Fecha de Termino" prepend-icon="event" readonly></v-text-field>
                 <v-date-picker v-model="dateEnd" @input="$refs.menuDE.save(dateEnd)"></v-date-picker>
@@ -28,11 +31,12 @@
             <v-menu ref="menuTE" :close-on-content-click="false" v-model="pickerTE" :nudge-right="40" :return-value.sync="timeEnd" lazy transition="scale-transition" offset-y max-width="290px" min-width="290px">
                 <v-text-field slot="activator" v-model="timeEnd" label="Tiempo de Termino" prepend-icon="access_time" readonly> </v-text-field>
                 <v-time-picker v-if="pickerTE" v-model="timeEnd" @change="$refs.menuTE.save(timeEnd)" format="24hr"> </v-time-picker>
-            </v-menu>          
+            </v-menu> 
+          </section>
       </template>
       <template>
             <section>
-                <v-btn color="primary" block>Generar Reporte</v-btn>
+                <v-btn color="primary" block @click="gen">Generar Reporte</v-btn>
             </section>          
       </template>
       <template>
@@ -50,6 +54,13 @@
 <script>
 export default {
   name: "HomeForm",
+  mounted(){
+    Meteor.call('queryPlates', (error, plates) => {
+        if(!error){
+            this.plates = plates.sort()
+        }
+    })
+  },
   data:()=>({
       plates: [],
       selectPlates:[],
@@ -67,13 +78,14 @@ export default {
       timeout: 6000,
       snackbarText: null,
   }),
-  mounted(){
-    Meteor.call('getPlates', (error, plates) => {
-        if(!error){
-            this.plates = plates.sort()
-        }
-    })
+  methods:{
+      gen(){
+          console.log('platesSelected: ', this.selectPlates)
+          console.log('dateStart: ', this.dateStart, 'timeStart: ',this.timeStart)
+          console.log('dateEnd: ', this.dateEnd, 'timeEnd: ',this.timeEnd)
+      }
   }
+
 };
 </script>
 

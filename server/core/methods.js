@@ -34,11 +34,14 @@ Meteor.methods({
     }
 })
 */
-//ANTAPACCAY PLATES
+//ANTAPACCAY PLATES & REPORT
 Meteor.methods({
-    async getPlates() {
+    async queryPlates() {
         const plates = await Antapaccay.rawCollection().distinct('events.vehicle')
         return plates
+    },
+    async queryRangeDatePlates(plates, dateTimeStart, dateTimeEnd){
+        
     }
 })
 
