@@ -46,12 +46,12 @@ Meteor.methods({
 
     
         Antapaccay.rawCollection()
-        .find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}},(...arg)=>{
-            console.log(...arg)
+        .find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}},(a,b,c)=>{
+            console.log('a>:',a)
+            console.log('b>:',b)
+            console.log('c>:',c)
         })
-        .forEach(element => {
-           // element.events.map(e = pureData.push(e))
-       });
+
        //console.log(pureData)
        
         /*
