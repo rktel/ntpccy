@@ -46,9 +46,11 @@ Meteor.methods({
 
     
         Antapaccay.rawCollection()
-        .find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}}).toArray((a,b)=>{
-            console.log('a:> ',a)
-            console.log('b:> ',b)
+        .find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}},
+        {_id:0, events:1}).toArray((error,items)=>{
+            if(!error){
+                console.log(items)
+            }
         })
 
        //console.log(pureData)
