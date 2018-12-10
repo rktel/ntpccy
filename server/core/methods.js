@@ -49,11 +49,11 @@ Meteor.methods({
         .find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}})
         .toArray((error,items)=>{
             if(!error){
-                preData = items
+                console.log(items)
             }
         })
 
-       console.log(preData)
+  
        
         /*
                 .find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}},{'events':1,'_id':0})
