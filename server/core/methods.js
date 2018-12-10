@@ -51,10 +51,12 @@ Meteor.methods({
         const data2 = Antapaccay.find({'events.vehicle': plates[1]}).fetch()
         console.log(data2[0].events)
 
-        while(loopCounter<=lengthPlates){
+        while(loopCounter<lengthPlates){
             const data = Antapaccay.find({'events.vehicle': plates[loopCounter]}).fetch()
             data.map(element => {
-                pureData.push(element.events[0])
+                element.events.map(e => {
+                    pureData.push(e)
+                })
             })
             loopCounter++
         }
