@@ -41,8 +41,8 @@ Meteor.methods({
         return plates
     },
     queryRangeDatePlates(plates, dateTimeStart, dateTimeEnd) {
-        console.log('dateTimeStart', new Date(dateTimeStart) )
-        console.log('dateTimeEnd', new Date(dateTimeEnd) )
+        console.log('dateTimeStart', new Date(dateTimeStart) ,addHours(dateTimeStart, -5))
+        console.log('dateTimeEnd', new Date(dateTimeEnd) ,addHours(dateTimeEnd, -5))
         plates = plates.sort()
         console.log(plates, dateTimeStart, dateTimeEnd)
         Antapaccay.rawCollection()
@@ -76,7 +76,10 @@ function createCredentials(personal) {
         password
     }
 }
-
+function addHours(datetime, hours){
+    let date1 = new Date(datetime);
+    return date1.setHours(date1.getHours()+hours);
+}
 
 
         /*
