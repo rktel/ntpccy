@@ -78,7 +78,8 @@ function createCredentials(personal) {
 }
 function addHours(datetime, hours){
     let date1 = new Date(datetime);
-    return date1.setHours(date1.getHours()+hours);
+     date1.setHours(date1.getHours()+hours);
+     return date1
 }
 
 
