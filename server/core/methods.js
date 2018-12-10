@@ -40,36 +40,29 @@ Meteor.methods({
         const plates = await Antapaccay.rawCollection().distinct('events.vehicle')
         return plates
     },
-    queryRangeDatePlates(plates, dateTimeStart, dateTimeEnd){
+    queryRangeDatePlates(plates, dateTimeStart, dateTimeEnd) {
         plates = plates.sort()
         console.log(plates, dateTimeStart, dateTimeEnd)
         Antapaccay.rawCollection()
-        .find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}})
-        .toArray(Meteor.bindEnvironment((error,items)=>{
-            if(!error){
-                console.log('preReport length:', items.length)
-                createReport(items)
-            }
-        }))
+            .find({ 'events': { $elemMatch: { 'vehicle': { $in: plates }, 'created': { $gte: dateTimeStart, $lte: dateTimeEnd } } } })
+            .toArray(Meteor.bindEnvironment((error, items) => {
+                if (!error) {
+                    console.log('preReport length:', items.length)
+                    createReport(items)
+                }
+            }))
     }
 })
 
 //FUNCTIONS HELPERS....
-function createReport(data){
+function createReport(data) {
     console.log('in createRport')
-    data.map(item => console.log(item.events[0].id,item.events[0].created, item.events[0].vehicle))
-    let events = data.filter(element => element.events)
-    events = events.sort(function (a, b) {
-        if (a.vehicle > b.vehicle) {
-          return 1;
-        }
-        if (a.vehicle < b.vehicle) {
-          return -1;
-        }
-        // a must be equal to b
-        return 0;
-      })
-      events.map(item => console.log(item.events[0].id,item.events[0].created, item.events[0].vehicle))
+    data.map(item => console.log(item.events[0].id, item.events[0].created, item.events[0].vehicle))
+    data.sort(function (a, b) {
+        return a.events[0].vehicle < b.events[0].vehicle
+    })
+    console.log("SORTED>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+    data.map(item => console.log(item.events[0].id, item.events[0].created, item.events[0].vehicle))
 }
 function createCredentials(personal) {
     const { firstname, lastname } = personal
