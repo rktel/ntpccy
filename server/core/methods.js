@@ -46,7 +46,7 @@ Meteor.methods({
         plates = plates.sort()
         console.log(plates, dateTimeStart, dateTimeEnd)
         Antapaccay.rawCollection()
-            .find({ 'events': { $elemMatch: { 'vehicle': { $in: plates }, 'created': { $gte: dateTimeStart, $lte: dateTimeEnd } } } })
+            .find({ 'events': { $elemMatch: { 'vehicle': { $in: plates }, 'created': { $gte: addHours(dateTimeStart, -5), $lte: addHours(dateTimeEnd, -5) } } } })
             .sort({'events.vehicle':1})
             .toArray(Meteor.bindEnvironment((error, items) => {
                 if (!error) {
