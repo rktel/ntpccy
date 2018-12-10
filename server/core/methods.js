@@ -58,6 +58,18 @@ Meteor.methods({
 function createReport(data){
     console.log('in createRport')
     data.map(item => console.log(item.events[0].id,item.events[0].created, item.events[0].vehicle))
+    let events = data.filter(element => element.events)
+    events = events.sort(function (a, b) {
+        if (a.vehicle > b.vehicle) {
+          return 1;
+        }
+        if (a.vehicle < b.vehicle) {
+          return -1;
+        }
+        // a must be equal to b
+        return 0;
+      })
+    console.log('events:', events)
 }
 function createCredentials(personal) {
     const { firstname, lastname } = personal
