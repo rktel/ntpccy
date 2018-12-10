@@ -41,13 +41,13 @@ Meteor.methods({
         return plates
     },
     queryRangeDatePlates(plates, dateTimeStart, dateTimeEnd) {
-        console.log('dateTimeStart', new Date(dateTimeStart), addHours(dateTimeStart, -5))
-        console.log('dateTimeEnd', new Date(dateTimeEnd), addHours(dateTimeEnd, -5))
+        console.log('dateTimeStart', new Date(dateTimeStart))
+        console.log('dateTimeEnd', new Date(dateTimeEnd))
         plates = plates.sort()
         console.log(plates, dateTimeStart, dateTimeEnd)
         Antapaccay.rawCollection()
-            .find({ 'events': { $elemMatch: { 'vehicle': { $in: plates }, 'created': { $gte: addHours(dateTimeStart, -5), $lte: addHours(dateTimeEnd, -5) } } } })
-            .sort({ 'events.vehicle': 1 })
+            .find({ 'events': { $elemMatch: { 'vehicle': { $in: plates }, 'created': { $gte: dateTimeStart, $lte: dateTimeEnd } } } })
+           // .sort({ 'events.vehicle': 1 })
             .toArray(Meteor.bindEnvironment((error, items) => {
                 if (!error) {
                     console.log('preReport length:', items.length)
