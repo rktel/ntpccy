@@ -47,11 +47,11 @@ Meteor.methods({
     
         Antapaccay.rawCollection()
         .find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}})
-        .toArray((error,items)=>{
+        .toArray(Meteor.bindEnvironment((error,items)=>{
             if(!error){
                  preData = await items
             }
-        })
+        }))
 
         console.log("preData>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><")
         console.log(preData)
