@@ -59,7 +59,7 @@ function createReport(data) {
     console.log('in createRport')
     data.map(item => console.log(item.events[0].id, item.events[0].created, item.events[0].vehicle))
     data.sort(function (a, b) {
-        return a.events[0].vehicle < b.events[0].vehicle
+        return (new Date(b) - new Date(a)) && (a.events[0].vehicle < b.events[0].vehicle)
     })
     console.log("SORTED>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
     data.map(item => console.log(item.events[0].id, item.events[0].created, item.events[0].vehicle))
