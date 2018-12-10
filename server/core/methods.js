@@ -44,7 +44,7 @@ Meteor.methods({
         plates = plates.sort()
         console.log(plates, dateTimeStart, dateTimeEnd)
         let pureData = []
-        const data = Antapaccay.find({'events.vehicle': plates[0]})
+        const data = Antapaccay.find({'events.vehicle': plates[0]}).fetch()
         console.log(data)
         /*
         Antapaccay.rawCollection()
