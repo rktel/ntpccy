@@ -40,38 +40,24 @@ Meteor.methods({
         const plates = await Antapaccay.rawCollection().distinct('events.vehicle')
         return plates
     },
-    async queryRangeDatePlates(plates, dateTimeStart, dateTimeEnd){
+    queryRangeDatePlates(plates, dateTimeStart, dateTimeEnd){
         plates = plates.sort()
         console.log(plates, dateTimeStart, dateTimeEnd)
-        let preData
-    
         Antapaccay.rawCollection()
         .find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}})
         .toArray(Meteor.bindEnvironment((error,items)=>{
             if(!error){
-                 preData = await items
+                console.log('preReport length:', items.length)
+                createReport(items)
             }
         }))
-
-        console.log("preData>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><")
-        console.log(preData)
-       
-        /*
-                .find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}},{'events':1,'_id':0})
-        .sort({'events.vehicle':1,'events.created':1}, function(err, docs){
-            console.log('error: ', err)
-            console.log('docs: ', docs)
-        })
-                .forEach(element => {
-            console.log(element)
-        });
-         */
-
-        
     }
 })
 
 //FUNCTIONS HELPERS
+function createReport(data){
+
+}
 function createCredentials(personal) {
     const { firstname, lastname } = personal
     const firstLetterUsername = firstname.substr(0, 1).toLowerCase()
@@ -83,3 +69,16 @@ function createCredentials(personal) {
         password
     }
 }
+
+
+
+        /*
+                .find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}},{'events':1,'_id':0})
+        .sort({'events.vehicle':1,'events.created':1}, function(err, docs){
+            console.log('error: ', err)
+            console.log('docs: ', docs)
+        })
+                .forEach(element => {
+            console.log(element)
+        });
+         */
