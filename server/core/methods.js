@@ -45,9 +45,9 @@ Meteor.methods({
         console.log(plates, dateTimeStart, dateTimeEnd)
         let pureData = []
         const data1 = Antapaccay.find({'events.vehicle': plates[0]}).fetch()
-        console.log(data1.events)
+        console.log(data1)
         const data2 = Antapaccay.find({'events.vehicle': plates[1]}).fetch()
-        console.log(data2.events)
+        console.log(data2)
         /*
         Antapaccay.rawCollection()
         .find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}})
