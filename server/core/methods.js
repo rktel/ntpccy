@@ -45,6 +45,7 @@ Meteor.methods({
         console.log(plates, dateTimeStart, dateTimeEnd)
         Antapaccay.rawCollection()
             .find({ 'events': { $elemMatch: { 'vehicle': { $in: plates }, 'created': { $gte: dateTimeStart, $lte: dateTimeEnd } } } })
+            .sort({'events.vehicle':1})
             .toArray(Meteor.bindEnvironment((error, items) => {
                 if (!error) {
                     console.log('preReport length:', items.length)
@@ -59,7 +60,7 @@ function createReport(data) {
     console.log('in createRport')
     data.map(item => console.log(item.events[0].id, item.events[0].created, item.events[0].vehicle))
     data.sort(function (a, b) {
-        return (new Date(b) - new Date(a)) && (a.events[0].vehicle < b.events[0].vehicle)
+        return (a.events[0].vehicle < b.events[0].vehicle) && (new Date(b) - new Date(a)) 
     })
     console.log("SORTED>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
     data.map(item => console.log(item.events[0].id, item.events[0].created, item.events[0].vehicle))
