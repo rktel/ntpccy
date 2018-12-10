@@ -41,8 +41,8 @@ Meteor.methods({
         return plates
     },
     queryRangeDatePlates(plates, dateTimeStart, dateTimeEnd) {
-        console.log('dateTimeStart', new Date(dateTimeStart) ,addHours(dateTimeStart, -5))
-        console.log('dateTimeEnd', new Date(dateTimeEnd) ,addHours(dateTimeEnd, -5))
+        console.log('dateTimeStart', new Date(dateTimeStart) ,addHours(dateTimeStart, -5).toString())
+        console.log('dateTimeEnd', new Date(dateTimeEnd) ,addHours(dateTimeEnd, -5).toString())
         plates = plates.sort()
         console.log(plates, dateTimeStart, dateTimeEnd)
         Antapaccay.rawCollection()
