@@ -54,9 +54,10 @@ Meteor.methods({
     }
 })
 
-//FUNCTIONS HELPERS
+//FUNCTIONS HELPERS....
 function createReport(data){
-    data.map(item => console.log(item.events[0]))
+    console.log('in createRport')
+    data.map(item => console.log(item.events[0].created, item.events[0].vehicle))
 }
 function createCredentials(personal) {
     const { firstname, lastname } = personal
