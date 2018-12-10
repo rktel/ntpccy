@@ -69,7 +69,7 @@ function createReport(data){
         // a must be equal to b
         return 0;
       })
-    console.log('events:', events)
+      events.map(item => console.log(item.id,item.created, item.vehicle))
 }
 function createCredentials(personal) {
     const { firstname, lastname } = personal
