@@ -63,7 +63,7 @@ Meteor.methods({
 function createReport(data) {
     console.log('in createRport')
     data.map(item => {
-        item.events.map(e => console.log(e.created, e.vehicle))
+        item.events.map(e => console.log( addHours(e.created,-5), e.vehicle))
     })
 
 }
