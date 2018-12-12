@@ -49,7 +49,7 @@ Meteor.methods({
         console.log(plates)
         Antapaccay.rawCollection()
             .find({ 'events': { $elemMatch: { 'vehicle': { $in: plates }, 'created': { $gte: dateTimeStart, $lte: dateTimeEnd } } } })
-            // .sort({ 'events.vehicle': 1 })
+            .sort({ 'events.vehicle': 1 })
             .toArray(Meteor.bindEnvironment((error, items) => {
                 if (!error) {
                     console.log('preReport length:', items.length)
