@@ -66,11 +66,21 @@ function createReport(data) {
     data.map(item => {
         item.events.map(e => {
             // console.log(addHours(e.created, -5), e.vehicle)
-            console.log(e)
+            console.log(e.inputs.digital)
+            /*
             Rows.push({
-                vehicle: e.vehicle,
-                datetime: addHours(e.created, -5)
-            })
+                dateTime: addHours(e.created, -5),
+                estado: row.estado ? 'En movimiento' : 'Detenido',
+                lat: row.lat,
+                lon: row.lon,
+                velocidad: row.velocidad,
+                odometro: row.odometro,
+                direccion: row.direccion,
+                geozona: row.geozona,
+                conductor: row.conductor,
+                placa: e.vehicle,
+             })
+             */
         })
 
     })
