@@ -65,7 +65,8 @@ function createReport(data) {
     let Rows = []
     data.map(item => {
         item.events.map(e => {
-            console.log(addHours(e.created, -5), e.vehicle)
+            // console.log(addHours(e.created, -5), e.vehicle)
+            console.log(e)
             Rows.push({
                 vehicle: e.vehicle,
                 datetime: addHours(e.created, -5)
@@ -73,7 +74,7 @@ function createReport(data) {
         })
 
     })
-    console.log(Rows)
+   // console.log(Rows)
 
 }
 function createCredentials(personal) {
