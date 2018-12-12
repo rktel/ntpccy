@@ -44,12 +44,12 @@ Meteor.methods({
         console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
         dateTimeStart = addHours(dateTimeStart, 5)
         dateTimeEnd = addHours(dateTimeEnd, 5)
-        console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd )
+        console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
         plates = plates.sort()
         console.log(plates)
         Antapaccay.rawCollection()
             .find({ 'events': { $elemMatch: { 'vehicle': { $in: plates }, 'created': { $gte: dateTimeStart, $lte: dateTimeEnd } } } })
-           // .sort({ 'events.vehicle': 1 })
+            // .sort({ 'events.vehicle': 1 })
             .toArray(Meteor.bindEnvironment((error, items) => {
                 if (!error) {
                     console.log('preReport length:', items.length)
@@ -62,9 +62,17 @@ Meteor.methods({
 //FUNCTIONS HELPERS.... console.log(item.events[0].id, item.events[0].created, item.events[0].vehicle)
 function createReport(data) {
     console.log('in createRport')
+    let Rows = []
     data.map(item => {
-        item.events.map(e => console.log( addHours(e.created,-5), e.vehicle))
+        item.events.map(e => {
+            console.log(addHours(e.created, -5), e.vehicle)
+            Rows.push({
+                datetime: addHours(e.created, -5)
+            })
+        })
+
     })
+    console.log(Rows)
 
 }
 function createCredentials(personal) {
@@ -85,13 +93,13 @@ function addHours(datetime, hours) {
 }
 
 
-        /*
-                .find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}},{'events':1,'_id':0})
-        .sort({'events.vehicle':1,'events.created':1}, function(err, docs){
-            console.log('error: ', err)
-            console.log('docs: ', docs)
-        })
-                .forEach(element => {
-            console.log(element)
-        });
-         */
+/*
+        .find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}},{'events':1,'_id':0})
+.sort({'events.vehicle':1,'events.created':1}, function(err, docs){
+    console.log('error: ', err)
+    console.log('docs: ', docs)
+})
+        .forEach(element => {
+    console.log(element)
+});
+ */
