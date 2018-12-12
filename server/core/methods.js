@@ -67,6 +67,7 @@ function createReport(data) {
         item.events.map(e => {
             console.log(addHours(e.created, -5), e.vehicle)
             Rows.push({
+                vehicle: e.vehicle,
                 datetime: addHours(e.created, -5)
             })
         })
