@@ -1,7 +1,7 @@
 import { Personal } from '../../imports/api/collections'
 import { Antapaccay } from '../../imports/api/collections'
 
-import { st_NTPCCY } from "../../imports/api/streamers";
+import { stNTPCCY } from "../../imports/api/streamers";
 // PERSONAL
 Meteor.methods({
     getPersonal: function () {
@@ -189,10 +189,10 @@ function createReport(userID, data) {
 
         })
         // console.log('RowsReport: ',RowsReport)
-        // st_NTPCCY.emit('Rows', userID, RowsReport )
+        stNTPCCY.emit('Rows', userID, RowsReport )
         console.log('RowsReport.length: ', RowsReport.length)
     } else {
-        st_NTPCCY.emit('NoData',userID, 0)
+        stNTPCCY.emit('NoData',userID, 0)
         console.log('No hay data')
     }
 

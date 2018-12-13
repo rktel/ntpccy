@@ -132,7 +132,7 @@
 // Date Time Format for Query: 2018-11-26T18:02:29.000Z
 const MAX_DAYS = 10
 const MAX_PLATES = 10
-import { st_NTPCCY } from "../../api/streamers";
+import { stNTPCCY } from "../../api/streamers";
 import { json2excel } from "js2excel";
 
 export default {
@@ -143,7 +143,7 @@ export default {
         this.plates = plates.sort();
       }
     });
-    st_NTPCCY.on("Rows", (userID, data) => {
+    stNTPCCY.on("Rows", (userID, data) => {
       // console.log(data);
       if (userID == this.userID) {
         this.buttonGRDisabled = false;
@@ -160,7 +160,7 @@ export default {
         }
       }
     });
-    st_NTPCCY.on("NoData", (userID, value) => {
+    stNTPCCY.on("NoData", (userID, value) => {
       if (userID == this.userID) {
         this.buttonGRDisabled = false;
         this.progressState = 0;

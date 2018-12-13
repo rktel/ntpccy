@@ -1,1 +1,1 @@
-export const st_NTPCCY = new Meteor.Streamer('ntpccy')
+export const stNTPCCY = new Meteor.Streamer('ntpccy')
