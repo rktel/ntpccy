@@ -215,7 +215,7 @@ function addZero(data) {
     return data < 10 ? '0' + data : data
 }
 function getDateAndTime(dateTime_) {
-    const millis = getTimeMillis(dateTime_) + 18000000
+    const millis = getTimeMillis(dateTime_)
     const dateTime = new Date(millis)
     const year = dateTime.getFullYear()
     const month = addZero(dateTime.getMonth() + 1)
