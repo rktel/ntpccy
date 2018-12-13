@@ -1,4 +1,4 @@
-import { st_NTPCCY } from '../../imports/api/streamers'
+import { stNTPCCY } from '../../imports/api/streamers'
 
-st_NTPCCY.allowRead('all');
-st_NTPCCY.allowWrite('all');
+stNTPCCY.allowRead('all');
+stNTPCCY.allowWrite('all');
