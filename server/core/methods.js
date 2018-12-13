@@ -187,10 +187,10 @@ function createReport(data) {
             }
 
         })
-        p('RowsReport: ',RowsReport)
-        p('RowsReport.length: ', RowsReport.length)
+        console.log('RowsReport: ',RowsReport)
+        console.log('RowsReport.length: ', RowsReport.length)
     }else{
-        p('No hay data')
+        console.log('No hay data')
     }
     
 
