@@ -78,7 +78,7 @@ function createReport(data) {
                 velocidad: Math.round(parseFloat(e.location.speed)),
                 odometro: parseInt(e.counters[0].value) / 1000,
                 direccion: e.location.address,
-                geozona: e.location.areas[0] ? '' : e.location.areas[0],
+                geozona: e.location.areas[0] ? e.location.areas[0] : ' ',
                 conductor: e.person,
                 placa: e.vehicle,
             })
