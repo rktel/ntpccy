@@ -167,35 +167,7 @@ export default {
 
       console.log(selectPlates, dateStart, dateEnd, timeStart, timeEnd)
 
-      if (dateStart && timeStart && dateEnd && timeEnd && selectPlates.length > 0) {
-        if (selectPlates.length > 0 && selectPlates.length <= 5) {
 
-          const diffDays = getDaysDiff(dateTimeEnd, dateTimeStart);
-          console.log('days:',diff)
-          if (diffDays >= 0 && diffDays <= 5) {
-            console.log("OK");
-            this.snackbar = true;
-            this.snackbarText = "Iniciando proceso...";
-            this.buttonGRDisabled = true;
-            this.progressState = 1;
-           // Meteor.call("getReport");
-          } else {
-            console.log(
-              "Maximo 7 dias de diferencia entre fecha de inicio y termino"
-            );
-            this.snackbar = true;
-            this.snackbarText = "Son 7 dias como maximo";
-          }
-        } else {
-          console.log("Maximo 5 unidades");
-          this.snackbar = true;
-          this.snackbarText = "Son 5 unidades como maximo";
-        }
-      } else {
-        console.log("Debe llenar los campos");
-        this.snackbar = true;
-        this.snackbarText = "Debe rellenar todos los campos";
-      }
     }
   }
 };
