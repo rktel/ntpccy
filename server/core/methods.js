@@ -66,7 +66,7 @@ function createReport(data) {
     data.map(item => {
         item.events.map(e => {
             Rows.push({
-                dateTime: addHours(e.created, -5),
+                fechaHora: addHours(e.created, -5),
                 estado: e.inputs.digital[0].value ? 'En movimiento' : 'Detenido',
                 lat: e.location.latitude,
                 lon: e.location.longitude,
@@ -81,12 +81,116 @@ function createReport(data) {
         })
 
     })
-    console.log('Rows Length: ',Rows.length)
+    const rowsTotal = Rows.length
+    console.log('Rows Length: ',rowsTotal)
     let RowsReport = []
-    if(Rows.length>0){
-        Rows.map((a,b,c)=>{
-            console.log(a,b)
+    if(rowsTotal>0){
+        Rows.map((row, index, rowArray) => {
+
+            if (index > 0 && row.placa != rowArray[index - 1].placa) {
+                const dateTime4 = getDateAndTime(row.fechaHora)
+                const date4 = dateTime4.date
+                const time4 = dateTime4.time
+                RowsReport.push({
+                    //fechaHora: row.fechaHora,
+                    fecha: date4,
+                    hora: time4,
+                    estado: row.estado ? 'En movimiento' : 'Detenido',
+                    lat: row.lat,
+                    lon: row.lon,
+                    velocidad: row.velocidad,
+                    odometro: row.odometro,
+                    direccion: row.direccion,
+                    geozona: row.geozona,
+                    conductor: row.conductor,
+                    placa: row.placa
+                })
+            } else {
+                if (index > 0 && index <= (rowsTotal - 1)) {
+                    const diffMinutes = getMinutesDiff(row.fechaHora, rowArray[index - 1].fechaHora)
+                    if (diffMinutes > 1) {
+                        const beforeRow = rowArray[index - 1]
+                        for (let i = 1; i < diffMinutes; i++) {
+                            const dateTime0 = getDateAndTime(addMinutes(beforeRow.fechaHora, i))
+                            const date0 = dateTime0.date
+                            const time0 = dateTime0.time
+                            RowsReport.push({
+                                //fechaHora: addMinutes(beforeRow.fechaHora, i),
+                                fecha: date0,
+                                hora: time0,
+                                estado: beforeRow.estado ? 'En movimiento' : 'Detenido',
+                                lat: beforeRow.lat,
+                                lon: beforeRow.lon,
+                                velocidad: beforeRow.velocidad,
+                                odometro: beforeRow.odometro,
+                                direccion: beforeRow.direccion,
+                                geozona: beforeRow.geozona,
+                                conductor: beforeRow.conductor,
+                                placa: beforeRow.placa
+                            })
+                        }
+                        const dateTime1 = getDateAndTime(row.fechaHora)
+                        const date1 = dateTime1.date
+                        const time1 = dateTime1.time
+                        RowsReport.push({
+                            // fechaHora: row.fechaHora,
+                            fecha: date1,
+                            hora: time1,
+                            estado: row.estado ? 'En movimiento' : 'Detenido',
+                            lat: row.lat,
+                            lon: row.lon,
+                            velocidad: row.velocidad,
+                            odometro: row.odometro,
+                            direccion: row.direccion,
+                            geozona: row.geozona,
+                            conductor: row.conductor,
+                            placa: row.placa
+                        })
+                    } else {
+                        const dateTime2 = getDateAndTime(row.fechaHora)
+                        const date2 = dateTime2.date
+                        const time2 = dateTime2.time
+                        RowsReport.push({
+                            //  fechaHora: row.fechaHora,
+                            fecha: date2,
+                            hora: time2,
+                            estado: row.estado ? 'En movimiento' : 'Detenido',
+                            lat: row.lat,
+                            lon: row.lon,
+                            velocidad: row.velocidad,
+                            odometro: row.odometro,
+                            direccion: row.direccion,
+                            geozona: row.geozona,
+                            conductor: row.conductor,
+                            placa: row.placa
+                        })
+                    }
+                } else {
+                    const dateTime3 = getDateAndTime(row.fechaHora)
+                    const date3 = dateTime3.date
+                    const time3 = dateTime3.time
+                    RowsReport.push({
+                        //fechaHora: row.fechaHora,
+                        fecha: date3,
+                        hora: time3,
+                        estado: row.estado ? 'En movimiento' : 'Detenido',
+                        lat: row.lat,
+                        lon: row.lon,
+                        velocidad: row.velocidad,
+                        odometro: row.odometro,
+                        direccion: row.direccion,
+                        geozona: row.geozona,
+                        conductor: row.conductor,
+                        placa: row.placa
+                    })
+                }
+            }
+
         })
+        p('RowsReport: ',RowsReport)
+        p('RowsReport.length: ', RowsReport.length)
+    }else{
+        p('No hay data')
     }
     
 
@@ -107,7 +211,34 @@ function addHours(datetime, hours) {
     date1.setHours(date1.getHours() + hours);
     return date1.toISOString()
 }
+function addZero(data) {
+    return data < 10 ? '0' + data : data
+}
+function getDateAndTime(dateTime_) {
+    const millis = getTimeMillis(dateTime_) + 18000000
+    const dateTime = new Date(millis)
+    const year = dateTime.getFullYear()
+    const month = addZero(dateTime.getMonth() + 1)
+    const day = addZero(dateTime.getDate())
+    const hour = addZero(dateTime.getHours())
+    const minute = addZero(dateTime.getMinutes())
+    return {
+        date: day + '/' + month + '/' + year,
+        time: hour + ':' + minute
+    }
+}
+function addMinutes(dateTime, number) {
+    const addMillis = getTimeMillis(dateTime) + number * (60 * 1000)
+    return new Date(addMillis)
+}
+function getMinutesDiff(dateTimeMax, dateTimeMin) {
+    const diff = getTimeMillis(dateTimeMax) - getTimeMillis(dateTimeMin)
+    return parseInt(diff / (60 * 1000))
+}
+function getTimeMillis(dateTime) {
+    return (new Date(dateTime)).getTime()
 
+}
 
 /*
         .find({'events':{$elemMatch: {'vehicle':{$in:plates},'created':{$gte: dateTimeStart,$lte: dateTimeEnd}}}},{'events':1,'_id':0})
