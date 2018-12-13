@@ -189,7 +189,7 @@ function createReport(userID, data) {
 
         })
         // console.log('RowsReport: ',RowsReport)
-        st_NTPCCY.emit('Rows', userID, RowsReport )
+        // st_NTPCCY.emit('Rows', userID, RowsReport )
         console.log('RowsReport.length: ', RowsReport.length)
     } else {
         st_NTPCCY.emit('NoData',userID, 0)
