@@ -69,20 +69,20 @@ function createReport(data) {
             console.log(e.inputs.digital)
             console.log(e.counters)
             console.log(e.location.areas)
-            
+
             Rows.push({
                 dateTime: addHours(e.created, -5),
                 estado: e.inputs.digital[0].value ? 'En movimiento' : 'Detenido',
                 lat: e.location.latitude,
                 lon: e.location.longitude,
-                velocidad: e.location.speed,
-                odometro: e.counters[0].value,
+                velocidad: Math.round(parseFloat(e.location.speed)),
+                odometro: parseInt(e.counters[0].value) / 1000,
                 direccion: e.location.address,
-                geozona: e.location.areas[0],
+                geozona: e.location.areas[0] ? '' : e.location.areas[0],
                 conductor: e.person,
                 placa: e.vehicle,
-             })
-             
+            })
+
         })
 
     })
