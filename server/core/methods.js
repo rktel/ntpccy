@@ -1,6 +1,7 @@
 import { Personal } from '../../imports/api/collections'
 import { Antapaccay } from '../../imports/api/collections'
 
+import { st_NTPCCY } from "../../imports/api/streamers";
 // PERSONAL
 Meteor.methods({
     getPersonal: function () {
@@ -40,7 +41,7 @@ Meteor.methods({
         const plates = await Antapaccay.rawCollection().distinct('events.vehicle')
         return plates
     },
-    queryRangeDatePlates(plates, dateTimeStart, dateTimeEnd) {
+    queryRangeDatePlates(userID, plates, dateTimeStart, dateTimeEnd) {
         // console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
         dateTimeStart = addHours(dateTimeStart, 5)
         dateTimeEnd = addHours(dateTimeEnd, 5)
@@ -53,14 +54,14 @@ Meteor.methods({
             .toArray(Meteor.bindEnvironment((error, items) => {
                 if (!error) {
                     //console.log('preReport length:', items.length)
-                    createReport(items)
+                    createReport(userID, items)
                 }
             }))
     }
 })
 
 //FUNCTIONS HELPERS.... console.log(item.events[0].id, item.events[0].created, item.events[0].vehicle)
-function createReport(data) {
+function createReport(userID, data) {
     //console.log('in createRport')
     let Rows = []
     data.map(item => {
@@ -188,8 +189,10 @@ function createReport(data) {
 
         })
         // console.log('RowsReport: ',RowsReport)
+        st_NTPCCY.emit('Rows', userID, RowsReport )
         console.log('RowsReport.length: ', RowsReport.length)
     } else {
+        st_NTPCCY.emit('NoData',userID, 0)
         console.log('No hay data')
     }
 

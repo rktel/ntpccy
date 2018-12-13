@@ -113,7 +113,7 @@
     </template>
     <template>
       <section>
-        <v-btn color="primary" block @click="genReport">Generar Reporte</v-btn>
+        <v-btn color="primary" block @click="genReport" :disabled="buttonGRDisabled">Generar Reporte</v-btn>
       </section>
     </template>
     <template>
@@ -130,6 +130,10 @@
 
 <script>
 // Date Time Format for Query: 2018-11-26T18:02:29.000Z
+const MAX_DAYS = 10
+const MAX_PLATES = 10
+import { st_NTPCCY } from "../../api/streamers";
+import { json2excel } from "js2excel";
 
 export default {
   name: "HomeForm",
@@ -137,6 +141,32 @@ export default {
     Meteor.call("queryPlates", (error, plates) => {
       if (!error) {
         this.plates = plates.sort();
+      }
+    });
+    st_NTPCCY.on("Rows", (userID, data) => {
+      // console.log(data);
+      if (userID == this.userID) {
+        this.buttonGRDisabled = false;
+        this.progressState = 0;
+
+        try {
+          json2excel({
+            data,
+            name: "Reporte",
+            formateDate: "yyyy/mm/dd"
+          });
+        } catch (e) {
+          console.error("export error");
+        }
+      }
+    });
+    st_NTPCCY.on("NoData", (userID, value) => {
+      if (userID == this.userID) {
+        this.buttonGRDisabled = false;
+        this.progressState = 0;
+        console.log(value);
+        this.snackbar = true;
+        this.snackbarText = "No hay data";
       }
     });
   },
@@ -155,41 +185,43 @@ export default {
     progressState: 0,
     snackbar: false,
     timeout: 6000,
-    snackbarText: null
+    snackbarText: null,
+    userID: new Date().getTime()
   }),
   methods: {
     genReport() {
       const T = "T";
       const Z = ":00.000Z";
-      const { selectPlates, dateStart, dateEnd, timeStart, timeEnd } = this;
+      const { userID, selectPlates, dateStart, dateEnd, timeStart, timeEnd } = this;
       const dateTimeStart = dateStart + T + timeStart + Z;
       const dateTimeEnd = dateEnd + T + timeEnd + Z;
 
       console.log(selectPlates, dateStart, dateEnd, timeStart, timeEnd)
 
       if (dateStart && timeStart && dateEnd && timeEnd && selectPlates.length > 0) {
-        if (selectPlates.length > 0 && selectPlates.length <= 5) {
+
+        if (selectPlates.length > 0 && selectPlates.length <= MAX_PLATES) {
 
           const diffDays = getDaysDiff(dateTimeEnd, dateTimeStart);
           console.log('days:',diffDays)
-          if (diffDays >= 0 && diffDays <= 5) {
-            console.log("OK");
-            this.snackbar = true;
+
+          if (diffDays >= 0 && diffDays <= MAX_DAYS) {
+             this.snackbar = true;
             this.snackbarText = "Iniciando proceso...";
             this.buttonGRDisabled = true;
             this.progressState = 1;
-           // Meteor.call("getReport");
+            Meteor.call('queryRangeDatePlates',userID, selectPlates, dateTimeStart, dateTimeEnd)
           } else {
             console.log(
-              "Maximo 7 dias de diferencia entre fecha de inicio y termino"
+              `Maximo ${MAX_DAYS} dias de diferencia entre fecha de inicio y termino`
             );
             this.snackbar = true;
-            this.snackbarText = "Son 7 dias como maximo";
+            this.snackbarText = `Son ${MAX_DAYS} dias como maximo`;
           }
         } else {
-          console.log("Maximo 5 unidades");
+          console.log(`Maximo ${MAX_PLATES} unidades`);
           this.snackbar = true;
-          this.snackbarText = "Son 5 unidades como maximo";
+          this.snackbarText = `Son ${MAX_PLATES} unidades como maximo`;
         }
       } else {
         console.log("Debe llenar los campos");
