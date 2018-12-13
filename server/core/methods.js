@@ -52,7 +52,7 @@ Meteor.methods({
             .sort({ 'events.vehicle': 1 })
             .toArray(Meteor.bindEnvironment((error, items) => {
                 if (!error) {
-                    console.log('preReport length:', items.length)
+                    //console.log('preReport length:', items.length)
                     createReport(items)
                 }
             }))
@@ -66,9 +66,9 @@ function createReport(data) {
     data.map(item => {
         item.events.map(e => {
             // console.log(addHours(e.created, -5), e.vehicle)
-            console.log(e.inputs.digital)
-            console.log(e.counters)
-            console.log(e.location.areas)
+            //console.log(e.inputs.digital)
+            //console.log(e.counters)
+            //console.log(e.location.areas)
 
             Rows.push({
                 dateTime: addHours(e.created, -5),
@@ -86,7 +86,8 @@ function createReport(data) {
         })
 
     })
-    console.log(Rows)
+    console.log('Rows Length: ',Rows.length)
+    console.log('Rows: ',Rows)
 
 }
 function createCredentials(personal) {
