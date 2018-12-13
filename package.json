@@ -6,11 +6,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.1.5",
-<<<<<<< HEAD
     "bcrypt": "^3.0.2",
-=======
     "js2excel": "^1.0.1",
->>>>>>> d718f80e59a840a35e00dd9af7780e3ba33d70e5
     "meteor-node-stubs": "^0.4.1",
     "vue": "^2.5.17",
     "vue-meteor-tracker": "^2.0.0-beta.4",
