@@ -171,7 +171,7 @@ export default {
         if (selectPlates.length > 0 && selectPlates.length <= 5) {
 
           const diffDays = getDaysDiff(dateTimeEnd, dateTimeStart);
-          console.log('days:',diff)
+          console.log('days:',diffDays)
           if (diffDays >= 0 && diffDays <= 5) {
             console.log("OK");
             this.snackbar = true;
@@ -201,7 +201,7 @@ export default {
 };
 
 function getDaysDiff(dateTimeMax, dateTimeMin) {
-  const diff = new Date(dateTimeMax).getTime() - new Date(dateTimeMin).getTime()
+  const diff = (new Date(dateTimeMax)).getTime() - (new Date(dateTimeMin)).getTime()
   return parseInt(diff / (24 * 60 * 60 * 1000));
 }
 
