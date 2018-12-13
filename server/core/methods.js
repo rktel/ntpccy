@@ -72,7 +72,7 @@ function createReport(data) {
             
             Rows.push({
                 dateTime: addHours(e.created, -5),
-                estado: e.inputs.digital[0].value = true ? 'En movimiento' : 'Detenido',
+                estado: e.inputs.digital[0].value ? 'En movimiento' : 'Detenido',
                 lat: e.location.latitude,
                 lon: e.location.longitude,
                 velocidad: e.location.speed,
