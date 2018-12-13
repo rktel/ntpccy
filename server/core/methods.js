@@ -65,11 +65,6 @@ function createReport(data) {
     let Rows = []
     data.map(item => {
         item.events.map(e => {
-            // console.log(addHours(e.created, -5), e.vehicle)
-            //console.log(e.inputs.digital)
-            //console.log(e.counters)
-            //console.log(e.location.areas)
-
             Rows.push({
                 dateTime: addHours(e.created, -5),
                 estado: e.inputs.digital[0].value ? 'En movimiento' : 'Detenido',
@@ -87,7 +82,13 @@ function createReport(data) {
 
     })
     console.log('Rows Length: ',Rows.length)
-    console.log('Rows: ',Rows)
+    let RowsReport = []
+    if(Rows.length>0){
+        Rows.map((a,b,c)=>{
+            console.log(a,b)
+        })
+    }
+    
 
 }
 function createCredentials(personal) {
