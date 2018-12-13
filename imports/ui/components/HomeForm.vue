@@ -165,13 +165,9 @@ export default {
       const dateTimeStart = dateStart + T + timeStart + Z;
       const dateTimeEnd = dateEnd + T + timeEnd + Z;
 
-      if (
-        dateStart &&
-        timeStart &&
-        dateEnd &&
-        timeEnd &&
-        selectPlates.length > 0
-      ) {
+      console.log(selectPlates, dateStart, dateEnd, timeStart, timeEnd)
+
+      if (dateStart && timeStart && dateEnd && timeEnd && selectPlates.length > 0) {
         if (selectPlates.length > 0 && selectPlates.length <= 5) {
 
           const diffDays = getDaysDiff(dateTimeEnd, dateTimeStart);
