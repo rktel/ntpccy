@@ -175,7 +175,7 @@ export default {
         if (selectPlates.length > 0 && selectPlates.length <= 5) {
 
           const diffDays = getDaysDiff(dateTimeEnd, dateTimeStart);
-          // console.log('days:',diff)
+          console.log('days:',diff)
           if (diffDays >= 0 && diffDays <= 5) {
             console.log("OK");
             this.snackbar = true;
