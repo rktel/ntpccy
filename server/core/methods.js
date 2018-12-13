@@ -51,12 +51,12 @@ Meteor.methods({
         Antapaccay.rawCollection()
             .find({ 'events': { $elemMatch: { 'vehicle': { $in: plates }, 'created': { $gte: dateTimeStart, $lte: dateTimeEnd } } } })
             .sort({ 'events.vehicle': 1 })
-            .toArray(Meteor.bindEnvironment((error, items) => {
+            .toArray((error, items) => {
                 if (!error) {
                     //console.log('preReport length:', items.length)
                     createReport(userID, items)
                 }
-            }))
+            })
     }
 })
 
