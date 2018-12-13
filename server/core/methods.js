@@ -66,25 +66,25 @@ function createReport(data) {
     data.map(item => {
         item.events.map(e => {
             // console.log(addHours(e.created, -5), e.vehicle)
-            console.log(e.inputs.digital)
-            /*
+            // console.log(e.inputs.digital)
+            
             Rows.push({
                 dateTime: addHours(e.created, -5),
-                estado: row.estado ? 'En movimiento' : 'Detenido',
-                lat: row.lat,
-                lon: row.lon,
-                velocidad: row.velocidad,
-                odometro: row.odometro,
-                direccion: row.direccion,
-                geozona: row.geozona,
-                conductor: row.conductor,
+                estado: e.inputs.digital[0].value = true ? 'En movimiento' : 'Detenido',
+                lat: e.location.latitude,
+                lon: e.location.longitude,
+                velocidad: e.location.speed,
+                odometro: e.counters[0].value,
+                direccion: e.location.address,
+                geozona: e.location.areas[0],
+                conductor: e.person,
                 placa: e.vehicle,
              })
-             */
+             
         })
 
     })
-   // console.log(Rows)
+    console.log(Rows)
 
 }
 function createCredentials(personal) {
