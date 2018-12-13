@@ -41,7 +41,7 @@ Meteor.methods({
         return plates
     },
     queryRangeDatePlates(plates, dateTimeStart, dateTimeEnd) {
-        console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
+        // console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
         dateTimeStart = addHours(dateTimeStart, 5)
         dateTimeEnd = addHours(dateTimeEnd, 5)
         console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
@@ -61,7 +61,7 @@ Meteor.methods({
 
 //FUNCTIONS HELPERS.... console.log(item.events[0].id, item.events[0].created, item.events[0].vehicle)
 function createReport(data) {
-    console.log('in createRport')
+    //console.log('in createRport')
     let Rows = []
     data.map(item => {
         item.events.map(e => {
@@ -82,9 +82,9 @@ function createReport(data) {
 
     })
     const rowsTotal = Rows.length
-    console.log('Rows Length: ',rowsTotal)
+    console.log('Rows Length: ', rowsTotal)
     let RowsReport = []
-    if(rowsTotal>0){
+    if (rowsTotal > 0) {
         Rows.map((row, index, rowArray) => {
 
             if (index > 0 && row.placa != rowArray[index - 1].placa) {
@@ -187,12 +187,12 @@ function createReport(data) {
             }
 
         })
-        console.log('RowsReport: ',RowsReport)
+        // console.log('RowsReport: ',RowsReport)
         console.log('RowsReport.length: ', RowsReport.length)
-    }else{
+    } else {
         console.log('No hay data')
     }
-    
+
 
 }
 function createCredentials(personal) {
