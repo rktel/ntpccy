@@ -67,7 +67,7 @@ function createReport(data) {
         item.events.map(e => {
             Rows.push({
                 fechaHora: addHours(e.created, -5),
-                estado: e.inputs.digital[0].value ? 'En movimiento' : 'Detenido',
+                estado: e.inputs.digital[0].value,
                 lat: e.location.latitude,
                 lon: e.location.longitude,
                 velocidad: Math.round(parseFloat(e.location.speed)),
