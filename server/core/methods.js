@@ -65,10 +65,10 @@ function createReport(userID, data) {
             Rows.push({
                 fechaHora: addHours(e.created, -5),
                 estado: e.inputs.digital[0].value,
-                lat: e.location.latitude,
-                lon: e.location.longitude,
+                lat: e.location.latitude.toFixed(6),
+                lon: e.location.longitude.toFixed(6),
                 velocidad: Math.round(parseFloat(e.location.speed)),
-                odometro: parseInt(e.counters[0].value) / 1000,
+                odometro: (e.counters[0].value / 1000).toFixed(3),
                 direccion: e.location.address,
                 geozona: e.location.areas[0] ? e.location.areas[0].name : ' ',
                 conductor: e.person,
@@ -186,10 +186,10 @@ function createReport(userID, data) {
 
         })
         // console.log('RowsReport: ',RowsReport)
-        stNTPCCY.emit('Rows', userID, RowsReport )
+        stNTPCCY.emit('Rows', userID, RowsReport)
         console.log('RowsReport.length: ', RowsReport.length)
     } else {
-        stNTPCCY.emit('NoData',userID, 0)
+        stNTPCCY.emit('NoData', userID, 0)
         console.log('No hay data')
     }
 
