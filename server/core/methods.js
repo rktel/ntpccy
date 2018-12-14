@@ -80,6 +80,7 @@ function createReport(userID, data) {
     })
     const rowsTotal = Rows.length
     console.log('Rows Length: ', rowsTotal)
+    console.log('Rows : ', Rows)
     let RowsReport = []
     if (rowsTotal > 0) {
         Rows.map((row, index, rowArray) => {
