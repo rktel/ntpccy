@@ -41,18 +41,21 @@ Meteor.methods({
         const plates = await Antapaccay.rawCollection().distinct('events.vehicle')
         return plates
     },
-    async queryRangeDatePlates(userID, plates, dateTimeStart, dateTimeEnd) {
+    queryRangeDatePlates(userID, plates, dateTimeStart, dateTimeEnd) {
         // console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
         dateTimeStart = addHours(dateTimeStart, 5)
         dateTimeEnd = addHours(dateTimeEnd, 5)
         console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
         plates = plates.sort()
         console.log(plates)
-        const data = await Antapaccay.rawCollection()
+        Antapaccay.rawCollection()
             .find({ 'events': { $elemMatch: { 'vehicle': { $in: plates }, 'created': { $gte: dateTimeStart, $lte: dateTimeEnd } } } })
             .sort({ 'events.vehicle': 1 })
-            .toArray()
-        createReport(userID, data)
+            .toArray((error, data)=>{
+                if(!error){
+                    createReport(userID, data)
+                }
+            })
     }
 })
 
@@ -80,7 +83,7 @@ function createReport(userID, data) {
     })
     const rowsTotal = Rows.length
     console.log('Rows Length: ', rowsTotal)
-    console.log('Rows : ', Rows)
+    // console.log('Rows : ', Rows)
     let RowsReport = []
     if (rowsTotal > 0) {
         Rows.map((row, index, rowArray) => {
