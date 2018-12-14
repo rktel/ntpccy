@@ -1,7 +1,10 @@
 <template>
   <v-app>
     <v-toolbar app fixed clipped-left dense>
-      <v-toolbar-title>Reportes</v-toolbar-title>
+      <v-toolbar-title>
+        <img src="/img/seclog.png" height="33px">
+        Reportes
+      </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon v-if="adminRoles.includes(userProfile.role)" title="Usuarios" @click="showUserDialog">
         <v-icon color="blue">supervised_user_circle</v-icon>
@@ -25,9 +28,8 @@
       </v-container>
     </v-content>
     <v-footer app fixed>
-        <section>
-          <img src="/img/seclog.png" height="35px">
-          <span class="texy-xs-center">SecuritasPeru&copy;2018</span>
+        <section class="texy-xs-center">
+          <span >SecuritasPeru&copy;2018</span>
         </section>
     </v-footer>
   </v-app>
