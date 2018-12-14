@@ -6,7 +6,7 @@
           <v-flex xs12 sm8 md4>
             <v-card hover light class="pa-4">
               <v-card-text>
-                <section class="texy-xs-center">
+                <section>
                   <img src="/img/seclog.png" height="45px">
                 </section>
                 <h1 class="font-weight-bold text-xs-center mb-4">Login</h1>

@@ -2,7 +2,6 @@
   <v-app>
     <v-toolbar app fixed clipped-left dense>
       <v-toolbar-title>
-        <img src="/img/seclog.png" height="33px">
         Reportes
       </v-toolbar-title>
       <v-spacer></v-spacer>
@@ -28,9 +27,7 @@
       </v-container>
     </v-content>
     <v-footer app fixed>
-        <section class="texy-xs-center">
-          <span >SecuritasPeru&copy;2018</span>
-        </section>
+          <span class="text-xs-center">SecuritasPeru&copy;2018</span>
     </v-footer>
   </v-app>
 </template>
