@@ -24,6 +24,12 @@
         </v-layout>          
       </v-container>
     </v-content>
+    <v-footer app fixed>
+        <section>
+          <img src="/img/seclog.png" height="35px">
+          <span class="texy-xs-center">SecuritasPeru&copy;2018</span>
+        </section>
+    </v-footer>
   </v-app>
 </template>
 
