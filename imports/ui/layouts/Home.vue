@@ -27,7 +27,7 @@
       </v-container>
     </v-content>
     <v-footer app fixed>
-          <p class="px-4">SecuritasPeru&copy;2018</p>
+          <p class="pa-4">SecuritasPeru&copy;2018</p>
     </v-footer>
   </v-app>
 </template>
