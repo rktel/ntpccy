@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 4.3113332 4.3113332"
+   height="4.3113332mm"
+   width="4.3113332mm">
+  <defs
+     id="defs2" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(-37.758619,-42.205049)"
+     id="layer1">
+    <g
+       id="g847">
+      <g
+         id="g838">
+        <rect
+           y="42.244049"
+           x="37.797619"
+           height="4.2333331"
+           width="4.2333331"
+           id="rect10"
+           style="opacity:1;fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:0.07799999;stroke-miterlimit:4;stroke-dasharray:none" />
+        <circle
+           r="0.46065849"
+           cy="44.074375"
+           cx="40.993"
+           id="path12"
+           style="opacity:1;fill:#d40000;fill-opacity:1;stroke:none;stroke-width:0.07799999;stroke-miterlimit:4;stroke-dasharray:none" />
+        <circle
+           style="opacity:1;fill:#d40000;fill-opacity:1;stroke:none;stroke-width:0.07799999;stroke-miterlimit:4;stroke-dasharray:none"
+           id="circle824"
+           cx="39.890511"
+           cy="44.082729"
+           r="0.46065849" />
+        <circle
+           r="0.46065849"
+           cy="44.082729"
+           cx="38.796379"
+           id="circle826"
+           style="opacity:1;fill:#d40000;fill-opacity:1;stroke:none;stroke-width:0.07799999;stroke-miterlimit:4;stroke-dasharray:none" />
+        <text
+           id="text830"
+           y="45.12529"
+           x="38.321625"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:0.55734122px;line-height:1.25;font-family:serif;-inkscape-font-specification:'serif Bold';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.10450146"
+           xml:space="preserve"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:0.55734122px;font-family:serif;-inkscape-font-specification:'serif Bold';fill:#ffffff;fill-opacity:1;stroke-width:0.10450146"
+             y="45.12529"
+             x="38.321625"
+             id="tspan828">SECURITAS</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>
