@@ -26,8 +26,8 @@
         </v-layout>          
       </v-container>
     </v-content>
-    <v-footer app fixed class="text-xs-center">
-          <span >SecuritasPeru&copy;2018</span>
+    <v-footer app fixed>
+          <p class="text-xs-center">SecuritasPeru&copy;2018</p>
     </v-footer>
   </v-app>
 </template>
