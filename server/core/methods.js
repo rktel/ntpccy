@@ -42,10 +42,10 @@ Meteor.methods({
         return plates
     },
     queryRangeDatePlates(userID, plates, dateTimeStart, dateTimeEnd) {
-        // console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
+        console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
         dateTimeStart = addHours(dateTimeStart, 5)
         dateTimeEnd = addHours(dateTimeEnd, 5)
-        console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
+        console.log('dateTimeStart: ', dateTimeStart, 'dateTimeEnd: ', dateTimeEnd)
         plates = plates.sort()
         console.log(plates)
         Antapaccay.rawCollection()
@@ -190,7 +190,7 @@ function createReport(userID, data) {
         })
         // console.log('RowsReport: ',RowsReport)
         stNTPCCY.emit('Rows', userID, RowsReport)
-        console.log('RowsReport.length: ', RowsReport.length)
+        console.log('RowsReport length: ', RowsReport.length)
     } else {
         stNTPCCY.emit('NoData', userID, 0)
         console.log('No hay data')
