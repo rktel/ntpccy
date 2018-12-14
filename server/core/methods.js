@@ -52,7 +52,7 @@ Meteor.methods({
             .find({ 'events': { $elemMatch: { 'vehicle': { $in: plates }, 'created': { $gte: dateTimeStart, $lte: dateTimeEnd } } } })
             .sort({ 'events.vehicle': 1 })
             .toArray()
-        console.log(data)
+        createReport(userID, data)
     }
 })
 
