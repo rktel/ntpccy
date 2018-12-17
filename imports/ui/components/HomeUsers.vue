@@ -16,7 +16,7 @@
             <v-text-field v-model="firstname" label="Nombres" required></v-text-field>
             <v-text-field v-model="lastname" label="Apellidos" required></v-text-field>
             <v-select :items="roleItems" v-model="roleSelect" label="Rol" required></v-select>
-            <v-select  v-if="roleSelect == 'Tecnico'" :items="apiItems.name" v-model="apiSelect" label="Api" required></v-select>
+            <v-select  v-if="roleSelect == 'Tecnico'" :items="apiItems" v-model="apiSelect" label="Api" required></v-select>
             <v-btn block @click="savePersonal">Crear</v-btn>
           </form>
         </template>

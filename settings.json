@@ -12,14 +12,8 @@
             "Tecnico"
         ],
         "api": [
-            {
-                "name": "Antapaccay",
-                "uri": "ntpccy"
-            },
-            {
-                "name": "Exsa",
-                "uri": "xs"
-            }
+            "Antapaccay",
+            "Exsa"
         ]
     }
 }
