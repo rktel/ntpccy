@@ -47,8 +47,8 @@ Meteor.methods({
         dateTimeStart = addHours(dateTimeStart, 5)
         dateTimeEnd = addHours(dateTimeEnd, 5)
         console.log('Usuario: ', Meteor.user().username)
-        console.log('FechayTiempoInicio[+5]: ', dateTimeStart)
-        console.log('FechayTiempoFin[+5]: ', dateTimeEnd)
+        console.log('Fecha y Tiempo de Inicio[+5]: ', dateTimeStart)
+        console.log('Fecha y Tiempo de Fin[+5]: ', dateTimeEnd)
         plates = plates.sort()
         console.log('placas: ',plates)
         Antapaccay.rawCollection()
@@ -85,7 +85,7 @@ function createReport(userID, data) {
 
     })
     const rowsTotal = Rows.length
-    console.log('Documentos consultados: ', rowsTotal)
+    console.log('Documentos Consultados: ', rowsTotal)
     // console.log('Rows : ', Rows)
     let RowsReport = []
     if (rowsTotal > 0) {

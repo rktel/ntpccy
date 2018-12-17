@@ -184,7 +184,7 @@ export default {
     buttonGRDisabled: false, // TRUE PARA DESHABILITAR
     progressState: 0,
     snackbar: false,
-    timeout: 6000,
+    timeout: 1500,
     snackbarText: null,
     userID: new Date().getTime()
   }),
