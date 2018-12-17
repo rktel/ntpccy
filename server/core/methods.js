@@ -30,16 +30,7 @@ Meteor.methods({
         return Personal.update({ _id }, { $set: { firstname, lastname, role } })
     }
 })
-//PERSONAL-USER
-/*
-Meteor.methods({
-    createPersonalUser: function (personal) {
-        const { username, password } = createCredentials(personal)
-        const userId = Accounts.createUser({ username, password })
-        return Personal.upsert({ _id: personal._id }, { $set: { userId, username, password } })
-    }
-})
-*/
+
 //ANTAPACCAY PLATES & REPORT
 Meteor.methods({
     async queryPlates() {
@@ -251,4 +242,4 @@ function getTimeMillis(dateTime) {
 
 }
 
-// End Antapaccay API
+// END ANTAPACCAY API
