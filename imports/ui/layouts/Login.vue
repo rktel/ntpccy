@@ -57,6 +57,11 @@ export default {
           if (!error) {
             this.$router.push({ name: "Home" });
             console.log(Meteor.user())
+            Meteor.call("getPersonal", (error, persona) => {
+              if (!error) {
+                console.log(persona)
+              }
+            });
           }
         });
       }
