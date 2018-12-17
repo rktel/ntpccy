@@ -1,6 +1,5 @@
 <template>
   <v-app>
-
     <v-navigation-drawer
       clipped
       fixed
@@ -9,7 +8,6 @@
       v-if="adminRoles.includes(userProfile.role)"
     >
       <v-list dense>
-
         <v-list-tile v-for="api in apiItems" :key="api" @click="alert('dashboard')">
           <v-list-tile-action>
             <v-icon>dashboard</v-icon>
@@ -18,18 +16,19 @@
             <v-list-tile-title>Dashboard</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-
       </v-list>
     </v-navigation-drawer>
 
-
     <v-toolbar app fixed clipped-left dense>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>
-        RPT
-      </v-toolbar-title>
+      <v-toolbar-title>RPT</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon v-if="adminRoles.includes(userProfile.role)" title="Usuarios" @click="showUserDialog">
+      <v-btn
+        icon
+        v-if="adminRoles.includes(userProfile.role)"
+        title="Usuarios"
+        @click="showUserDialog"
+      >
         <v-icon color="blue">supervised_user_circle</v-icon>
       </v-btn>
       <v-btn icon @click="logout" title="Cerrar sesion">
@@ -47,23 +46,22 @@
             <home-form></home-form>
             <home-users></home-users>
           </v-flex>
-        </v-layout>          
+        </v-layout>
       </v-container>
     </v-content>
-    <v-footer app fixed>
-        SecuritasPeru&copy;2018
-    </v-footer>
+    <v-footer app fixed>SecuritasPeru&copy;2018</v-footer>
   </v-app>
 </template>
 
 <script>
 import { mapState, mapMutations } from "vuex";
-import HomeUsers from '../components/HomeUsers.vue'
-import HomeForm from '../components/HomeForm.vue'
+import HomeUsers from "../components/HomeUsers.vue";
+import HomeForm from "../components/HomeForm.vue";
 export default {
   name: "Home",
-  components:{
-    HomeUsers, HomeForm
+  components: {
+    HomeUsers,
+    HomeForm
   },
   mounted() {
     Meteor.call("getPersonal", (error, persona) => {
@@ -71,18 +69,18 @@ export default {
         this.SET_USERPROFILE(persona);
       }
     });
-    createApiArray(Meteor.settings.public.api)
+    
   },
   data: () => ({
-    adminRoles: ['Hyperadmin','Superadmin'],
+    adminRoles: ["Hyperadmin", "Superadmin"],
     drawer: true,
-    apiItems: Meteor.settings.public.api,
+    apiItems: createApiArray(Meteor.settings.public.api)
   }),
   computed: {
     ...mapState(["userProfile"])
   },
   methods: {
-    ...mapMutations(["SET_USERPROFILE","SHOW_USERDIALOG"]),
+    ...mapMutations(["SET_USERPROFILE", "SHOW_USERDIALOG"]),
     logout() {
       Meteor.logout(error => {
         if (!error) {
@@ -90,21 +88,19 @@ export default {
         }
       });
     },
-    showUserDialog(){
-        this.SHOW_USERDIALOG()
-    },
+    showUserDialog() {
+      this.SHOW_USERDIALOG();
+    }
   }
 };
 
-function createApiArray(apiItems){
- const newArray =  apiItems.map(el => {
-    return{
+function createApiArray(apiItems) {
+  return apiItems.map(el => {
+    return {
       name: el,
-      uri: el.toLowerCase().replace(/[aeiouáéíóú]/ig, '')
-    }
-  })
-
-  console.log(newArray)
+      uri: el.toLowerCase().replace(/[aeiouáéíóú]/gi, "")
+    };
+  });
 }
 </script>
 
