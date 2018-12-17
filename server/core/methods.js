@@ -46,7 +46,7 @@ Meteor.methods({
         // console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
         dateTimeStart = addHours(dateTimeStart, 5)
         dateTimeEnd = addHours(dateTimeEnd, 5)
-        console.log('Usuario: ', Meteor.user())
+        console.log('Usuario: ', Meteor.user().username)
         console.log('dateTimeStart: ', dateTimeStart)
         console.log('dateTimeEnd: ', dateTimeEnd)
         plates = plates.sort()
