@@ -80,6 +80,7 @@ export default {
       const { firstname, lastname, roleSelect, apiSelect } = this;
 
       if (roleSelect == "Tecnico") {
+        console.log('Tecnico')
         const personal = {
           firstname,
           lastname,
@@ -92,6 +93,7 @@ export default {
           }
         });
       } else {
+        console.log('else')
         const personal = {
           firstname,
           lastname,
