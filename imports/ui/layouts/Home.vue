@@ -6,6 +6,7 @@
       fixed
       v-model="drawer"
       app
+      v-if="adminRoles.includes(userProfile.role)"
     >
       <v-list dense>
         <v-list-tile @click="alert('dashboard')">
@@ -29,6 +30,7 @@
 
 
     <v-toolbar app fixed clipped-left dense>
+      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>
         RPT
       </v-toolbar-title>
@@ -77,7 +79,8 @@ export default {
     });
   },
   data: () => ({
-    adminRoles: ['Hyperadmin','Superadmin']
+    adminRoles: ['Hyperadmin','Superadmin'],
+    drawer: true
   }),
   computed: {
     ...mapState(["userProfile"])
