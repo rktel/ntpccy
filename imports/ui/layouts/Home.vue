@@ -43,7 +43,7 @@
       <v-container fluid fill-height>
         <v-layout justify-center align-center>
           <v-flex shrink xs12 sm8 md6>
-            <home-form></home-form>
+            <antapaccay></antapaccay>
             <home-users></home-users>
           </v-flex>
         </v-layout>
@@ -56,12 +56,12 @@
 <script>
 import { mapState, mapMutations } from "vuex";
 import HomeUsers from "../components/HomeUsers.vue";
-import HomeForm from "../components/HomeForm.vue";
+import Antapaccay from "../components/Antapaccay.vue";
 export default {
   name: "Home",
   components: {
     HomeUsers,
-    HomeForm
+    Antapaccay
   },
   mounted() {
     Meteor.call("getPersonal", (error, persona) => {
