@@ -8,12 +8,12 @@
       v-if="adminRoles.includes(userProfile.role)"
     >
       <v-list dense>
-        <v-list-tile v-for="api in apiItems" :key="api" @click="alert('dashboard')">
+        <v-list-tile v-for="api in apiItems" :key="api.name" @click="alert('dashboard')">
           <v-list-tile-action>
-            <v-icon>dashboard</v-icon>
+            <v-icon>play_arrow</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>Dashboard</v-list-tile-title>
+            <v-list-tile-title>{{api.name}}</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
