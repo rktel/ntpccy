@@ -10,6 +10,16 @@
         "roles": [
             "Superadmin",
             "Tecnico"
+        ],
+        "api": [
+            {
+                "name": "Antapaccay",
+                "uri": "ntpccy"
+            },
+            {
+                "name": "Exsa",
+                "uri": "xs"
+            }
         ]
     }
 }
