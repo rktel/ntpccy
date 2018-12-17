@@ -10,8 +10,13 @@ Meteor.methods({
     createPersonal: function (personal) {
         const { username, password } = createCredentials(personal)
         const userId = Accounts.createUser({ username, password })
-        const { firstname, lastname, role } = personal
-        return Personal.insert({ firstname, lastname, role, userId, username, password })
+        const { firstname, lastname, role, api } = personal
+        if(api){
+            return Personal.insert({ firstname, lastname, role, userId, username, password , api})
+        }else{
+            return Personal.insert({ firstname, lastname, role, userId, username, password})
+        }
+        
     },
     removePersonal: function (personal) {
         const { _id, userId } = personal
