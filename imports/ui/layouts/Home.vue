@@ -9,7 +9,8 @@
       v-if="adminRoles.includes(userProfile.role)"
     >
       <v-list dense>
-        <v-list-tile @click="alert('dashboard')">
+
+        <v-list-tile v-for="api in apiItems" :key="api" @click="alert('dashboard')">
           <v-list-tile-action>
             <v-icon>dashboard</v-icon>
           </v-list-tile-action>
@@ -17,14 +18,7 @@
             <v-list-tile-title>Dashboard</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile @click="alert('settings')">
-          <v-list-tile-action>
-            <v-icon>settings</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Settings</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
+
       </v-list>
     </v-navigation-drawer>
 
@@ -77,10 +71,12 @@ export default {
         this.SET_USERPROFILE(persona);
       }
     });
+    createApiArray(Meteor.settings.public.api)
   },
   data: () => ({
     adminRoles: ['Hyperadmin','Superadmin'],
-    drawer: true
+    drawer: true,
+    apiItems: Meteor.settings.public.api,
   }),
   computed: {
     ...mapState(["userProfile"])
@@ -99,6 +95,17 @@ export default {
     },
   }
 };
+
+function createApiArray(apiItems){
+  apiItems.map(el => {
+    return{
+      name: el,
+      uri: el.toLowerCase().replace(/[aeiouáéíóú]/ig, '')
+    }
+  })
+
+  console.log(apiItems)
+}
 </script>
 
 <style>
