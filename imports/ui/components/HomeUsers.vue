@@ -82,10 +82,10 @@ export default {
       if (roleSelect == "Tecnico") {
         console.log('Tecnico')
         const personal = {
-          firstname,
-          lastname,
-          roleSelect,
-          apiSelect
+          firstname: firstname,
+          lastname: lastname,
+          role: roleSelect,
+          api: apiSelect
         };
         Meteor.call("createPersonal", personal, (error, id) => {
           if (!error) {
@@ -95,9 +95,9 @@ export default {
       } else {
         console.log('else')
         const personal = {
-          firstname,
-          lastname,
-          roleSelect
+          firstname: firstname,
+          lastname: lastname,
+          role: roleSelect,
         };
         Meteor.call("createPersonal", personal, (error, id) => {
           if (!error) {
