@@ -97,14 +97,14 @@ export default {
 };
 
 function createApiArray(apiItems){
-  apiItems.map(el => {
+ const newArray =  apiItems.map(el => {
     return{
       name: el,
       uri: el.toLowerCase().replace(/[aeiouáéíóú]/ig, '')
     }
   })
 
-  console.log(apiItems)
+  console.log(newArray)
 }
 </script>
 
