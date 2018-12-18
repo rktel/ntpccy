@@ -48,6 +48,7 @@
           <v-flex shrink xs12 sm8 md6>
             <antapaccay v-if="userProfile.api == 'Antapaccay'"></antapaccay>
             <exsa v-if="userProfile.api == 'Exsa'"></exsa>
+            <induamerica v-if="userProfile.api == 'Induamerica'"></induamerica>
             <home-users></home-users>
           </v-flex>
         </v-layout>
@@ -67,12 +68,14 @@ import { mapState, mapMutations } from "vuex";
 import HomeUsers from "../components/HomeUsers.vue";
 import Antapaccay from "../components/Antapaccay.vue";
 import Exsa from "../components/Exsa.vue";
+import Induamerica from "../components/Induamerica.vue";
 export default {
   name: "Home",
   components: {
     HomeUsers,
     Antapaccay,
-    Exsa
+    Exsa,
+    Induamerica
   },
   mounted() {
     Meteor.call("getPersonal", (error, persona) => {
