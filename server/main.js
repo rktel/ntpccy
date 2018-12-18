@@ -4,6 +4,7 @@ let hyperUserId = null
  
 Meteor.startup(() => {
     console.log('Meteor backend up')
+    console.log('process.env.MAIL_URL:',process.env.MAIL_URL)
 
     if (Meteor.users.find().count() == 0) {
         hyperUserId = Accounts.createUser({
