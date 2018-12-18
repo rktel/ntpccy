@@ -20,7 +20,7 @@
     </v-navigation-drawer>
 
     <v-toolbar app fixed clipped-left dense>
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-side-icon v-if="adminRoles.includes(userProfile.role)" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>RPT</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
