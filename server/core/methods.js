@@ -2,6 +2,16 @@ import { Personal } from '../../imports/api/collections'
 import { Antapaccay } from '../../imports/api/collections'
 
 import { stNTPCCY } from "../../imports/api/streamers";
+
+// EMAIL
+
+Meteor.methods({
+    sendEmail(to, from, subject, text){
+        this.unblock();
+        Email.send({to, from, subject, text})
+    }
+})
+
 // PERSONAL
 Meteor.methods({
     getPersonal: function () {
