@@ -43,8 +43,10 @@
       <v-container fluid fill-height>
         <v-layout justify-center align-center>
           <v-flex shrink xs12 sm8 md6>
-            <antapaccay></antapaccay>
+
+            <antapaccay v-if="userProfile.api == 'Antapaccay'"></antapaccay>
             <home-users></home-users>
+
           </v-flex>
         </v-layout>
       </v-container>
