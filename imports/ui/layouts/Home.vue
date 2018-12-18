@@ -38,7 +38,7 @@
 
     <v-content>
       <section :style="{'position':'absolute', 'right':'20px', 'top':'10px'}">
-        <p>Bienvenido {{userProfile.firstname}}</p>
+        <p>Bienvenid@ {{userProfile.firstname}}</p>
       </section>
       <v-container fluid fill-height>
         <v-layout justify-center align-center>

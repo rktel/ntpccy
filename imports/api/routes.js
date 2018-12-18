@@ -7,9 +7,9 @@ import Login from '../ui/layouts/Login.vue'
 import Home from '../ui/layouts/Home.vue'
 
 const routes = [
-    { path: '/', redirect:'/home'},
+    { path: '/', redirect:'/rpt'},
     { name: 'Login', path: '/login', component: Login },
-    { name: 'Home', path: '/home', component: Home},
+    { name: 'Home', path: '/rpt', component: Home},
 ]
 
 export default new VueRouter({
