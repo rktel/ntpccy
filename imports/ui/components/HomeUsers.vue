@@ -54,9 +54,9 @@ import { mapState, mapMutations } from "vuex";
 export default {
   name: "HomeUsers",
   data: () => ({
-    firstname: "",
-    lastname: "",
-    email:"",
+    firstname: null,
+    lastname: null,
+    email: null,
     roleItems: Meteor.settings.public.roles,
     apiItems: Meteor.settings.public.api,
     roleSelect: null,
@@ -81,42 +81,44 @@ export default {
     savePersonal() {
       const { firstname, lastname, email, roleSelect, apiSelect } = this;
 
-      if (roleSelect == "Tecnico") {
-        console.log('Tecnico')
-        const personal = {
-          firstname: firstname,
-          lastname: lastname,
-          email: email,
-          role: roleSelect,
-          api: apiSelect
-        };
-        Meteor.call("createPersonal", personal, (error, id) => {
-          if (!error) {
-            this.clear();
-          }
-        });
-      } else {
-        console.log('else')
-        const personal = {
-          firstname: firstname,
-          lastname: lastname,
-          email: email,
-          role: roleSelect,
-        };
-        Meteor.call("createPersonal", personal, (error, id) => {
-          if (!error) {
-            this.clear();
-          }
-        });
+      if (firstname && lastname && email) {
+        if (roleSelect == "Tecnico") {
+          console.log("Tecnico");
+          const personal = {
+            firstname: firstname,
+            lastname: lastname,
+            email: email,
+            role: roleSelect,
+            api: apiSelect
+          };
+          Meteor.call("createPersonal", personal, (error, id) => {
+            if (!error) {
+              this.clear();
+            }
+          });
+        } else {
+          console.log("else");
+          const personal = {
+            firstname: firstname,
+            lastname: lastname,
+            email: email,
+            role: roleSelect
+          };
+          Meteor.call("createPersonal", personal, (error, id) => {
+            if (!error) {
+              this.clear();
+            }
+          });
+        }
       }
     },
     removePersonal(person) {
       Meteor.call("removePersonal", person);
     },
     clear() {
-      this.firstname = "";
-      this.lastname = "";
-      this.email = "";
+      this.firstname = null;
+      this.lastname = null;
+      this.email = null;
       this.roleSelect = null;
       this.apiSelect = null;
     }
