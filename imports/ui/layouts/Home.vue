@@ -8,7 +8,7 @@
       v-if="adminRoles.includes(userProfile.role)"
     >
       <v-list dense>
-        <v-list-tile v-for="api in apiItems" :key="api.name" @click="alert('dashboard')">
+        <v-list-tile v-for="api in apiItems" :key="api.name" @click="changeApi(api.name)">
           <v-list-tile-action>
             <v-icon>play_arrow</v-icon>
           </v-list-tile-action>
@@ -45,6 +45,7 @@
           <v-flex shrink xs12 sm8 md6>
 
             <antapaccay v-if="userProfile.api == 'Antapaccay'"></antapaccay>
+            <exsa v-if="userProfile.api == 'Exsa'"></exsa>
             <home-users></home-users>
 
           </v-flex>
@@ -64,11 +65,13 @@
 import { mapState, mapMutations } from "vuex";
 import HomeUsers from "../components/HomeUsers.vue";
 import Antapaccay from "../components/Antapaccay.vue";
+import Exsa from "../components/Exsa.vue";
 export default {
   name: "Home",
   components: {
     HomeUsers,
-    Antapaccay
+    Antapaccay,
+    Exsa
   },
   mounted() {
     Meteor.call("getPersonal", (error, persona) => {
@@ -91,6 +94,10 @@ export default {
   },
   methods: {
     ...mapMutations(["SET_USERPROFILE", "SHOW_USERDIALOG"]),
+    changeApi(apiName){
+      this.userProfile.api.name = apiName
+      this.SET_USERPROFILE(this.userProfile);
+    },
     logout() {
       Meteor.logout(error => {
         if (!error) {
