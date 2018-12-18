@@ -52,6 +52,7 @@
       </v-container>
     </v-content>
     <v-footer app fixed>
+      <img src="/img/seclog.png" height="30">
       <span>SecuritasPeru</span>
       <v-spacer></v-spacer>
       <span>&copy; {{(new Date()).getFullYear()}}</span>      
