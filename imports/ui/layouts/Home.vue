@@ -20,7 +20,10 @@
     </v-navigation-drawer>
 
     <v-toolbar app fixed clipped-left dense>
-      <v-toolbar-side-icon v-if="adminRoles.includes(userProfile.role)" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-side-icon
+        v-if="adminRoles.includes(userProfile.role)"
+        @click.stop="drawer = !drawer"
+      ></v-toolbar-side-icon>
       <v-toolbar-title>RPT</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
@@ -43,11 +46,9 @@
       <v-container fluid fill-height>
         <v-layout justify-center align-center>
           <v-flex shrink xs12 sm8 md6>
-
             <antapaccay v-if="userProfile.api == 'Antapaccay'"></antapaccay>
             <exsa v-if="userProfile.api == 'Exsa'"></exsa>
             <home-users></home-users>
-
           </v-flex>
         </v-layout>
       </v-container>
@@ -56,7 +57,7 @@
       <img src="/img/seclog.png" height="20">
       <span class="px-2 grey--text">SecuritasPeru</span>
       <v-spacer></v-spacer>
-      <span class="px-2 grey--text">&copy; {{(new Date()).getFullYear()}}</span>      
+      <span class="px-2 grey--text">&copy; {{(new Date()).getFullYear()}}</span>
     </v-footer>
   </v-app>
 </template>
@@ -76,13 +77,12 @@ export default {
   mounted() {
     Meteor.call("getPersonal", (error, persona) => {
       if (!error) {
-        if(persona.role == 'Hyperadmin' || persona.role == 'Superadmin'){
-          persona.api = 'Antapaccay'
+        if (persona.role == "Hyperadmin" || persona.role == "Superadmin") {
+          persona.api = "Antapaccay";
         }
         this.SET_USERPROFILE(persona);
       }
     });
-    
   },
   data: () => ({
     adminRoles: ["Hyperadmin", "Superadmin"],
@@ -94,9 +94,13 @@ export default {
   },
   methods: {
     ...mapMutations(["SET_USERPROFILE", "SHOW_USERDIALOG"]),
-    changeApi(apiName){
-      this.userProfile.api.name = apiName
-      this.SET_USERPROFILE(this.userProfile);
+    changeApi(apiName) {
+      Meteor.call("getPersonal", (error, persona) => {
+        if (!error) {
+          persona.api = apiName;
+          this.SET_USERPROFILE(persona);
+        }
+      });
     },
     logout() {
       Meteor.logout(error => {
