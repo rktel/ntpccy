@@ -55,7 +55,7 @@
       <img src="/img/seclog.png" height="20">
       <span class="px-2 grey--text">SecuritasPeru</span>
       <v-spacer></v-spacer>
-      <span>&copy; {{(new Date()).getFullYear()}}</span>      
+      <span class="px-2 grey--text">&copy; {{(new Date()).getFullYear()}}</span>      
     </v-footer>
   </v-app>
 </template>
