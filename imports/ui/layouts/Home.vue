@@ -51,7 +51,11 @@
         </v-layout>
       </v-container>
     </v-content>
-    <v-footer app fixed>SecuritasPeru&copy;2018</v-footer>
+    <v-footer app fixed>
+      <span>SecuritasPeru</span>
+      <v-spacer></v-spacer>
+      <span>&copy; {{(new Date()).getFullYear()}}</span>      
+    </v-footer>
   </v-app>
 </template>
 
@@ -68,6 +72,9 @@ export default {
   mounted() {
     Meteor.call("getPersonal", (error, persona) => {
       if (!error) {
+        if(persona.role == 'Hyperadmin' || persona.role == 'Superadmin'){
+          persona.api = 'Antapaccay'
+        }
         this.SET_USERPROFILE(persona);
       }
     });
