@@ -102,6 +102,7 @@ export default {
         if (!error) {
           persona.api = apiName;
           this.SET_USERPROFILE(persona);
+          this.drawer = !this.drawer
         }
       });
     },
