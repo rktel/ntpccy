@@ -77,7 +77,7 @@ export default {
     Exsa,
     Induamerica
   },
-  beforeMount() {
+  created() {
     Meteor.call("getPersonal", (error, persona) => {
       if (!error) {
         if (persona.role == "Hyperadmin" || persona.role == "Superadmin") {
