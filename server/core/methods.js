@@ -6,9 +6,9 @@ import { stNTPCCY } from "../../imports/api/streamers";
 // EMAIL
 
 Meteor.methods({
-    sendEmail(to, from, subject, text){
+    sendEmail(to, from, subject, text) {
         this.unblock();
-        Email.send({to, from, subject, text})
+        Email.send({ to, from, subject, text })
     }
 })
 
@@ -20,13 +20,13 @@ Meteor.methods({
     createPersonal: function (personal) {
         const { username, password } = createCredentials(personal)
         const userId = Accounts.createUser({ username, password })
-        const { firstname, lastname, role, api } = personal
-        if(api){
-            return Personal.insert({ firstname, lastname, role, userId, username, password , api})
-        }else{
-            return Personal.insert({ firstname, lastname, role, userId, username, password})
+        const { firstname, lastname, email, role, api } = personal
+        if (api) {
+            return Personal.insert({ firstname, lastname, email, role, userId, username, password, api })
+        } else {
+            return Personal.insert({ firstname, lastname, email, role, userId, username, password })
         }
-        
+
     },
     removePersonal: function (personal) {
         const { _id, userId } = personal
@@ -56,12 +56,12 @@ Meteor.methods({
         console.log('Fecha y Tiempo de Inicio[+5]: ', dateTimeStart)
         console.log('Fecha y Tiempo de Fin[+5]: ', dateTimeEnd)
         plates = plates.sort()
-        console.log('placas: ',plates)
+        console.log('placas: ', plates)
         Antapaccay.rawCollection()
             .find({ 'events': { $elemMatch: { 'vehicle': { $in: plates }, 'created': { $gte: dateTimeStart, $lte: dateTimeEnd } } } })
             .sort({ 'events.vehicle': 1 })
-            .toArray((error, data)=>{
-                if(!error){
+            .toArray((error, data) => {
+                if (!error) {
                     createReport(userID, data)
                 }
             })

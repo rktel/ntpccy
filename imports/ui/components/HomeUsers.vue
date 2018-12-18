@@ -15,6 +15,7 @@
           <form class="px-3">
             <v-text-field v-model="firstname" label="Nombres" required></v-text-field>
             <v-text-field v-model="lastname" label="Apellidos" required></v-text-field>
+            <v-text-field v-model="email" label="Email" required></v-text-field>
             <v-select :items="roleItems" v-model="roleSelect" label="Rol" required></v-select>
             <v-select
               v-if="roleSelect == 'Tecnico'"
@@ -55,6 +56,7 @@ export default {
   data: () => ({
     firstname: "",
     lastname: "",
+    email:"",
     roleItems: Meteor.settings.public.roles,
     apiItems: Meteor.settings.public.api,
     roleSelect: null,
@@ -77,13 +79,14 @@ export default {
       this.HIDE_USERDIALOG();
     },
     savePersonal() {
-      const { firstname, lastname, roleSelect, apiSelect } = this;
+      const { firstname, lastname, email, roleSelect, apiSelect } = this;
 
       if (roleSelect == "Tecnico") {
         console.log('Tecnico')
         const personal = {
           firstname: firstname,
           lastname: lastname,
+          email: email,
           role: roleSelect,
           api: apiSelect
         };
@@ -97,6 +100,7 @@ export default {
         const personal = {
           firstname: firstname,
           lastname: lastname,
+          email: email,
           role: roleSelect,
         };
         Meteor.call("createPersonal", personal, (error, id) => {
@@ -112,6 +116,7 @@ export default {
     clear() {
       this.firstname = "";
       this.lastname = "";
+      this.email = "";
       this.roleSelect = null;
       this.apiSelect = null;
     }
