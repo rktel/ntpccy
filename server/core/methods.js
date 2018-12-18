@@ -4,7 +4,7 @@ import { Antapaccay } from '../../imports/api/collections'
 import { stNTPCCY } from "../../imports/api/streamers";
 
 // EMAIL
-
+const FROM_EMAIL = "noreplay_trackandtrace@securitasperu.com";
 Meteor.methods({
     sendEmail(to, from, subject, text) {
         this.unblock();
@@ -22,9 +22,15 @@ Meteor.methods({
         const userId = Accounts.createUser({ username, password })
         const { firstname, lastname, email, role, api } = personal
         if (api) {
-            return Personal.insert({ firstname, lastname, email, role, userId, username, password, api })
+            return Personal.insert({ firstname, lastname, email, role, userId, username, password, api }, (error, id) => {
+                if (!error)
+                    Meteor.call("sendEmail", email, FROM_EMAIL, "Usuario RPT [Securitas-TrackAndTrace]", `Estimado ${firstname} ${lastname} \nSu cuenta de acceso a RPT Securitas-TrackAndTrace es el siguiente: \nUsuario: ${username}\nPassword: ${password} `)
+            })
         } else {
-            return Personal.insert({ firstname, lastname, email, role, userId, username, password })
+            return Personal.insert({ firstname, lastname, email, role, userId, username, password }, (error, id) => {
+                if (!error)
+                    Meteor.call("sendEmail", email, FROM_EMAIL, "Usuario RPT [Securitas-TrackAndTrace]", `Estimado ${firstname} ${lastname} \nSu cuenta de acceso a RPT Securitas-TrackAndTrace es el siguiente: \nUsuario: ${username}\nPassword: ${password} `)
+            })
         }
 
     },

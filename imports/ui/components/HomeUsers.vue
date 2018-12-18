@@ -33,8 +33,8 @@
 
           <v-list-tile v-for="person in personal" :key="person._id">
             <v-list-tile-content>
-              <v-list-tile-title>firstname: {{person.firstname }}, lastname: {{person.lastname}}, email: {{person.email}}</v-list-tile-title>
-               <v-list-tile-sub-title>user: {{person.username}}, pass: {{person.password}}, rol: {{person.role}}, api: {{person.api}}</v-list-tile-sub-title>
+              <v-list-tile-title>{{person.firstname }} {{person.lastname}}, email: {{person.email}}</v-list-tile-title>
+              <v-list-tile-sub-title>user: {{person.username}}, pass: {{person.password}}, rol: {{person.role}}, api: {{person.api}}</v-list-tile-sub-title>
             </v-list-tile-content>
 
             <v-list-tile-action>
@@ -52,6 +52,7 @@
 <script>
 import { Personal } from "../../api/collections.js";
 import { mapState, mapMutations } from "vuex";
+
 export default {
   name: "HomeUsers",
   data: () => ({
