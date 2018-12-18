@@ -7,7 +7,7 @@ Meteor.startup(() => {
     ':' + encodeURIComponent(Meteor.settings.private.PASS_SMTP) + 
     '@' + encodeURIComponent(Meteor.settings.private.SERVER_SMTP) + ':' + Meteor.settings.private.PORT_SMTP;
 
-    console.log('process.env.MAIL_URL', process.env.MAIL_URL)
+    // console.log('process.env.MAIL_URL', process.env.MAIL_URL)
 
     if (Meteor.users.find().count() == 0) {
         hyperUserId = Accounts.createUser({
