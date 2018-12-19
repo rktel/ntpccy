@@ -41,7 +41,7 @@
 
     <v-content>
       <section :style="{'position':'absolute', 'left':'20px', 'top':'10px'}">
-        <v-img src="/img/Antapaccay.png" height="30"></v-img>
+        <v-img :src="require('/img/Antapaccay.png')" height="30" aspect-ratio="1"></v-img>
       </section>
       <section :style="{'position':'absolute', 'right':'20px', 'top':'10px'}">
         <p>Bienvenid@ {{userProfile.firstname}}</p>
