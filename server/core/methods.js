@@ -12,7 +12,7 @@ Meteor.methods({
         return plates
     },
     Exsa_queryRangeDatePlates(userID, plates, dateTimeStart, dateTimeEnd) {
-        console.log('..................................................................')
+        console.log('........................EXSA...............................')
         // console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
         dateTimeStart = addHours(dateTimeStart, 5)
         dateTimeEnd = addHours(dateTimeEnd, 5)
@@ -222,7 +222,7 @@ Meteor.methods({
         return plates
     },
     queryRangeDatePlates(userID, plates, dateTimeStart, dateTimeEnd) {
-        console.log('..................................................................')
+        console.log('........................ANTAPACCAY...............................')
         // console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
         dateTimeStart = addHours(dateTimeStart, 5)
         dateTimeEnd = addHours(dateTimeEnd, 5)
