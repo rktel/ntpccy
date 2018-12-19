@@ -72,13 +72,15 @@ import HomeUsers from "../components/HomeUsers.vue";
 import Antapaccay from "../components/Antapaccay.vue";
 import Exsa from "../components/Exsa.vue";
 import Induamerica from "../components/Induamerica.vue";
+import Servosa from "../components/Servosa.vue";
 export default {
   name: "Home",
   components: {
     HomeUsers,
     Antapaccay,
     Exsa,
-    Induamerica
+    Induamerica,
+    Servosa
   },
   created() {
     Meteor.call("getPersonal", (error, persona) => {
