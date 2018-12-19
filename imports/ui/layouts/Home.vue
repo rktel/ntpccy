@@ -41,7 +41,7 @@
 
     <v-content>
       <section :style="{'position':'absolute', 'left':'20px', 'top':'10px'}">
-        <img :src="`/img/${userProfile.api}.png `" height="35" width="100" >
+        <img :src="`/img/${userProfile.api}.png `" height="35" >
       </section>
       <section :style="{'position':'absolute', 'right':'20px', 'top':'10px'}">
         <p>Bienvenid@ {{userProfile.firstname}}</p>
