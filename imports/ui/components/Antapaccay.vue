@@ -130,7 +130,7 @@
 
 <script>
 // Date Time Format for Query: 2018-11-26T18:02:29.000Z
-const MAX_DAYS = 30
+const MAX_DAYS = 10
 const MAX_PLATES = 5
 import { stNTPCCY } from "../../api/streamers";
 import { json2excel } from "js2excel";
