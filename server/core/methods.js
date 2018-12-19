@@ -32,18 +32,29 @@ Meteor.methods({
     }
 });
 //FUNCTIONS HELPERS EXSA
+function Exsa_setState(estado, velocidad){
+    if(estado){
+        if(velocidad >= 5){
+            return 'En transito'
+        }else{
+            return 'Stop'
+        }
+    }else{
+        return 'Aparcado'
+    }
+}
 function Exsa_createReport(userID, data) {
     //console.log('in createRport')
     let Rows = []
-    data.map(item => {
+    data.map(item => {      
         item.events.map(e => {
             Rows.push({
                 fechaHora: addHours(e.created, -5),
-                estado: e.inputs.digital[0].value,
+                estado: Exsa_setState(e.inputs.digital[0].value, Math.round(parseFloat(e.location.speed))),
                 lat: e.location.latitude.toFixed(6),
                 lon: e.location.longitude.toFixed(6),
-                velocidad: Math.round(parseFloat(e.location.speed)),
-                odometro: (e.counters[0].value / 1000).toFixed(3),
+                // velocidad: Math.round(parseFloat(e.location.speed)),
+                // odometro: (e.counters[0].value / 1000).toFixed(3),
                 direccion: e.location.address,
                 geozona: e.location.areas[0] ? e.location.areas[0].name : ' ',
                 conductor: e.person,
@@ -54,115 +65,13 @@ function Exsa_createReport(userID, data) {
 
     })
     const rowsTotal = Rows.length
-    console.log('Documentos Consultados: ', rowsTotal)
+    // console.log('Documentos Consultados: ', rowsTotal)
     // console.log('Rows : ', Rows)
-    let RowsReport = []
+    // let RowsReport = []
     if (rowsTotal > 0) {
-        Rows.map((row, index, rowArray) => {
-
-            if (index > 0 && row.placa != rowArray[index - 1].placa) {
-                const dateTime4 = getDateAndTime(row.fechaHora)
-                const date4 = dateTime4.date
-                const time4 = dateTime4.time
-                RowsReport.push({
-                    //fechaHora: row.fechaHora,
-                    fecha: date4,
-                    hora: time4,
-                    estado: row.estado ? 'En movimiento' : 'Detenido',
-                    lat: row.lat,
-                    lon: row.lon,
-                    velocidad: row.velocidad,
-                    odometro: row.odometro,
-                    direccion: row.direccion,
-                    geozona: row.geozona,
-                    conductor: row.conductor,
-                    placa: row.placa
-                })
-            } else {
-                if (index > 0 && index <= (rowsTotal - 1)) {
-                    const diffMinutes = getMinutesDiff(row.fechaHora, rowArray[index - 1].fechaHora)
-                    if (diffMinutes > 1) {
-                        const beforeRow = rowArray[index - 1]
-                        for (let i = 1; i < diffMinutes; i++) {
-                            const dateTime0 = getDateAndTime(addMinutes(beforeRow.fechaHora, i))
-                            const date0 = dateTime0.date
-                            const time0 = dateTime0.time
-                            RowsReport.push({
-                                //fechaHora: addMinutes(beforeRow.fechaHora, i),
-                                fecha: date0,
-                                hora: time0,
-                                estado: beforeRow.estado ? 'En movimiento' : 'Detenido',
-                                lat: beforeRow.lat,
-                                lon: beforeRow.lon,
-                                velocidad: beforeRow.velocidad,
-                                odometro: beforeRow.odometro,
-                                direccion: beforeRow.direccion,
-                                geozona: beforeRow.geozona,
-                                conductor: beforeRow.conductor,
-                                placa: beforeRow.placa
-                            })
-                        }
-                        const dateTime1 = getDateAndTime(row.fechaHora)
-                        const date1 = dateTime1.date
-                        const time1 = dateTime1.time
-                        RowsReport.push({
-                            // fechaHora: row.fechaHora,
-                            fecha: date1,
-                            hora: time1,
-                            estado: row.estado ? 'En movimiento' : 'Detenido',
-                            lat: row.lat,
-                            lon: row.lon,
-                            velocidad: row.velocidad,
-                            odometro: row.odometro,
-                            direccion: row.direccion,
-                            geozona: row.geozona,
-                            conductor: row.conductor,
-                            placa: row.placa
-                        })
-                    } else {
-                        const dateTime2 = getDateAndTime(row.fechaHora)
-                        const date2 = dateTime2.date
-                        const time2 = dateTime2.time
-                        RowsReport.push({
-                            //  fechaHora: row.fechaHora,
-                            fecha: date2,
-                            hora: time2,
-                            estado: row.estado ? 'En movimiento' : 'Detenido',
-                            lat: row.lat,
-                            lon: row.lon,
-                            velocidad: row.velocidad,
-                            odometro: row.odometro,
-                            direccion: row.direccion,
-                            geozona: row.geozona,
-                            conductor: row.conductor,
-                            placa: row.placa
-                        })
-                    }
-                } else {
-                    const dateTime3 = getDateAndTime(row.fechaHora)
-                    const date3 = dateTime3.date
-                    const time3 = dateTime3.time
-                    RowsReport.push({
-                        //fechaHora: row.fechaHora,
-                        fecha: date3,
-                        hora: time3,
-                        estado: row.estado ? 'En movimiento' : 'Detenido',
-                        lat: row.lat,
-                        lon: row.lon,
-                        velocidad: row.velocidad,
-                        odometro: row.odometro,
-                        direccion: row.direccion,
-                        geozona: row.geozona,
-                        conductor: row.conductor,
-                        placa: row.placa
-                    })
-                }
-            }
-
-        })
-        // console.log('RowsReport: ',RowsReport)
-        stXS.emit('Rows', userID, RowsReport)
-        console.log('Documentos Creados: ', RowsReport.length)
+         // console.log('RowsReport: ',RowsReport)
+        stXS.emit('Rows', userID, Rows)
+        console.log('Documentos Creados: ', rowsTotal)
     } else {
         stXS.emit('NoData', userID, 0)
         console.log('No hay data')
