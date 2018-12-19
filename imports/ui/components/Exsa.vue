@@ -136,7 +136,7 @@ import { stXS } from "../../api/streamers";
 import { json2excel } from "js2excel";
 
 export default {
-  name: "HomeForm",
+  name: "Exsa",
   mounted() {
     Meteor.call("Exsa_queryPlates", (error, plates) => {
       if (!error) {

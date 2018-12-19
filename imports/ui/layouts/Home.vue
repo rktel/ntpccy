@@ -40,11 +40,11 @@
     </v-toolbar>
 
     <v-content>
+      <section :style="{'position':'absolute', 'left':'20px', 'top':'10px'}">
+        <v-img :src="`/img/${userProfile}.png`" height="20"></v-img>
+      </section>
       <section :style="{'position':'absolute', 'right':'20px', 'top':'10px'}">
         <p>Bienvenid@ {{userProfile.firstname}}</p>
-      </section>
-      <section :style="{'position':'absolute', 'left':'20px', 'top':'10px'}">
-        <h3>{{userProfile.api}}</h3>
       </section>
       <v-container fluid fill-height>
         <v-layout justify-center align-center>
@@ -107,7 +107,7 @@ export default {
         if (!error) {
           persona.api = apiName;
           this.SET_USERPROFILE(persona);
-          this.drawer = !this.drawer
+          this.drawer = !this.drawer;
         }
       });
     },
