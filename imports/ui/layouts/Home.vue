@@ -43,6 +43,9 @@
       <section :style="{'position':'absolute', 'right':'20px', 'top':'10px'}">
         <p>Bienvenid@ {{userProfile.firstname}}</p>
       </section>
+      <section :style="{'position':'absolute', 'left':'20px', 'top':'10px'}">
+        <h3>{{userProfile.api}}</h3>
+      </section>
       <v-container fluid fill-height>
         <v-layout justify-center align-center>
           <v-flex shrink xs12 sm8 md6>

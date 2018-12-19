@@ -136,7 +136,7 @@ import { stNTPCCY } from "../../api/streamers";
 import { json2excel } from "js2excel";
 
 export default {
-  name: "HomeForm",
+  name: "Antapaccay",
   mounted() {
     Meteor.call("queryPlates", (error, plates) => {
       if (!error) {
