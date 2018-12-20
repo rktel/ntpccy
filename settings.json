@@ -5,8 +5,8 @@
         "HYPER_PERSONAL_FIRSTNAME": "Ricardo J.",
         "HYPER_PERSONAL_LASTNAME": "Hernández Oré",
         "HYPER_PERSONAL_ROLE": "Hyperadmin",
-        "USER_SMTP":"lionquimera@gmail.com",
-        "PASS_SMTP":"LionQuimeraGmail.com",
+        "USER_SMTP":"trackandtrace.securitasperu@gmail.com",
+        "PASS_SMTP":"TrackandtraceGmail.com",
         "SERVER_SMTP":"smtp.gmail.com",
         "PORT_SMTP":587
     },
