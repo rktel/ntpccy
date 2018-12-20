@@ -73,7 +73,7 @@ function Exsa_createReport(userID, data) {
         Rows.map((row, index, rowArray) => {
             if (index > 0 && row.placa != rowArray[index - 1].placa) { }
             else {
-                if (index > 0 && index <= (rowsTotal - 1)) {
+                if (index >= 0 && index <= (rowsTotal - 1)) {
                     console.log('if', row.placa, row.fechaHora, row.estado)
                 } else {
                     console.log('else', row.placa, row.fechaHora, row.estado)
