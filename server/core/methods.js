@@ -32,21 +32,21 @@ Meteor.methods({
     }
 });
 //FUNCTIONS HELPERS EXSA
-function Exsa_setState(estado, velocidad){
-    if(estado){
-        if(velocidad >= 5){
+function Exsa_setState(estado, velocidad) {
+    if (estado) {
+        if (velocidad >= 5) {
             return 'En transito'
-        }else{
+        } else {
             return 'Stop'
         }
-    }else{
+    } else {
         return 'Aparcado'
     }
 }
 function Exsa_createReport(userID, data) {
     //console.log('in createRport')
     let Rows = []
-    data.map(item => {      
+    data.map(item => {
         item.events.map(e => {
             Rows.push({
                 fechaHora: addHours(e.created, -5),
@@ -65,13 +65,25 @@ function Exsa_createReport(userID, data) {
 
     })
     const rowsTotal = Rows.length
-    // console.log('Documentos Consultados: ', rowsTotal)
+    console.log('Documentos Consultados: ', rowsTotal)
     // console.log('Rows : ', Rows)
-    // let RowsReport = []
+    let RowsReport = []
     if (rowsTotal > 0) {
-         // console.log('RowsReport: ',RowsReport)
-        stXS.emit('Rows', userID, Rows)
-        console.log('Documentos Creados: ', rowsTotal)
+
+        Rows.map((row, index, rowArray) => {
+            if (index > 0 && row.placa != rowArray[index - 1].placa) { }
+            else {
+                if (index > 0 && index <= (rowsTotal - 1)) {
+                    console.log('if', row.placa, row.fechaHora, row.estado)
+                } else {
+                    console.log('else', row.placa, row.fechaHora, row.estado)
+                }
+            }
+        })
+
+        // stXS.emit('Rows', userID, RowsReport)
+        const rowsReportTotal = RowsReport.length
+        console.log('Documentos Creados: ', rowsReportTotal)
     } else {
         stXS.emit('NoData', userID, 0)
         console.log('No hay data')
