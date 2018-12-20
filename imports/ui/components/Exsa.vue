@@ -113,7 +113,7 @@
     </template>
     <template>
       <section>
-        <v-btn color="primary" block @click="genReport" :disabled="buttonGRDisabled">Generar Reporte</v-btn>
+        <v-btn color="primary" block @click="genReport" :disabled=false>Generar Reporte</v-btn>
       </section>
     </template>
     <template>
