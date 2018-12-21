@@ -43,6 +43,22 @@ function Exsa_setState(estado, velocidad) {
         return 0 //  'Aparcado'
     }
 }
+function Exsa_setStateString(estado) {
+    switch (estado) {
+        case 0:
+            return 'Aparcado';
+            break;
+        case 1:
+            return 'Stop';
+            break;
+        case 2:
+            return 'En tránsito';
+            break;
+
+        default:
+            break;
+    }
+}
 function Exsa_createReport(userID, data) {
     //console.log('in createRport')
     let Rows_A = []
@@ -77,8 +93,8 @@ function Exsa_createReport(userID, data) {
             }
         })
 
-        Rows_C.forEach((row, index,rowArray)=>{
-            console.log(row.Estado,row.Placa,row.Inicio,row.Fin,row.Duracion)
+        Rows_C.forEach((row, index, rowArray) => {
+            console.log(row.Estado, row.Placa, row.Inicio, row.Fin, row.Duracion)
         })
 
     } else {
@@ -103,22 +119,27 @@ function Exsa_objectRow(e) {
     }
 }
 function Exsa_objectRow_C(e_next, e_actual) {
-    return{
-        Estado: e_actual.estado,
+    return {
+        Estado: Exsa_setStateString(e_actual.estado),
         Placa: e_actual.placa,
-        Inicio: e_actual.fechaHora,
-        Fin: e_next.fechaHora,
+        Inicio: Exsa_formatDateTime(e_actual.fechaHora),
+        Fin: Exsa_formatDateTime(e_next.fechaHora),
         Duracion: Exsa_getHours(e_next.fechaHora, e_actual.fechaHora)
     }
+}
+function Exsa_formatDateTime(date) {
+    const DateTime = new Date(date)
+    return [addZero(DateTime.getDate()), addZero(DateTime.getMonth() + 1), DateTime.getFullYear()].join('/') + ' ' +
+        [addZero(DateTime.getHours()), addZero(DateTime.getMinutes()), addZero(DateTime.getSeconds())].join(':')
 }
 function Exsa_getHours(dateTimeMax, dateTimeMin) {
 
     const minutes = getMinutesDiff(dateTimeMax, dateTimeMin)
 
     if (minutes >= 60) {
-        return addZero(minutes / 60) + ':' + addZero(minutes % 60)+'h'
+        return addZero(parseInt(minutes / 60)) + ':' + addZero(minutes % 60) + 'h'
     } else {
-        return '00:' + addZero(minutes)+'h'
+        return '00:' + addZero(minutes) + 'h'
     }
 
 }
