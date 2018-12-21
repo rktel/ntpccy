@@ -63,7 +63,7 @@ function Exsa_createReport(userID, data) {
             if(index==0){
                 RowsReport.push(row)
             }
-            if(index > 0 && index <= (rowsTotal - 1)){
+            if(index > 0 && row.placa != rowArray[index - 1].placa){
                 RowsReport.push(row)
             }
             // console.log(index, row.fechaHora, row.estado, row.placa)
@@ -71,7 +71,11 @@ function Exsa_createReport(userID, data) {
         })
 
         // stXS.emit('Rows', userID, RowsReport)
-        console.log('RowsReport: ', RowsReport)
+        RowsReport.forEach((row, index, rowArray)=>{
+            console.log(row.fechaHora, row.estado, row.placa)
+        })
+
+        
         const rowsReportTotal = RowsReport.length
         console.log('Documentos Creados: ', rowsReportTotal)
     } else {
