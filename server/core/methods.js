@@ -4,7 +4,7 @@ import { Antapaccay, Exsa } from '../../imports/api/collections'
 import { stNTPCCY, stXS } from "../../imports/api/streamers";
 
 
-// EXSA
+//-------------------- EXSA
 
 Meteor.methods({
     async Exsa_queryPlates() {
@@ -51,21 +51,27 @@ function Exsa_createReport(userID, data) {
             Rows.push(Exsa_objectRow(e))
         })
     })
-    
+
     const rowsTotal = Rows.length
     console.log('Documentos Consultados: ', rowsTotal)
     // console.log('Rows : ', Rows)
     let RowsReport = []
-    let statusAux = null
+
     if (rowsTotal > 0) {
 
         Rows.map((row, index, rowArray) => {
-
-            console.log(index, row.fechaHora, row.estado, row.placa)
+            if(index==0){
+                RowsReport.push(row)
+            }
+            if(index > 0 && index <= (rowsTotal - 1)){
+                RowsReport.push(row)
+            }
+            // console.log(index, row.fechaHora, row.estado, row.placa)
 
         })
 
         // stXS.emit('Rows', userID, RowsReport)
+        console.log('RowsReport: ', RowsReport)
         const rowsReportTotal = RowsReport.length
         console.log('Documentos Creados: ', rowsReportTotal)
     } else {
@@ -89,7 +95,8 @@ function Exsa_objectRow(e){
         placa: e.vehicle,        
     }
 }
-// EMAIL
+
+//-------------------- EMAIL
 const FROM_EMAIL = "noreplay_trackandtrace@securitasperu.com";
 Meteor.methods({
     sendEmail(to, from, subject, text) {
@@ -98,7 +105,7 @@ Meteor.methods({
     }
 })
 
-// PERSONAL
+//-------------------- PERSONAL
 Meteor.methods({
     getPersonal: function () {
         return Personal.findOne({ userId: this.userId })
