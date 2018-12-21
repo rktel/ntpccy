@@ -35,12 +35,12 @@ Meteor.methods({
 function Exsa_setState(estado, velocidad) {
     if (estado) {
         if (velocidad >= 5) {
-            return 'En transito'
+            return 2 // 'En transito'
         } else {
-            return 'Stop'
+            return 1 // 'Stop'
         }
     } else {
-        return 'Aparcado'
+        return 0 //  'Aparcado'
     }
 }
 function Exsa_createReport(userID, data) {
@@ -53,8 +53,8 @@ function Exsa_createReport(userID, data) {
                 estado: Exsa_setState(e.inputs.digital[0].value, Math.round(parseFloat(e.location.speed))),
                 lat: e.location.latitude.toFixed(6),
                 lon: e.location.longitude.toFixed(6),
-                // velocidad: Math.round(parseFloat(e.location.speed)),
-                // odometro: (e.counters[0].value / 1000).toFixed(3),
+                velocidad: Math.round(parseFloat(e.location.speed)),
+                odometro: (e.counters[0].value / 1000).toFixed(3),
                 direccion: e.location.address,
                 geozona: e.location.areas[0] ? e.location.areas[0].name : ' ',
                 conductor: e.person,
@@ -73,7 +73,7 @@ function Exsa_createReport(userID, data) {
 
         Rows.map((row, index, rowArray) => {
 
-            console.log(row.fechaHora, row.estado, row.placa)
+            console.log(index, row.fechaHora, row.estado, row.placa)
 
         })
 
