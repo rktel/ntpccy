@@ -88,8 +88,11 @@ function Exsa_createReport(userID, data) {
         // stXS.emit('Rows', userID, Rows_B)
         let Rows_C = []
         Rows_B.forEach((row, index, rowArray) => {
-             if(index<=rowArray.length-1){
+            if (index < rowArray.length - 1) {
                 Rows_C.push(Exsa_objectRow_C(rowArray[index + 1], row))
+            }
+            if (index == rowArray.length - 1) {
+                Rows_C.push(Exsa_objectRow_C(row, rowArray[index - 1]))
             }
 
         })
