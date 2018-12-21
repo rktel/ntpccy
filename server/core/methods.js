@@ -72,15 +72,9 @@ function Exsa_createReport(userID, data) {
     if (rowsTotal > 0) {
 
         Rows.map((row, index, rowArray) => {
-            if (index > 0 && row.placa != rowArray[index - 1].placa) { }
-            else {
-                if (index > 0 && index <= (rowsTotal - 1)) {
-                    console.log('if', row.placa, row.fechaHora, row.estado)
-                    if (row.estado != rowArray[index - 1].estado) { 
-                        console.log('change_estado', row.placa, row.fechaHora, row.estado)
-                    }
-                }
-            }
+
+            console.log(row.fechaHora, row.estado, row.placa)
+
         })
 
         // stXS.emit('Rows', userID, RowsReport)
