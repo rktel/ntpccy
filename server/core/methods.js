@@ -14,11 +14,11 @@ Meteor.methods({
     Exsa_queryRangeDatePlates(userID, plates, dateTimeStart, dateTimeEnd) {
         console.log('........................EXSA...............................')
         // console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
+        console.log('Usuario: ', Meteor.user().username)
+        console.log('Fecha y Tiempo de Inicio: ', dateTimeStart)
+        console.log('Fecha y Tiempo de Fin: ', dateTimeEnd)
         dateTimeStart = addHours(dateTimeStart, 5)
         dateTimeEnd = addHours(dateTimeEnd, 5)
-        console.log('Usuario: ', Meteor.user().username)
-        console.log('Fecha y Tiempo de Inicio[+5]: ', dateTimeStart)
-        console.log('Fecha y Tiempo de Fin[+5]: ', dateTimeEnd)
         plates = plates.sort()
         console.log('placas: ', plates)
         Exsa.rawCollection()
@@ -88,7 +88,7 @@ function Exsa_createReport(userID, data) {
         // stXS.emit('Rows', userID, Rows_B)
         let Rows_C = []
         Rows_B.forEach((row, index, rowArray) => {
-            if (index == 0) {
+             if(index<rowArray.length-1){
                 Rows_C.push(Exsa_objectRow_C(rowArray[index + 1], row))
             }
         })
@@ -197,11 +197,11 @@ Meteor.methods({
     queryRangeDatePlates(userID, plates, dateTimeStart, dateTimeEnd) {
         console.log('........................ANTAPACCAY...............................')
         // console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
+        console.log('Usuario: ', Meteor.user().username)
+        console.log('Fecha y Tiempo de Inicio: ', dateTimeStart)
+        console.log('Fecha y Tiempo de Fin: ', dateTimeEnd)
         dateTimeStart = addHours(dateTimeStart, 5)
         dateTimeEnd = addHours(dateTimeEnd, 5)
-        console.log('Usuario: ', Meteor.user().username)
-        console.log('Fecha y Tiempo de Inicio[+5]: ', dateTimeStart)
-        console.log('Fecha y Tiempo de Fin[+5]: ', dateTimeEnd)
         plates = plates.sort()
         console.log('placas: ', plates)
         Antapaccay.rawCollection()
