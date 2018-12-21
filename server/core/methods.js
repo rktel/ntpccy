@@ -45,39 +45,42 @@ function Exsa_setState(estado, velocidad) {
 }
 function Exsa_createReport(userID, data) {
     //console.log('in createRport')
-    let Rows = []
-    data.map(item => {
-        item.events.map(e => {
-            Rows.push(Exsa_objectRow(e))
+    let Rows_A = []
+    data.forEach(item => {
+        item.events.forEach(e => {
+            Rows_A.push(Exsa_objectRow(e))
         })
     })
 
-    const rowsTotal = Rows.length
-    console.log('Documentos Consultados: ', rowsTotal)
-    // console.log('Rows : ', Rows)
-    let RowsReport = []
+    console.log('Documentos Consultados: ', Rows_A.length)
 
-    if (rowsTotal > 0) {
+    let Rows_B = []
 
-        Rows.map((row, index, rowArray) => {
-            if(index==0){
-                RowsReport.push(row)
+    if (Rows_A.length > 0) {
+
+        Rows_A.forEach((row, index, rowArray) => {
+            if (index == 0) {
+                Rows_B.push(row)
             }
-            if(index > 0 && row.estado != rowArray[index - 1].estado){
-                RowsReport.push(row)
+            if (index > 0 && row.estado != rowArray[index - 1].estado) {
+                Rows_B.push(row)
             }
             // console.log(index, row.fechaHora, row.estado, row.placa)
 
         })
 
-        // stXS.emit('Rows', userID, RowsReport)
-        RowsReport.forEach((row, index, rowArray)=>{
-            console.log(row.fechaHora, row.estado, row.placa)
+        // stXS.emit('Rows', userID, Rows_B)
+        let Rows_C = []
+        Rows_B.forEach((row, index, rowArray) => {
+            if (index == 0) {
+                Rows_C.push(Exsa_objectRow_C(rowArray[index + 1], row))
+            }
         })
 
-        
-        const rowsReportTotal = RowsReport.length
-        console.log('Documentos Creados: ', rowsReportTotal)
+        Rows_C.forEach((row, index,rowArray)=>{
+            console.log(row.Estado,row.Placa,row.Inicio,row.Fin,row.Duracion)
+        })
+
     } else {
         stXS.emit('NoData', userID, 0)
         console.log('No hay data')
@@ -85,8 +88,8 @@ function Exsa_createReport(userID, data) {
 
 
 }
-function Exsa_objectRow(e){
-    return{
+function Exsa_objectRow(e) {
+    return {
         fechaHora: addHours(e.created, -5),
         estado: Exsa_setState(e.inputs.digital[0].value, Math.round(parseFloat(e.location.speed))),
         lat: e.location.latitude.toFixed(6),
@@ -96,8 +99,28 @@ function Exsa_objectRow(e){
         direccion: e.location.address,
         geozona: e.location.areas[0] ? e.location.areas[0].name : ' ',
         conductor: e.person,
-        placa: e.vehicle,        
+        placa: e.vehicle,
     }
+}
+function Exsa_objectRow_C(e_next, e_actual) {
+    return{
+        Estado: e_actual.estado,
+        Placa: e_actual.placa,
+        Inicio: e_actual.fechaHora,
+        Fin: e_next.fechaHora,
+        Duracion: Exsa_getHours(e_next.fechaHora, e_actual.fechaHora)
+    }
+}
+function Exsa_getHours(dateTimeMax, dateTimeMin) {
+
+    const minutes = getMinutesDiff(dateTimeMax, dateTimeMin)
+
+    if (minutes >= 60) {
+        return addZero(minutes / 60) + ':' + addZero(minutes % 60)+'h'
+    } else {
+        return '00:' + addZero(minutes)+'h'
+    }
+
 }
 
 //-------------------- EMAIL
