@@ -17,12 +17,12 @@ Meteor.methods({
         console.log('Usuario: ', Meteor.user().username)
         console.log('Fecha y Tiempo de Inicio: ', dateTimeStart)
         console.log('Fecha y Tiempo de Fin: ', dateTimeEnd)
-        dateTimeStart = addHours(dateTimeStart, 5)
-        dateTimeEnd = addHours(dateTimeEnd, 5)
+        const dateTimeStart5 = addHours(dateTimeStart, 5)
+        const dateTimeEnd5 = addHours(dateTimeEnd, 5)
         plates = plates.sort()
         console.log('placas: ', plates)
         Exsa.rawCollection()
-            .find({ 'events': { $elemMatch: { 'vehicle': { $in: plates }, 'created': { $gte: dateTimeStart, $lte: dateTimeEnd } } } })
+            .find({ 'events': { $elemMatch: { 'vehicle': { $in: plates }, 'created': { $gte: dateTimeStart5, $lte: dateTimeEnd5 } } } })
             .sort({ 'events.vehicle': 1 })
             .toArray((error, data) => {
                 if (!error) {
