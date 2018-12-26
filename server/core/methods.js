@@ -26,7 +26,7 @@ Meteor.methods({
             .sort({ 'events.vehicle': 1 })
             .toArray((error, data) => {
                 if (!error) {
-                    Exsa_createReport(userID, data)
+                    Exsa_createReport(userID, data, dateTimeStart)
                 }
             })
     }
@@ -59,7 +59,7 @@ function Exsa_setStateString(estado) {
             break;
     }
 }
-function Exsa_createReport(userID, data) {
+function Exsa_createReport(userID, data, dateTimeStart) {
     //console.log('in createRport')
     let Rows_A = []
     data.forEach(item => {
@@ -70,31 +70,35 @@ function Exsa_createReport(userID, data) {
 
     console.log('Documentos Consultados: ', Rows_A.length)
 
-    let Rows_B = []
+    let Rows_B = [] // Detecta cambio de estado y el primer documento.
 
     if (Rows_A.length > 0) {
 
         Rows_A.forEach((row, index, rowArray) => {
-            Rows_B.push(row)
-            /*
+
             if (index == 0) {
                 Rows_B.push(row)
             }
             if (index > 0 && row.estado != rowArray[index - 1].estado) {
                 Rows_B.push(row)
-            }*/
-            // console.log(index, row.fechaHora, row.estado, row.placa)
+            }
 
         })
 
         // stXS.emit('Rows', userID, Rows_B)
         let Rows_C = []
-        Rows_B.forEach((row, index, rowArray) => {
-            if (index < rowArray.length - 1) {
-                Rows_C.push(Exsa_objectRow_C(rowArray[index + 1], row))
-            }
-        })
+        if (Rows_B.length == 1) {
+            Rows_C.push(Exsa_auxRow_C(Rows_B[0], dateTimeStart))
+        } else {
+            Rows_B.forEach((row, index, rowArray) => {
+                if (index < rowArray.length - 1) {
+                    Rows_C.push(Exsa_objectRow_C(rowArray[index + 1], row))
+                }
+            })
+        }
 
+
+        // Recorrido de Rows_C
         Rows_C.forEach((row, index, rowArray) => {
             console.log(row.Estado, row.Placa, row.Inicio, row.Fin, row.Duracion)
         })
@@ -127,6 +131,15 @@ function Exsa_objectRow_C(e_next, e_actual) {
         Inicio: Exsa_formatDateTime(e_actual.fechaHora),
         Fin: Exsa_formatDateTime(e_next.fechaHora),
         Duracion: Exsa_getHours(e_next.fechaHora, e_actual.fechaHora)
+    }
+}
+function Exsa_auxRow_C(e_next, dateTimeStart) {
+    return {
+        Estado: Exsa_setStateString(e_next.estado),
+        Placa: e_next.placa,
+        Inicio: Exsa_formatDateTime(dateTimeStart),
+        Fin: Exsa_formatDateTime(e_next.fechaHora),
+        Duracion: Exsa_getHours(e_next.fechaHora, dateTimeStart)
     }
 }
 function Exsa_formatDateTime(date) {
