@@ -70,30 +70,37 @@ function Exsa_createReport(userID, data, dateTimeEnd) {
 
     console.log('Documentos Consultados: ', Rows_A.length)
 
-    let Rows_B = [] // Detecta cambio de estado y el primer documento.
+    let Rows_B = [] // Rows_B => Detecta cambio de estado y el primer documento.
 
     if (Rows_A.length > 0) {
 
         Rows_A.forEach((row, index, rowArray) => {
-
+            if (index > 0 && row.placa != rowArray[index - 1].placa) { }
+            else {
+                if (index > 0 && row.estado != rowArray[index - 1].estado) {
+                    Rows_B.push(row)
+                }
+            }
             if (index == 0) {
                 Rows_B.push(row)
             }
-            if (index > 0 && row.estado != rowArray[index - 1].estado) {
-                Rows_B.push(row)
-            }
+
 
         })
 
         // stXS.emit('Rows', userID, Rows_B)
-        let Rows_C = []
+        let Rows_C = [] // Rows_C => Suma los tiempos entre cambio de estado.
         if (Rows_B.length == 1) {
             Rows_C.push(Exsa_auxRow_C(Rows_B[0], dateTimeEnd))
         } else {
             Rows_B.forEach((row, index, rowArray) => {
-                if (index < rowArray.length - 1) {
-                    Rows_C.push(Exsa_objectRow_C(rowArray[index + 1], row))
+                if (index > 0 && row.placa != rowArray[index - 1].placa) { }
+                else {
+                    if (index < rowArray.length - 1) {
+                        Rows_C.push(Exsa_objectRow_C(rowArray[index + 1], row))
+                    }
                 }
+
             })
         }
 
