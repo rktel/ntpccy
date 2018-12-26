@@ -26,7 +26,7 @@ Meteor.methods({
             .sort({ 'events.vehicle': 1 })
             .toArray((error, data) => {
                 if (!error) {
-                    Exsa_createReport(userID, data, dateTimeStart)
+                    Exsa_createReport(userID, data, dateTimeEnd)
                 }
             })
     }
@@ -59,7 +59,7 @@ function Exsa_setStateString(estado) {
             break;
     }
 }
-function Exsa_createReport(userID, data, dateTimeStart) {
+function Exsa_createReport(userID, data, dateTimeEnd) {
     //console.log('in createRport')
     let Rows_A = []
     data.forEach(item => {
@@ -88,7 +88,7 @@ function Exsa_createReport(userID, data, dateTimeStart) {
         // stXS.emit('Rows', userID, Rows_B)
         let Rows_C = []
         if (Rows_B.length == 1) {
-            Rows_C.push(Exsa_auxRow_C(Rows_B[0], dateTimeStart))
+            Rows_C.push(Exsa_auxRow_C(Rows_B[0], dateTimeEnd))
         } else {
             Rows_B.forEach((row, index, rowArray) => {
                 if (index < rowArray.length - 1) {
@@ -133,13 +133,13 @@ function Exsa_objectRow_C(e_next, e_actual) {
         Duracion: Exsa_getHours(e_next.fechaHora, e_actual.fechaHora)
     }
 }
-function Exsa_auxRow_C(e_next, dateTimeStart) {
+function Exsa_auxRow_C(e_next, dateTimeEnd) {
     return {
         Estado: Exsa_setStateString(e_next.estado),
         Placa: e_next.placa,
-        Inicio: Exsa_formatDateTime(dateTimeStart),
-        Fin: Exsa_formatDateTime(e_next.fechaHora),
-        Duracion: Exsa_getHours(e_next.fechaHora, dateTimeStart)
+        Inicio: Exsa_formatDateTime(e_next.fechaHora),
+        Fin: Exsa_formatDateTime(dateTimeEnd),
+        Duracion: Exsa_getHours(dateTimeEnd, e_next.fechaHora)
     }
 }
 function Exsa_formatDateTime(date) {
