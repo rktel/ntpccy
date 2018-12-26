@@ -75,12 +75,14 @@ function Exsa_createReport(userID, data) {
     if (Rows_A.length > 0) {
 
         Rows_A.forEach((row, index, rowArray) => {
+            Rows_B.push(row)
+            /*
             if (index == 0) {
                 Rows_B.push(row)
             }
             if (index > 0 && row.estado != rowArray[index - 1].estado) {
                 Rows_B.push(row)
-            }
+            }*/
             // console.log(index, row.fechaHora, row.estado, row.placa)
 
         })
@@ -91,10 +93,6 @@ function Exsa_createReport(userID, data) {
             if (index < rowArray.length - 1) {
                 Rows_C.push(Exsa_objectRow_C(rowArray[index + 1], row))
             }
-            if (index == rowArray.length - 1) {
-                Rows_C.push(Exsa_objectRow_C(row, rowArray[index - 1]))
-            }
-
         })
 
         Rows_C.forEach((row, index, rowArray) => {
