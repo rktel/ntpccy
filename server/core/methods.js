@@ -174,7 +174,7 @@ function Exsa_objectRow_C(e_next, e_actual) {
 
 }
 function Exsa_auxRow_C(e_next, dateTimeEnd) {
-    if(e_actual.estado == 2){
+    if(e_next.estado == 2){
         return {
             Estado: Exsa_setStateString(e_next.estado),
             Placa: e_next.placa,
