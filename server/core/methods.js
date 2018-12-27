@@ -76,7 +76,7 @@ function Exsa_createReport(userID, data, dateTimeEnd) {
 
         Rows_A.forEach((row, index, rowArray) => {
 
-            if(index!=rowArray.length-1 && row.placa == rowArray[index+1]){
+            if (index != rowArray.length - 1 && row.placa == rowArray[index + 1].placa) {
                 console.log(row.estado, row.placa, row.fechaHora)
             }
             /*
