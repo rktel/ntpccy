@@ -78,12 +78,19 @@ function Exsa_createReport(userID, data, dateTimeEnd) {
 
             if (index != rowArray.length - 1 && row.placa == rowArray[index + 1].placa) {
                 console.log(row.estado, row.placa, row.fechaHora)
+                if (row.estado != rowArray[index + 1].estado) {
+                    Rows_B.push(row)
+                }
             }
             if (index != rowArray.length - 1 && row.placa != rowArray[index + 1].placa) {
-                console.log(row.estado, row.placa, row.fechaHora)
+                console.log('Rows_A:',row.estado, row.placa, row.fechaHora)
             }
             if (index == rowArray.length - 1) {
-                console.log(row.estado, row.placa, row.fechaHora)
+                if (row.placa == rowArray[index - 1].placa) {
+                    if (row.estado != rowArray[index - 1].estado) {
+                        Rows_B.push(row)
+                    }
+                }
             }
             /*
             if (index > 0 && row.placa != rowArray[index - 1].placa) { }
@@ -116,7 +123,17 @@ function Exsa_createReport(userID, data, dateTimeEnd) {
             })
         }
         */
-
+        Rows_B.forEach((row, index, rowArray) => {
+            console.log('Rows_B:',row.estado, row.placa, row.fechaHora)
+            /*
+            if (index > 0 && row.placa != rowArray[index - 1].placa) { }
+            else {
+                if (index < rowArray.length - 1) {
+                    Rows_C.push(Exsa_objectRow_C(rowArray[index + 1], row))
+                }
+            }
+            */
+        })
         // Recorrido de Rows_C
         Rows_C.forEach((row, index, rowArray) => {
             console.log(row.Estado, row.Placa, row.Inicio, row.Fin, row.Duracion)
