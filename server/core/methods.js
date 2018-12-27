@@ -148,21 +148,54 @@ function Exsa_objectRow(e) {
     }
 }
 function Exsa_objectRow_C(e_next, e_actual) {
-    return {
-        Estado: Exsa_setStateString(e_actual.estado),
-        Placa: e_actual.placa,
-        Inicio: Exsa_formatDateTime(e_actual.fechaHora),
-        Fin: Exsa_formatDateTime(e_next.fechaHora),
-        Duracion: Exsa_getHours(e_next.fechaHora, e_actual.fechaHora)
+    if(e_actual.estado == 2){
+        return {
+            Estado: Exsa_setStateString(e_actual.estado),
+            Placa: e_actual.placa,
+            Inicio: Exsa_formatDateTime(e_actual.fechaHora),
+            Fin: Exsa_formatDateTime(e_next.fechaHora),
+            Duracion: Exsa_getHours(e_next.fechaHora, e_actual.fechaHora),
+            Coordenadas: ``,
+            Direccion: ``,
+            Geozona: ``,
+        }
+    }else{
+        return {
+            Estado: Exsa_setStateString(e_actual.estado),
+            Placa: e_actual.placa,
+            Inicio: Exsa_formatDateTime(e_actual.fechaHora),
+            Fin: Exsa_formatDateTime(e_next.fechaHora),
+            Duracion: Exsa_getHours(e_next.fechaHora, e_actual.fechaHora),
+            Coordenadas: `${e_actual.lat},${e_actual.lon}`,
+            Direccion: e_actual.direccion,
+            Geozona: e_actual.geozona
+        }
     }
+
 }
 function Exsa_auxRow_C(e_next, dateTimeEnd) {
-    return {
-        Estado: Exsa_setStateString(e_next.estado),
-        Placa: e_next.placa,
-        Inicio: Exsa_formatDateTime(e_next.fechaHora),
-        Fin: Exsa_formatDateTime(dateTimeEnd),
-        Duracion: Exsa_getHours(dateTimeEnd, e_next.fechaHora)
+    if(e_actual.estado == 2){
+        return {
+            Estado: Exsa_setStateString(e_next.estado),
+            Placa: e_next.placa,
+            Inicio: Exsa_formatDateTime(e_next.fechaHora),
+            Fin: Exsa_formatDateTime(dateTimeEnd),
+            Duracion: Exsa_getHours(dateTimeEnd, e_next.fechaHora),
+            Coordenadas: ``,
+            Direccion: ``,
+            Geozona: ``,
+        }
+    }else{
+        return {
+            Estado: Exsa_setStateString(e_next.estado),
+            Placa: e_next.placa,
+            Inicio: Exsa_formatDateTime(e_next.fechaHora),
+            Fin: Exsa_formatDateTime(dateTimeEnd),
+            Duracion: Exsa_getHours(dateTimeEnd, e_next.fechaHora),
+            Coordenadas: `${e_next.lat},${e_next.lon}`,
+            Direccion: e_next.direccion,
+            Geozona: e_next.geozona
+        }
     }
 }
 function Exsa_formatDateTime(date) {
