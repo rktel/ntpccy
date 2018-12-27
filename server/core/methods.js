@@ -90,7 +90,7 @@ function Exsa_createReport(userID, data, dateTimeEnd) {
         })
         // stXS.emit('Rows', userID, Rows_B)
         let Rows_C = [] // Rows_C => Suma los tiempos entre cambio de estado.
-/*
+
         if (Rows_B.length == 1) {
             Rows_C.push(Exsa_auxRow_C(Rows_B[0], dateTimeEnd))
         } else {
@@ -98,13 +98,16 @@ function Exsa_createReport(userID, data, dateTimeEnd) {
                 if (index < rowArray.length - 1) {
                     Rows_C.push(Exsa_objectRow_C(rowArray[index + 1], row))
                 }
+                else{
+                    Rows_C.push(Exsa_auxRow_C(Rows_B[rowArray.length - 1], dateTimeEnd))
+                }
             })
         }
         // Recorrido de Rows_C
         Rows_C.forEach((row, index, rowArray) => {
             console.log(row.Estado, row.Placa, row.Inicio, row.Fin, row.Duracion)
         })
-     */
+
 
     } else {
         stXS.emit('NoData', userID, 0)
