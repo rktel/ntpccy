@@ -21,6 +21,19 @@ Meteor.methods({
         const dateTimeEnd5 = addHours(dateTimeEnd, 5)
         plates = plates.sort()
         console.log('placas: ', plates)
+
+        plates.forEach((plate, index, plateArray) => {
+            Exsa.rawCollection()
+                .find({ 'events.vehicle': plate, 'events.created': { $gte: dateTimeStart5, $lte: dateTimeEnd5 } })
+                .toArray((error, data) => {
+                    if (!error) {
+                        //Exsa_createReport(userID, data, dateTimeEnd)
+                        console.log(data)
+                    }
+                })
+        })
+
+        /*
         Exsa.rawCollection()
             .find({ 'events': { $elemMatch: { 'vehicle': { $in: plates }, 'created': { $gte: dateTimeStart5, $lte: dateTimeEnd5 } } } })
             .sort({ 'events.vehicle': 1 })
@@ -29,6 +42,8 @@ Meteor.methods({
                     Exsa_createReport(userID, data, dateTimeEnd)
                 }
             })
+        */
+
     }
 });
 //FUNCTIONS HELPERS EXSA
@@ -98,7 +113,7 @@ function Exsa_createReport(userID, data, dateTimeEnd) {
                 if (index < rowArray.length - 1) {
                     Rows_C.push(Exsa_objectRow_C(rowArray[index + 1], row))
                 }
-                else{
+                else {
                     Rows_C.push(Exsa_auxRow_C(Rows_B[rowArray.length - 1], dateTimeEnd))
                 }
             })
