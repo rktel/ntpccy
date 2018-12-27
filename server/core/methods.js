@@ -27,8 +27,8 @@ Meteor.methods({
                 .find({ 'events.vehicle': plate, 'events.created': { $gte: dateTimeStart5, $lte: dateTimeEnd5 } })
                 .toArray((error, data) => {
                     if (!error) {
-                        //Exsa_createReport(userID, data, dateTimeEnd)
-                        console.log(data)
+                        Exsa_createReport(userID, data, dateTimeEnd)
+                        //console.log(data)
                     }
                 })
         })
