@@ -219,6 +219,7 @@ function Exsa_getHours(dateTimeMax, dateTimeMin) {
 
 //-------------------- EMAIL
 const FROM_EMAIL = "noreplay_trackandtrace@securitasperu.com";
+const URL_TRACK_AND_TRACE = "http://190.81.123.82:2020/login"
 Meteor.methods({
     sendEmail(to, from, subject, text) {
         this.unblock();
@@ -238,12 +239,12 @@ Meteor.methods({
         if (api) {
             return Personal.insert({ firstname, lastname, email, role, userId, username, password, api }, (error, id) => {
                 if (!error)
-                    Meteor.call("sendEmail", email, FROM_EMAIL, "Usuario RPT [Securitas-TrackAndTrace]", `Estimado ${firstname} ${lastname} \nSu cuenta de acceso a RPT Securitas-TrackAndTrace es el siguiente: \nUsuario: ${username}\nPassword: ${password} `)
+                    Meteor.call("sendEmail", email, FROM_EMAIL, "Usuario RPT [Securitas-TrackAndTrace]", `Estimado ${firstname} ${lastname} \nSu cuenta de acceso a RPT Securitas-TrackAndTrace ${URL_TRACK_AND_TRACE} es el siguiente: \nUsuario: ${username}\nPassword: ${password} `)
             })
         } else {
             return Personal.insert({ firstname, lastname, email, role, userId, username, password }, (error, id) => {
                 if (!error)
-                    Meteor.call("sendEmail", email, FROM_EMAIL, "Usuario RPT [Securitas-TrackAndTrace]", `Estimado ${firstname} ${lastname} \nSu cuenta de acceso a RPT Securitas-TrackAndTrace es el siguiente: \nUsuario: ${username}\nPassword: ${password} `)
+                    Meteor.call("sendEmail", email, FROM_EMAIL, "Usuario RPT [Securitas-TrackAndTrace]", `Estimado ${firstname} ${lastname} \nSu cuenta de acceso a RPT Securitas-TrackAndTrace ${URL_TRACK_AND_TRACE} es el siguiente: \nUsuario: ${username}\nPassword: ${password} `)
             })
         }
 
