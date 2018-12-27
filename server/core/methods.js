@@ -79,10 +79,10 @@ function Exsa_createReport(userID, data, dateTimeEnd) {
             if (index != rowArray.length - 1 && row.placa == rowArray[index + 1].placa) {
                 console.log(row.estado, row.placa, row.fechaHora)
             }
-            if(row.placa != rowArray[index + 1].placa){
+            if (index != rowArray.length - 1 && row.placa != rowArray[index + 1].placa) {
                 console.log(row.estado, row.placa, row.fechaHora)
             }
-            if(index == rowArray.length - 1){
+            if (index == rowArray.length - 1) {
                 console.log(row.estado, row.placa, row.fechaHora)
             }
             /*
