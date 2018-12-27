@@ -103,7 +103,7 @@ function Exsa_createReport(userID, data, dateTimeEnd,plate) {
         Rows_B.forEach((row, index, rowArray) => {
             console.log(row.placa, row.fechaHora)
         })
-        // stXS.emit('Rows', userID, Rows_B)
+        
         let Rows_C = [] // Rows_C => Suma los tiempos entre cambio de estado.
 
         if (Rows_B.length == 1) {
@@ -122,7 +122,9 @@ function Exsa_createReport(userID, data, dateTimeEnd,plate) {
         Rows_C.forEach((row, index, rowArray) => {
             console.log(row.Estado, row.Placa, row.Inicio, row.Fin, row.Duracion)
         })
-
+        if (Rows_C.length>0) {
+            stXS.emit('Rows', userID, Rows_C)
+        }
 
     } else {
         stXS.emit('NoData', userID, plate)
