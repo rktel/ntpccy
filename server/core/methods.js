@@ -100,10 +100,11 @@ function Exsa_createReport(userID, data, dateTimeEnd,plate) {
             }
 
         })
+        /*
         Rows_B.forEach((row, index, rowArray) => {
             console.log(row.placa, row.fechaHora)
         })
-        
+        */
         let Rows_C = [] // Rows_C => Suma los tiempos entre cambio de estado.
 
         if (Rows_B.length == 1) {
