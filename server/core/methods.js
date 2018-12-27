@@ -83,7 +83,7 @@ function Exsa_createReport(userID, data, dateTimeEnd,plate) {
         })
     })
 
-    console.log('Documentos Consultados: ', Rows_A.length)
+    console.log(`Documentos Consultados para ${plate}: `, Rows_A.length)
 
     let Rows_B = [] // Rows_B => Detecta cambio de estado y el primer documento.
 
