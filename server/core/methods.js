@@ -119,9 +119,11 @@ function Exsa_createReport(userID, data, dateTimeEnd,plate) {
             })
         }
         // Recorrido de Rows_C
+        /*
         Rows_C.forEach((row, index, rowArray) => {
             console.log(row.Estado, row.Placa, row.Inicio, row.Fin, row.Duracion)
         })
+        */
         if (Rows_C.length>0) {
             stXS.emit('Rows', userID, Rows_C)
         }
