@@ -27,7 +27,7 @@ Meteor.methods({
                 .find({ 'events.vehicle': plate, 'events.created': { $gte: dateTimeStart5, $lte: dateTimeEnd5 } })
                 .toArray((error, data) => {
                     if (!error) {
-                        Exsa_createReport(userID, data, dateTimeEnd)
+                        Exsa_createReport(userID, data, dateTimeEnd,plate)
                         //console.log(data)
                     }
                 })
@@ -74,7 +74,7 @@ function Exsa_setStateString(estado) {
             break;
     }
 }
-function Exsa_createReport(userID, data, dateTimeEnd) {
+function Exsa_createReport(userID, data, dateTimeEnd,plate) {
     //console.log('in createRport')
     let Rows_A = []
     data.forEach(item => {
@@ -125,8 +125,8 @@ function Exsa_createReport(userID, data, dateTimeEnd) {
 
 
     } else {
-        stXS.emit('NoData', userID, 0)
-        console.log('No hay data')
+        stXS.emit('NoData', userID, plate)
+        console.log(`No hay data para ${plate}`)
     }
 
 

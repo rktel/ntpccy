@@ -160,13 +160,13 @@ export default {
         }
       }
     });
-    stXS.on("NoData", (userID, value) => {
+    stXS.on("NoData", (userID, plate) => {
       if (userID == this.userID) {
         this.buttonGRDisabled = false;
         this.progressState = 0;
-        console.log(value);
+        // console.log(value);
         this.snackbar = true;
-        this.snackbarText = "No hay data";
+        this.snackbarText = `No hay data para ${plate}`;
       }
     });
   },
