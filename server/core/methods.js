@@ -76,33 +76,15 @@ function Exsa_createReport(userID, data, dateTimeEnd) {
 
         Rows_A.forEach((row, index, rowArray) => {
 
-            if (index != rowArray.length - 1 && row.placa == rowArray[index + 1].placa) {
-                console.log(row.estado, row.placa, row.fechaHora)
-                if (row.estado != rowArray[index + 1].estado) {
-                    Rows_B.push(row)
-                }
+
+            if (index > 0 && row.estado != rowArray[index - 1].estado) {
+                Rows_B.push(row)
             }
-            if (index != rowArray.length - 1 && row.placa != rowArray[index + 1].placa) {
-                console.log('Rows_A:',row.estado, row.placa, row.fechaHora)
-            }
-            if (index == rowArray.length - 1) {
-                if (row.placa == rowArray[index - 1].placa) {
-                    if (row.estado != rowArray[index - 1].estado) {
-                        Rows_B.push(row)
-                    }
-                }
-            }
-            /*
-            if (index > 0 && row.placa != rowArray[index - 1].placa) { }
-            else {
-                if (index > 0 && row.estado != rowArray[index - 1].estado) {
-                    Rows_B.push(row)
-                }
-            }
+
             if (index == 0) {
                 Rows_B.push(row)
             }
-            */
+
 
         })
 
@@ -124,7 +106,7 @@ function Exsa_createReport(userID, data, dateTimeEnd) {
         }
         */
         Rows_B.forEach((row, index, rowArray) => {
-            console.log('Rows_B:',row.estado, row.placa, row.fechaHora)
+            console.log('Rows_B:', row.estado, row.placa, row.fechaHora)
             /*
             if (index > 0 && row.placa != rowArray[index - 1].placa) { }
             else {
