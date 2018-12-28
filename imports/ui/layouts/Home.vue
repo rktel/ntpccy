@@ -52,6 +52,7 @@
             <antapaccay v-if="userProfile.api == 'Antapaccay'"></antapaccay>
             <exsa v-if="userProfile.api == 'Exsa'"></exsa>
             <induamerica v-if="userProfile.api == 'Induamerica'"></induamerica>
+            <servosa v-if="userProfile.api == 'Servosa'"></servosa>
             <home-users></home-users>
           </v-flex>
         </v-layout>
