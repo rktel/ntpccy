@@ -1,6 +1,6 @@
 <template>
     <section>
-        <h1>Servosa</h1>
+        <h1>Servosa OSA</h1>
     </section>
 </template>
 
