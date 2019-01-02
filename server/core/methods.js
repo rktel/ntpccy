@@ -1,8 +1,19 @@
 import { Personal } from '../../imports/api/collections'
-import { Antapaccay, Exsa } from '../../imports/api/collections'
+import { Antapaccay, Exsa, Servosa } from '../../imports/api/collections'
 
 import { stNTPCCY, stXS } from "../../imports/api/streamers";
 
+//-------------------- SERVOSA
+
+Meteor.methods({ 
+    async Servosa_queryPlates() {
+        const plates = await Servosa.rawCollection().distinct('events.vehicle')
+        return plates
+    },
+    Servosa_queryRangeDatePlates(userID, plates, dateTimeStart, dateTimeEnd) {
+
+    }
+});
 
 //-------------------- EXSA
 
