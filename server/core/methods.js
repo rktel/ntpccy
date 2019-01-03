@@ -1,5 +1,5 @@
 import { Personal, ArrayPlates } from '../../imports/api/collections'
-import { Antapaccay, Exsa, Servosa, ArrayPlates } from '../../imports/api/collections'
+import { Antapaccay, Exsa, Servosa} from '../../imports/api/collections'
 
 import { stNTPCCY, stXS } from "../../imports/api/streamers";
 
