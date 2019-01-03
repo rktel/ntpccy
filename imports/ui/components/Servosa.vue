@@ -113,7 +113,7 @@
     </template>
     <template>
       <section>
-        <v-btn color="primary" block @click="genReport" :disabled=false>Generar Reporte</v-btn>
+        <v-btn color="primary" block @click="genReport" :disabled="false">Generar Reporte</v-btn>
       </section>
     </template>
     <template>
@@ -130,17 +130,24 @@
 
 <script>
 // Date Time Format for Query: 2018-11-26T18:02:29.000Z
-const MAX_DAYS = 10
-const MAX_PLATES = 5
+const MAX_DAYS = 10;
+const MAX_PLATES = 5;
 // import { stXS } from "../../api/streamers";
 import { json2excel } from "js2excel";
 
 export default {
   name: "Servosa",
   mounted() {
+      /*
     Meteor.call("Servosa_queryPlates", (error, plates) => {
       if (!error) {
         this.plates = plates.sort();
+      }
+    });
+*/
+    Meteor.call("ArrayPlates_getPlates_Servosa", function(error, plates) {
+      if (!error) {
+          this.plates = plates.plates;
       }
     });
     /*
@@ -193,25 +200,42 @@ export default {
     genReport() {
       const T = "T";
       const Z = ":00.000Z";
-      const { userID, selectPlates, dateStart, dateEnd, timeStart, timeEnd } = this;
+      const {
+        userID,
+        selectPlates,
+        dateStart,
+        dateEnd,
+        timeStart,
+        timeEnd
+      } = this;
       const dateTimeStart = dateStart + T + timeStart + Z;
       const dateTimeEnd = dateEnd + T + timeEnd + Z;
 
-      console.log(selectPlates, dateStart, dateEnd, timeStart, timeEnd)
+      console.log(selectPlates, dateStart, dateEnd, timeStart, timeEnd);
 
-      if (dateStart && timeStart && dateEnd && timeEnd && selectPlates.length > 0) {
-
+      if (
+        dateStart &&
+        timeStart &&
+        dateEnd &&
+        timeEnd &&
+        selectPlates.length > 0
+      ) {
         if (selectPlates.length > 0 && selectPlates.length <= MAX_PLATES) {
-
           const diffDays = getDaysDiff(dateTimeEnd, dateTimeStart);
-          console.log('days:',diffDays)
+          console.log("days:", diffDays);
 
           if (diffDays >= 0 && diffDays <= MAX_DAYS) {
-             this.snackbar = true;
+            this.snackbar = true;
             this.snackbarText = "Iniciando proceso...";
             this.buttonGRDisabled = true;
             this.progressState = 1;
-            Meteor.call('Servosa_queryRangeDatePlates',userID, selectPlates, dateTimeStart, dateTimeEnd)
+            Meteor.call(
+              "Servosa_queryRangeDatePlates",
+              userID,
+              selectPlates,
+              dateTimeStart,
+              dateTimeEnd
+            );
           } else {
             console.log(
               `Maximo ${MAX_DAYS} dias de diferencia entre fecha de inicio y termino`
@@ -234,12 +258,10 @@ export default {
 };
 
 function getDaysDiff(dateTimeMax, dateTimeMin) {
-  const diff = (new Date(dateTimeMax)).getTime() - (new Date(dateTimeMin)).getTime()
+  const diff =
+    new Date(dateTimeMax).getTime() - new Date(dateTimeMin).getTime();
   return parseInt(diff / (24 * 60 * 60 * 1000));
 }
-
-
-
 </script>
 
 <style>
