@@ -147,7 +147,8 @@ export default {
 */
     Meteor.call("ArrayPlates_getPlates_Servosa", function(error, plates) {
       if (!error) {
-          this.plates = plates.plates;
+          // this.plates = plates.plates;
+          console.log(plates)
       }
     });
     /*
