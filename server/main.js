@@ -1,11 +1,11 @@
 import { Personal } from '../imports/api/collections'
 
 let hyperUserId = null
- 
+
 Meteor.startup(() => {
-    process.env.MAIL_URL = 'smtp://' + encodeURIComponent(Meteor.settings.private.USER_SMTP) + 
-    ':' + encodeURIComponent(Meteor.settings.private.PASS_SMTP) + 
-    '@' + encodeURIComponent(Meteor.settings.private.SERVER_SMTP) + ':' + Meteor.settings.private.PORT_SMTP;
+    process.env.MAIL_URL = 'smtp://' + encodeURIComponent(Meteor.settings.private.USER_SMTP) +
+        ':' + encodeURIComponent(Meteor.settings.private.PASS_SMTP) +
+        '@' + encodeURIComponent(Meteor.settings.private.SERVER_SMTP) + ':' + Meteor.settings.private.PORT_SMTP;
 
     // console.log('process.env.MAIL_URL', process.env.MAIL_URL)
 
@@ -24,11 +24,13 @@ Meteor.startup(() => {
             userId: hyperUserId
         })
     }
-/*
-    Meteor.call('getPlates', (error, plates) => {
-        if(!error){
-            console.log(plates)
+
+    Meteor.call('ArrayPlates_getPlates_Servosa', function (error, plates) {
+        if (!error) {
+            if (!plates) {
+                Meteor.call('ArrayPlates_setPlates_Servosa')
+            }
         }
-    })
-*/
+    });
+
 })

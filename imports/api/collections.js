@@ -8,3 +8,4 @@ export const Exsa = new Mongo.Collection('exsa')
 
 export const Personal = new Mongo.Collection('personal')
 
+export const ArrayPlates = new Mongo.Collection('arrayplates')

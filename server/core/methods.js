@@ -1,11 +1,42 @@
-import { Personal } from '../../imports/api/collections'
-import { Antapaccay, Exsa, Servosa } from '../../imports/api/collections'
+import { Personal, ArrayPlates } from '../../imports/api/collections'
+import { Antapaccay, Exsa, Servosa, ArrayPlates } from '../../imports/api/collections'
 
 import { stNTPCCY, stXS } from "../../imports/api/streamers";
 
+
+//-------------------- ARRAY PLATES
+
+Meteor.methods({
+    ArrayPlates_getPlates_Servosa: function () {
+        return ArrayPlates.findOne({ name: 'Servosa' })
+    },
+    ArrayPlates_setPlates_Servosa: function () {
+        Meteor.call("Servosa_queryPlates", (error, plates) => {
+            if (!error) {
+                ArrayPlates.insert({ name: 'Servosa', plates: plates.sort() })
+            }
+        });
+    },
+    ArrayPlates_updatePlates_Servosa: function () {
+        Meteor.call("Servosa_queryPlates", (error, plates) => {
+            if (!error) {
+                ArrayPlates.replaceOne({ name: 'Servosa', plates: plates.sort() })
+            }
+        });
+    },
+
+    ArrayPlates_getPlates_Antapaccay: function () {
+        return ArrayPlates.findOne({ name: 'Antapaccay' })
+    },
+    ArrayPlates_getPlates_Exsa: function () {
+        return ArrayPlates.findOne({ name: 'Exsa' })
+    },
+
+});
+
 //-------------------- SERVOSA
 
-Meteor.methods({ 
+Meteor.methods({
     async Servosa_queryPlates() {
         const plates = await Servosa.rawCollection().distinct('events.vehicle')
         return plates
@@ -38,7 +69,7 @@ Meteor.methods({
                 .find({ 'events.vehicle': plate, 'events.created': { $gte: dateTimeStart5, $lte: dateTimeEnd5 } })
                 .toArray((error, data) => {
                     if (!error) {
-                        Exsa_createReport(userID, data, dateTimeEnd,plate)
+                        Exsa_createReport(userID, data, dateTimeEnd, plate)
                         //console.log(data)
                     }
                 })
@@ -85,7 +116,7 @@ function Exsa_setStateString(estado) {
             break;
     }
 }
-function Exsa_createReport(userID, data, dateTimeEnd,plate) {
+function Exsa_createReport(userID, data, dateTimeEnd, plate) {
     //console.log('in createRport')
     let Rows_A = []
     data.forEach(item => {
@@ -136,7 +167,7 @@ function Exsa_createReport(userID, data, dateTimeEnd,plate) {
             console.log(row.Estado, row.Placa, row.Inicio, row.Fin, row.Duracion)
         })
         */
-        if (Rows_C.length>0) {
+        if (Rows_C.length > 0) {
             stXS.emit('Rows', userID, Rows_C)
         }
 
@@ -162,7 +193,7 @@ function Exsa_objectRow(e) {
     }
 }
 function Exsa_objectRow_C(e_next, e_actual) {
-    if(e_actual.estado == 2){
+    if (e_actual.estado == 2) {
         return {
             Estado: Exsa_setStateString(e_actual.estado),
             Placa: e_actual.placa,
@@ -173,7 +204,7 @@ function Exsa_objectRow_C(e_next, e_actual) {
             Direccion: ``,
             Geozona: ``,
         }
-    }else{
+    } else {
         return {
             Estado: Exsa_setStateString(e_actual.estado),
             Placa: e_actual.placa,
@@ -188,7 +219,7 @@ function Exsa_objectRow_C(e_next, e_actual) {
 
 }
 function Exsa_auxRow_C(e_next, dateTimeEnd) {
-    if(e_next.estado == 2){
+    if (e_next.estado == 2) {
         return {
             Estado: Exsa_setStateString(e_next.estado),
             Placa: e_next.placa,
@@ -199,7 +230,7 @@ function Exsa_auxRow_C(e_next, dateTimeEnd) {
             Direccion: ``,
             Geozona: ``,
         }
-    }else{
+    } else {
         return {
             Estado: Exsa_setStateString(e_next.estado),
             Placa: e_next.placa,
