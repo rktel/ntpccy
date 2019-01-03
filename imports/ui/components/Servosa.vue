@@ -138,18 +138,18 @@ import { json2excel } from "js2excel";
 export default {
   name: "Servosa",
   mounted() {
-      
+      /*
     Meteor.call("Servosa_queryPlates", (error, plates) => {
       if (!error) {
         //this.plates = plates.sort();
         console.log('Servosa_queryPlates:',plates.sort())
       }
     });
-
-    Meteor.call("ArrayPlates_getPlates_Servosa", function(error, plates) {
+*/
+    Meteor.call("ArrayPlates_getPlates_Servosa", (error, plates) => {
       if (!error) {
-           //this.plates = plates.plates;
-            console.log('ArrayPlates:',plates.plates)
+            this.plates = plates.plates;
+            // console.log('ArrayPlates:',plates.plates)
       }
     });
     /*
