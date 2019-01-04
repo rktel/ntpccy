@@ -71,7 +71,15 @@ Meteor.methods({
         return plates
     },
     Servosa_queryEvents(userID, plates, dateTimeStart, dateTimeEnd) {
-        console.log(userID, plates, dateTimeStart, dateTimeEnd)
+        console.log('........................SERVOSA...............................')
+        // console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
+        console.log('Usuario: ', Meteor.user().username)
+        console.log('Fecha y Tiempo de Inicio: ', dateTimeStart)
+        console.log('Fecha y Tiempo de Fin: ', dateTimeEnd)
+        const dateTimeStart5 = addHours(dateTimeStart, 5)
+        const dateTimeEnd5 = addHours(dateTimeEnd, 5)
+        plates = plates.sort()
+        console.log('placas: ', plates)
     }
 });
 
