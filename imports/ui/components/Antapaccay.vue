@@ -138,11 +138,18 @@ import { json2excel } from "js2excel";
 export default {
   name: "Antapaccay",
   mounted() {
+    Meteor.call("ArrayPlates_getPlates_Antapaccay", (error, plates) => {
+      if (!error) {
+            this.plates = plates.plates;
+            // console.log('ArrayPlates:',plates.plates)
+      }
+    });
+    /*
     Meteor.call("queryPlates", (error, plates) => {
       if (!error) {
         this.plates = plates.sort();
       }
-    });
+    });*/
     stNTPCCY.on("Rows", (userID, data) => {
       // console.log(data);
       if (userID == this.userID) {

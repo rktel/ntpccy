@@ -138,9 +138,16 @@ import { json2excel } from "js2excel";
 export default {
   name: "Exsa",
   mounted() {
+    /*
     Meteor.call("Exsa_queryPlates", (error, plates) => {
       if (!error) {
         this.plates = plates.sort();
+      }
+    });*/
+    Meteor.call("ArrayPlates_getPlates_Exsa", (error, plates) => {
+      if (!error) {
+            this.plates = plates.plates;
+            // console.log('ArrayPlates:',plates.plates)
       }
     });
     stXS.on("Rows", (userID, data) => {
