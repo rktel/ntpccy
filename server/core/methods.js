@@ -70,8 +70,8 @@ Meteor.methods({
         const plates = await Servosa.rawCollection().distinct('events.vehicle')
         return plates
     },
-    Servosa_queryRangeDatePlates(userID, plates, dateTimeStart, dateTimeEnd) {
-
+    Servosa_queryEvents(userID, plates, dateTimeStart, dateTimeEnd) {
+        console.log(userID, plates, dateTimeStart, dateTimeEnd)
     }
 });
 

@@ -232,7 +232,7 @@ export default {
             this.buttonGRDisabled = true;
             this.progressState = 1;
             Meteor.call(
-              "Servosa_queryRangeDatePlates",
+              "Servosa_queryEvents",
               userID,
               selectPlates,
               dateTimeStart,
