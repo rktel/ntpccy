@@ -336,7 +336,7 @@ Meteor.methods({
 
 //ANTAPACCAY PLATES & REPORT
 Meteor.methods({
-    async queryPlates() {
+    async Antapaccay_queryPlates() {
         const plates = await Antapaccay.rawCollection().distinct('events.vehicle')
         return plates
     },
