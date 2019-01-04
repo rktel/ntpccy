@@ -7,6 +7,7 @@ import { stNTPCCY, stXS } from "../../imports/api/streamers";
 //-------------------- ARRAY PLATES
 
 Meteor.methods({
+    // Servosa
     ArrayPlates_getPlates_Servosa: function () {
         return ArrayPlates.findOne({ name: 'Servosa' })
     },
@@ -24,14 +25,42 @@ Meteor.methods({
             }
         });
     },
-
+    // Antapaccay
     ArrayPlates_getPlates_Antapaccay: function () {
         return ArrayPlates.findOne({ name: 'Antapaccay' })
     },
+    ArrayPlates_setPlates_Antapaccay: function () {
+        Meteor.call("Antapaccay_queryPlates", (error, plates) => {
+            if (!error) {
+                ArrayPlates.insert({ name: 'Antapaccay', plates: plates.sort() })
+            }
+        });
+    },
+    ArrayPlates_updatePlates_Antapaccay: function () {
+        Meteor.call("Antapaccay_queryPlates", (error, plates) => {
+            if (!error) {
+                ArrayPlates.replaceOne({ name: 'Antapaccay', plates: plates.sort() })
+            }
+        });
+    },
+    // Exsa
     ArrayPlates_getPlates_Exsa: function () {
         return ArrayPlates.findOne({ name: 'Exsa' })
     },
-
+    ArrayPlates_setPlates_Exsa: function () {
+        Meteor.call("Exsa_queryPlates", (error, plates) => {
+            if (!error) {
+                ArrayPlates.insert({ name: 'Exsa', plates: plates.sort() })
+            }
+        });
+    },
+    ArrayPlates_updatePlates_Exsa: function () {
+        Meteor.call("Exsa_queryPlates", (error, plates) => {
+            if (!error) {
+                ArrayPlates.replaceOne({ name: 'Exsa', plates: plates.sort() })
+            }
+        });
+    },
 });
 
 //-------------------- SERVOSA

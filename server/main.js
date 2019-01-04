@@ -32,5 +32,19 @@ Meteor.startup(() => {
             }
         }
     });
+    Meteor.call('ArrayPlates_getPlates_Antapaccay', function (error, plates) {
+        if (!error) {
+            if (!plates) {
+                Meteor.call('ArrayPlates_setPlates_Antapaccay')
+            }
+        }
+    });
+    Meteor.call('ArrayPlates_getPlates_Exsa', function (error, plates) {
+        if (!error) {
+            if (!plates) {
+                Meteor.call('ArrayPlates_setPlates_Exsa')
+            }
+        }
+    });
 
 })
