@@ -84,7 +84,7 @@ Meteor.methods({
         plates.forEach((el, index, arrayPlate) => {
             Meteor.call('Servosa_getData', el, dateTimeStart5, dateTimeEnd5, (error, plate) => {
                 if (!error) {
-                    console.log(plate.report);
+                    console.log(plate);
                 }
             });
         })
