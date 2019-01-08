@@ -102,9 +102,14 @@ Meteor.methods({
                 }
             ]).toArray()
             if(report){
-                report.push(plate) 
+                return {
+                    plate,
+                    report
+                }
+            }else {
+                return false
             }
-        return report
+        
     }
 });
 //-------------------- EXSA
