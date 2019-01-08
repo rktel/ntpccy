@@ -95,7 +95,8 @@ Meteor.methods({
             aggregate([
                 { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [81, 82] } } },
                 { $unwind: '$events' },
-                { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }, sum: { $sum: 1 } } },
+                { $group: { _id: '$events.original', total: { $sum: 1 } },
+               // { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }} },
              //   { $project: { _id: 0, plate: '$_id.plate', event: '$_id.event', created: '$_id.created' } },
                // { $sort: { 'plate': 1, 'created': 1 } },
             ]).toArray()
