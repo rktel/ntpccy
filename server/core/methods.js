@@ -98,11 +98,12 @@ Meteor.methods({
                     $group: {
                         _id: '$events.original',
                         eventCount: { $sum: 1 },
-                        entry: {
-                            $push: {
-                                plate: "$events.vehicle",
-                            }
-                        }
+
+                    }
+                },
+                {
+                    $addFields: {
+                        plate:'$events.vehicle'
                     }
                 }
             ]).toArray()
