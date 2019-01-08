@@ -94,8 +94,8 @@ Meteor.methods({
         const report = await Servosa.rawCollection().
             aggregate([
                 { $match: { 'events.vehicle': plate, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
-                { $group: { _id: { plate: '$events.vehicle', created: '$events.created' } } },
-                { $project: { plate: '$_id.plate' } }
+                { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' } } },
+                { $project: { _id: 0, plate: 1, event: 1 } }
 
             ]).toArray()
         return report
