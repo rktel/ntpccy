@@ -81,16 +81,16 @@ Meteor.methods({
         plates = plates.sort()
         console.log('placas: ', plates)
 
-        plates.forEach((el, index, arrayPlate) => {
-            Meteor.call('Servosa_getData', el, dateTimeStart5, dateTimeEnd5, (error, plate) => {
+       // plates.forEach((el, index, arrayPlate) => {
+            Meteor.call('Servosa_getData',  dateTimeStart5, dateTimeEnd5, (error, plate) => {
                 if (!error) {
                     console.log(plate);
                 }
             });
-        })
+        //})
     },
 
-    async  Servosa_getData(plate, dateTimeStart, dateTimeEnd) {
+    async  Servosa_getData( dateTimeStart, dateTimeEnd) {
         const report = await Servosa.rawCollection().
             aggregate([
                 { $match: { 'events.vehicle': {$in : ['ALJ-768','AAA-784']}, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
