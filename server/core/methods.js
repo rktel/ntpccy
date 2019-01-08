@@ -95,7 +95,7 @@ Meteor.methods({
             aggregate([
                 { $match: { 'events.vehicle': plate } },
                 { $count: 'counter' }
-            ])
+            ]).toArray()
         return report
     }
 });
