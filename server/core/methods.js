@@ -97,6 +97,7 @@ Meteor.methods({
                 {
                     $group: {
                         _id: '$events.original',
+                        placa: '$events.vehicle',
                         eventCount: { $sum: 1 }
                     }
                 }
