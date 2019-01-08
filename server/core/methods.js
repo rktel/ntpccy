@@ -97,19 +97,24 @@ Meteor.methods({
                 {
                     $group: {
                         _id: '$events.original',
-                        eventCount: { $sum: 1 }
+                        eventCount: { $sum: 1 },
+                        entry: {
+                            $push: {
+                                plate: "$events.vehicle",
+                            }
+                        }
                     }
                 }
             ]).toArray()
-            if(report){
-                return {
-                    plate,
-                    report
-                }
-            }else {
-                return false
+        if (report) {
+            return {
+                plate,
+                report
             }
-        
+        } else {
+            return false
+        }
+
     }
 });
 //-------------------- EXSA
