@@ -98,14 +98,13 @@ Meteor.methods({
                     $group: {
                         _id: '$events.original',
                         eventCount: { $sum: 1 },
+                        speedAVG:{
+                            "$avg": "$events.location.speed"
+                        }
 
                     }
                 },
-                {
-                    $addFields: {
-                        plate:'$events.vehicle'
-                    }
-                }
+
             ]).toArray()
         if (report) {
             return {
