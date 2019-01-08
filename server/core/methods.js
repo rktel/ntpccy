@@ -101,6 +101,9 @@ Meteor.methods({
                     }
                 }
             ]).toArray()
+            if(report){
+                report.plate = plate
+            }
         return report
     }
 });
