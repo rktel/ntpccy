@@ -81,21 +81,22 @@ Meteor.methods({
         plates = plates.sort()
         console.log('placas: ', plates)
 
-       // plates.forEach((el, index, arrayPlate) => {
-            Meteor.call('Servosa_getData',  dateTimeStart5, dateTimeEnd5, (error, plate) => {
-                if (!error) {
-                    console.log(plate);
-                }
-            });
+        // plates.forEach((el, index, arrayPlate) => {
+        Meteor.call('Servosa_getData', plates, dateTimeStart5, dateTimeEnd5, (error, report) => {
+            if (!error) {
+                console.log(report);
+            }
+        });
         //})
     },
 
-    async  Servosa_getData( dateTimeStart, dateTimeEnd) {
+    async  Servosa_getData(plates, dateTimeStart, dateTimeEnd) {
         const report = await Servosa.rawCollection().
             aggregate([
-                { $match: { 'events.vehicle': {$in : ['PAPA']}, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
+                { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
-                 //{ $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' } } },
+                { $count: 'all' }
+                //{ $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' } } },
                 //{ $project: { _id: 0, plate: '$_id.plate', event: '$_id.event' } },
 
 
