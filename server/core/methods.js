@@ -82,21 +82,23 @@ Meteor.methods({
         console.log('placas: ', plates)
 
         plates.forEach((el, index, arrayPlate) => {
-            const plate = Servosa_getData(el)
-            console.log(plate);
-            
-
+            Meteor.call('Servosa_getData', el, function (error, plate) {
+                if (!error) {
+                    console.log(plate);
+                }
+            });
         })
+    },
+
+    async  Servosa_getData(plate) {
+        const report = await Servosa.rawCollection().
+            aggregate([
+                { $match: { 'events.vehicle': plate } },
+                { $count: 'counter' }
+            ])
+        return report
     }
 });
-async function Servosa_getData(plate) {
-    const report = await Servosa.rawCollection().
-        aggregate([
-            { $match: { 'events.vehicle': plate } },
-            { $count: 'counter' }
-        ])
-    return report
-}
 //-------------------- EXSA
 
 Meteor.methods({
