@@ -1,5 +1,5 @@
 import { Personal, ArrayPlates } from '../../imports/api/collections'
-import { Antapaccay, Exsa, Servosa} from '../../imports/api/collections'
+import { Antapaccay, Exsa, Servosa } from '../../imports/api/collections'
 
 import { stNTPCCY, stXS } from "../../imports/api/streamers";
 
@@ -80,9 +80,23 @@ Meteor.methods({
         const dateTimeEnd5 = addHours(dateTimeEnd, 5)
         plates = plates.sort()
         console.log('placas: ', plates)
+
+        plates.forEach((el, index, arrayPlate) => {
+            const plate = Servosa_getData(el)
+            console.log(plate);
+            
+
+        })
     }
 });
-
+async function Servosa_getData(plate) {
+    const report = await Servosa.rawCollection().
+        aggregate([
+            { $match: { 'events.vehicle': plate } },
+            { $count: 'counter' }
+        ])
+    return report
+}
 //-------------------- EXSA
 
 Meteor.methods({
