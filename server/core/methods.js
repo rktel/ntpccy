@@ -82,7 +82,7 @@ Meteor.methods({
         console.log('placas: ', plates)
 
         plates.forEach((el, index, arrayPlate) => {
-            Meteor.call('Servosa_getData', el, function (error, plate) {
+            Meteor.call('Servosa_getData', el, dateTimeStart5, dateTimeEnd5, (error, plate) => {
                 if (!error) {
                     console.log(plate);
                 }
@@ -90,10 +90,10 @@ Meteor.methods({
         })
     },
 
-    async  Servosa_getData(plate) {
+    async  Servosa_getData(plate, dateTimeStart, dateTimeEnd) {
         const report = await Servosa.rawCollection().
             aggregate([
-                { $match: { 'events.vehicle': plate } },
+                { $match: { 'events.vehicle': plate, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $count: 'counter' }
             ]).toArray()
         return report
