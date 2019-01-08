@@ -97,10 +97,10 @@ Meteor.methods({
                 {
                     $group: {
                         _id: null,
-                        eventCount: { $sum: 1 },
                         speedAVG:{
-                            "$avg": "$$events.location.speed"
-                        }
+                            "$avg": "$events.location.speed"
+                        },
+                        eventCount: { $sum: 1 },
 
                     }
                 },
