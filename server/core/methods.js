@@ -96,24 +96,13 @@ Meteor.methods({
                 { $match: { 'events.vehicle': plate, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 {
                     $group: {
-                        _id: null,
-                        speedAVG:{
-                            "$avg": "$events.location.speed"
-                        },
-                        eventCount: { $sum: 1 },
+                        _id: '$events.vehicle'
 
                     }
                 },
 
             ]).toArray()
-        if (report) {
-            return {
-                plate,
-                report
-            }
-        } else {
-            return false
-        }
+        return report
 
     }
 });
