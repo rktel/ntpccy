@@ -96,7 +96,7 @@ Meteor.methods({
                 { $match: { 'events.vehicle': plate, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 {
                     $group: {
-                        _id: '$events.original',
+                        _id: null,
                         eventCount: { $sum: 1 },
                         speedAVG:{
                             "$avg": "$$events.location.speed"
