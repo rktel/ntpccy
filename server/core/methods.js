@@ -102,7 +102,7 @@ Meteor.methods({
                 }
             ]).toArray()
             if(report){
-                report.plate = plate
+                report.push(plate) 
             }
         return report
     }
