@@ -96,7 +96,7 @@ Meteor.methods({
                 { $match: { 'events.vehicle': plate, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 {
                     $group: {
-                        _id: '$events.vehicle'
+                        _id: '$$events.vehicle'
 
                     }
                 },
