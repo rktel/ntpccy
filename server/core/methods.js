@@ -102,7 +102,7 @@ Meteor.methods({
                                         Fatiga: el.total,
                                         Distraccion: 0
                                     })
-                                }else{
+                                }else if(el.eventType == 306){
                                     RowArray.push({
                                         Placa: el.plate,
                                         Fatiga: 0,
