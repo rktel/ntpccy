@@ -64,7 +64,85 @@ Meteor.methods({
 });
 
 //-------------------- SERVOSA
+/*
+const PLACA = 'PLACA'
+const FATIGA = 'N° DE REPORTES REGISTRADOS'
+const DISTRACCION = 'N° DE NO ROSTRO'
+*/
+function Servosa_Accion(eventCount) {
+    if (eventCount <= 19) {
+        return 'Pausa Activa General'
+    } else if (eventCount >= 20 && eventCount <= 50) {
+        return 'Registro de Retroalimentacion'
+    } else if (eventCount >= 50 && eventCount <= 80) {
+        return 'Aplicar Test de Fatiga'
+    } else if (eventCount > 80) {
+        return 'Evaluacion del Caso'
+    }
+}
+function Servosa_getDate(dateTime_) {
+    const millis = getTimeMillis(dateTime_)
+    const dateTime = new Date(millis)
+    const year = dateTime.getFullYear()
+    const month = addZero(dateTime.getMonth() + 1)
+    const day = addZero(dateTime.getDate())
+    return day + '/' + month + '/' + year
+}
+function Servosa_getMonth(dateTime_) {
+    const millis = getTimeMillis(dateTime_)
+    const dateTime = new Date(millis)
+    let month
+    switch (dateTime.getMonth()) {
+        case 0:
+            month = 'ENERO';
+            break;
+        case 1:
+            month = 'FEBRERO';
+            break;
+        case 2:
+            month = 'MARZO';
+            break;
+        case 3:
+            month = 'ABRIL';
+            break;
+        case 4:
+            month = 'MAYO';
+            break;
+        case 5:
+            month = 'JUNIO';
+            break;
+        case 6:
+            month = 'JULIO';
+            break;
+        case 7:
+            month = 'AGOSTO';
+            break;
+        case 8:
+            month = 'SEPTIEMBRE';
+            break;
+        case 9:
+            month = 'OCTUBRE';
+            break;
+        case 10:
+            month = 'NOVIEMBRE';
+            break;
+        case 11:
+            month = 'DICIEMBRE';
+            break;
 
+        default:
+            break;
+    }
+    return month
+}
+function Servosa_getHoraReal() {
+    const dateTime = new Date()
+    const hour = addZero(dateTime.getHours())
+    const minute = addZero(dateTime.getMinutes())
+    return hour + ':' + minute + ':00'
+
+
+}
 Meteor.methods({
     async Servosa_queryPlates() {
         const plates = await Servosa.rawCollection().distinct('events.vehicle')
@@ -91,26 +169,38 @@ Meteor.methods({
                         if (array[index + 1]) {
                             if (array[index + 1].plate == el.plate) {
                                 RowArray.push({
-                                    Placa: el.plate,
-                                    Fatiga: el.total,
-                                    Distraccion: array[index + 1].total
+                                    'MES': Servosa_getMonth(dateTimeStart5),
+                                    'FECHA': Servosa_getDate(dateTimeStart5),
+                                    'PLACA': el.plate,
+                                    'N° DE REPORTES REGISTRADOS': el.total,
+                                    'N° DE NO ROSTRO': array[index + 1].total,
+                                    'ACCION EN CAMPO': Servosa_Accion(el.total),
+                                    'HORA REAL': Servosa_getHoraReal()
                                 })
                             } else {
                                 if (el.plate != array[index - 1].plate) {
-                                    if(el.eventType==305){
+                                    if (el.eventType == 305) {
                                         RowArray.push({
-                                            Placa: el.plate,
-                                            Fatiga: el.total,
-                                            Distraccion: 0
-                
+                                            'MES': Servosa_getMonth(dateTimeStart5),
+                                            'FECHA': Servosa_getDate(dateTimeStart5),
+                                            'PLACA': el.plate,
+                                            'N° DE REPORTES REGISTRADOS': el.total,
+                                            'N° DE NO ROSTRO': 0,
+                                            'ACCION EN CAMPO': Servosa_Accion(el.total),
+                                            'HORA REAL': Servosa_getHoraReal()
+
                                         })
                                     }
-                                    else if(el.eventType==306){
+                                    else if (el.eventType == 306) {
                                         RowArray.push({
-                                            Placa: el.plate,
-                                            Fatiga: 0,
-                                            Distraccion: el.total
-                
+                                            'MES': Servosa_getMonth(dateTimeStart5),
+                                            'FECHA': Servosa_getDate(dateTimeStart5),
+                                            'PLACA': el.plate,
+                                            'N° DE REPORTES REGISTRADOS': 0,
+                                            'N° DE NO ROSTRO': el.total,
+                                            'ACCION EN CAMPO': Servosa_Accion(0),
+                                            'HORA REAL': Servosa_getHoraReal()
+
                                         })
                                     }
 
