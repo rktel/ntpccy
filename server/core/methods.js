@@ -94,9 +94,9 @@ Meteor.methods({
         const report = await Servosa.rawCollection().
             aggregate([
                // { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [ 81,82] } } },
-                { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.text': { $in: [ 'FatigueAlarm','DistractionAlarm'] } } },
+                { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
-                { $group: { _id: { plate: '$events.vehicle', eventText: '$events.text' }, total: { $sum: 1 } } },
+                { $group: { _id: { plate: '$events.vehicle' }, total: { $sum: 1 } } },
                // { $project: { _id: 0, plate: '$_id.plate', event: '$_id.ev' , total: '$total'} },
                 // { $group: { _id: { plate: '$events.vehicle', ev: '$events.original' }, total: { $sum: 1 } } },
                 // { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }} },
