@@ -117,9 +117,10 @@ Meteor.methods({
                             Distraccion: report[1].total
                         })
                     }
-                    console.log('Result:',RowArray)
+                    
                 }
             });
+            console.log('Result:',RowArray)
         })
     },
 
