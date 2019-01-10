@@ -89,26 +89,12 @@ Meteor.methods({
                 if (report.length > 0) {
                     report.forEach((el, index, array) => {
                         if (array[index + 1]) {
-                            if (array[index + 1].plate == el.plate) {
+                            if(array[index+1].plate == el.plate){
                                 RowArray.push({
                                     Placa: el.plate,
                                     Fatiga: el.total,
                                     Distraccion: array[index+1].total
                                 })
-                            }else{
-                                if(el.eventType == 305){
-                                    RowArray.push({
-                                        Placa: el.plate,
-                                        Fatiga: el.total,
-                                        Distraccion: 0
-                                    })
-                                }else if(el.eventType == 306){
-                                    RowArray.push({
-                                        Placa: el.plate,
-                                        Fatiga: 0,
-                                        Distraccion: el.total
-                                    })
-                                }
                             }
                         }
                     })
