@@ -91,6 +91,9 @@ Meteor.methods({
                         if (array[index+1]) {
                             console.log(index, el);
                             
+                        }else{
+                            console.log('else',index, el);
+
                         }
                     })
                 }
