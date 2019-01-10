@@ -85,6 +85,7 @@ Meteor.methods({
             Meteor.call('Servosa_getData', el, dateTimeStart5, dateTimeEnd5, (error, report) => {
                 if (!error) {
                     console.log(report);
+
                 }
             });
         })
@@ -96,12 +97,12 @@ Meteor.methods({
                 // { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [ 81,82] } } },
                 { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
-                { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.type': { $in: [305, 306] } } },
+                { $match: { 'events.type': { $in: [305, 306] } } },
                 { $group: { _id: { plate: '$events.vehicle', eventType: '$events.type' }, total: { $sum: 1 } } },
-                { $project: { _id: 0, plate: '$_id.plate', eventType: '$_id.eventType' , total: '$total'} },
+                { $project: { _id: 0, plate: '$_id.plate', eventType: '$_id.eventType', total: '$total' } },
                 // { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }} },
                 //   { $project: { _id: 0, plate: '$_id.plate', event: '$_id.event', created: '$_id.created' } },
-                { $sort: {'eventType': 1 } },
+                { $sort: { 'eventType': 1 } },
             ]).toArray()
         return report
 
