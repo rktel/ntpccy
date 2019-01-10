@@ -95,6 +95,9 @@ Meteor.methods({
                                     Fatiga: el.total,
                                     Distraccion: array[index+1].total
                                 })
+                            }else{
+                                console.log(el.plate);
+                                
                             }
                         }
                     })
