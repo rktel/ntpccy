@@ -95,11 +95,12 @@ Meteor.methods({
             aggregate([
                 { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [81, 82] } } },
                 { $unwind: '$events' },
-                { $group: { _id: {ev:'$events.original', plate: '$events.vehicle'}, total: { $sum: 1 } }},
-               // { $group: { _id: { plate: '$events.vehicle', ev: '$events.original' }, total: { $sum: 1 } } },
+                { $group: { _id: { plate: '$events.vehicle', ev: '$events.original' }, total: { $sum: 1 } } },
+                { $project: { _id: 0, plate: '$_id.plate', event: '$_id.ev' , total: '$total'} },
+                // { $group: { _id: { plate: '$events.vehicle', ev: '$events.original' }, total: { $sum: 1 } } },
                 // { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }} },
                 //   { $project: { _id: 0, plate: '$_id.plate', event: '$_id.event', created: '$_id.created' } },
-              //  { $sort: { '_id.plate': 1, '_id.ev': 1 } },
+                //  { $sort: { '_id.plate': 1, '_id.ev': 1 } },
             ]).toArray()
         return report
 
