@@ -120,8 +120,8 @@ Meteor.methods({
                     
                 }
             });
-            console.log('Result:',RowArray)
         })
+        console.log('Result:',RowArray)
     },
 
     async  Servosa_getData(el, dateTimeStart, dateTimeEnd) {
