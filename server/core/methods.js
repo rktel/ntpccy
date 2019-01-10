@@ -97,7 +97,22 @@ Meteor.methods({
                                 })
                             } else {
                                 if (el.plate != array[index - 1].plate) {
-                                    console.log(el.plate);
+                                    if(el.eventType==305){
+                                        RowArray.push({
+                                            Placa: el.plate,
+                                            Fatiga: el.total,
+                                            Distraccion: 0
+                
+                                        })
+                                    }
+                                    else if(el.eventType==306){
+                                        RowArray.push({
+                                            Placa: el.plate,
+                                            Fatiga: 0,
+                                            Distraccion: el.total
+                
+                                        })
+                                    }
 
                                 }
                             }
