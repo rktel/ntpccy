@@ -136,7 +136,7 @@ function Servosa_getMonth(dateTime_) {
     return month
 }
 function Servosa_getHoraReal() {
-    const dateTime = addHours(new Date(), -5)
+    const dateTime = new Date(addHours(new Date(), -5))
     const hour = addZero(dateTime.getHours())
     const minute = addZero(dateTime.getMinutes())
     const seconds = addZero(dateTime.getSeconds())
