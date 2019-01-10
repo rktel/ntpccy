@@ -180,7 +180,8 @@ Meteor.methods({
                                     'N° DE REPORTES REGISTRADOS': el.total,
                                     'N° DE NO ROSTRO': array[index + 1].total,
                                     'ACCION EN CAMPO': Servosa_Accion(el.total),
-                                    'HORA REAL': Servosa_getHoraReal()
+                                    'HORA REAL': Servosa_getHoraReal(),
+                                    'TRAMO':'   '
                                 })
                             } else {
                                 if (el.plate != array[index - 1].plate) {
@@ -196,7 +197,8 @@ Meteor.methods({
                                             'N° DE REPORTES REGISTRADOS': el.total,
                                             'N° DE NO ROSTRO': 0,
                                             'ACCION EN CAMPO': Servosa_Accion(el.total),
-                                            'HORA REAL': Servosa_getHoraReal()
+                                            'HORA REAL': Servosa_getHoraReal(),
+                                            'TRAMO':'   '
 
                                         })
                                     }
@@ -212,7 +214,8 @@ Meteor.methods({
                                             'N° DE REPORTES REGISTRADOS': 0,
                                             'N° DE NO ROSTRO': el.total,
                                             'ACCION EN CAMPO': Servosa_Accion(0),
-                                            'HORA REAL': Servosa_getHoraReal()
+                                            'HORA REAL': Servosa_getHoraReal(),
+                                            'TRAMO':'   '
 
                                         })
                                     }
