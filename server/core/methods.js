@@ -80,12 +80,44 @@ Meteor.methods({
         const dateTimeEnd5 = addHours(dateTimeEnd, 5)
         plates = plates.sort()
         console.log('placas: ', plates)
-
+        let RowArray = []
         plates.forEach((el, index, arrayPlate) => {
             Meteor.call('Servosa_getData', el, dateTimeStart5, dateTimeEnd5, (error, report) => {
                 if (!error) {
                     console.log(report);
 
+                    if (report.length == 0) {
+                        RowArray.push({
+                            Placa: el,
+                            Fatiga: 0,
+                            Distraccion: 0
+
+                        })
+                    } else if (report.length == 1) {
+                        if(report.eventType==305){
+                            RowArray.push({
+                                Placa: el,
+                                Fatiga: report[0].total,
+                                Distraccion: 0
+    
+                            })
+                        }
+                        else if(report.eventType==306){
+                            RowArray.push({
+                                Placa: el,
+                                Fatiga: 0,
+                                Distraccion: report[0].total
+    
+                            })
+                        }
+                    }else if(report.length == 2){
+                        RowArray.push({
+                            Placa: el,
+                            Fatiga: report[0].total,
+                            Distraccion: report[1].total
+                        })
+                    }
+                    console.log(RowArray)
                 }
             });
         })
