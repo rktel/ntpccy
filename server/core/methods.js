@@ -1,7 +1,7 @@
 import { Personal, ArrayPlates } from '../../imports/api/collections'
 import { Antapaccay, Exsa, Servosa } from '../../imports/api/collections'
 
-import { stNTPCCY, stXS } from "../../imports/api/streamers";
+import { stNTPCCY, stXS, stSRVS } from "../../imports/api/streamers";
 
 
 //-------------------- ARRAY PLATES
@@ -163,8 +163,8 @@ Meteor.methods({
         // plates.forEach((el, index, arrayPlate) => {
         Meteor.call('Servosa_getData', plates, dateTimeStart5, dateTimeEnd5, (error, report) => {
             if (!error) {
-                console.log(report);
-                console.log('----------End Report----------');
+                //console.log(report);
+                //console.log('----------End Report----------');
                 if (report.length > 0) {
                     report.forEach((el, index, array) => {
                         if (array[index + 1]) {
@@ -209,9 +209,12 @@ Meteor.methods({
                             }
                         }
                     })
+                    console.log(RowArray);
+                    stSRVS.emit('Rows', userID, RowArray)
+                }else{
+                    stSRVS.emit('NoData', userID, 0)
+                    console.log(`No hay data`)
                 }
-                console.log(RowArray);
-
 
             }
         });

@@ -152,8 +152,8 @@ export default {
             // console.log('ArrayPlates:',plates.plates)
       }
     });
-    /*
-    stXS.on("Rows", (userID, data) => {
+    
+    stSRVS.on("Rows", (userID, data) => {
        if (userID == this.userID) {
         this.buttonGRDisabled = false;
         this.progressState = 0;
@@ -169,16 +169,16 @@ export default {
         }
       }
     });
-    stXS.on("NoData", (userID, plate) => {
+    stSRVS.on("NoData", (userID, plate) => {
       if (userID == this.userID) {
         this.buttonGRDisabled = false;
         this.progressState = 0;
         // console.log(value);
         this.snackbar = true;
-        this.snackbarText = `No hay data para ${plate}`;
+        this.snackbarText = `No hay data`;
       }
     });
-    */
+    
   },
   data: () => ({
     plates: [],
