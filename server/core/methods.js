@@ -88,15 +88,33 @@ Meteor.methods({
                 console.log('----------End Report----------');
                 if (report.length > 0) {
                     report.forEach((el, index, array) => {
-                        if (array[index+1]) {
-                            console.log(index, el);
-                            
-                        }else{
-                            console.log('else',index, el);
-
+                        if (array[index + 1]) {
+                            if (array[index + 1].plate == el.plate) {
+                                RowArray.push({
+                                    Placa: el.plate,
+                                    Fatiga: el.total,
+                                    Distraccion: array[index+1].total
+                                })
+                            }else{
+                                if(el.eventType == 305){
+                                    RowArray.push({
+                                        Placa: el.plate,
+                                        Fatiga: el.total,
+                                        Distraccion: 0
+                                    })
+                                }else{
+                                    RowArray.push({
+                                        Placa: el.plate,
+                                        Fatiga: 0,
+                                        Distraccion: el.total
+                                    })
+                                }
+                            }
                         }
                     })
                 }
+                console.log(RowArray);
+                
 
             }
         });
