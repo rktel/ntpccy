@@ -81,15 +81,30 @@ Meteor.methods({
         plates = plates.sort()
         console.log('placas: ', plates)
 
-        // plates.forEach((el, index, arrayPlate) => {
-        Meteor.call('Servosa_getData', plates, dateTimeStart5, dateTimeEnd5, (error, report) => {
-            if (!error) {
-                console.log(report);
-            }
-        });
-        //})
+        plates.forEach((el, index, arrayPlate) => {
+            Meteor.call('Servosa_getData', el, dateTimeStart5, dateTimeEnd5, (error, report) => {
+                if (!error) {
+                    console.log(report);
+                }
+            });
+        })
     },
 
+    async  Servosa_getData(el, dateTimeStart, dateTimeEnd) {
+        const report = await Servosa.rawCollection().
+            aggregate([
+                { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [81, 82] } } },
+                { $unwind: '$events' },
+                //   { $group: { _id: {ev:'$events.original', plate: '$events.vehicle'}, total: { $sum: 1 } }},
+               // { $group: { _id: { plate: '$events.vehicle', ev: '$events.original' }, total: { $sum: 1 } } },
+                // { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }} },
+                //   { $project: { _id: 0, plate: '$_id.plate', event: '$_id.event', created: '$_id.created' } },
+              //  { $sort: { '_id.plate': 1, '_id.ev': 1 } },
+            ]).toArray()
+        return report
+
+    }
+    /*
     async  Servosa_getData(plates, dateTimeStart, dateTimeEnd) {
         const report = await Servosa.rawCollection().
             aggregate([
@@ -97,13 +112,13 @@ Meteor.methods({
                 { $unwind: '$events' },
                 //   { $group: { _id: {ev:'$events.original', plate: '$events.vehicle'}, total: { $sum: 1 } }},
                 { $group: { _id: { plate: '$events.vehicle', ev: '$events.original' }, total: { $sum: 1 } } },
-                 // { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }} },
+                // { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }} },
                 //   { $project: { _id: 0, plate: '$_id.plate', event: '$_id.event', created: '$_id.created' } },
-                 { $sort: { '_id.plate': 1 } },
+                { $sort: { '_id.plate': 1, '_id.ev': 1 } },
             ]).toArray()
         return report
 
-    }
+    }*/
 });
 //-------------------- EXSA
 
