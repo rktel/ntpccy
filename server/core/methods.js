@@ -85,6 +85,12 @@ Meteor.methods({
         Meteor.call('Servosa_getData', plates, dateTimeStart5, dateTimeEnd5, (error, report) => {
             if (!error) {
                 console.log(report);
+                plates.forEach((plate, index, array) => {
+
+                    RowArray = report.filter(el => el.plate = plate)
+                })
+
+                console.log(RowArray)
             }
         });
 
