@@ -103,7 +103,7 @@ Meteor.methods({
                 { $project: { _id: 0, plate: '$_id.plate', eventType: '$_id.eventType', total: '$total' } },
                 // { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }} },
                 //   { $project: { _id: 0, plate: '$_id.plate', event: '$_id.event', created: '$_id.created' } },
-                { $sort: { 'eventType': 1 } },
+                { $sort: { 'plate': 1, 'eventType': 1 } },
             ]).toArray()
         return report
 
