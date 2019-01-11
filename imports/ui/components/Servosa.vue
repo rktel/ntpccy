@@ -130,8 +130,9 @@
 
 <script>
 // Date Time Format for Query: 2018-11-26T18:02:29.000Z
-const MAX_DAYS = 10;
-const MAX_PLATES = 5;
+const MAX_DAYS = 2;
+const MAX_PLATES = 52;
+
 import { stSRVS } from "../../api/streamers";
 import { json2excel } from "js2excel";
 
