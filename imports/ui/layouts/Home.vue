@@ -51,6 +51,7 @@
           <v-flex shrink xs12 sm8 md6>
             <antapaccay v-if="userProfile.api == 'Antapaccay'"></antapaccay>
             <exsa v-if="userProfile.api == 'Exsa'"></exsa>
+            <exsa-km v-if="userProfile.api == 'ExsaKm'"></exsa-km>
             <induamerica v-if="userProfile.api == 'Induamerica'"></induamerica>
             <servosa v-if="userProfile.api == 'Servosa'"></servosa>
             <home-users></home-users>
@@ -74,6 +75,7 @@ import Antapaccay from "../components/Antapaccay.vue";
 import Exsa from "../components/Exsa.vue";
 import Induamerica from "../components/Induamerica.vue";
 import Servosa from "../components/Servosa.vue";
+import ExsaKm from "../components/ExsaKm.vue";
 export default {
   name: "Home",
   components: {
@@ -81,7 +83,8 @@ export default {
     Antapaccay,
     Exsa,
     Induamerica,
-    Servosa
+    Servosa,
+    ExsaKm
   },
   created() {
     Meteor.call("getPersonal", (error, persona) => {
