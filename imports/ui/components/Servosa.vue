@@ -4,7 +4,7 @@
       <v-combobox
         v-model="selectPlates"
         :items="plates"
-        label="Seleccione unidades [5 maximo]"
+        label="Seleccione unidades"
         multiple
         small-chips
         hide-selected
