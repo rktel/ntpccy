@@ -10,7 +10,7 @@
         hide-selected
         solo
       ></v-combobox>
-      <v-subheader class="pl-0">Limite de Velocidad</v-subheader>
+
       <v-slider v-model="kmValue" thumb-label="always" max="120"></v-slider>
     </template>
     <template>
