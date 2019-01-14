@@ -80,16 +80,11 @@ Meteor.methods({
         plates = plates.sort()
         console.log('placas: ', plates)
         let RowArray = []
+        let countAux = 0;
         Meteor.call('ExsaKm_getData', plates, dateTimeStart5, dateTimeEnd5, kmValue, function (error, report) {
             if (!error) {
-                console.log('report:', report);
-                console.log('........................');
                 if (report.length > 0) {
-                    report.forEach((el, index, array) => {
-                        if (array[index + 1]) {
-                            console.log(el)
-                        }
-                    })
+                    console.log('report:', report);
                 }
             }
         });
@@ -102,8 +97,12 @@ Meteor.methods({
                 { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
                 { $match: { 'events.location.speed': { $gte: kmValue } } },
-                { $group: { _id: { plate: '$events.vehicle', kmValue: '$events.location.speed' }, total: { $sum: 1 } } },
-                { $project: { _id: 0, plate: '$_id.plate', kmValue: '$_id.kmValue', total: '$total' } },
+                { $group: { _id: { plate: '$events.vehicle' }, kmValue: '$events.location.speed', total: { $sum: 1 } } },
+                { $project: { _id: 0, plate: '$_id.plate', total: '$total' } },
+                /*
+                                { $group: { _id: { plate: '$events.vehicle', kmValue: '$events.location.speed' }, total: { $sum: 1 } } },
+                                { $project: { _id: 0, plate: '$_id.plate', kmValue: '$_id.kmValue', total: '$total' } },
+                */
                 { $sort: { 'plate': 1 } }
 
             ]).toArray()
