@@ -67,12 +67,14 @@ Meteor.methods({
 //--------------------EXSAKM
 
 Meteor.methods({ 
-    ExsaKm_queryEvents: function(userID, plates, dateTimeStart, dateTimeEnd) { 
-        console.log('........................SERVOSA...............................')
+    ExsaKm_queryEvents: function(userID, plates, dateTimeStart, dateTimeEnd,kmValue) { 
+        console.log('........................EXSAKM...............................')
         // console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
         console.log('Usuario: ', Meteor.user().username)
         console.log('Fecha y Tiempo de Inicio: ', dateTimeStart)
         console.log('Fecha y Tiempo de Fin: ', dateTimeEnd)
+        console.log('Limite de Velocidad', kmValue);
+        
         const dateTimeStart5 = addHours(dateTimeStart, 5)
         const dateTimeEnd5 = addHours(dateTimeEnd, 5)
         plates = plates.sort()

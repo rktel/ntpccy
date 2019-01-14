@@ -12,6 +12,9 @@
       ></v-combobox>
     </template>
     <template>
+      <v-slider v-model="kmValue" thumb-label="always" max="120"></v-slider>
+    </template>
+    <template>
       <section>
         <v-menu
           ref="menuDS"
@@ -187,7 +190,8 @@ export default {
     snackbar: false,
     timeout: 1500,
     snackbarText: null,
-    userID: new Date().getTime()
+    userID: new Date().getTime(),
+    kmValue: 0
   }),
   methods: {
     genReport() {
@@ -199,7 +203,8 @@ export default {
         dateStart,
         dateEnd,
         timeStart,
-        timeEnd
+        timeEnd,
+        kmValue
       } = this;
       const dateTimeStart = dateStart + T + timeStart + Z;
       const dateTimeEnd = dateEnd + T + timeEnd + Z;
@@ -211,6 +216,7 @@ export default {
         timeStart &&
         dateEnd &&
         timeEnd &&
+        kmValue &&
         selectPlates.length > 0
       ) {
         if (selectPlates.length > 0 && selectPlates.length <= MAX_PLATES) {
@@ -227,7 +233,8 @@ export default {
               userID,
               selectPlates,
               dateTimeStart,
-              dateTimeEnd
+              dateTimeEnd,
+              kmValue
             );
           } else {
             console.log(
