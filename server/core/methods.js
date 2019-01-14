@@ -83,9 +83,7 @@ Meteor.methods({
         let countAux = 0;
         Meteor.call('ExsaKm_getData', plates, dateTimeStart5, dateTimeEnd5, kmValue, function (error, report) {
             if (!error) {
-                if (report.length > 0) {
-                    console.log('report:', report);
-                }
+                console.log('report:', report);
             }
         });
 
