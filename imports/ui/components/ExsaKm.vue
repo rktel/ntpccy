@@ -139,15 +139,14 @@ import { json2excel } from "js2excel";
 export default {
   name: "ExsaKm",
   mounted() {
-
     Meteor.call("ArrayPlates_getPlates_Exsa", (error, plates) => {
       if (!error) {
-            this.plates = plates.plates;
+        this.plates = plates.plates;
       }
     });
-    
+
     stXSKM.on("Rows", (userID, data) => {
-       if (userID == this.userID) {
+      if (userID == this.userID) {
         this.buttonGRDisabled = false;
         this.progressState = 0;
 
@@ -171,7 +170,6 @@ export default {
         this.snackbarText = `No hay data`;
       }
     });
-    
   },
   data: () => ({
     plates: [],
@@ -225,14 +223,11 @@ export default {
             this.buttonGRDisabled = true;
             this.progressState = 1;
             Meteor.call(
-              "ExsaKm_queryEvents"
-              /*
-              ,
+              "ExsaKm_queryEvents",
               userID,
               selectPlates,
               dateTimeStart,
               dateTimeEnd
-              */
             );
           } else {
             console.log(
