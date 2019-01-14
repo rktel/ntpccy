@@ -66,22 +66,43 @@ Meteor.methods({
 
 //--------------------EXSAKM
 
-Meteor.methods({ 
-    ExsaKm_queryEvents: function(userID, plates, dateTimeStart, dateTimeEnd,kmValue) { 
+Meteor.methods({
+    ExsaKm_queryEvents: function (userID, plates, dateTimeStart, dateTimeEnd, kmValue) {
         console.log('........................EXSAKM...............................')
         // console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
         console.log('Usuario: ', Meteor.user().username)
         console.log('Fecha y Tiempo de Inicio: ', dateTimeStart)
         console.log('Fecha y Tiempo de Fin: ', dateTimeEnd)
         console.log('Limite de Velocidad', kmValue);
-        
+
         const dateTimeStart5 = addHours(dateTimeStart, 5)
         const dateTimeEnd5 = addHours(dateTimeEnd, 5)
         plates = plates.sort()
         console.log('placas: ', plates)
         let RowArray = []
-         
-    } 
+        Meteor.call('ExsaKm_getData', plates, dateTimeStart5, dateTimeEnd5, kmValue, function(error, report) { 
+            if (!error) { 
+                console.log('report:', report:); 
+            } 
+         });
+
+    },
+    async  ExsaKm_getData(plates, dateTimeStart, dateTimeEnd, kmValue) {
+        const report = await Servosa.rawCollection().
+            aggregate([
+                // { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [ 81,82] } } },
+                { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
+                { $unwind: '$events' },
+                { $match: { 'events.location.speed': kmValue } },
+                { $group: { _id: { plate: '$events.vehicle', kmValue: '$events.location.speed' }, total: { $sum: 1 } } },
+                { $project: { _id: 0, plate: '$_id.plate', kmValue: '$_id.kmValue', total: '$total' } },
+                // { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }} },
+                //   { $project: { _id: 0, plate: '$_id.plate', event: '$_id.event', created: '$_id.created' } },
+                { $sort: { 'plate': 1 } },
+            ]).toArray()
+        return report
+
+    }
 });
 
 //-------------------- SERVOSA
