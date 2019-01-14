@@ -11,7 +11,7 @@
         solo
       ></v-combobox>
 
-      <v-slider v-model="kmValue" thumb-label="always" max="120"></v-slider>
+      <v-slider v-model="kmValue" thumb-label="always" max="120" label="Limite de Velocidad"></v-slider>
     </template>
     <template>
       <section>
