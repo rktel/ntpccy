@@ -63,6 +63,16 @@ Meteor.methods({
     },
 });
 
+
+//--------------------EXSAKM
+
+Meteor.methods({ 
+    ExsaKm_queryEvents: function() { 
+         console.log('ExsaKm_queryEvents');
+         
+    } 
+});
+
 //-------------------- SERVOSA
 /*
 const PLACA = 'PLACA'
