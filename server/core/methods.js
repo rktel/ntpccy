@@ -73,7 +73,7 @@ Meteor.methods({
         console.log('Usuario: ', Meteor.user().username)
         console.log('Fecha y Tiempo de Inicio: ', dateTimeStart)
         console.log('Fecha y Tiempo de Fin: ', dateTimeEnd)
-        console.log('Limite de Velocidad', kmValue);
+        console.log('Limite de Velocidad: ', kmValue);
 
         const dateTimeStart5 = addHours(dateTimeStart, 5)
         const dateTimeEnd5 = addHours(dateTimeEnd, 5)
@@ -90,15 +90,16 @@ Meteor.methods({
     async  ExsaKm_getData(plates, dateTimeStart, dateTimeEnd, kmValue) {
         const report = await Servosa.rawCollection().
             aggregate([
-                // { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [ 81,82] } } },
+               
                 { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
+                /*
                 { $match: { 'events.location.speed': { $gte: kmValue } } },
                 { $group: { _id: { plate: '$events.vehicle', kmValue: '$events.location.speed' }, total: { $sum: 1 } } },
                 { $project: { _id: 0, plate: '$_id.plate', kmValue: '$_id.kmValue', total: '$total' } },
-                // { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }} },
-                //   { $project: { _id: 0, plate: '$_id.plate', event: '$_id.event', created: '$_id.created' } },
-                { $sort: { 'plate': 1 } },
+
+                { $sort: { 'plate': 1 } }
+                */
             ]).toArray()
         return report
 
