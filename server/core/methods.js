@@ -88,7 +88,7 @@ Meteor.methods({
 
     },
     async  ExsaKm_getData(plates, dateTimeStart, dateTimeEnd, kmValue) {
-        const report = await Servosa.rawCollection().
+        const report = await Exsa.rawCollection().
             aggregate([
                
                 { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
