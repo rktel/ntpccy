@@ -84,6 +84,9 @@ Meteor.methods({
             if (!error) {
                 if (report.length > 0) {
                     console.log('report:', report);
+                    report.forEach((el, index, array) => {
+                        el['LIMITE DE VELOCIDAD [Km/h]'] =  kmValue
+                    })
                     stXSKM.emit('Rows', userID, report)
 
                 } else {
@@ -102,7 +105,7 @@ Meteor.methods({
                 { $unwind: '$events' },
                 { $match: { 'events.location.speed': { $gt: kmValue } } },
                 { $group: { _id: { plate: '$events.vehicle' }, total: { $sum: 1 } } },
-                { $project: { _id: 0, 'PLACA': '$_id.plate', 'LIMITE DE VELOCIDAD [Km/h]': kmValue, 'N° DE EXCESOS DE VELOCIDAD': '$total' } },
+                { $project: { _id: 0, 'PLACA': '$_id.plate', 'N° DE EXCESOS DE VELOCIDAD': '$total' } },
                 /*
                                 { $group: { _id: { plate: '$events.vehicle', kmValue: '$events.location.speed' }, total: { $sum: 1 } } },
                                 { $project: { _id: 0, plate: '$_id.plate', kmValue: '$_id.kmValue', total: '$total' } },
@@ -584,7 +587,7 @@ function Exsa_getHours(dateTimeMax, dateTimeMin) {
 
 //-------------------- EMAIL
 const FROM_EMAIL = "noreplay_trackandtrace@securitasperu.com";
-const URL_TRACK_AND_TRACE = "http://190.81.123.82:2020/login"
+const URL_TRACK_AND_TRACE = "http://trackandtrace.securitasperu.com:2020/login"
 Meteor.methods({
     sendEmail(to, from, subject, text) {
         this.unblock();
