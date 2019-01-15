@@ -1,7 +1,7 @@
 import { Personal, ArrayPlates } from '../../imports/api/collections'
 import { Antapaccay, Exsa, Servosa } from '../../imports/api/collections'
 
-import { stNTPCCY, stXS, stSRVS } from "../../imports/api/streamers";
+import { stNTPCCY, stXS, stSRVS, stXSKM } from "../../imports/api/streamers";
 
 
 //-------------------- ARRAY PLATES
@@ -79,11 +79,17 @@ Meteor.methods({
         const dateTimeEnd5 = addHours(dateTimeEnd, 5)
         plates = plates.sort()
         console.log('placas: ', plates)
-        let RowArray = []
-        let countAux = 0;
+        
         Meteor.call('ExsaKm_getData', plates, dateTimeStart5, dateTimeEnd5, kmValue, function (error, report) {
             if (!error) {
-                console.log('report:', report);
+                if (report.length > 0) {
+                    console.log('report:', report);
+                    stXSKM.emit('Rows', userID, report)
+
+                } else {
+                    stXSKM.emit('NoData', userID, 0)
+                    console.log(`No hay data`)
+                }
             }
         });
 
@@ -96,12 +102,12 @@ Meteor.methods({
                 { $unwind: '$events' },
                 { $match: { 'events.location.speed': { $gt: kmValue } } },
                 { $group: { _id: { plate: '$events.vehicle' }, total: { $sum: 1 } } },
-                { $project: { _id: 0, plate: '$_id.plate', total: '$total' } },
+                { $project: { _id: 0, 'PLACA': '$_id.plate', 'TOTAL DE EXCESOS DE VELOCIDAD': '$total' } },
                 /*
                                 { $group: { _id: { plate: '$events.vehicle', kmValue: '$events.location.speed' }, total: { $sum: 1 } } },
                                 { $project: { _id: 0, plate: '$_id.plate', kmValue: '$_id.kmValue', total: '$total' } },
                 */
-                { $sort: { 'plate': 1 } }
+                { $sort: { 'PLACA': 1 } }
 
             ]).toArray()
         return report
