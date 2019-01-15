@@ -79,7 +79,7 @@ Meteor.methods({
         const dateTimeEnd5 = addHours(dateTimeEnd, 5)
         plates = plates.sort()
         console.log('placas: ', plates)
-        
+
         Meteor.call('ExsaKm_getData', plates, dateTimeStart5, dateTimeEnd5, kmValue, function (error, report) {
             if (!error) {
                 if (report.length > 0) {
@@ -102,7 +102,7 @@ Meteor.methods({
                 { $unwind: '$events' },
                 { $match: { 'events.location.speed': { $gt: kmValue } } },
                 { $group: { _id: { plate: '$events.vehicle' }, total: { $sum: 1 } } },
-                { $project: { _id: 0, 'PLACA': '$_id.plate', 'TOTAL DE EXCESOS DE VELOCIDAD': '$total' } },
+                { $project: { _id: 0, 'PLACA': '$_id.plate', 'LIMITE DE VELOCIDAD [Km/h]': kmValue, 'N° DE EXCESOS DE VELOCIDAD': '$total' } },
                 /*
                                 { $group: { _id: { plate: '$events.vehicle', kmValue: '$events.location.speed' }, total: { $sum: 1 } } },
                                 { $project: { _id: 0, plate: '$_id.plate', kmValue: '$_id.kmValue', total: '$total' } },
