@@ -84,10 +84,11 @@ Meteor.methods({
             if (!error) {
                 if (report.length > 0) {
                     console.log('report:', report);
+                    /*
                     report.forEach((el, index, array) => {
                         el['LIMITE DE VELOCIDAD [Km/h]'] =  kmValue
-                    })
-                    stXSKM.emit('Rows', userID, report)
+                    })*/
+                   // stXSKM.emit('Rows', userID, report)
 
                 } else {
                     stXSKM.emit('NoData', userID, 0)
@@ -104,13 +105,13 @@ Meteor.methods({
                 { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
                 { $match: { 'events.location.speed': { $gt: kmValue } } },
-                { $group: { _id: { plate: '$events.vehicle' }, total: { $sum: 1 } } },
-                { $project: { _id: 0, 'PLACA': '$_id.plate', 'N° DE EXCESOS DE VELOCIDAD': '$total' } },
+               // { $group: { _id: { plate: '$events.vehicle' }, total: { $sum: 1 } } },
+               // { $project: { _id: 0, 'PLACA': '$_id.plate', 'N° DE EXCESOS DE VELOCIDAD': '$total' } },
                 /*
                                 { $group: { _id: { plate: '$events.vehicle', kmValue: '$events.location.speed' }, total: { $sum: 1 } } },
                                 { $project: { _id: 0, plate: '$_id.plate', kmValue: '$_id.kmValue', total: '$total' } },
                 */
-                { $sort: { 'PLACA': 1 } }
+             //   { $sort: { 'PLACA': 1 } }
 
             ]).toArray()
         return report
