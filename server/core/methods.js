@@ -105,7 +105,7 @@ Meteor.methods({
                 { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
                 { $match: { 'events.location.speed': { $gt: kmValue } } },
-                { $project: { _id: 0, 'PLACA': 'events.vehicle', 'VELOCIDAD': '$events.location.speed' } },
+                { $project: { _id: 0, 'PLACA': '$events.vehicle', 'VELOCIDAD': '$events.location.speed' } },
                 /*
                 { $group: { _id: { plate: '$events.vehicle' }, total: { $sum: 1 } } },
                 { $project: { _id: 0, 'PLACA': '$_id.plate', 'N° DE EXCESOS DE VELOCIDAD': '$total' } },
