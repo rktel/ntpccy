@@ -79,15 +79,26 @@ Meteor.methods({
         const dateTimeEnd5 = addHours(dateTimeEnd, 5)
         plates = plates.sort()
         console.log('placas: ', plates)
-
+        let RowArray = []
         Meteor.call('ExsaKm_getData', plates, dateTimeStart5, dateTimeEnd5, kmValue, function (error, report) {
             if (!error) {
                 if (report.length > 0) {
                     console.log('report:', report);
-                    /*
+
+
                     report.forEach((el, index, array) => {
-                        el['LIMITE DE VELOCIDAD [Km/h]'] =  kmValue
-                    })*/
+                        RowArray.push({
+                            'PLACA': el['PLACA'],
+                            'PERSONA': el['PERSONA'],
+                            'FECHA': addHours(el['FECHA'], -5),
+                            'DIRECCION': el['DIRECCION'],
+                            'VELOCIDAD(Km/h)': Math.round(parseFloat(el['VELOCIDAD'])),
+                            'LIMITE(Km/h)': parseInt(kmValue),
+                            'EXCESO(Km/h)': Math.round(parseFloat(el['VELOCIDAD'])) - parseInt(kmValue)
+                        })
+                    })
+                    console.log(RowArray);
+                    
                     // stXSKM.emit('Rows', userID, report)
 
                 } else {
