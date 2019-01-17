@@ -64,7 +64,7 @@ Meteor.methods({
     //Induamerica
     ArrayPlates_getPlates_Induamerica: function () {
         console.log(ArrayPlates.findOne({ name: 'Induamerica' }));
-        
+
         return ArrayPlates.findOne({ name: 'Induamerica' })
     },
     ArrayPlates_setPlates_Induamerica: function () {
@@ -77,7 +77,7 @@ Meteor.methods({
     ArrayPlates_updatePlates_Induamerica: function () {
         Meteor.call("Induamerica_queryPlates", (error, plates) => {
             if (!error) {
-                ArrayPlates.replaceOne({ name: 'Induamerica', plates: plates.sort() })
+                ArrayPlates.replaceOne({ name: 'Induamerica', plates: plates.sort() }, { upsert: true })
             }
         });
     },
