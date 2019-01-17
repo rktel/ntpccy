@@ -90,7 +90,7 @@ Meteor.methods({
                         RowArray.push({
                             'PLACA': el['PLACA'],
                             'PERSONA': el['PERSONA'],
-                            'FECHA': addHours(el['FECHA'], -5),
+                            'FECHA': Exsa_formatDateTime(addHours(el['FECHA'], -5)),
                             'DIRECCION': el['DIRECCION'],
                             'VELOCIDAD(Km/h)': Math.round(parseFloat(el['VELOCIDAD'])),
                             'LIMITE(Km/h)': parseInt(kmValue),
