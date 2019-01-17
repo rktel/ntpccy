@@ -82,11 +82,16 @@ Meteor.methods({
         });
     },
 
+
 });
 
 //--------------------Induamerica
 
 Meteor.methods({
+    async Induamerica_queryPlates() {
+        const plates = await Induamerica.rawCollection().distinct('events.vehicle')
+        return plates
+    },
     Induamerica_queryEvents: function (userID, plates, dateTimeStart, dateTimeEnd, kmValue) {
         console.log('........................Induamerica...............................')
         // console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
