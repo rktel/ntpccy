@@ -1,7 +1,7 @@
 import { Personal, ArrayPlates } from '../../imports/api/collections'
-import { Antapaccay, Exsa, Servosa } from '../../imports/api/collections'
+import { Antapaccay, Exsa, Servosa, Induamerica } from '../../imports/api/collections'
 
-import { stNTPCCY, stXS, stSRVS, stXSKM } from "../../imports/api/streamers";
+import { stNTPCCY, stXS, stSRVS, stXSKM, stNDMRC } from "../../imports/api/streamers";
 
 
 //-------------------- ARRAY PLATES
@@ -61,8 +61,96 @@ Meteor.methods({
             }
         });
     },
+    //Induamerica
+    ArrayPlates_getPlates_Induamerica: function () {
+        return ArrayPlates.findOne({ name: 'Induamerica' })
+    },
+    ArrayPlates_setPlates_Induamerica: function () {
+        Meteor.call("Induamerica_queryPlates", (error, plates) => {
+            if (!error) {
+                ArrayPlates.insert({ name: 'Induamerica', plates: plates.sort() })
+            }
+        });
+    },
+    ArrayPlates_updatePlates_Induamerica: function () {
+        Meteor.call("Induamerica_queryPlates", (error, plates) => {
+            if (!error) {
+                ArrayPlates.replaceOne({ name: 'Induamerica', plates: plates.sort() })
+            }
+        });
+    },
+
 });
 
+//--------------------Induamerica
+
+Meteor.methods({
+    Induamerica_queryEvents: function (userID, plates, dateTimeStart, dateTimeEnd, kmValue) {
+        console.log('........................Induamerica...............................')
+        // console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
+        console.log('Usuario: ', Meteor.user().username)
+        console.log('Fecha y Tiempo de Inicio: ', dateTimeStart)
+        console.log('Fecha y Tiempo de Fin: ', dateTimeEnd)
+        console.log('Limite de Velocidad: ', kmValue);
+
+        const dateTimeStart5 = addHours(dateTimeStart, 5)
+        const dateTimeEnd5 = addHours(dateTimeEnd, 5)
+        plates = plates.sort()
+        console.log('placas: ', plates)
+        let RowArray = []
+        Meteor.call('Induamerica_getData', plates, dateTimeStart5, dateTimeEnd5, kmValue, function (error, report) {
+            if (!error) {
+                if (report.length > 0) {
+                    // console.log('report:', report);
+
+
+                    report.forEach((el, index, array) => {
+                        RowArray.push({
+                            'PLACA': el['PLACA'],
+                            'PERSONA': el['PERSONA'],
+                            'FECHA': Exsa_formatDateTime(addHours(el['FECHA'], -5)),
+                            'DIRECCION': el['DIRECCION'],
+                            'VELOCIDAD(Km/h)': Math.round(parseFloat(el['VELOCIDAD'])),
+                            'LIMITE(Km/h)': parseInt(kmValue),
+                            'EXCESO(Km/h)': Math.round(parseFloat(el['VELOCIDAD'])) - parseInt(kmValue)
+                        })
+                    })
+                    console.log(RowArray);
+
+                    stNDMRC.emit('Rows', userID, RowArray)
+
+                } else {
+                    stNDMRC.emit('NoData', userID, 0)
+                    console.log(`No hay data`)
+                }
+            }
+        });
+
+    },
+    async  Induamerica_getData(plates, dateTimeStart, dateTimeEnd, kmValue) {
+        const report = await Induamerica.rawCollection().
+            aggregate([
+
+                { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
+                { $unwind: '$events' },
+                { $match: { 'events.location.speed': { $gt: kmValue } } },
+                { $group: { _id: { plate: '$events.vehicle', created: '$events.created', speed: '$events.location.speed', person: '$events.person', address: '$events.location.address' } } },
+                { $project: { _id: 0, 'PLACA': '$_id.plate', 'PERSONA': '$_id.person', 'FECHA': '$_id.created', 'DIRECCION': '$_id.address', 'VELOCIDAD': '$_id.speed' } },
+                /*
+                { $group: { _id: { plate: '$events.vehicle' }, total: { $sum: 1 } } },
+                { $project: { _id: 0, 'PLACA': '$_id.plate', 'N° DE EXCESOS DE VELOCIDAD': '$total' } },
+                */
+                /*
+                                { $group: { _id: { plate: '$events.vehicle', kmValue: '$events.location.speed' }, total: { $sum: 1 } } },
+                                { $project: { _id: 0, plate: '$_id.plate', kmValue: '$_id.kmValue', total: '$total' } },
+                */
+                { $sort: { 'PLACA': 1, 'FECHA': 1 } }
+
+            ]).toArray()
+        return report
+
+    }
+});
 
 //--------------------EXSAKM
 
@@ -98,7 +186,7 @@ Meteor.methods({
                         })
                     })
                     console.log(RowArray);
-                    
+
                     stXSKM.emit('Rows', userID, RowArray)
 
                 } else {
