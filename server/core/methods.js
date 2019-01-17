@@ -21,7 +21,7 @@ Meteor.methods({
     ArrayPlates_updatePlates_Servosa: function () {
         Meteor.call("Servosa_queryPlates", (error, plates) => {
             if (!error) {
-                ArrayPlates.replaceOne({ name: 'Servosa', plates: plates.sort() })
+                ArrayPlates.replaceOne({ name: 'Servosa', plates: plates.sort() }, { upsert: true })
             }
         });
     },
@@ -39,7 +39,7 @@ Meteor.methods({
     ArrayPlates_updatePlates_Antapaccay: function () {
         Meteor.call("Antapaccay_queryPlates", (error, plates) => {
             if (!error) {
-                ArrayPlates.replaceOne({ name: 'Antapaccay', plates: plates.sort() })
+                ArrayPlates.replaceOne({ name: 'Antapaccay', plates: plates.sort() }, { upsert: true })
             }
         });
     },
@@ -57,22 +57,19 @@ Meteor.methods({
     ArrayPlates_updatePlates_Exsa: function () {
         Meteor.call("Exsa_queryPlates", (error, plates) => {
             if (!error) {
-                ArrayPlates.replaceOne({ name: 'Exsa', plates: plates.sort() })
+                ArrayPlates.replaceOne({ name: 'Exsa', plates: plates.sort() }, { upsert: true })
             }
         });
     },
     //Induamerica
     ArrayPlates_getPlates_Induamerica: function () {
-        console.log(ArrayPlates.findOne({ name: 'Induamerica' }));
-
         return ArrayPlates.findOne({ name: 'Induamerica' })
     },
     ArrayPlates_setPlates_Induamerica: function () {
         Meteor.call("Induamerica_queryPlates", (error, plates) => {
-            console.log(plates);
-            
+        
             if (!error) {
-                ArrayPlates.insert({ name: 'Induamerica', plates: plates.sort() }, { upsert: true })
+                ArrayPlates.insert({ name: 'Induamerica', plates: plates.sort() })
             }
         })
 
@@ -80,7 +77,7 @@ Meteor.methods({
     ArrayPlates_updatePlates_Induamerica: function () {
         Meteor.call("Induamerica_queryPlates", (error, plates) => {
             if (!error) {
-                ArrayPlates.replaceOne({ name: 'Induamerica', plates: plates.sort() })
+                ArrayPlates.replaceOne({ name: 'Induamerica', plates: plates.sort() }, { upsert: true })
             }
         });
     },
@@ -93,8 +90,6 @@ Meteor.methods({
 Meteor.methods({
     async Induamerica_queryPlates() {
         const plates = await Induamerica.rawCollection().distinct('events.vehicle')
-        console.log(plates);
-        
         return plates
     },
     Induamerica_queryEvents: function (userID, plates, dateTimeStart, dateTimeEnd, kmValue) {
