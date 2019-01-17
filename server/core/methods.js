@@ -63,6 +63,8 @@ Meteor.methods({
     },
     //Induamerica
     ArrayPlates_getPlates_Induamerica: function () {
+        console.log(ArrayPlates.findOne({ name: 'Induamerica' }));
+        
         return ArrayPlates.findOne({ name: 'Induamerica' })
     },
     ArrayPlates_setPlates_Induamerica: function () {
