@@ -228,7 +228,7 @@ export default {
             this.buttonGRDisabled = true;
             this.progressState = 1;
             Meteor.call(
-              "ExsaKm_queryEvents",
+              "Induamerica_queryEvents",
               userID,
               selectPlates,
               dateTimeStart,
