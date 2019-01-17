@@ -49,6 +49,7 @@ Meteor.startup(() => {
     Meteor.call('ArrayPlates_getPlates_Induamerica', function (error, plates) {
         if (!error) {
             if (!plates) {
+                console.log('!plates');
                 Meteor.call('ArrayPlates_setPlates_Induamerica')
             }
         }
