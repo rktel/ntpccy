@@ -93,6 +93,8 @@ Meteor.methods({
 Meteor.methods({
     async Induamerica_queryPlates() {
         const plates = await Induamerica.rawCollection().distinct('events.vehicle')
+        console.log(plates);
+        
         return plates
     },
     Induamerica_queryEvents: function (userID, plates, dateTimeStart, dateTimeEnd, kmValue) {
