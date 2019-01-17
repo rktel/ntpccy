@@ -74,6 +74,7 @@ Meteor.methods({
             if (!error) {
                 ArrayPlates.insert({ name: 'Induamerica', plates: plates.sort() }, { upsert: true })
             }
+        })
 
     },
     ArrayPlates_updatePlates_Induamerica: function () {
