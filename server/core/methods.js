@@ -70,14 +70,14 @@ Meteor.methods({
     ArrayPlates_setPlates_Induamerica: function () {
         Meteor.call("Induamerica_queryPlates", (error, plates) => {
             if (!error) {
-                ArrayPlates.insert({ name: 'Induamerica', plates: plates.sort() })
+                ArrayPlates.insert({ name: 'Induamerica', plates: plates.sort() }, { upsert: true })
             }
         });
     },
     ArrayPlates_updatePlates_Induamerica: function () {
         Meteor.call("Induamerica_queryPlates", (error, plates) => {
             if (!error) {
-                ArrayPlates.replaceOne({ name: 'Induamerica', plates: plates.sort() }, { upsert: true })
+                ArrayPlates.replaceOne({ name: 'Induamerica', plates: plates.sort() })
             }
         });
     },
