@@ -83,7 +83,7 @@ Meteor.methods({
         Meteor.call('ExsaKm_getData', plates, dateTimeStart5, dateTimeEnd5, kmValue, function (error, report) {
             if (!error) {
                 if (report.length > 0) {
-                    console.log('report:', report);
+                    // console.log('report:', report);
 
 
                     report.forEach((el, index, array) => {
@@ -99,7 +99,7 @@ Meteor.methods({
                     })
                     console.log(RowArray);
                     
-                    // stXSKM.emit('Rows', userID, report)
+                    stXSKM.emit('Rows', userID, RowArray)
 
                 } else {
                     stXSKM.emit('NoData', userID, 0)
