@@ -351,7 +351,7 @@ Meteor.methods({
                                     'TRAMO': '   '
                                 })
                             } else {
-                                if (el.plate != array[index - 1].plate) {
+                                if ( el.plate && array[index - 1].plate &&  el.plate != array[index - 1].plate) {
                                     if (el.eventType == 305) {
                                         RowArray.push({
                                             'MES': Servosa_getMonth(dateTimeStart5),
