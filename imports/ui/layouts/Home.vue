@@ -54,6 +54,7 @@
             <exsa-km v-if="userProfile.api == 'ExsaKm'"></exsa-km>
             <induamerica v-if="userProfile.api == 'Induamerica'"></induamerica>
             <servosa v-if="userProfile.api == 'Servosa'"></servosa>
+            <dinet v-if="userProfile.api == 'Dinet'"></dinet>
             <home-users></home-users>
           </v-flex>
         </v-layout>
@@ -76,6 +77,8 @@ import Exsa from "../components/Exsa.vue";
 import Induamerica from "../components/Induamerica.vue";
 import Servosa from "../components/Servosa.vue";
 import ExsaKm from "../components/ExsaKm.vue";
+import Dinet from "../components/Dinet.vue";
+
 export default {
   name: "Home",
   components: {
@@ -84,7 +87,8 @@ export default {
     Exsa,
     Induamerica,
     Servosa,
-    ExsaKm
+    ExsaKm,
+    Dinet
   },
   created() {
     Meteor.call("getPersonal", (error, persona) => {
