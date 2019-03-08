@@ -61,14 +61,15 @@ export default {
     userID: new Date().getTime()
   }),
   methods: {
-    exportTableToExcel(tableID, filename = "") {
+    exportTableToExcel() {
       var downloadLink;
       var dataType = "application/vnd.ms-excel";
-      var tableSelect = document.getElementById(tableID);
+      var tableSelect = document.getElementById('tblData');
       var tableHTML = tableSelect.outerHTML.replace(/ /g, "%20");
 
       // Specify file name
-      filename = filename ? filename + ".xls" : "excel_data.xls";
+      // filename = filename ? filename + ".xls" : "excel_data.xls";
+      let filename =  "excel_data.xls";
 
       // Create download link element
       downloadLink = document.createElement("a");
@@ -161,7 +162,7 @@ function getDaysDiff(dateTimeMax, dateTimeMin) {
 <template>
   <section>
     <section>
-        <button onclick="exportTableToExcel('tblData')">Export Table Data To Excel File</button>
+        <button @click="exportTableToExcel">Export Table Data To Excel File</button>
       <table id="tblData">
         <tr>
           <th>Name</th>
