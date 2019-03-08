@@ -53,5 +53,12 @@ Meteor.startup(() => {
             }
         }
     });
+    Meteor.call('ArrayPlates_getPlates_Dinet', function (error, plates) {
+        if (!error) {
+            if (!plates) {
+                 Meteor.call('ArrayPlates_setPlates_Dinet')
+            }
+        }
+    });
 
 })

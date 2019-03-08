@@ -1,12 +1,30 @@
 import { Personal, ArrayPlates } from '../../imports/api/collections'
-import { Antapaccay, Exsa, Servosa, Induamerica } from '../../imports/api/collections'
+import { Antapaccay, Exsa, Servosa, Induamerica, Dinet } from '../../imports/api/collections'
 
-import { stNTPCCY, stXS, stSRVS, stXSKM, stNDMRC } from "../../imports/api/streamers";
+import { stNTPCCY, stXS, stSRVS, stXSKM, stNDMRC, stDNT } from "../../imports/api/streamers";
 
 
 //-------------------- ARRAY PLATES
 
 Meteor.methods({
+    // Dinet
+    ArrayPlates_getPlates_Dinet: function () {
+        return ArrayPlates.findOne({ name: 'Dinet' })
+    },
+    ArrayPlates_setPlates_Dinet: function () {
+        Meteor.call("Dinet_queryPlates", (error, plates) => {
+            if (!error) {
+                ArrayPlates.insert({ name: 'Dinet', plates: plates.sort() })
+            }
+        });
+    },
+    ArrayPlates_updatePlates_Dinet: function () {
+        Meteor.call("Dinet_queryPlates", (error, plates) => {
+            if (!error) {
+                ArrayPlates.replaceOne({ name: 'Dinet', plates: plates.sort() }, { upsert: true })
+            }
+        });
+    },
     // Servosa
     ArrayPlates_getPlates_Servosa: function () {
         return ArrayPlates.findOne({ name: 'Servosa' })
@@ -67,7 +85,7 @@ Meteor.methods({
     },
     ArrayPlates_setPlates_Induamerica: function () {
         Meteor.call("Induamerica_queryPlates", (error, plates) => {
-        
+
             if (!error) {
                 ArrayPlates.insert({ name: 'Induamerica', plates: plates.sort() })
             }
@@ -83,6 +101,14 @@ Meteor.methods({
     },
 
 
+});
+
+//-------------------Dinet
+Meteor.methods({ 
+    async Dinet_queryPlates() {
+        const plates = await Dinet.rawCollection().distinct('events.vehicle')
+        return plates
+    },
 });
 
 //--------------------Induamerica
@@ -351,7 +377,7 @@ Meteor.methods({
                                     'TRAMO': '   '
                                 })
                             } else {
-                                if ( el.plate && array[index - 1].plate &&  el.plate != array[index - 1].plate) {
+                                if (el.plate && array[index - 1].plate && el.plate != array[index - 1].plate) {
                                     if (el.eventType == 305) {
                                         RowArray.push({
                                             'MES': Servosa_getMonth(dateTimeStart5),

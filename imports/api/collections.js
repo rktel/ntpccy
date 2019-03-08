@@ -1,5 +1,7 @@
 import { Mongo } from 'meteor/mongo'
 
+export const Dinet = new Mongo.Collection('dinet')
+
 export const Servosa = new Mongo.Collection('servosa')
 
 export const Antapaccay = new Mongo.Collection('antapaccay')
