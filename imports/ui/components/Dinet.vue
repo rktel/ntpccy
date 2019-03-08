@@ -163,7 +163,7 @@ function getDaysDiff(dateTimeMax, dateTimeMin) {
   <section>
     <section>
         <button @click="exportTableToExcel">Export Table Data To Excel File</button>
-      <table id="tblData">
+      <table id="tblData" class="red">
         <tr>
           <th>Name</th>
           <th>Email</th>
