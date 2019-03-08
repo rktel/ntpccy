@@ -115,7 +115,6 @@ Meteor.methods({
         console.log('Usuario: ', Meteor.user().username)
         console.log('Fecha y Tiempo de Inicio: ', dateTimeStart)
         console.log('Fecha y Tiempo de Fin: ', dateTimeEnd)
-        console.log('Limite de Velocidad: ', kmValue);
 
         const dateTimeStart5 = addHours(dateTimeStart, 5)
         const dateTimeEnd5 = addHours(dateTimeEnd, 5)
@@ -129,12 +128,17 @@ Meteor.methods({
     },
 
     async  Dinet_getData(plates, dateTimeStart, dateTimeEnd) {
+        // Exceso 15km/h : 97
+        // Exceso 30km/h : 93
+        // Exceso 80km/h : 89
+        // Fatiga : 81
+        const event_codes = [97, 81]
         const report = await Dinet.rawCollection().
             aggregate([
                 // { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [ 81,82] } } },
                 { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
-                { $match: { 'events.original': { $in: [97, 93, 89] } } },
+                { $match: { 'events.original': { $in: event_codes} } },
                 { $group: { _id: { plate: '$events.vehicle', eventType: '$events.original' }, total: { $sum: 1 } } },
                 { $project: { _id: 0, plate: '$_id.plate', eventType: '$_id.eventType', total: '$total' } },
                 // { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }} },
