@@ -129,7 +129,14 @@ Meteor.methods({
                     if (index != totalLength - 1) {
                         console.log(el);
 
+                    } else {
+                        console.log("Ultimo objeto del array");
+
+                        console.log("last element:", el);
                     }
+                } else {
+                    console.log("No hay Data Total");
+
                 }
 
             })
