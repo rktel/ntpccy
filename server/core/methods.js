@@ -441,6 +441,9 @@ Meteor.methods({
         let RowArray = []
        // [305, 306]
         Meteor.call('Servosa_getData', plates, dateTimeStart5, dateTimeEnd5, (error, report) => {
+            console.log(report);
+            console.log("--------------------------");
+            
             report.forEach((el, index, array) => {
                 const totalLength = array.length
 
