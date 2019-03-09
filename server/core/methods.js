@@ -614,7 +614,7 @@ Meteor.methods({
 */
     async  Servosa_getData(plates, dateTimeStart, dateTimeEnd) {
         // const arrayEvents = [305, 306]
-        const arrayEvents = [0, 1,13]
+        const arrayEvents = [0, 1]
         const report = await Servosa.rawCollection().
             aggregate([
                 // { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [ 81,82] } } },
