@@ -121,13 +121,43 @@ Meteor.methods({
         plates = plates.sort()
         console.log('placas: ', plates)
         let RowArray = []
+        // Exceso 15km/h : 97
+        // Exceso 30km/h : 93
+        // Exceso 80km/h : 89
+        // Fatiga : 81
         Meteor.call('Dinet_getData', plates, dateTimeStart5, dateTimeEnd5, (error, report) => {
             report.forEach((el, index, array) => {
                 const totalLength = array.length
 
                 if (totalLength > 0) {
                     if (index != totalLength - 1) {
-                        console.log(array[index + 1]);
+
+                        if (el.eventType == 97) {
+                            RowArray[index] = {
+                                placa: el.plate,
+                                exceso15: el.total
+                            }
+                        }
+                        if (el.eventType == 81) {
+                            RowArray[index] = {
+                                placa: el.plate,
+                                fatiga: el.total
+                            }
+                        }
+
+                        if (array[index + 1]) {
+                            const next = array[index + 1]
+                            console.log(next);
+                            if (next.plate == el.plate) {
+                                if (next.eventType == 97) {
+                                    RowArray[index].exceso15 = next.total
+                                }
+                                if (next.eventType == 81) {
+                                    RowArray[index].fatiga = next.total
+                                }
+                            }
+
+                        }
                     } else {
                         console.log("last element:", el);
                     }
@@ -137,6 +167,9 @@ Meteor.methods({
                 }
 
             })
+
+            // End forEach
+            console.log("RowArray:", RowArray);
 
         })
     },
