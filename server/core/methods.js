@@ -475,6 +475,20 @@ Meteor.methods({
                         }
                     } else {
                         console.log("last element:", el);
+                        if(totalLength == 1){
+                            if (el.eventType == 305) {
+                                RowArray[index] = {
+                                    placa: el.plate,
+                                    exceso15: el.total
+                                }
+                            }
+                            if (el.eventType == 306) {
+                                RowArray[index] = {
+                                    placa: el.plate,
+                                    fatiga: el.total
+                                }
+                            }                          
+                        }
                     }
                 } else {
                     console.log("No hay Data Total");
