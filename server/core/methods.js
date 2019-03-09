@@ -126,7 +126,7 @@ Meteor.methods({
                 const totalLength = array.length
 
                 if (totalLength > 0) {
-                    if (index != totalLength) {
+                    if (index != totalLength - 1) {
                         console.log(el);
 
                     }
