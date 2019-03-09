@@ -104,7 +104,7 @@ Meteor.methods({
 });
 
 //-------------------Dinet
-Meteor.methods({ 
+Meteor.methods({
     async Dinet_queryPlates() {
         const plates = await Dinet.rawCollection().distinct('events.vehicle')
         return plates
@@ -122,9 +122,19 @@ Meteor.methods({
         console.log('placas: ', plates)
         let RowArray = []
         Meteor.call('Dinet_getData', plates, dateTimeStart5, dateTimeEnd5, (error, report) => {
-            console.log(report);
-            
-        })        
+            report.forEach((el, index, array) => {
+                const totalLength = array.length
+
+                if (totalLength > 0) {
+                    if (index != totalLength) {
+                        console.log(el);
+
+                    }
+                }
+
+            })
+
+        })
     },
 
     async  Dinet_getData(plates, dateTimeStart, dateTimeEnd) {
@@ -138,7 +148,7 @@ Meteor.methods({
                 // { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [ 81,82] } } },
                 { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
-                { $match: { 'events.original': { $in: event_codes} } },
+                { $match: { 'events.original': { $in: event_codes } } },
                 { $group: { _id: { plate: '$events.vehicle', eventType: '$events.original' }, total: { $sum: 1 } } },
                 { $project: { _id: 0, plate: '$_id.plate', eventType: '$_id.eventType', total: '$total' } },
                 // { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }} },
@@ -393,8 +403,8 @@ Meteor.methods({
         let RowArray = []
         // plates.forEach((el, index, arrayPlate) => {
         Meteor.call('Servosa_getData', plates, dateTimeStart5, dateTimeEnd5, (error, report) => {
-            console.log(report);
-            
+            // console.log(report);
+
             if (!error) {
                 //console.log(report);
                 //console.log('----------End Report----------');
