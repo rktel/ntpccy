@@ -473,6 +473,19 @@ Meteor.methods({
                                 if (next.eventType == 306) {
                                     RowArray[index].fatiga = next.total
                                 }
+                            }else{
+                                if (next.eventType == 305) {
+                                    RowArray[index+1] = {
+                                        placa: next.plate,
+                                        exceso15: next.total
+                                    }
+                                }
+                                if (next.eventType == 306) {
+                                    RowArray[index+1] = {
+                                        placa: next.plate,
+                                        fatiga: next.total
+                                    }
+                                }                          
                             }
 
                         }
