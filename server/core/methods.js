@@ -127,11 +127,8 @@ Meteor.methods({
 
                 if (totalLength > 0) {
                     if (index != totalLength - 1) {
-                        console.log(el);
-
+                        console.log(array[index + 1]);
                     } else {
-                        console.log("Ultimo objeto del array");
-
                         console.log("last element:", el);
                     }
                 } else {
