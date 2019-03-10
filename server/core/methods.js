@@ -450,7 +450,7 @@ console.log("=====================================");
                 const reportLength = report.length
                 if (reportLength == 0) console.log("No hay data");
                 if (reportLength == 1) {
-                    RowArray.push({placa: report[index].plate})
+                    RowArray.push({placa: report[0].plate})
                     if (report[0].eventType == type0) RowArray[0].type0 = report[0].total
                     if (report[0].eventType == type1) RowArray[0].type1 = report[0].total
                     if (report[0].eventType == type13) RowArray[0].type13 = report[0].total
