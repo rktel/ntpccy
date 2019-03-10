@@ -461,14 +461,16 @@ console.log("=====================================");
                         if (index != reportLength - 1) {
                             // Si no es el ultimo elemento =>
                             
-                            
+                            let counter = 0
                             if (report[index].plate == report[index + 1].plate) {
                                 // La placa actual es igual a la placa siguiente
-                                RowArray.push({placa: report[index].plate})
+                                if(counter == 0) RowArray.push({placa: report[index].plate})
+                                counter++;
                                 console.log("if:",el);
                                 
                             } else {
                                 // La placa actual es diferente a la placa siguiente
+                                counter=0;
                                 console.log("else:",el);
                                 /*
                                 RowArray.push({placa: report[index].plate})
