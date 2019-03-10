@@ -457,6 +457,7 @@ Meteor.methods({
                 }
                 if (reportLength > 1) {
                     let counter = 0
+                    let LaPlaca = ''
                     report.forEach((el, index) => {
 
                         if (index != reportLength - 1) {
@@ -464,17 +465,21 @@ Meteor.methods({
 
                             if (report[index].plate == report[index + 1].plate) {
                                 // La placa actual es igual a la placa siguiente
-                                if (counter == 0) RowArray.push({ placa: report[index].plate })
+                                if (counter == 0) {
+                                    RowArray.push({ placa: report[index].plate })
+                                    LaPlaca = report[index].plate
+                                }
                                 counter++;
                                 console.log("if:", report[index]);
-                                if (report[index].eventType == type0 && !RowArray[index].type0) RowArray[index].type0 = report[index].total
-                                if (report[index].eventType == type1 && !RowArray[index].type1) RowArray[index].type1 = report[index].total
-                                if (report[index].eventType == type13 && !RowArray[index].type13) RowArray[index].type13 = report[index].total
+                                if (report[index].eventType == type0) RowArray[index].type0 = report[index].total
+                                if (report[index].eventType == type1) RowArray[index].type1 = report[index].total
+                                if (report[index].eventType == type13) RowArray[index].type13 = report[index].total
 
                             } else {
                                 // La placa actual es diferente a la placa siguiente
                                 counter = 0;
                                 RowArray.push({ placa: report[index + 1].plate })
+                                LaPlaca = report[index+1].plate
                                 counter++;
                                 console.log("else:", report[index + 1]);
 
