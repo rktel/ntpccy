@@ -456,12 +456,12 @@ console.log("=====================================");
                     if (report[0].eventType == type13) RowArray[0].type13 = report[0].total
                 }
                 if (reportLength > 1) {
+                    let counter = 0
                     report.forEach((el, index) => {
 
                         if (index != reportLength - 1) {
                             // Si no es el ultimo elemento =>
                             
-                            let counter = 0
                             if (report[index].plate == report[index + 1].plate) {
                                 // La placa actual es igual a la placa siguiente
                                 if(counter == 0) RowArray.push({placa: report[index].plate})
