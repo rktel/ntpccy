@@ -472,6 +472,7 @@ Meteor.methods({
                                 // La placa actual es diferente a la placa siguiente
                                 counter = 0;
                                 RowArray.push({ placa: report[index + 1].plate })
+                                counter++;
                                 console.log("else:", report[index + 1].plate);
                                 /*
                                 RowArray.push({placa: report[index].plate})
