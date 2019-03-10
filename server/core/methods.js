@@ -458,7 +458,7 @@ Meteor.methods({
                 { $group: { _id: { plate: '$events.vehicle', eventType: '$events.type' }, total: { $sum: 1 } } },
                 { $project: { _id: 0, plate: '$_id.plate', 
                 evento0:{
-                    $cond:[{$eq: ["$_id.eventType",0]}, "$total", 0]
+                    $cond:[{$eq: ["$_id.eventType",0]}, "$total"]
                 },
                 eventType: '$_id.eventType', total: '$total' }
              },
