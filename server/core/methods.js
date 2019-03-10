@@ -459,9 +459,9 @@ console.log("=====================================");
 
                         if (index != reportLength - 1) {
                             // Si no es el ultimo elemento =>
-                            console.log(report[index].plate);
                             
-                            RowArray[index].placa = report[index].plate
+                            RowArray.push({placa: report[index].plate})
+
                             if (report[index].plate == report[index + 1].plate) {
                                 // La placa actual es igual a la placa siguiente
                                 if (report[index].eventType == type0 && !RowArray[index].type0) RowArray[index].type0 = report[index].total
