@@ -443,66 +443,31 @@ Meteor.methods({
         // [305, 306]
         Meteor.call('Servosa_getData', plates, dateTimeStart5, dateTimeEnd5, (error, report) => {
             console.log("Report:", report);
-            console.log("=====================================");
-
-            if (!error) {
-
-                const reportLength = report.length
-                if (reportLength == 0) console.log("No hay data");
-                if (reportLength == 1) {
-                    RowArray.push({ placa: report[0].plate })
-                    if (report[0].eventType == type0) RowArray[0].type0 = report[0].total
-                    if (report[0].eventType == type1) RowArray[0].type1 = report[0].total
-                    if (report[0].eventType == type13) RowArray[0].type13 = report[0].total
-                }
-                if (reportLength > 1) {
-                    let counter = 0
-                    let LaPlaca = ''
-                    report.forEach((el, index) => {
-
-                        if (index != reportLength - 1) {
-                            // Si no es el ultimo elemento =>
-
-                            if (report[index].plate == report[index + 1].plate) {
-                                // La placa actual es igual a la placa siguiente
-                                if (counter == 0) {
-                                    RowArray.push({ placa: report[index].plate })
-                                    LaPlaca = report[index].plate
-                                }
-                                counter++;
-                                console.log("if:", report[index]);
-                                if (report[index].eventType == type0) RowArray[index].type0 = report[index].total
-                                if (report[index].eventType == type1) RowArray[index].type1 = report[index].total
-                                if (report[index].eventType == type13) RowArray[index].type13 = report[index].total
-
-                            } else {
-                                // La placa actual es diferente a la placa siguiente
-                                counter = 0;
-                                RowArray.push({ placa: report[index + 1].plate })
-                                LaPlaca = report[index+1].plate
-                                counter++;
-                                console.log("else:", report[index + 1]);
-
-                                /*
-                                RowArray.push({placa: report[index].plate})
-                                if (report[index].eventType == type0 && !RowArray[index].type0) RowArray[index].type0 = report[index].total
-                                if (report[index].eventType == type1 && !RowArray[index].type1) RowArray[index].type1 = report[index].total
-                                */
-                            }
-                        } else {
-                            // Es el ultimo elemento => index = reportLength - 1 
-                        }
-
-                    })
-                }
-
-
-
-            }
-
-            console.log("RowArray:", RowArray);
 
         })
+    },
+    async  Servosa_getData(plates, dateTimeStart, dateTimeEnd) {
+        // const arrayEvents = [305, 306]
+        const arrayEvents = [0, 1, 13]
+        const report = await Servosa.rawCollection().
+            aggregate([
+                // { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [ 81,82] } } },
+                { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
+                { $unwind: '$events' },
+                { $match: { 'events.type': { $in: arrayEvents } } },
+                { $group: { _id: { plate: '$events.vehicle', eventType: '$events.type' }, total: { $sum: 1 } } },
+                { $project: { _id: 0, plate: '$_id.plate', 
+                evento0:{
+                    $cond:[{$eq: ["$eventType",0]}, "$total", 0]
+                },
+                eventType: '$_id.eventType', total: '$total' }
+             },
+                // { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }} },
+                //   { $project: { _id: 0, plate: '$_id.plate', event: '$_id.event', created: '$_id.created' } },
+                { $sort: { 'plate': 1, 'eventType': 1 } },
+            ]).toArray()
+        return report
+
     },
     /*
     Servosa_queryEvents(userID, plates, dateTimeStart, dateTimeEnd) {
@@ -597,7 +562,8 @@ Meteor.methods({
  
     },
 */
-    async  Servosa_getData(plates, dateTimeStart, dateTimeEnd) {
+/** DESCOMENTAR
+     async  Servosa_getData(plates, dateTimeStart, dateTimeEnd) {
         // const arrayEvents = [305, 306]
         const arrayEvents = [0, 1, 13]
         const report = await Servosa.rawCollection().
@@ -615,7 +581,9 @@ Meteor.methods({
         return report
 
     }
-    /*
+ 
+*/
+    /* NO DESCOMENTAR
     async  Servosa_getData(plates, dateTimeStart, dateTimeEnd) {
         const report = await Servosa.rawCollection().
             aggregate([
