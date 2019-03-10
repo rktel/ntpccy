@@ -450,9 +450,10 @@ console.log("=====================================");
                 const reportLength = report.length
                 if (reportLength == 0) console.log("No hay data");
                 if (reportLength == 1) {
-                    RowArray[0].placa = report[0].plate
+                    RowArray.push({placa: report[index].plate})
                     if (report[0].eventType == type0) RowArray[0].type0 = report[0].total
                     if (report[0].eventType == type1) RowArray[0].type1 = report[0].total
+                    if (report[0].eventType == type13) RowArray[0].type13 = report[0].total
                 }
                 if (reportLength > 1) {
                     report.forEach((el, index) => {
@@ -464,9 +465,11 @@ console.log("=====================================");
                             if (report[index].plate == report[index + 1].plate) {
                                 // La placa actual es igual a la placa siguiente
                                 RowArray.push({placa: report[index].plate})
- 
+                                console.log("if:",el);
+                                
                             } else {
                                 // La placa actual es diferente a la placa siguiente
+                                console.log("else:",el);
                                 /*
                                 RowArray.push({placa: report[index].plate})
                                 if (report[index].eventType == type0 && !RowArray[index].type0) RowArray[index].type0 = report[index].total
@@ -583,7 +586,7 @@ console.log("=====================================");
 */
     async  Servosa_getData(plates, dateTimeStart, dateTimeEnd) {
         // const arrayEvents = [305, 306]
-        const arrayEvents = [0, 1]
+        const arrayEvents = [0]
         const report = await Servosa.rawCollection().
             aggregate([
                 // { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [ 81,82] } } },
