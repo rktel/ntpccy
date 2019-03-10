@@ -442,15 +442,15 @@ Meteor.methods({
         const type0 = 0, type1 = 1, type13 = 13
         // [305, 306]
         Meteor.call('Servosa_getData', plates, dateTimeStart5, dateTimeEnd5, (error, report) => {
-console.log("Report:", report);
-console.log("=====================================");
+            console.log("Report:", report);
+            console.log("=====================================");
 
             if (!error) {
 
                 const reportLength = report.length
                 if (reportLength == 0) console.log("No hay data");
                 if (reportLength == 1) {
-                    RowArray.push({placa: report[0].plate})
+                    RowArray.push({ placa: report[0].plate })
                     if (report[0].eventType == type0) RowArray[0].type0 = report[0].total
                     if (report[0].eventType == type1) RowArray[0].type1 = report[0].total
                     if (report[0].eventType == type13) RowArray[0].type13 = report[0].total
@@ -461,17 +461,18 @@ console.log("=====================================");
 
                         if (index != reportLength - 1) {
                             // Si no es el ultimo elemento =>
-                            
+
                             if (report[index].plate == report[index + 1].plate) {
                                 // La placa actual es igual a la placa siguiente
-                                if(counter == 0) RowArray.push({placa: report[index].plate})
+                                if (counter == 0) RowArray.push({ placa: report[index].plate })
                                 counter++;
-                                console.log("if:",el);
-                                
+                                console.log("if:", report[index].plate);
+
                             } else {
                                 // La placa actual es diferente a la placa siguiente
-                                counter=0;
-                                console.log("else:",el);
+                                counter = 0;
+                                RowArray.push({ placa: report[index + 1].plate })
+                                console.log("else:", report[index + 1].plate);
                                 /*
                                 RowArray.push({placa: report[index].plate})
                                 if (report[index].eventType == type0 && !RowArray[index].type0) RowArray[index].type0 = report[index].total
@@ -490,7 +491,7 @@ console.log("=====================================");
             }
 
             console.log("RowArray:", RowArray);
-            
+
         })
     },
     /*
@@ -588,7 +589,7 @@ console.log("=====================================");
 */
     async  Servosa_getData(plates, dateTimeStart, dateTimeEnd) {
         // const arrayEvents = [305, 306]
-        const arrayEvents = [0,1,13]
+        const arrayEvents = [0, 1, 13]
         const report = await Servosa.rawCollection().
             aggregate([
                 // { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [ 81,82] } } },
