@@ -440,65 +440,13 @@ Meteor.methods({
         console.log('placas: ', plates)
         let RowArray = []
         const type1 = 0, type2 = 1, type3 = 13
-       // [305, 306]
+        // [305, 306]
         Meteor.call('Servosa_getData', plates, dateTimeStart5, dateTimeEnd5, (error, report) => {
-            console.log(report);
-            console.log("--------------------------");
-            
-            report.forEach((el, index, array) => {
-                const totalLength = array.length
 
-                if (totalLength > 0) {
-                    if (index != totalLength - 1) {
+            if (!error && report.length > 0) {
+                console.log(report);
 
-                        if (el.eventType == type1) {
-                            RowArray[index] = {
-                                placa: el.plate,
-                                exceso15: el.total
-                            }
-                        }
-                        if (el.eventType == type2) {
-                            RowArray[index] = {
-                                placa: el.plate,
-                                fatiga: el.total
-                            }
-                        }
-
-                        if (array[index + 1]) {
-                            const next = array[index + 1]
-                            console.log(next);
-                            if (next.plate == el.plate) {
-                                
-           
-                            }
-                        }
-                    } else {
-                        console.log("last element:", el);
-                        if(totalLength == 1){
-                            console.log("totalLength == 1");
-                            if (el.eventType == type1) {
-                                RowArray[index] = {
-                                    placa: el.plate,
-                                    exceso15: el.total
-                                }
-                            }
-                            if (el.eventType == type2) {
-                                RowArray[index] = {
-                                    placa: el.plate,
-                                    fatiga: el.total
-                                }
-                            }                          
-                        }
-                    }
-                } else {
-                    console.log("No hay Data Total");
-
-                }
-
-            })
-
-            // End forEach
-            console.log("RowArray:", RowArray);
+            }
 
         })
     },
@@ -603,7 +551,7 @@ Meteor.methods({
                 // { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [ 81,82] } } },
                 { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
-                { $match: { 'events.type': { $in: arrayEvents} } },
+                { $match: { 'events.type': { $in: arrayEvents } } },
                 { $group: { _id: { plate: '$events.vehicle', eventType: '$events.type' }, total: { $sum: 1 } } },
                 { $project: { _id: 0, plate: '$_id.plate', eventType: '$_id.eventType', total: '$total' } },
                 // { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }} },
