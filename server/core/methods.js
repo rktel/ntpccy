@@ -439,15 +439,52 @@ Meteor.methods({
         plates = plates.sort()
         console.log('placas: ', plates)
         let RowArray = []
-        const type1 = 0, type2 = 1, type3 = 13
+        const type0 = 0, type1 = 1, type13 = 13
         // [305, 306]
         Meteor.call('Servosa_getData', plates, dateTimeStart5, dateTimeEnd5, (error, report) => {
+console.log("Report:", report);
+console.log("=====================================");
 
-            if (!error && report.length > 0) {
-                console.log(report);
+            if (!error) {
+
+                const reportLength = report.length
+                if (reportLength == 0) console.log("No hay data");
+                if (reportLength == 1) {
+                    RowArray[0].placa = report[0].plate
+                    if (report[0].eventType == type0) RowArray[0].type0 = report[0].total
+                    if (report[0].eventType == type1) RowArray[0].type1 = report[0].total
+                }
+                if (reportLength > 1) {
+                    report.forEach((el, index) => {
+
+                        if (index != reportLength - 1) {
+                            // Si no es el ultimo elemento =>
+                            RowArray[index].placa = report[index].plate
+                            if (report[index].placa == report[index + 1].placa) {
+                                // La placa actual es igual a la placa siguiente
+                                if (report[index].eventType == type0 && !RowArray[index].type0) RowArray[index].type0 = report[index].total
+                                if (report[index].eventType == type1 && !RowArray[index].type1) RowArray[index].type1 = report[index].total
+
+                                if (report[index + 1].eventType == type0 && !RowArray[index].type0) RowArray[index].type0 = report[index + 1].total
+                                if (report[index + 1].eventType == type1 && !RowArray[index].type1) RowArray[index].type1 = report[index + 1].total
+                            } else {
+                                // La placa actual es diferente a la placa siguiente
+                                if (report[index].eventType == type0) RowArray[index].type0 = report[index].total
+                                if (report[index].eventType == type1) RowArray[index].type1 = report[index].total
+                            }
+                        } else {
+                            // Es el ultimo elemento => index = reportLength - 1 
+                        }
+
+                    })
+                }
+
+
 
             }
 
+            console.log("RowArray:", RowArray);
+            
         })
     },
     /*
