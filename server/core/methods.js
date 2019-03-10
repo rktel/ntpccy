@@ -471,8 +471,8 @@ console.log("=====================================");
                                 if (report[index + 1].eventType == type1 && !RowArray[index].type1) RowArray[index].type1 = report[index + 1].total
                             } else {
                                 // La placa actual es diferente a la placa siguiente
-                                if (report[index].eventType == type0) RowArray[index].type0 = report[index].total
-                                if (report[index].eventType == type1) RowArray[index].type1 = report[index].total
+                                if (report[index].eventType == type0 && !RowArray[index].type0) RowArray[index].type0 = report[index].total
+                                if (report[index].eventType == type1 && !RowArray[index].type1) RowArray[index].type1 = report[index].total
                             }
                         } else {
                             // Es el ultimo elemento => index = reportLength - 1 
