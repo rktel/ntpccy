@@ -468,12 +468,7 @@ Meteor.methods({
                             const next = array[index + 1]
                             console.log(next);
                             if (next.plate == el.plate) {
-                                if (next.eventType == type1) {
-                                    RowArray[index].exceso15 = next.total
-                                }
-                                if (next.eventType == type2) {
-                                    RowArray[index].fatiga = next.total
-                                }
+
                             }else{
                                 if (next.eventType == type1) {
                                     RowArray[index] = {
