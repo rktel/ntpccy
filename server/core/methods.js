@@ -476,13 +476,13 @@ Meteor.methods({
                                 }
                             }else{
                                 if (next.eventType == type1) {
-                                    RowArray[index+1] = {
+                                    RowArray[index] = {
                                         placa: next.plate,
                                         exceso15: next.total
                                     }
                                 }
                                 if (next.eventType == type2) {
-                                    RowArray[index+1] = {
+                                    RowArray[index] = {
                                         placa: next.plate,
                                         fatiga: next.total
                                     }
@@ -493,6 +493,7 @@ Meteor.methods({
                     } else {
                         console.log("last element:", el);
                         if(totalLength == 1){
+                            console.log("totalLength == 1");
                             if (el.eventType == type1) {
                                 RowArray[index] = {
                                     placa: el.plate,
