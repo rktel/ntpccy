@@ -463,6 +463,13 @@ Meteor.methods({
                                     { $eq: ['$events.type', 0] }, 1, 0
                                 ]
                             }
+                        },
+                        somnolencia: {
+                            $sum: {
+                                $cond: [
+                                    { $eq: ['$events.type', 1] }, 1, 0
+                                ]
+                            }
                         }
                     }
                 },
