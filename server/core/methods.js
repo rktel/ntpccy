@@ -457,7 +457,7 @@ Meteor.methods({
                 {
                     $group: {
                         _id: { plate: '$events.vehicle' },
-                        count: { $sum: 1 }
+                        count: { $push: {ev: "$events.type"}}
                     }
                 },
 
