@@ -460,7 +460,7 @@ Meteor.methods({
                         fatiga: {
                             $sum: {
                                 $cond: [
-                                    { $eq: ['$events', 0] }, 1, 0
+                                    { $eq: ['$events.type', 0] }, 1, 0
                                 ]
                             }
                         }
