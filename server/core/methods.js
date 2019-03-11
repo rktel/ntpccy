@@ -456,7 +456,7 @@ Meteor.methods({
                 { $match: { 'events.type': { $in: arrayEvents } } },
                 {
                     $group: {
-                        _id: { plate: '$events.vehicle' },
+                        _id: '$events.vehicle',
                         fatiga: {
                             $sum: {
                                 $cond: [
@@ -464,10 +464,17 @@ Meteor.methods({
                                 ]
                             }
                         },
-                        somnolencia: {
+                        distraccion: {
                             $sum: {
                                 $cond: [
                                     { $eq: ['$events.type', 1] }, 1, 0
+                                ]
+                            }
+                        },
+                        no_rostro: {
+                            $sum: {
+                                $cond: [
+                                    { $eq: ['$events.type', 13] }, 1, 0
                                 ]
                             }
                         }
