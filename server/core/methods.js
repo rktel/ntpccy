@@ -480,7 +480,7 @@ Meteor.methods({
                         }
                     }
                 },
-                { $project: { plate: '$_id' } },
+                { $project: { _id: 0, plate: '$_id', fatiga:'$fatiga' , distraccion: '$distraccion', no_rostro:'$no_rostro'} },
                 { $sort: { 'plate': 1 } },
             ]).toArray()
         return report
