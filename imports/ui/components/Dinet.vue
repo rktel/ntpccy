@@ -300,9 +300,10 @@ function getDaysDiff(dateTimeMax, dateTimeMin) {
       >
         <caption>LISTA DE EXCESOS DE VELOCIDAD</caption>
         <colgroup align="center"></colgroup>
-        <colgroup align="left"></colgroup>
-        <colgroup span="2" align="center"></colgroup>
-        <colgroup span="3" align="center"></colgroup>
+        <colgroup align="center"></colgroup>
+        <colgroup align="center"></colgroup>
+        <colgroup align="center"></colgroup>
+
         <thead valign="top">
           <tr>
             <th>Placa</th>
