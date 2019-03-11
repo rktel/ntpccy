@@ -451,30 +451,11 @@ Meteor.methods({
         const arrayEvents = [0, 1, 13]
         const report = await Servosa.rawCollection().
             aggregate([
-                // { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [ 81,82] } } },
                 { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
                 { $match: { 'events.type': { $in: arrayEvents } } },
-                { $group: { _id: { plate: '$events.vehicle', eventType: '$events.type' }, total: { $sum: 1 } } },
-                {
-                    $project: {
-                        _id: 0, plate: '$_id.plate',
-                        evento0: {
-                            $cond: [{ $eq: ["$_id.eventType", 0] }, "$total", 0]
-                        },
-                        evento1: {
-                            $cond: [{ $eq: ["$_id.eventType", 1] }, "$total", 0]
-                        },
-                        evento13: {
-                            $cond: [{ $eq: ["$_id.eventType", 13] }, "$total", 0]
-                        },
-                    }
-                },
-                {
-                    $group: { _id: {evento0: "$evento0", plate: "$plate" },  }
-                },
-                // { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }} },
-                //   { $project: { _id: 0, plate: '$_id.plate', event: '$_id.event', created: '$_id.created' } },
+                { $group: { _id: { plate: '$events.vehicle', eventType: '$events.type' }} },
+
                 { $sort: { 'plate': 1, 'eventType': 1 } },
             ]).toArray()
         return report
