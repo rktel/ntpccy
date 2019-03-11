@@ -307,9 +307,9 @@ function getDaysDiff(dateTimeMax, dateTimeMin) {
         <thead valign="top">
           <tr>
             <th>Placa</th>
-            <th># Exceso 15km/h</th>
-            <th># Exceso 30km/h</th>
-            <th># Exceso 80km/h</th>
+            <th>Exceso 15km/h</th>
+            <th>Exceso 30km/h</th>
+            <th>Exceso 80km/h</th>
           </tr>
         </thead>
         <tbody>
