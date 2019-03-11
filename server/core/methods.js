@@ -456,12 +456,20 @@ Meteor.methods({
                 { $unwind: '$events' },
                 { $match: { 'events.type': { $in: arrayEvents } } },
                 { $group: { _id: { plate: '$events.vehicle', eventType: '$events.type' }, total: { $sum: 1 } } },
-                { $project: { _id: 0, plate: '$_id.plate', 
-                evento0:{
-                    $cond:[{$eq: ["$_id.eventType",0]}, "$total"]
+                {
+                    $project: {
+                        _id: 0, plate: '$_id.plate',
+                        evento0: {
+                            $cond: [{ $eq: ["$_id.eventType", 0] }, "$total", 0]
+                        },
+                        evento1: {
+                            $cond: [{ $eq: ["$_id.eventType", 1] }, "$total", 0]
+                        },
+                        evento13: {
+                            $cond: [{ $eq: ["$_id.eventType", 13] }, "$total", 0]
+                        },
+                    }
                 },
-                eventType: '$_id.eventType', total: '$total' }
-             },
                 // { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }} },
                 //   { $project: { _id: 0, plate: '$_id.plate', event: '$_id.event', created: '$_id.created' } },
                 { $sort: { 'plate': 1, 'eventType': 1 } },
@@ -562,27 +570,27 @@ Meteor.methods({
  
     },
 */
-/** DESCOMENTAR
-     async  Servosa_getData(plates, dateTimeStart, dateTimeEnd) {
-        // const arrayEvents = [305, 306]
-        const arrayEvents = [0, 1, 13]
-        const report = await Servosa.rawCollection().
-            aggregate([
-                // { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [ 81,82] } } },
-                { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
-                { $unwind: '$events' },
-                { $match: { 'events.type': { $in: arrayEvents } } },
-                { $group: { _id: { plate: '$events.vehicle', eventType: '$events.type' }, total: { $sum: 1 } } },
-                { $project: { _id: 0, plate: '$_id.plate', eventType: '$_id.eventType', total: '$total' } },
-                // { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }} },
-                //   { $project: { _id: 0, plate: '$_id.plate', event: '$_id.event', created: '$_id.created' } },
-                { $sort: { 'plate': 1, 'eventType': 1 } },
-            ]).toArray()
-        return report
-
-    }
- 
-*/
+    /** DESCOMENTAR
+         async  Servosa_getData(plates, dateTimeStart, dateTimeEnd) {
+            // const arrayEvents = [305, 306]
+            const arrayEvents = [0, 1, 13]
+            const report = await Servosa.rawCollection().
+                aggregate([
+                    // { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [ 81,82] } } },
+                    { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
+                    { $unwind: '$events' },
+                    { $match: { 'events.type': { $in: arrayEvents } } },
+                    { $group: { _id: { plate: '$events.vehicle', eventType: '$events.type' }, total: { $sum: 1 } } },
+                    { $project: { _id: 0, plate: '$_id.plate', eventType: '$_id.eventType', total: '$total' } },
+                    // { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }} },
+                    //   { $project: { _id: 0, plate: '$_id.plate', event: '$_id.event', created: '$_id.created' } },
+                    { $sort: { 'plate': 1, 'eventType': 1 } },
+                ]).toArray()
+            return report
+    
+        }
+     
+    */
     /* NO DESCOMENTAR
     async  Servosa_getData(plates, dateTimeStart, dateTimeEnd) {
         const report = await Servosa.rawCollection().
