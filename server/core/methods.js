@@ -480,8 +480,8 @@ Meteor.methods({
                         }
                     }
                 },
-                //     { $project: { _id: 0, plate: '$_id.plate', eventType: '$_id.eventType', total: '$total' } },
-                { $sort: { 'plate': 1, 'eventType': 1 } },
+                { $project: { plate: '$_id' } },
+                { $sort: { 'plate': 1 } },
             ]).toArray()
         return report
 
