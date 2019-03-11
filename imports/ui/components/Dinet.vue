@@ -163,7 +163,7 @@ function getDaysDiff(dateTimeMax, dateTimeMin) {
 </script>
 
 <template>
-  <section class="contenedor bg-triangle">
+  <section class="contenedor">
     <div class="itemOne">
 
         <v-combobox
@@ -293,7 +293,7 @@ function getDaysDiff(dateTimeMax, dateTimeMin) {
     </div>
     <div class="itemTwo">
       <template>
-        <v-btn color="green" @click="exportTableToExcel">Export Table Data To Excel File</v-btn>
+        <v-btn color="green" @click="exportTableToExcel">Exportar</v-btn>
         <table
           id="tblData"
           summary="Lista de Excesos de velocidad"
