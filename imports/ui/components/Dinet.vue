@@ -165,135 +165,127 @@ function getDaysDiff(dateTimeMax, dateTimeMin) {
 <template>
   <section class="contenedor">
     <div class="itemOne">
+      <v-combobox
+        v-model="selectPlates"
+        :items="plates"
+        label="Seleccione unidades"
+        multiple
+        small-chips
+        hide-selected
+        solo
+      ></v-combobox>
 
-        <v-combobox
-          v-model="selectPlates"
-          :items="plates"
-          label="Seleccione unidades"
-          multiple
-          small-chips
-          hide-selected
-          solo
-        ></v-combobox>
+      <section>
+        <v-menu
+          ref="menuDS"
+          :close-on-content-click="false"
+          v-model="pickerDS"
+          :nudge-right="40"
+          :return-value.sync="dateStart"
+          lazy
+          transition="scale-transition"
+          offset-y
+          min-width="290px"
+        >
+          <v-text-field
+            slot="activator"
+            v-model="dateStart"
+            label="Fecha de Inicio"
+            prepend-icon="event"
+            readonly
+          ></v-text-field>
+          <v-date-picker v-model="dateStart" @input="$refs.menuDS.save(dateStart)"></v-date-picker>
+        </v-menu>
+        <v-menu
+          ref="menuTS"
+          :close-on-content-click="false"
+          v-model="pickerTS"
+          :nudge-right="40"
+          :return-value.sync="timeStart"
+          lazy
+          transition="scale-transition"
+          offset-y
+          max-width="290px"
+          min-width="290px"
+        >
+          <v-text-field
+            slot="activator"
+            v-model="timeStart"
+            label="Tiempo de Inicio"
+            prepend-icon="access_time"
+            readonly
+          ></v-text-field>
+          <v-time-picker
+            v-if="pickerTS"
+            v-model="timeStart"
+            @change="$refs.menuTS.save(timeStart)"
+            format="24hr"
+          ></v-time-picker>
+        </v-menu>
+      </section>
 
+      <section>
+        <v-menu
+          ref="menuDE"
+          :close-on-content-click="false"
+          v-model="pickerDE"
+          :nudge-right="40"
+          :return-value.sync="dateEnd"
+          lazy
+          transition="scale-transition"
+          offset-y
+          min-width="290px"
+        >
+          <v-text-field
+            slot="activator"
+            v-model="dateEnd"
+            label="Fecha de Termino"
+            prepend-icon="event"
+            readonly
+          ></v-text-field>
+          <v-date-picker v-model="dateEnd" @input="$refs.menuDE.save(dateEnd)"></v-date-picker>
+        </v-menu>
+        <v-menu
+          ref="menuTE"
+          :close-on-content-click="false"
+          v-model="pickerTE"
+          :nudge-right="40"
+          :return-value.sync="timeEnd"
+          lazy
+          transition="scale-transition"
+          offset-y
+          max-width="290px"
+          min-width="290px"
+        >
+          <v-text-field
+            slot="activator"
+            v-model="timeEnd"
+            label="Tiempo de Termino"
+            prepend-icon="access_time"
+            readonly
+          ></v-text-field>
+          <v-time-picker
+            v-if="pickerTE"
+            v-model="timeEnd"
+            @change="$refs.menuTE.save(timeEnd)"
+            format="24hr"
+          ></v-time-picker>
+        </v-menu>
+      </section>
 
-        <section>
-          <v-menu
-            ref="menuDS"
-            :close-on-content-click="false"
-            v-model="pickerDS"
-            :nudge-right="40"
-            :return-value.sync="dateStart"
-            lazy
-            transition="scale-transition"
-            offset-y
-            min-width="290px"
-          >
-            <v-text-field
-              slot="activator"
-              v-model="dateStart"
-              label="Fecha de Inicio"
-              prepend-icon="event"
-              readonly
-            ></v-text-field>
-            <v-date-picker v-model="dateStart" @input="$refs.menuDS.save(dateStart)"></v-date-picker>
-          </v-menu>
-          <v-menu
-            ref="menuTS"
-            :close-on-content-click="false"
-            v-model="pickerTS"
-            :nudge-right="40"
-            :return-value.sync="timeStart"
-            lazy
-            transition="scale-transition"
-            offset-y
-            max-width="290px"
-            min-width="290px"
-          >
-            <v-text-field
-              slot="activator"
-              v-model="timeStart"
-              label="Tiempo de Inicio"
-              prepend-icon="access_time"
-              readonly
-            ></v-text-field>
-            <v-time-picker
-              v-if="pickerTS"
-              v-model="timeStart"
-              @change="$refs.menuTS.save(timeStart)"
-              format="24hr"
-            ></v-time-picker>
-          </v-menu>
-        </section>
+      <section>
+        <v-btn color="primary" block @click="genReport" :disabled="false">Generar Reporte</v-btn>
+      </section>
 
-   
-        <section>
-          <v-menu
-            ref="menuDE"
-            :close-on-content-click="false"
-            v-model="pickerDE"
-            :nudge-right="40"
-            :return-value.sync="dateEnd"
-            lazy
-            transition="scale-transition"
-            offset-y
-            min-width="290px"
-          >
-            <v-text-field
-              slot="activator"
-              v-model="dateEnd"
-              label="Fecha de Termino"
-              prepend-icon="event"
-              readonly
-            ></v-text-field>
-            <v-date-picker v-model="dateEnd" @input="$refs.menuDE.save(dateEnd)"></v-date-picker>
-          </v-menu>
-          <v-menu
-            ref="menuTE"
-            :close-on-content-click="false"
-            v-model="pickerTE"
-            :nudge-right="40"
-            :return-value.sync="timeEnd"
-            lazy
-            transition="scale-transition"
-            offset-y
-            max-width="290px"
-            min-width="290px"
-          >
-            <v-text-field
-              slot="activator"
-              v-model="timeEnd"
-              label="Tiempo de Termino"
-              prepend-icon="access_time"
-              readonly
-            ></v-text-field>
-            <v-time-picker
-              v-if="pickerTE"
-              v-model="timeEnd"
-              @change="$refs.menuTE.save(timeEnd)"
-              format="24hr"
-            ></v-time-picker>
-          </v-menu>
-        </section>
-    
-    
-        <section>
-          <v-btn color="primary" block @click="genReport" :disabled="false">Generar Reporte</v-btn>
-        </section>
-   
-     
-        <v-progress-linear v-if="progressState == 1" :indeterminate="true" color="green"></v-progress-linear>
-    
-   
-        <v-snackbar v-model="snackbar" :right="true" :timeout="timeout" :top="true">
-          {{ snackbarText }}
-          <v-btn color="pink" flat @click="snackbar = false">Cerrar</v-btn>
-        </v-snackbar>
-    
+      <v-progress-linear v-if="progressState == 1" :indeterminate="true" color="green"></v-progress-linear>
+
+      <v-snackbar v-model="snackbar" :right="true" :timeout="timeout" :top="true">
+        {{ snackbarText }}
+        <v-btn color="pink" flat @click="snackbar = false">Cerrar</v-btn>
+      </v-snackbar>
     </div>
     <div class="itemTwo">
-      <template>
-        <v-btn color="green" @click="exportTableToExcel">Exportar</v-btn>
+      <section v-if="data.length>0">
         <table
           id="tblData"
           summary="Lista de Excesos de velocidad"
@@ -324,7 +316,9 @@ function getDaysDiff(dateTimeMax, dateTimeMin) {
             </tr>
           </tbody>
         </table>
-      </template>
+
+        <v-btn color="success" @click="exportTableToExcel">Exportar</v-btn>
+      </section>
     </div>
   </section>
 </template>
