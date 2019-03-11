@@ -454,7 +454,12 @@ Meteor.methods({
                 { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
                 { $match: { 'events.type': { $in: arrayEvents } } },
-                { $group: { _id: { plate: '$events.vehicle' } } },
+                {
+                    $group: {
+                        _id: { plate: '$events.vehicle' },
+                        count: { $sum: 1 }
+                    }
+                },
 
                 { $sort: { 'plate': 1, 'eventType': 1 } },
             ]).toArray()
