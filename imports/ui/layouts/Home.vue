@@ -48,7 +48,7 @@
       </section>
       <v-container fluid fill-height>
         <v-layout >
-          <v-flex shrink xs12 sm8 md6>
+          <v-flex >
             <antapaccay v-if="userProfile.api == 'Antapaccay'"></antapaccay>
             <exsa v-if="userProfile.api == 'Exsa'"></exsa>
             <exsa-km v-if="userProfile.api == 'ExsaKm'"></exsa-km>
