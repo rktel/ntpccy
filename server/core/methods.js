@@ -126,7 +126,7 @@ Meteor.methods({
                     console.log("NO hay Data");
                     stDNT.emit('NoData', userID, 0)
                 } else {
-                    console.log(report);
+                    // console.log(report);
                     stDNT.emit('Rows', userID, report)
 
                 }
