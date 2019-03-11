@@ -121,76 +121,47 @@ Meteor.methods({
         plates = plates.sort()
         console.log('placas: ', plates)
         let RowArray = []
-        // Exceso 15km/h : 97
-        // Exceso 30km/h : 93
-        // Exceso 80km/h : 89
-        // Fatiga : 81
+
         Meteor.call('Dinet_getData', plates, dateTimeStart5, dateTimeEnd5, (error, report) => {
-            report.forEach((el, index, array) => {
-                const totalLength = array.length
-
-                if (totalLength > 0) {
-                    if (index != totalLength - 1) {
-
-                        if (el.eventType == 97) {
-                            RowArray[index] = {
-                                placa: el.plate,
-                                exceso15: el.total
-                            }
-                        }
-                        if (el.eventType == 81) {
-                            RowArray[index] = {
-                                placa: el.plate,
-                                fatiga: el.total
-                            }
-                        }
-
-                        if (array[index + 1]) {
-                            const next = array[index + 1]
-                            console.log(next);
-                            if (next.plate == el.plate) {
-                                if (next.eventType == 97) {
-                                    RowArray[index].exceso15 = next.total
-                                }
-                                if (next.eventType == 81) {
-                                    RowArray[index].fatiga = next.total
-                                }
-                            }
-
-                        }
-                    } else {
-                        console.log("last element:", el);
-                    }
-                } else {
-                    console.log("No hay Data Total");
-
-                }
-
-            })
-
-            // End forEach
-            console.log("RowArray:", RowArray);
-
+            console.log(report);
         })
     },
-
     async  Dinet_getData(plates, dateTimeStart, dateTimeEnd) {
-        // Exceso 15km/h : 97
-        // Exceso 30km/h : 93
-        // Exceso 80km/h : 89
-        // Fatiga : 81
-        const event_codes = [97, 81]
+        // Exceso 15km/h : 97,  Exceso 30km/h : 93, Exceso 80km/h : 89, Fatiga : 81
+        const arrayEvents = [97, 93, 89]
         const report = await Dinet.rawCollection().
             aggregate([
-                // { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [ 81,82] } } },
                 { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
-                { $match: { 'events.original': { $in: event_codes } } },
-                { $group: { _id: { plate: '$events.vehicle', eventType: '$events.original' }, total: { $sum: 1 } } },
-                { $project: { _id: 0, plate: '$_id.plate', eventType: '$_id.eventType', total: '$total' } },
-                // { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }} },
-                //   { $project: { _id: 0, plate: '$_id.plate', event: '$_id.event', created: '$_id.created' } },
-                { $sort: { 'plate': 1, 'eventType': 1 } },
+                { $match: { 'events.type': { $in: arrayEvents } } },
+                {
+                    $group: {
+                        _id: '$events.vehicle',
+                        exceso15: {
+                            $sum: {
+                                $cond: [
+                                    { $eq: ['$events.type', 97] }, 1, 0
+                                ]
+                            }
+                        },
+                        exceso30: {
+                            $sum: {
+                                $cond: [
+                                    { $eq: ['$events.type', 93] }, 1, 0
+                                ]
+                            }
+                        },
+                        exceso80: {
+                            $sum: {
+                                $cond: [
+                                    { $eq: ['$events.type', 89] }, 1, 0
+                                ]
+                            }
+                        }
+                    }
+                },
+                { $project: { _id: 0, placa: '$_id', exceso15: '$exceso15', exceso30: '$exceso30', exceso80: '$exceso80' } },
+                { $sort: { 'placa': 1 } },
             ]).toArray()
         return report
 
@@ -427,69 +398,9 @@ Meteor.methods({
         const plates = await Servosa.rawCollection().distinct('events.vehicle')
         return plates
     },
-    Servosa_queryEvents: function (userID, plates, dateTimeStart, dateTimeEnd) {
-        console.log('........................Dinet...............................')
-        // console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
-        console.log('Usuario: ', Meteor.user().username)
-        console.log('Fecha y Tiempo de Inicio: ', dateTimeStart)
-        console.log('Fecha y Tiempo de Fin: ', dateTimeEnd)
-
-        const dateTimeStart5 = addHours(dateTimeStart, 5)
-        const dateTimeEnd5 = addHours(dateTimeEnd, 5)
-        plates = plates.sort()
-        console.log('placas: ', plates)
-        let RowArray = []
-        const type0 = 0, type1 = 1, type13 = 13
-        // [305, 306]
-        Meteor.call('Servosa_getData', plates, dateTimeStart5, dateTimeEnd5, (error, report) => {
-            console.log("Report:", report);
-
-        })
-    },
-    async  Servosa_getData(plates, dateTimeStart, dateTimeEnd) {
-        // const arrayEvents = [305, 306]
-        const arrayEvents = [0, 1, 13]
-        const report = await Servosa.rawCollection().
-            aggregate([
-                { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
-                { $unwind: '$events' },
-                { $match: { 'events.type': { $in: arrayEvents } } },
-                {
-                    $group: {
-                        _id: '$events.vehicle',
-                        fatiga: {
-                            $sum: {
-                                $cond: [
-                                    { $eq: ['$events.type', 0] }, 1, 0
-                                ]
-                            }
-                        },
-                        distraccion: {
-                            $sum: {
-                                $cond: [
-                                    { $eq: ['$events.type', 1] }, 1, 0
-                                ]
-                            }
-                        },
-                        no_rostro: {
-                            $sum: {
-                                $cond: [
-                                    { $eq: ['$events.type', 13] }, 1, 0
-                                ]
-                            }
-                        }
-                    }
-                },
-                { $project: { _id: 0, plate: '$_id', fatiga:'$fatiga' , distraccion: '$distraccion', no_rostro:'$no_rostro'} },
-                { $sort: { 'plate': 1 } },
-            ]).toArray()
-        return report
-
-    },
-    /*
     Servosa_queryEvents(userID, plates, dateTimeStart, dateTimeEnd) {
         console.log('........................SERVOSA...............................')
-    
+
         console.log('Usuario: ', Meteor.user().username)
         console.log('Fecha y Tiempo de Inicio: ', dateTimeStart)
         console.log('Fecha y Tiempo de Fin: ', dateTimeEnd)
@@ -498,12 +409,12 @@ Meteor.methods({
         plates = plates.sort()
         console.log('placas: ', plates)
         let RowArray = []
-    
+
         Meteor.call('Servosa_getData', plates, dateTimeStart5, dateTimeEnd5, (error, report) => {
-     
+
 
             if (!error) {
- 
+
                 if (report.length > 0) {
                     report.forEach((el, index, array) => {
                         if (array[index + 1]) {
@@ -576,88 +487,29 @@ Meteor.methods({
             }
         });
 
- 
+
     },
-*/
-    /** DESCOMENTAR
-         async  Servosa_getData(plates, dateTimeStart, dateTimeEnd) {
-            // const arrayEvents = [305, 306]
-            const arrayEvents = [0, 1, 13]
-            const report = await Servosa.rawCollection().
-                aggregate([
-                    // { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [ 81,82] } } },
-                    { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
-                    { $unwind: '$events' },
-                    { $match: { 'events.type': { $in: arrayEvents } } },
-                    { $group: { _id: { plate: '$events.vehicle', eventType: '$events.type' }, total: { $sum: 1 } } },
-                    { $project: { _id: 0, plate: '$_id.plate', eventType: '$_id.eventType', total: '$total' } },
-                    // { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }} },
-                    //   { $project: { _id: 0, plate: '$_id.plate', event: '$_id.event', created: '$_id.created' } },
-                    { $sort: { 'plate': 1, 'eventType': 1 } },
-                ]).toArray()
-            return report
-    
-        }
-     
-    */
-    /* NO DESCOMENTAR
+
     async  Servosa_getData(plates, dateTimeStart, dateTimeEnd) {
+        const arrayEvents = [305, 306]
+
         const report = await Servosa.rawCollection().
             aggregate([
-                { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [81, 82] } } },
+                // { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [ 81,82] } } },
+                { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
-                //   { $group: { _id: {ev:'$events.original', plate: '$events.vehicle'}, total: { $sum: 1 } }},
-                { $group: { _id: { plate: '$events.vehicle', ev: '$events.original' }, total: { $sum: 1 } } },
+                { $match: { 'events.type': { $in: arrayEvents } } },
+                { $group: { _id: { plate: '$events.vehicle', eventType: '$events.type' }, total: { $sum: 1 } } },
+                { $project: { _id: 0, plate: '$_id.plate', eventType: '$_id.eventType', total: '$total' } },
                 // { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }} },
                 //   { $project: { _id: 0, plate: '$_id.plate', event: '$_id.event', created: '$_id.created' } },
-                { $sort: { '_id.plate': 1, '_id.ev': 1 } },
+                { $sort: { 'plate': 1, 'eventType': 1 } },
             ]).toArray()
         return report
 
     }
-        plates.forEach((el, index, arrayPlate) => {
-            Meteor.call('Servosa_getData', el, dateTimeStart5, dateTimeEnd5, (error, report) => {
-                if (!error) {
-                    console.log(report);
 
-                    if (report.length == 0) {
-                        RowArray.push({
-                            Placa: el,
-                            Fatiga: 0,
-                            Distraccion: 0
 
-                        })
-                    } else if (report.length == 1) {
-                        if(report.eventType==305){
-                            RowArray.push({
-                                Placa: el,
-                                Fatiga: report[0].total,
-                                Distraccion: 0
-    
-                            })
-                        }
-                        else if(report.eventType==306){
-                            RowArray.push({
-                                Placa: el,
-                                Fatiga: 0,
-                                Distraccion: report[0].total
-    
-                            })
-                        }
-                    }else if(report.length == 2){
-                        RowArray.push({
-                            Placa: el,
-                            Fatiga: report[0].total,
-                            Distraccion: report[1].total
-                        })
-                    }
-                    
-                }
-            });
-            
-        })
-    
-    */
 });
 //-------------------- EXSA
 
@@ -1133,3 +985,48 @@ function getTimeMillis(dateTime) {
 }
 
 // END ANTAPACCAY API
+
+/*
+------------------FUNCIONA QUERY SUM DE EVENTOS POR PLACA
+    async  Servosa_getData(plates, dateTimeStart, dateTimeEnd) {
+        // const arrayEvents = [305, 306]
+        const arrayEvents = [0, 1, 13]
+        const report = await Servosa.rawCollection().
+            aggregate([
+                { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
+                { $unwind: '$events' },
+                { $match: { 'events.type': { $in: arrayEvents } } },
+                {
+                    $group: {
+                        _id: '$events.vehicle',
+                        fatiga: {
+                            $sum: {
+                                $cond: [
+                                    { $eq: ['$events.type', 0] }, 1, 0
+                                ]
+                            }
+                        },
+                        distraccion: {
+                            $sum: {
+                                $cond: [
+                                    { $eq: ['$events.type', 1] }, 1, 0
+                                ]
+                            }
+                        },
+                        no_rostro: {
+                            $sum: {
+                                $cond: [
+                                    { $eq: ['$events.type', 13] }, 1, 0
+                                ]
+                            }
+                        }
+                    }
+                },
+                { $project: { _id: 0, placa: '$_id', fatiga:'$fatiga' , distraccion: '$distraccion', no_rostro:'$no_rostro'} },
+                { $sort: { 'plate': 1 } },
+            ]).toArray()
+        return report
+
+    },
+
+*/
