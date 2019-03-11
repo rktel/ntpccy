@@ -163,7 +163,7 @@ function getDaysDiff(dateTimeMax, dateTimeMin) {
 </script>
 
 <template>
-  <section class="contenedor">
+  <section class="contenedor bg-triangle">
     <div class="itemOne">
 
         <v-combobox
