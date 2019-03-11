@@ -47,7 +47,7 @@
         <p>Bienvenid@ {{userProfile.firstname}}</p>
       </section>
       <v-container fluid fill-height>
-        <v-layout justify-center align-center>
+        <v-layout >
           <v-flex shrink xs12 sm8 md6>
             <antapaccay v-if="userProfile.api == 'Antapaccay'"></antapaccay>
             <exsa v-if="userProfile.api == 'Exsa'"></exsa>
