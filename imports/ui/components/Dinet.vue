@@ -20,7 +20,8 @@ export default {
       if (userID == this.userID) {
         this.buttonGRDisabled = false;
         this.progressState = 0;
-
+        this.data = data;
+        /*
         try {
           json2excel({
             data,
@@ -30,6 +31,7 @@ export default {
         } catch (e) {
           console.error("export error");
         }
+*/
       }
     });
     stDNT.on("NoData", (userID, plate) => {
@@ -58,7 +60,8 @@ export default {
     snackbar: false,
     timeout: 1500,
     snackbarText: null,
-    userID: new Date().getTime()
+    userID: new Date().getTime(),
+    data: []
   }),
   methods: {
     exportTableToExcel() {
@@ -117,7 +120,7 @@ export default {
       ) {
         if (selectPlates.length > 0 && selectPlates.length <= MAX_PLATES) {
           const diffDays = getDaysDiff(dateTimeEnd, dateTimeStart);
-          console.log("days:", diffDays);
+          //  console.log("days:", diffDays);
 
           if (diffDays >= 0 && diffDays <= MAX_DAYS) {
             this.snackbar = true;
@@ -161,180 +164,6 @@ function getDaysDiff(dateTimeMax, dateTimeMin) {
 
 <template>
   <section>
-    <section>
-      <button @click="exportTableToExcel">Export Table Data To Excel File</button>
-      <table
-        id="tblData"
-        summary="Code page support in different versions of MS Windows."
-        rules="groups"
-        frame="hsides"
-        border="2"
-      >
-        <caption>CODE-PAGE SUPPORT IN MICROSOFT WINDOWS</caption>
-        <colgroup align="center"></colgroup>
-        <colgroup align="left"></colgroup>
-        <colgroup span="2" align="center"></colgroup>
-        <colgroup span="3" align="center"></colgroup>
-        <thead valign="top">
-          <tr>
-            <th>Code-Page
-              <br>ID
-            </th>
-            <th>Name</th>
-            <th>ACP</th>
-            <th>OEMCP</th>
-            <th>Windows
-              <br>NT 3.1
-            </th>
-            <th>Windows
-              <br>NT 3.51
-            </th>
-            <th>Windows
-              <br>95
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1200</td>
-            <td style="background-color: #00f; color: #fff">Unicode (BMP of ISO/IEC-10646)</td>
-            <td></td>
-            <td></td>
-            <td>X</td>
-            <td>X</td>
-            <td>*</td>
-          </tr>
-          <tr>
-            <td>1250</td>
-            <td style="font-weight: bold">Windows 3.1 Eastern European</td>
-            <td>X</td>
-            <td></td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-          </tr>
-          <tr>
-            <td>1251</td>
-            <td>Windows 3.1 Cyrillic</td>
-            <td>X</td>
-            <td></td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-          </tr>
-          <tr>
-            <td>1252</td>
-            <td>Windows 3.1 US (ANSI)</td>
-            <td>X</td>
-            <td></td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-          </tr>
-          <tr>
-            <td>1253</td>
-            <td>Windows 3.1 Greek</td>
-            <td>X</td>
-            <td></td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-          </tr>
-          <tr>
-            <td>1254</td>
-            <td>Windows 3.1 Turkish</td>
-            <td>X</td>
-            <td></td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-          </tr>
-          <tr>
-            <td>1255</td>
-            <td>Hebrew</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>X</td>
-          </tr>
-          <tr>
-            <td>1256</td>
-            <td>Arabic</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>X</td>
-          </tr>
-          <tr>
-            <td>1257</td>
-            <td>Baltic</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>X</td>
-          </tr>
-          <tr>
-            <td>1361</td>
-            <td>Korean (Johab)</td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-            <td>**</td>
-            <td>X</td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <td>437</td>
-            <td>MS-DOS United States</td>
-            <td></td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-            <td>X</td>
-          </tr>
-          <tr>
-            <td>708</td>
-            <td>Arabic (ASMO 708)</td>
-            <td></td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-            <td>X</td>
-          </tr>
-          <tr>
-            <td>709</td>
-            <td>Arabic (ASMO 449+, BCON V4)</td>
-            <td></td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-            <td>X</td>
-          </tr>
-          <tr>
-            <td>710</td>
-            <td>Arabic (Transparent Arabic)</td>
-            <td></td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-            <td>X</td>
-          </tr>
-          <tr>
-            <td>720</td>
-            <td>Arabic (Transparent ASMO)</td>
-            <td></td>
-            <td>X</td>
-            <td></td>
-            <td></td>
-            <td>X</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
     <template>
       <v-combobox
         v-model="selectPlates"
@@ -459,6 +288,37 @@ function getDaysDiff(dateTimeMax, dateTimeMin) {
         {{ snackbarText }}
         <v-btn color="pink" flat @click="snackbar = false">Cerrar</v-btn>
       </v-snackbar>
+    </template>
+    <template>
+      <v-btn color="green" @click="exportTableToExcel">Export Table Data To Excel File</v-btn>
+      <table
+        id="tblData"
+        summary="Lista de Excesos de velocidad"
+        rules="groups"
+        frame="hsides"
+        border="2"
+      >
+        <caption>LISTA DE EXCESOS DE VELOCIDAD</caption>
+        <colgroup align="center"></colgroup>
+        <colgroup align="left"></colgroup>
+        <colgroup span="2" align="center"></colgroup>
+        <colgroup span="3" align="center"></colgroup>
+        <thead valign="top">
+          <tr>
+            <th>Placa</th>
+            <th># Exceso 15km/h</th>
+            <th># Exceso 30km/h</th>
+            <th># Exceso 80km/h</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="el in data" :key="el.index">
+            <td>{{el.exceso15}}</td>
+            <td>{{el.exceso30}}</td>
+            <td>{{el.exceso80}}</td>
+          </tr>
+        </tbody>
+      </table>
     </template>
   </section>
 </template>
