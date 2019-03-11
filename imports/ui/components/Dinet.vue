@@ -313,6 +313,7 @@ function getDaysDiff(dateTimeMax, dateTimeMin) {
         </thead>
         <tbody>
           <tr v-for="el in data" :key="el.index">
+            <td>{{el.placa}}</td>
             <td>{{el.exceso15}}</td>
             <td>{{el.exceso30}}</td>
             <td>{{el.exceso80}}</td>
