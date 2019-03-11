@@ -133,28 +133,28 @@ Meteor.methods({
             aggregate([
                 { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
-                { $match: { 'events.type': { $in: arrayEvents } } },
+                { $match: { 'events.original': { $in: arrayEvents } } },
                 {
                     $group: {
                         _id: '$events.vehicle',
                         exceso15: {
                             $sum: {
                                 $cond: [
-                                    { $eq: ['$events.type', 97] }, 1, 0
+                                    { $eq: ['$events.original', 97] }, 1, 0
                                 ]
                             }
                         },
                         exceso30: {
                             $sum: {
                                 $cond: [
-                                    { $eq: ['$events.type', 93] }, 1, 0
+                                    { $eq: ['$events.original', 93] }, 1, 0
                                 ]
                             }
                         },
                         exceso80: {
                             $sum: {
                                 $cond: [
-                                    { $eq: ['$events.type', 89] }, 1, 0
+                                    { $eq: ['$events.original', 89] }, 1, 0
                                 ]
                             }
                         }
