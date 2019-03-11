@@ -46,6 +46,7 @@
       <section :style="{'position':'absolute', 'right':'20px', 'top':'10px'}">
         <p>Bienvenid@ {{userProfile.firstname}}</p>
       </section>
+      <br><br>
       <v-container fluid fill-height>
         <v-layout >
           <v-flex >
