@@ -453,9 +453,8 @@ Meteor.methods({
             aggregate([
                 { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
-                //{ $match: { 'events.type': { $in: arrayEvents } } },
-
-                { $match: { $or: [{ 'events.type': { $eq: 0 } }, { 'events.type': { $eq: 1 } }, { 'events.type': { $eq: 13 } }, ] } },
+                { $match: { 'events.type': { $in: arrayEvents } } },
+                { $group: { _id: null } },
                 { $sort: { 'plate': 1, 'eventType': 1 } },
             ]).toArray()
         return report
