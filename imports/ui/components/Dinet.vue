@@ -21,7 +21,7 @@ export default {
         this.buttonGRDisabled = false;
         this.progressState = 0;
         this.data = data;
-        
+
         /*
         try {
           json2excel({
@@ -303,17 +303,26 @@ function getDaysDiff(dateTimeMax, dateTimeMin) {
           <thead valign="top">
             <tr>
               <th>Placa</th>
-              <th>Excesos de  15km/h</th>
-              <th>Excesos de  30km/h</th>
+              <th>Excesos de 15km/h</th>
+              <th>Excesos de 30km/h</th>
               <th>Excesos de 80km/h</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="el in data" :key="el.index">
               <td align="center">{{el.placa}}</td>
-              <td align="center" :style="[el.exceso15>0?{'background':'red'}:{'background':'blue'}]">{{el.exceso15}}</td>
-              <td align="center">{{el.exceso30}}</td>
-              <td align="center">{{el.exceso80}}</td>
+              <td
+                align="center"
+                :style="[el.exceso15>0?{'background':'red', 'color':'white'}:{'background':'blue', 'color':'white'}]"
+              >{{el.exceso15}}</td>
+              <td
+                align="center"
+                :style="[el.exceso30>0?{'background':'red', 'color':'white'}:{'background':'blue', 'color':'white'}]"
+              >{{el.exceso30}}</td>
+              <td
+                align="center"
+                :style="[el.exceso80>0?{'background':'red', 'color':'white'}:{'background':'blue', 'color':'white'}]"
+              >{{el.exceso80}}</td>
             </tr>
           </tbody>
         </table>
