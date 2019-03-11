@@ -120,10 +120,17 @@ Meteor.methods({
         const dateTimeEnd5 = addHours(dateTimeEnd, 5)
         plates = plates.sort()
         console.log('placas: ', plates)
-        let RowArray = []
-
         Meteor.call('Dinet_getData', plates, dateTimeStart5, dateTimeEnd5, (error, report) => {
-            console.log(report);
+            if (!error) {
+                if (report.length == 0) {
+                    console.log("NO hay Data");
+                    stDNT.emit('NoData', userID, 0)
+                } else {
+                    console.log(report);
+                    stDNT.emit('Rows', userID, report)
+
+                }
+            }
         })
     },
     async  Dinet_getData(plates, dateTimeStart, dateTimeEnd) {
