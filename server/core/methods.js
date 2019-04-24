@@ -574,7 +574,6 @@ Meteor.methods({
 
             ]).toArray()
 
-        console.log(report);
 
         return report
 
