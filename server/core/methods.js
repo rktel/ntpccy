@@ -439,7 +439,7 @@ Meteor.methods({
                         'TRAMO': '   '
                     })                   
                 })
-                console.log(RowArray);
+                // console.log(RowArray);
                 stSRVS.emit('Rows', userID, RowArray)
             }else {
                 stSRVS.emit('NoData', userID, 0)
