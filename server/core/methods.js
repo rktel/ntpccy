@@ -527,23 +527,13 @@ Meteor.methods({
                 {
                     $group: {
                         _id: '$events.vehicle',
-                        fatigaYDistraccion: {
+                        fatiga: {
                             $sum: {
                                 $cond: {
                                     if: {
-                                        $or: [
-                                            {
-                                                $and: [
-                                                    { $eq: ['$events.original', 82] },
-                                                    { $eq: ['$events.type', 306] },
-                                                ]
-                                            },
-                                            {
-                                                $and: [
-                                                    { $eq: ['$events.original', 81] },
-                                                    { $eq: ['$events.type', 305] },
-                                                ]
-                                            }
+                                        $and: [
+                                            { $eq: ['$events.original', 81] },
+                                            { $eq: ['$events.type', 305] }
                                         ]
                                     },
                                     then: 1,
@@ -556,8 +546,8 @@ Meteor.methods({
                                 $cond: {
                                     if: {
                                         $and: [
-                                            { $eq: ['$events.original', 80] },
-                                            { $eq: ['$events.type', 0] }
+                                            { $eq: ['$events.original', 82] },
+                                            { $eq: ['$events.type', 306] }
                                         ]
                                     },
                                     then: 1,
