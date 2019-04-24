@@ -32,6 +32,8 @@ Meteor.methods({
     ArrayPlates_setPlates_Servosa: function () {
         Meteor.call("Servosa_queryPlates", (error, plates) => {
             if (!error) {
+                console.log("Servosa_queryPlates");
+                
                 ArrayPlates.insert({ name: 'Servosa', plates: plates.sort() })
             }
         });
