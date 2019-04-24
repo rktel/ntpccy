@@ -32,8 +32,7 @@ Meteor.methods({
     ArrayPlates_setPlates_Servosa: function () {
         Meteor.call("Servosa_queryPlates", (error, plates) => {
             if (!error) {
-                console.log("Servosa_queryPlates");
-                
+          
                 ArrayPlates.insert({ name: 'Servosa', plates: plates.sort() })
             }
         });
@@ -405,6 +404,7 @@ function Servosa_getHoraReal() {
 Meteor.methods({
     async Servosa_queryPlates() {
         const plates = await Servosa.rawCollection().distinct('events.vehicle')
+      
         return plates
     },
     Servosa_queryEvents(userID, plates, dateTimeStart, dateTimeEnd) {
@@ -421,7 +421,30 @@ Meteor.methods({
 
         Meteor.call('Servosa_getData', plates, dateTimeStart5, dateTimeEnd5, (error, report) => {
             console.log('Report:', report)
-
+            if(!error && report && report.length>0){
+                report.forEach((el, index, array) => {
+                    RowArray.push({
+                        'MES': Servosa_getMonth(dateTimeStart5),
+                        'FECHA': Servosa_getDate(dateTimeStart5),
+                        'RUTA': '    ',
+                        'CODIGO': '  ',
+                        'PLACA': el.placa,
+                        'CONDUCTOR': '   ',
+                        'DNI': ' ',
+                        'N° DE REPORTES REGISTRADOS': el.fatiga,
+                        'N° DE NO ROSTRO': el.noRostro,
+                        'ACCION EN CAMPO': Servosa_Accion(el.fatiga),
+                        'HORA REAL': Servosa_getHoraReal(),
+                        'SUP. ESCOLTA': '    ',
+                        'TRAMO': '   '
+                    })                   
+                })
+                console.log(RowArray);
+                stSRVS.emit('Rows', userID, RowArray)
+            }else {
+                stSRVS.emit('NoData', userID, 0)
+                console.log(`No hay data`)
+            }
             /*
 
             if (!error) {
