@@ -427,6 +427,8 @@ Meteor.methods({
                     report.forEach((el, index, array) => {
                         if (array[index + 1]) {
                             if (array[index + 1].plate == el.plate) {
+                                console.log('array[index + 1].plate == el.plate');
+                                
                                 RowArray.push({
                                     'MES': Servosa_getMonth(dateTimeStart5),
                                     'FECHA': Servosa_getDate(dateTimeStart5),
@@ -444,7 +446,11 @@ Meteor.methods({
                                 })
                             } else {
                                 if (el.plate && array[index - 1].plate && el.plate != array[index - 1].plate) {
+                                    console.log('el.plate && array[index - 1].plate && el.plate != array[index - 1].plate');
+                                    
                                     if (el.eventType == 305) {
+                                        console.log('el.eventType == 305');
+                                        
                                         RowArray.push({
                                             'MES': Servosa_getMonth(dateTimeStart5),
                                             'FECHA': Servosa_getDate(dateTimeStart5),
@@ -463,6 +469,7 @@ Meteor.methods({
                                         })
                                     }
                                     else if (el.eventType == 306) {
+                                        console.log('el.eventType == 306');
                                         RowArray.push({
                                             'MES': Servosa_getMonth(dateTimeStart5),
                                             'FECHA': Servosa_getDate(dateTimeStart5),
