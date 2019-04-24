@@ -547,6 +547,20 @@ Meteor.methods({
                                 }
                             }
                         },
+                        noRostro:{
+                            $sum:{
+                                $cond:{
+                                    if:{
+                                        $and:[
+                                            {$eq: ['$events.original', 80]},
+                                            {$eq: ['$events.type', 0]}
+                                        ]
+                                    },
+                                    then:1,
+                                    else:0
+                                }
+                            }
+                        }
                     }
                 }
  
