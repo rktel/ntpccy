@@ -423,6 +423,7 @@ Meteor.methods({
             if (!error) {
 
                 if (report.length > 0) {
+                    console.log('Report:', report)
                     report.forEach((el, index, array) => {
                         if (array[index + 1]) {
                             if (array[index + 1].plate == el.plate) {
