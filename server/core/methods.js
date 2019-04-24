@@ -523,7 +523,7 @@ Meteor.methods({
                 // { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [ 81,82] } } },
                 { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
-                { $match: { 'events.type': { $in: eventOriginal_Array } } },
+                { $match: { 'events.type': { $in: eventOriginal_Array } } }
  
             ]).toArray()
 
