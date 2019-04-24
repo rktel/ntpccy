@@ -28,6 +28,7 @@ Meteor.startup(() => {
     Meteor.call('ArrayPlates_getPlates_Servosa', function (error, plates) {
         if (!error) {
             if (!plates) {
+                console.log('Servosa');
                 Meteor.call('ArrayPlates_setPlates_Servosa')
             }
         }
