@@ -496,7 +496,36 @@ Meteor.methods({
 
 
     },
+    async  Servosa_getData(plates, dateTimeStart, dateTimeEnd) {
+        // 'FatigueAlarm', 'DistractionAlarm', 'No Rostro o No Conductor'
+        /**
+         *  TYPE    ORIGINAL    NAME_EVENT
+         *  306     82          Distraccion
+         *  305     81          Fatiga
+         *  0       80          No Rostro
+         */
+         const arrayEvents = [305, 306]
+        // const arrayEvents = [81,82]
 
+        const report = await Servosa.rawCollection().
+            aggregate([
+                // { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [ 81,82] } } },
+                { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
+                { $unwind: '$events' },
+                { $match: { 'events.type': { $in: arrayEvents } } },
+                { $group: { _id: { plate: '$events.vehicle', eventType: '$events.type' }, total: { $sum: 1 } } },
+                { $project: { _id: 0, plate: '$_id.plate', eventType: '$_id.eventType', total: '$total' } },
+                // { $group: { _id: { plate: '$events.vehicle', created: '$events.created', event: '$events.original' }} },
+                //   { $project: { _id: 0, plate: '$_id.plate', event: '$_id.event', created: '$_id.created' } },
+                { $sort: { 'plate': 1, 'eventType': 1 } },
+            ]).toArray()
+
+            console.log(report);
+            
+        return report
+
+    }
+/*
     async  Servosa_getData(plates, dateTimeStart, dateTimeEnd) {
         const arrayEvents = [305, 306]
 
@@ -515,7 +544,7 @@ Meteor.methods({
         return report
 
     }
-
+*/
 
 });
 //-------------------- EXSA
