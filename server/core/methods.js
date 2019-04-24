@@ -559,7 +559,7 @@ Meteor.methods({
                   
                   
                 },
-                { $project: { _id: 0, placa: '$_id', fatigaYDistraccion: '$fatigaYDistraccion', noRostro: '$noRostro' } },
+                { $project: { _id: 0, placa: '$_id', fatiga: '$fatiga', noRostro: '$noRostro' } },
                 { $sort: { 'placa': 1 } },
 
             ]).toArray()
