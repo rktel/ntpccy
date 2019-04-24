@@ -523,7 +523,32 @@ Meteor.methods({
                 // { $match: { 'events.vehicle': el, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd }, 'events.original': { $in: [ 81,82] } } },
                 { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
-                { $match: { 'events.original': { $in: eventOriginal_Array } } }
+                { $match: { 'events.original': { $in: eventOriginal_Array } } },
+                {
+                    $group:{
+                        _id:'$events.vehicle',
+                        fatigaYDistraccion: {
+                            $sum: {
+                                $cond:{
+                                    if:{
+                                        $or:[
+                                            {$and:[
+                                                { $eq: ['$events.original', 82] },
+                                                { $eq: ['$events.type', 306] },
+                                            ]},
+                                            {$and:[
+                                                { $eq: ['$events.original', 81] },
+                                                { $eq: ['$events.type', 305] },
+                                            ]}
+                                        ]
+                                    },
+                                    then:1,
+                                    else:0
+                                }
+                            }
+                        },
+                    }
+                }
  
             ]).toArray()
 
