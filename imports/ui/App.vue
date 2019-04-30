@@ -15,10 +15,10 @@ export default {
     let personal = {}
 
     Meteor.call("getPersonal", (error, persona) => {
-      if (!error) {
+   
         personal = persona
         console.log(personal)
-      }
+      
     });
 
     if (Meteor.userId() && true) {
