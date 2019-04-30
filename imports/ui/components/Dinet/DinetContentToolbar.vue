@@ -5,6 +5,11 @@
     </v-toolbar-title>
     <v-spacer></v-spacer>
 
+
+
+
+    <v-radio-group v-model="radioGroup">
+      <v-radio value="1">
     <v-menu
       ref="menu"
       lazy
@@ -25,6 +30,8 @@
       ></v-text-field>
       <v-date-picker v-model="date" no-title @input="menu = false"></v-date-picker>
     </v-menu>
+      </v-radio>
+      <v-radio value="2">
     <v-menu
       ref="menu2"
       lazy
@@ -45,10 +52,7 @@
       ></v-text-field>
       <v-date-picker v-model="date2" no-title @input="menu2 = false" type="month"></v-date-picker>
     </v-menu>
-
-    <v-radio-group v-model="radioGroup">
-      <v-radio :label="Dia" :value="1"></v-radio>
-      <v-radio :label="Mes" :value="2"></v-radio>
+      </v-radio>
     </v-radio-group>
   </v-toolbar>
 </template>
