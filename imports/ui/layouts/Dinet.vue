@@ -1,13 +1,15 @@
 <template>
-    <h1>Dinet</h1>
+  <DinetToolbar></DinetToolbar>
 </template>
 
 <script>
+import DinetToolbar from "../../ui/components/Dinet/DinetToolbar.vue";
 export default {
-
-}
+  components: {
+    DinetToolbar
+  }
+};
 </script>
 
 <style>
-
 </style>
