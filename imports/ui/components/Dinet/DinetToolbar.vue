@@ -10,7 +10,7 @@
           <v-icon>account_circle</v-icon>
         </v-btn>
 
-        <v-list>
+        <v-list dense>
           <v-list-tile v-for="(item,key) in profileMenu" :key="key" @click="item.action">
             <v-list-tile-title>{{ item.title }}</v-list-tile-title>
           </v-list-tile>
