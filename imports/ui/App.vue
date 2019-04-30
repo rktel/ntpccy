@@ -12,16 +12,8 @@
 <script>
 export default {
   beforeMount() {
-    let personal = {}
 
-    Meteor.call("getPersonal", (error, persona) => {
-   
-        personal = persona
-        console.log(personal)
-      
-    });
-
-    if (Meteor.userId() && true) {
+    if (Meteor.userId()) {
       this.$router.push({ name: "Home" });
     } else {
       this.$router.push({ name: "Login" });
