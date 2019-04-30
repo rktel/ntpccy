@@ -4,6 +4,9 @@
       <v-avatar color="grey lighten-4">
         <img src="img/Dinet_alt.png" alt="avatar">
       </v-avatar>
+      <v-btn icon @click="invertColor">
+        <v-icon>invert_colors</v-icon>
+      </v-btn>
       <v-menu offset-x offset-y>
         <v-btn icon slot="activator">
           <v-icon>account_circle</v-icon>
@@ -19,6 +22,8 @@
 </template>
 
 <script>
+import { Session } from "meteor/session";
+
 export default {
   data() {
     return {
@@ -32,6 +37,9 @@ export default {
           this.$router.push({ name: "Login" });
         }
       });
+    },
+    invertColor() {
+      Session.set("dark", !Session.get("dark"))
     }
   }
 };

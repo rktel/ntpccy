@@ -1,25 +1,34 @@
 <template>
-    <v-app>
-          <DinetToolbar></DinetToolbar>
-          <DinetContent></DinetContent>
-    </v-app>
+  <v-app :dark="dark">
+    <DinetToolbar></DinetToolbar>
+    <DinetContent></DinetContent>
+  </v-app>
 </template>
 
 <script>
-import { Session } from 'meteor/session'
+import { Session } from "meteor/session";
 
 import DinetToolbar from "../../ui/components/Dinet/DinetToolbar.vue";
 import DinetContent from "../../ui/components/Dinet/DinetContent.vue";
 
 export default {
   components: {
-    DinetToolbar,DinetContent
+    DinetToolbar,
+    DinetContent
+  },
+  beforeCreate() {
+    Session.set("dark", false);
+  },
+  meteor: {
+    dark() {
+      return Session.get("dark");
+    }
   }
 };
 </script>
 
 <style scoped>
-.application{
-    font-family: 'Ubuntu', sans-serif !important;
+.application {
+  font-family: "Ubuntu", sans-serif !important;
 }
 </style>
