@@ -5,7 +5,7 @@
           :size="avatarSize"
           color="grey lighten-4"
         >
-          <img src="img/Dinet.png" alt="avatar">
+          <img src="img/Dinet_alt.png" alt="avatar">
         </v-avatar>
     </v-toolbar>
 </template>
