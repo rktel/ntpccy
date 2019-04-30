@@ -5,11 +5,14 @@
     </v-toolbar-title>
     <v-spacer></v-spacer>
 
+   
 
-
-
-    <v-radio-group v-model="radioGroup">
-      <v-radio value="1">
+    <v-radio-group v-model="radios">
+      <template slot="label">
+        <div>Your favourite <strong>search engine</strong></div>
+      </template>
+      <v-radio value="Dia">
+        <template slot="label">
     <v-menu
       ref="menu"
       lazy
@@ -30,9 +33,11 @@
       ></v-text-field>
       <v-date-picker v-model="date" no-title @input="menu = false"></v-date-picker>
     </v-menu>
+        </template>
       </v-radio>
-      <v-radio value="2">
-    <v-menu
+      <v-radio value="Mes">
+        <template slot="label">
+     <v-menu
       ref="menu2"
       lazy
       :close-on-content-click="false"
@@ -52,8 +57,10 @@
       ></v-text-field>
       <v-date-picker v-model="date2" no-title @input="menu2 = false" type="month"></v-date-picker>
     </v-menu>
+        </template>
       </v-radio>
     </v-radio-group>
+
   </v-toolbar>
 </template>
 
@@ -65,7 +72,7 @@ export default {
       menu: false,
       date2: null,
       menu2: false,
-      radioGroup: 1
+      radios: 'Dia'
     };
   }
 };
