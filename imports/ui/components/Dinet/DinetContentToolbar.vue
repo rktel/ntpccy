@@ -5,9 +5,48 @@
     </v-toolbar-title>
     <v-spacer></v-spacer>
 
-   
+    <v-menu
+      ref="menu"
+      lazy
+      :close-on-content-click="false"
+      v-model="menu"
+      transition="scale-transition"
+      offset-y
+      full-width
+      :nudge-right="40"
+      min-width="290px"
+    >
+      <v-text-field
+        slot="activator"
+        label="Seleccione dia"
+        v-model="date"
+        prepend-icon="event"
+        readonly
+      ></v-text-field>
+      <v-date-picker v-model="date" no-title @input="menu = false"></v-date-picker>
+    </v-menu>
+    <v-menu
+      ref="menu2"
+      lazy
+      :close-on-content-click="false"
+      v-model="menu2"
+      transition="scale-transition"
+      offset-y
+      full-width
+      :nudge-right="40"
+      min-width="290px"
+    >
+      <v-text-field
+        slot="activator"
+        label="Seleccione mes"
+        v-model="date2"
+        prepend-icon="event"
+        readonly
+      ></v-text-field>
+      <v-date-picker v-model="date2" no-title @input="menu2 = false" type="month"></v-date-picker>
+    </v-menu>
 
-    <v-radio-group v-model="radios">
+    <v-radio-group v-model="radios" row>
       <template slot="label">
         <div>Your favourite <strong>search engine</strong></div>
       </template>
