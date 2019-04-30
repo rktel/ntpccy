@@ -4,12 +4,10 @@
       <v-avatar color="grey lighten-4">
         <img src="img/Dinet_alt.png" alt="avatar">
       </v-avatar>
-
       <v-menu offset-x offset-y>
         <v-btn icon slot="activator">
           <v-icon>account_circle</v-icon>
         </v-btn>
-
         <v-list dense>
           <v-list-tile v-for="(item,key) in profileMenu" :key="key" @click="item.action">
             <v-list-tile-title>{{ item.title }}</v-list-tile-title>
@@ -28,9 +26,13 @@ export default {
     };
   },
   methods: {
-      logout(){
-          alert('Logout')
-      }
+    logout() {
+      Meteor.logout(error => {
+        if (!error) {
+          this.$router.push({ name: "Login" });
+        }
+      });
+    }
   }
 };
 </script>
