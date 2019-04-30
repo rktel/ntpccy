@@ -34,7 +34,7 @@ export default {
   data() {
     return {
       date: null,
-      modal: false
+      menu: false
     };
   }
 };
