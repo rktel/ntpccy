@@ -5,7 +5,7 @@
         <img src="img/Dinet_alt.png" alt="avatar">
       </v-avatar>
 
-      <v-menu offset-x>
+      <v-menu offset-x bottom>
         <v-btn icon slot="activator">
           <v-icon>account_circle</v-icon>
         </v-btn>
