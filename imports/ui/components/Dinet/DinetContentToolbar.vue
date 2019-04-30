@@ -23,7 +23,7 @@
         prepend-icon="event"
         readonly
       ></v-text-field>
-      <v-date-picker v-model="date" no-title>
+      <v-date-picker v-model="date" no-title @input="menu = false">
        </v-date-picker>
     </v-menu>
   </v-toolbar>
