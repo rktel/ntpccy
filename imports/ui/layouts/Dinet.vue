@@ -1,5 +1,7 @@
 <template>
-  <DinetToolbar></DinetToolbar>
+    <v-app>
+          <DinetToolbar></DinetToolbar>
+    </v-app>
 </template>
 
 <script>
