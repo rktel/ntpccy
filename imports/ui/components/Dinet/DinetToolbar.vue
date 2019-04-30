@@ -28,7 +28,7 @@
 
 <script>
 import { Session } from "meteor/session";
-import Util from "../../util";
+import Util from "../../../util";
 export default {
   data() {
     return {
