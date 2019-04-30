@@ -11,10 +11,21 @@
 
 <script>
 export default {
-  mounted() {
-    Meteor.userId()
-      ? this.$router.push({ name: "Home" })
-      : this.$router.push({ name: "Login" });
+  beforeMount() {
+    let personal = {}
+
+    Meteor.call("getPersonal", (error, persona) => {
+      if (!error) {
+        personal = persona
+        console.log(personal)
+      }
+    });
+
+    if (Meteor.userId() && true) {
+      this.$router.push({ name: "Home" });
+    } else {
+      this.$router.push({ name: "Login" });
+    }
   }
 };
 </script>
