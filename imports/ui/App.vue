@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  beforeMount() {
+  created() {
 
     if (Meteor.userId()) {
       this.$router.push({ name: "Home" });
