@@ -4,7 +4,7 @@
       <v-avatar color="grey lighten-4">
         <img src="img/Dinet_alt.png" alt="avatar">
       </v-avatar>
-      <v-icon>mdi-account_circle</v-icon>
+      <v-icon>account_circle</v-icon>
     </v-layout>
   </v-toolbar>
 </template>
