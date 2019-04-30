@@ -24,7 +24,7 @@
 export default {
   data() {
     return {
-      profileMenu: [{ title: "Logout", action: () => this.logout }]
+      profileMenu: [{ title: "Logout", action: () => this.logout() }]
     };
   },
   methods: {
