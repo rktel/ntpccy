@@ -92,7 +92,7 @@ export default {
     ExsaKm,
     Dinet
   },
-  created() {
+  beforeCreate() {
     Meteor.call("getPersonal", (error, persona) => {
       if (!error) {
         if ( !persona.spa && persona.role == "Hyperadmin" || persona.role == "Superadmin"){
