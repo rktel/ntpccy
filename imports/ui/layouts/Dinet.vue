@@ -17,7 +17,7 @@ export default {
     DinetContent
   },
   beforeCreate() {
-    Session.set("dark", false);
+    Session.set("dark", true);
   },
   meteor: {
     dark() {

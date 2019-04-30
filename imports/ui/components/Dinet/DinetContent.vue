@@ -3,65 +3,7 @@
     <v-container>
       <v-layout align-center justify-center>
         <v-flex xs10>
-          
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-<v-btn block class="text-none">Start</v-btn>
-
+          <DinetContentToolbar></DinetContentToolbar>
         </v-flex>
       </v-layout>
     </v-container>
@@ -69,7 +11,12 @@
 </template>
 
 <script>
-export default {};
+import DinetContentToolbar from './DinetContentToolbar.vue'
+export default {
+    components:{
+        DinetContentToolbar
+    }
+};
 </script>
 
 <style>
