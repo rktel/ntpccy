@@ -15,7 +15,7 @@
     >
       <v-text-field
         slot="activator"
-        label="Fecha de Actualizacion"
+        label="Dia"
         v-model="date"
         append-icon="event"
         placeholder=" "
@@ -23,9 +23,7 @@
         outline
       ></v-text-field>
       <v-date-picker v-model="date" scrollable>
-        <v-spacer></v-spacer>
-        <v-btn flat color="primary" @click="modal = false">Cancel</v-btn>
-        <v-btn flat color="primary" @click="$refs.dialog.save(date)">OK</v-btn>
+
       </v-date-picker>
     </v-dialog>
   </v-toolbar>
