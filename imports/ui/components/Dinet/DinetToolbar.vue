@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar app>
+  <v-toolbar app fixed>
     <v-layout justify-space-between>
       <v-avatar color="grey lighten-4">
         <img src="img/Dinet_alt.png" alt="avatar">

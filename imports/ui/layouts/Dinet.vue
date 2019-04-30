@@ -6,8 +6,11 @@
 </template>
 
 <script>
+import { Session } from 'meteor/session'
+
 import DinetToolbar from "../../ui/components/Dinet/DinetToolbar.vue";
 import DinetContent from "../../ui/components/Dinet/DinetContent.vue";
+
 export default {
   components: {
     DinetToolbar,DinetContent
@@ -17,6 +20,6 @@ export default {
 
 <style scoped>
 .application{
-    font-family: 'Lato', sans-serif !important;
+    font-family: 'Ubuntu', sans-serif !important;
 }
 </style>
