@@ -41,15 +41,16 @@
 
     <v-content>
       <section :style="{'position':'absolute', 'left':'20px', 'top':'10px'}">
-        <img :src="`/img/${userProfile.api}.png `" height="35" >
+        <img :src="`/img/${userProfile.api}.png `" height="35">
       </section>
       <section :style="{'position':'absolute', 'right':'20px', 'top':'10px'}">
         <p>Bienvenid@ {{userProfile.firstname}}</p>
       </section>
-      <br><br>
+      <br>
+      <br>
       <v-container fluid fill-height>
-        <v-layout >
-          <v-flex >
+        <v-layout>
+          <v-flex>
             <antapaccay v-if="userProfile.api == 'Antapaccay'"></antapaccay>
             <exsa v-if="userProfile.api == 'Exsa'"></exsa>
             <exsa-km v-if="userProfile.api == 'ExsaKm'"></exsa-km>
@@ -91,13 +92,15 @@ export default {
     ExsaKm,
     Dinet
   },
-  created() {
+  beforeMount() {
     Meteor.call("getPersonal", (error, persona) => {
       if (!error) {
-        if (persona.role == "Hyperadmin" || persona.role == "Superadmin") {
-          persona.api = "Antapaccay";
+        if ( !persona.spa && persona.role == "Hyperadmin" || persona.role == "Superadmin"){
+            persona.api = "Antapaccay";
+        } else if (persona.spa && persona.spa == "Dinet") {
+          this.$router.push({ name: "Dinet" });
         }
-        this.SET_USERPROFILE(persona);
+          this.SET_USERPROFILE(persona);
       }
     });
   },
@@ -116,7 +119,7 @@ export default {
         if (!error) {
           persona.api = apiName;
           this.SET_USERPROFILE(persona);
-          this.drawer = !this.drawer
+          this.drawer = !this.drawer;
         }
       });
     },
