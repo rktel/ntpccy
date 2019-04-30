@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app v-if="ready">
     <v-navigation-drawer
       clipped
       fixed
@@ -95,6 +95,7 @@ export default {
   beforeCreate() {
     Meteor.call("getPersonal", (error, persona) => {
       if (!error) {
+        this.ready = true;
         if ( !persona.spa && persona.role == "Hyperadmin" || persona.role == "Superadmin"){
             persona.api = "Antapaccay";
         } else if (persona.spa && persona.spa == "Dinet") {
@@ -105,6 +106,7 @@ export default {
     });
   },
   data: () => ({
+    ready: false,
     adminRoles: ["Hyperadmin", "Superadmin"],
     drawer: true,
     apiItems: createApiArray(Meteor.settings.public.api)
