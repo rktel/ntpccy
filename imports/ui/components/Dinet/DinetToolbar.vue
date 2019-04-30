@@ -5,6 +5,9 @@
         <img src="img/Dinet_alt.png" alt="avatar">
       </v-avatar>
       <div>
+        <v-btn icon @click="fullscreen">
+          <v-icon>fullscreen</v-icon>
+        </v-btn>
         <v-btn icon @click="invertColor">
           <v-icon>invert_colors</v-icon>
         </v-btn>
@@ -25,7 +28,7 @@
 
 <script>
 import { Session } from "meteor/session";
-
+import Util from "../../util";
 export default {
   data() {
     return {
@@ -42,6 +45,9 @@ export default {
     },
     invertColor() {
       Session.set("dark", !Session.get("dark"));
+    },
+    fullscreen() {
+      Util.toggleFullScreen();
     }
   }
 };
