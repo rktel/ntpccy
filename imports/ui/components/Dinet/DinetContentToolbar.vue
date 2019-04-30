@@ -15,16 +15,15 @@
       full-width
       :nudge-right="40"
       min-width="290px"
-     >
+    >
       <v-text-field
         slot="activator"
-        label="Picker in menu"
+        label="Seleccione dia"
         v-model="date"
         prepend-icon="event"
         readonly
       ></v-text-field>
-      <v-date-picker v-model="date" no-title @input="menu = false">
-       </v-date-picker>
+      <v-date-picker v-model="date" no-title @input="menu = false"></v-date-picker>
     </v-menu>
     <v-menu
       ref="menu2"
@@ -36,17 +35,21 @@
       full-width
       :nudge-right="40"
       min-width="290px"
-     >
+    >
       <v-text-field
         slot="activator"
-        label="Picker in menu"
+        label="Seleccione mes"
         v-model="date2"
         prepend-icon="event"
         readonly
       ></v-text-field>
-      <v-date-picker v-model="date2" no-title @input="menu2 = false" type="month">
-       </v-date-picker>
+      <v-date-picker v-model="date2" no-title @input="menu2 = false" type="month"></v-date-picker>
     </v-menu>
+
+    <v-radio-group v-model="radioGroup">
+      <v-radio :label="Dia" :value="1"></v-radio>
+      <v-radio :label="Mes" :value="2"></v-radio>
+    </v-radio-group>
   </v-toolbar>
 </template>
 
@@ -58,6 +61,7 @@ export default {
       menu: false,
       date2: null,
       menu2: false,
+      radioGroup: 1
     };
   }
 };
