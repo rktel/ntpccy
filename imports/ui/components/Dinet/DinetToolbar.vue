@@ -4,7 +4,7 @@
       <v-avatar color="grey lighten-4">
         <img src="img/Dinet_alt.png" alt="avatar">
       </v-avatar>
-      <v-flex>
+      <div>
         <v-btn icon @click="invertColor">
           <v-icon>invert_colors</v-icon>
         </v-btn>
@@ -18,7 +18,7 @@
             </v-list-tile>
           </v-list>
         </v-menu>
-      </v-flex>
+      </div>
     </v-layout>
   </v-toolbar>
 </template>
