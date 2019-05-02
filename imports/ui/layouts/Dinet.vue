@@ -2,6 +2,7 @@
   <v-app :dark="dark">
     <DinetToolbar></DinetToolbar>
     <DinetContent></DinetContent>
+    <DinetFooter></DinetFooter>
   </v-app>
 </template>
 
@@ -10,11 +11,13 @@ import { Session } from "meteor/session";
 
 import DinetToolbar from "../../ui/components/Dinet/DinetToolbar.vue";
 import DinetContent from "../../ui/components/Dinet/DinetContent.vue";
+import DinetFooter from "../../ui/components/Dinet/DinetFooter.vue";
 
 export default {
   components: {
     DinetToolbar,
-    DinetContent
+    DinetContent,
+    DinetFooter
   },
   beforeCreate() {
     Session.set("dark", true);
