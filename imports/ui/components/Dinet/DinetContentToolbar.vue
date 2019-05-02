@@ -10,58 +10,57 @@
             <v-overflow-btn :items="dropdown_font" v-model="dropdown"></v-overflow-btn>
           </v-flex>
           <v-flex v-if="dropdown === 'Dia'">
-      <v-menu
-        ref="menu"
-        lazy
-        :close-on-content-click="false"
-        v-model="menu"
-        transition="scale-transition"
-        offset-y
-        full-width
-        :nudge-right="40"
-        min-width="290px"
-      >
-        <v-text-field
-          slot="activator"
-          label="Seleccione dia"
-          v-model="date"
-          prepend-icon="event"
-          readonly
-        ></v-text-field>
-        <v-date-picker v-model="date" no-title @input="menu = false"></v-date-picker>
-      </v-menu>
+            <v-menu
+              ref="menu"
+              lazy
+              :close-on-content-click="false"
+              v-model="menu"
+              transition="scale-transition"
+              offset-y
+              full-width
+              :nudge-right="40"
+              min-width="290px"
+            >
+              <v-text-field
+                slot="activator"
+                label="Seleccione dia"
+                v-model="date"
+                prepend-icon="event"
+                readonly
+              ></v-text-field>
+              <v-date-picker v-model="date" no-title @input="menu = false"></v-date-picker>
+            </v-menu>
           </v-flex>
           <v-flex v-else-if="dropdown === 'Mes'">
-      <v-menu
-        ref="menu2"
-        lazy
-        :close-on-content-click="false"
-        v-model="menu2"
-        transition="scale-transition"
-        offset-y
-        full-width
-        :nudge-right="40"
-        min-width="290px"
-      >
-        <v-text-field
-          slot="activator"
-          label="Seleccione mes"
-          v-model="date2"
-          prepend-icon="event"
-          readonly
-        ></v-text-field>
-        <v-date-picker v-model="date2" no-title @input="menu2 = false" type="month"></v-date-picker>
-      </v-menu>
+            <v-menu
+              ref="menu2"
+              lazy
+              :close-on-content-click="false"
+              v-model="menu2"
+              transition="scale-transition"
+              offset-y
+              full-width
+              :nudge-right="40"
+              min-width="290px"
+            >
+              <v-text-field
+                slot="activator"
+                label="Seleccione mes"
+                v-model="date2"
+                prepend-icon="event"
+                readonly
+              ></v-text-field>
+              <v-date-picker v-model="date2" no-title @input="menu2 = false" type="month"></v-date-picker>
+            </v-menu>
           </v-flex>
           <v-flex>
             <v-btn icon color="#11274c" @mouseover="mouseOver">
-                <v-icon>search</v-icon>
+              <v-icon>search</v-icon>
             </v-btn>
           </v-flex>
         </v-layout>
       </v-flex>
     </v-layout>
-
   </section>
 </template>
 
@@ -71,17 +70,16 @@ export default {
     return {
       dropdown: "Dia",
       dropdown_font: ["Mes", "Dia"],
-      date: null,
+      date: new Date().toISOString().substr(0, 10),
       menu: false,
       date2: null,
-      menu2: false,
-      radios: "Dia"
+      menu2: false
     };
   },
-  methods:{
-      mouseOver(){
-          alert('Demo')
-      }
+  methods: {
+    mouseOver() {
+      alert("Demo");
+    }
   }
 };
 </script>
