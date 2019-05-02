@@ -5,9 +5,12 @@
         <img src="img/Dinet_alt.png" alt="avatar">
       </v-avatar>
       <div>
-        <v-btn icon @click="fullscreen">
-          <v-icon>fullscreen</v-icon>
-        </v-btn>
+        <v-tooltip left>
+          <v-btn icon @click="fullscreen" slot="activator">
+            <v-icon>fullscreen</v-icon>
+          </v-btn>
+          <span>Pantalla completa</span>
+        </v-tooltip>
         <v-btn icon @click="invertColor">
           <v-icon>invert_colors</v-icon>
         </v-btn>
