@@ -1,7 +1,7 @@
 <template>
   <section>
     <v-layout row wrap>
-      <v-flex xs12 lg4 pt-5>
+      <v-flex xs12 lg4 pt-4>
         <div class="title font-italic grey--text">Control de Velocidad</div>
       </v-flex>
       <v-flex xs12 offset-lg2 lg2>
@@ -44,7 +44,7 @@
         </v-menu>
       </v-flex>
       <v-flex xs12 lg1>
-        <v-tooltip>
+        <v-tooltip bottom>
           <v-btn icon color="#11274c" dark slot="activator">
             <v-icon>search</v-icon>
           </v-btn>
