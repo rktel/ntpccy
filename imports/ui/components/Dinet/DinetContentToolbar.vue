@@ -25,7 +25,7 @@
           <v-date-picker v-model="date" no-title @input="menu = false"></v-date-picker>
         </v-menu>
       </v-flex>
-      <v-flex v-else-if="dropdown === 'Mes'" xs12 lg2>
+      <v-flex v-else-if="dropdown === 'Mes'" xs12 lg2 mr-0>
         <v-menu
           ref="menu2"
           :close-on-content-click="false"
