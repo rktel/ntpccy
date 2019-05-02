@@ -43,7 +43,7 @@
           <v-date-picker v-model="date2" no-title @input="menu2 = false" type="month"></v-date-picker>
         </v-menu>
       </v-flex>
-      <v-flex xs12 lg1 class="red" pt-0>
+      <v-flex xs12 lg1 pt-0>
         <v-tooltip bottom>
           <v-btn fab slot="activator">
             <v-icon>search</v-icon>
