@@ -10,7 +10,9 @@
             <v-overflow-btn :items="dropdown_font" v-model="dropdown"></v-overflow-btn>
           </v-flex>
           <v-flex>
-            <v-btn>Iniciar</v-btn>
+            <v-btn icon>
+                <v-icon>search</v-icon>
+            </v-btn>
           </v-flex>
         </v-layout>
       </v-flex>
