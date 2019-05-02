@@ -25,8 +25,8 @@
               v-model="menu"
               transition="scale-transition"
               offset-y
-              full-width
-              :nudge-right="40"
+      
+      
  
               width="100px"
             >
