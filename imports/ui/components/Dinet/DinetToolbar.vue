@@ -1,15 +1,11 @@
 <template>
   <v-toolbar app fixed>
-    <v-avatar >
-      <img v-if="!avatar" src="img/Dinet_alt.png" alt="avatar">
-      <img v-else src="img/Dinet_white.png" alt="avatar">
+    <v-avatar v-if="!avatar">
+      <img src="img/Dinet_alt.png" alt="avatar">
     </v-avatar>
+    <img v-else src="img/Dinet_white.png" alt="avatar">
     <v-spacer></v-spacer>
-    <v-speed-dial
-      v-model="fab"
-      direction="bottom"
-      transition="slide-y-reverse-transition"
-    >
+    <v-speed-dial v-model="fab" direction="bottom" transition="slide-y-reverse-transition">
       <v-btn v-model="fab" fab slot="activator" flat>
         <v-icon>more_vert</v-icon>
         <v-icon>arrow_upward</v-icon>
@@ -40,9 +36,9 @@
 import { Session } from "meteor/session";
 import Util from "../../../util";
 export default {
-  meteor:{
-    avatar(){
-      return Session.get("dark")
+  meteor: {
+    avatar() {
+      return Session.get("dark");
     }
   },
   data() {
