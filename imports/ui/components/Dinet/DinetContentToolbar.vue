@@ -5,7 +5,7 @@
         <div class="title font-italic grey--text">Control de Velocidad</div>
       </v-flex>
       <v-flex xs12 offset-lg2 lg5 class="red">
-        <v-layout row wrap>
+        <v-layout row wrap align-center>
           <v-flex>
             <v-overflow-btn :items="dropdown_font" v-model="dropdown"></v-overflow-btn>
           </v-flex>
