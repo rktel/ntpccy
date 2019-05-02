@@ -27,13 +27,13 @@
               offset-y
               full-width
               :nudge-right="40"
-              min-width="290px"
+              min-width="200px"
             >
               <v-text-field
                 slot="activator"
                 label="Seleccione dia"
                 v-model="date"
-                prepend-icon="event"
+                prepend-inner-icon="event"
                 readonly
                 outline
               ></v-text-field>
@@ -50,13 +50,13 @@
               offset-y
               full-width
               :nudge-right="40"
-              min-width="290px"
+              min-width="200px"
             >
               <v-text-field
                 slot="activator"
                 label="Seleccione mes"
                 v-model="date2"
-                prepend-icon="event"
+                prepend-inner-icon="event"
                 readonly
                 outline
               ></v-text-field>
