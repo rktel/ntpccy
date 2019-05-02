@@ -11,9 +11,9 @@
                   <v-overflow-btn
           :items="dropdown_font"
          v-model="dropdown"
-          width="50px"
+
         ></v-overflow-btn>
-    
+     <v-btn>Iniciar</v-btn>
       </v-flex>
     </v-layout>
     <v-toolbar color="transparent" flat>
