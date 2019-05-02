@@ -7,9 +7,9 @@
  
       </v-flex>
       <v-flex xs12 offset-lg2 lg5 class="red">
-        <div class="text-xs-center">
+
           <v-btn primary>Signup</v-btn>
-        </div>
+    
       </v-flex>
     </v-layout>
     <v-toolbar color="transparent" flat>
