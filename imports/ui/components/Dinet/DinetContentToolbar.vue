@@ -1,10 +1,10 @@
 <template>
   <section>
     <v-layout row wrap align-center>
-      <v-flex xs12 lg5 class="green">
+      <v-flex xs12 lg5>
         <div class="title font-italic grey--text">Control de Velocidad</div>
       </v-flex>
-      <v-flex xs12 offset-lg2 lg5 class="red">
+      <v-flex xs12 offset-lg2 lg5 >
         <v-layout row wrap align-center>
           <v-flex>
  
@@ -35,6 +35,7 @@
                 v-model="date"
                 prepend-icon="event"
                 readonly
+                outline
               ></v-text-field>
               <v-date-picker v-model="date" no-title @input="menu = false"></v-date-picker>
             </v-menu>
@@ -57,6 +58,7 @@
                 v-model="date2"
                 prepend-icon="event"
                 readonly
+                outline
               ></v-text-field>
               <v-date-picker v-model="date2" no-title @input="menu2 = false" type="month"></v-date-picker>
             </v-menu>
