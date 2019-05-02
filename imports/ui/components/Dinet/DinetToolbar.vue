@@ -5,6 +5,28 @@
         <img src="img/Dinet_alt.png" alt="avatar">
       </v-avatar>
       <div>
+        <v-speed-dial
+          v-model="fab"
+          direction="bottom"
+          open-on-hover="true"
+          transition="slide-y-reverse-transition"
+        >
+          <v-btn v-model="fab" color="blue darken-2" dark fab slot="activator">
+            <v-icon>account_circle</v-icon>
+            <v-icon>close</v-icon>
+          </v-btn>
+
+          <v-btn fab dark small color="green">
+            <v-icon>edit</v-icon>
+          </v-btn>
+          <v-btn fab dark small color="indigo">
+            <v-icon>add</v-icon>
+          </v-btn>
+          <v-btn fab dark small color="red">
+            <v-icon>delete</v-icon>
+          </v-btn>
+        </v-speed-dial>
+
         <v-tooltip left>
           <v-btn icon @click="fullscreen" slot="activator">
             <v-icon>fullscreen</v-icon>
@@ -15,13 +37,13 @@
           <v-btn icon @click="invertColor" slot="activator">
             <v-icon>invert_colors</v-icon>
           </v-btn>
-          <span>Pantalla completa</span>
+          <span>Invertir color</span>
         </v-tooltip>
         <v-tooltip left>
           <v-btn icon @click="logout" slot="activator">
-            <v-icon>settings</v-icon>
+            <v-icon>power_settings_new</v-icon>
           </v-btn>
-          <span>Pantalla completa</span>
+          <span>Salir</span>
         </v-tooltip>
       </div>
     </v-layout>
@@ -34,7 +56,7 @@ import Util from "../../../util";
 export default {
   data() {
     return {
-      profileMenu: [{ title: "Logout", action: () => this.logout() }]
+      fab: false
     };
   },
   methods: {
