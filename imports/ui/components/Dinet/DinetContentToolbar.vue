@@ -20,15 +20,11 @@
           <v-flex v-if="dropdown === 'Dia'">
             <v-menu
               ref="menu"
-              lazy
+      
               :close-on-content-click="false"
               v-model="menu"
               transition="scale-transition"
-              offset-y
-      
-      
- 
-              width="100px"
+
             >
               <v-text-field
                 slot="activator"
