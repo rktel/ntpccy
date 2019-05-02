@@ -11,40 +11,29 @@
           open-on-hover="true"
           transition="slide-y-reverse-transition"
         >
-          <v-btn v-model="fab" color="blue darken-2" dark fab slot="activator">
-            <v-icon>account_circle</v-icon>
-            <v-icon>close</v-icon>
+          <v-btn v-model="fab" dark fab slot="activator">
+            <v-icon>more_vert</v-icon>
+            <v-icon>arrow_upward</v-icon>
           </v-btn>
-
-          <v-btn fab dark small color="green">
-            <v-icon>edit</v-icon>
-          </v-btn>
-          <v-btn fab dark small color="indigo">
-            <v-icon>add</v-icon>
-          </v-btn>
-          <v-btn fab dark small color="red">
-            <v-icon>delete</v-icon>
-          </v-btn>
+          <v-tooltip left>
+            <v-btn fab dark small @click="fullscreen" slot="activator">
+              <v-icon>fullscreen</v-icon>
+            </v-btn>
+            <span>Pantalla completa</span>
+          </v-tooltip>
+          <v-tooltip left>
+            <v-btn fab dark small @click="invertColor" slot="activator">
+              <v-icon>invert_colors</v-icon>
+            </v-btn>
+            <span>Invertir color</span>
+          </v-tooltip>
+          <v-tooltip left>
+            <v-btn fab dark small @click="logout" slot="activator">
+              <v-icon>power_settings_new</v-icon>
+            </v-btn>
+            <span>Salir</span>
+          </v-tooltip>
         </v-speed-dial>
-
-        <v-tooltip left>
-          <v-btn icon @click="fullscreen" slot="activator">
-            <v-icon>fullscreen</v-icon>
-          </v-btn>
-          <span>Pantalla completa</span>
-        </v-tooltip>
-        <v-tooltip left>
-          <v-btn icon @click="invertColor" slot="activator">
-            <v-icon>invert_colors</v-icon>
-          </v-btn>
-          <span>Invertir color</span>
-        </v-tooltip>
-        <v-tooltip left>
-          <v-btn icon @click="logout" slot="activator">
-            <v-icon>power_settings_new</v-icon>
-          </v-btn>
-          <span>Salir</span>
-        </v-tooltip>
       </div>
     </v-layout>
   </v-toolbar>
