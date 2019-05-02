@@ -2,9 +2,9 @@
   <section>
     <v-layout row wrap>
       <v-flex xs12 lg5 class="green">
-          <div class="text-xs-center">
+
               <v-btn primary>Signup</v-btn>
-          </div>
+ 
       </v-flex>
       <v-flex xs12 offset-lg2 lg5 class="red">
         <div class="text-xs-center">
