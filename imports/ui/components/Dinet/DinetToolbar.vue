@@ -1,7 +1,7 @@
 <template>
   <v-toolbar app fixed>
     <v-avatar v-if="!avatar">
-      <img src="img/Dinet_alt.png" alt="avatar">
+      <img src="img/Dinet.png" alt="avatar">
     </v-avatar>
     <img v-else src="img/Dinet_white.png" alt="avatar" width="80">
     <v-spacer></v-spacer>
