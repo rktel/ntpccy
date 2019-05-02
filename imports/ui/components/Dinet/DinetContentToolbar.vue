@@ -1,6 +1,6 @@
 <template>
   <section>
-    <v-layout row wrap>
+    <v-layout row wrap align-center>
       <v-flex xs12 lg5 class="green">
 
               <div class="title font-italic grey--text">Control de Velocidad</div>
