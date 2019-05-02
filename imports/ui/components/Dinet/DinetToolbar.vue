@@ -11,19 +11,18 @@
           </v-btn>
           <span>Pantalla completa</span>
         </v-tooltip>
-        <v-btn icon @click="invertColor">
-          <v-icon>invert_colors</v-icon>
-        </v-btn>
-        <v-menu offset-x offset-y>
-          <v-btn icon slot="activator">
-            <v-icon>account_circle</v-icon>
+        <v-tooltip left>
+          <v-btn icon @click="invertColor" slot="activator">
+            <v-icon>invert_colors</v-icon>
           </v-btn>
-          <v-list dense>
-            <v-list-tile v-for="(item,key) in profileMenu" :key="key" @click="item.action">
-              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-            </v-list-tile>
-          </v-list>
-        </v-menu>
+          <span>Pantalla completa</span>
+        </v-tooltip>
+        <v-tooltip left>
+          <v-btn icon @click="logout" slot="activator">
+            <v-icon>settings</v-icon>
+          </v-btn>
+          <span>Pantalla completa</span>
+        </v-tooltip>
       </div>
     </v-layout>
   </v-toolbar>
