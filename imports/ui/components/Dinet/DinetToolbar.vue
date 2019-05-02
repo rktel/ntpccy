@@ -1,6 +1,8 @@
 <template>
   <v-toolbar app fixed>
-    <img v-if="!avatar" src="img/Dinet.png" alt="avatar" width="50">
+    <v-avatar v-if="!avatar">
+      <img src="img/Dinet_alt.png" alt="avatar">
+    </v-avatar>
     <img v-else src="img/Dinet_white.png" alt="avatar" width="80">
     <v-spacer></v-spacer>
     <v-speed-dial v-model="fab" direction="bottom" transition="slide-y-reverse-transition">
