@@ -2,18 +2,17 @@
   <section>
     <v-layout row wrap align-center>
       <v-flex xs12 lg5 class="green">
-
-              <div class="title font-italic grey--text">Control de Velocidad</div>
- 
+        <div class="title font-italic grey--text">Control de Velocidad</div>
       </v-flex>
       <v-flex xs12 offset-lg2 lg5 class="red">
-
-                  <v-overflow-btn
-          :items="dropdown_font"
-         v-model="dropdown"
-
-        ></v-overflow-btn>
-     <v-btn>Iniciar</v-btn>
+        <v-layout row wrap>
+          <v-flex>
+            <v-overflow-btn :items="dropdown_font" v-model="dropdown"></v-overflow-btn>
+          </v-flex>
+          <v-flex>
+            <v-btn>Iniciar</v-btn>
+          </v-flex>
+        </v-layout>
       </v-flex>
     </v-layout>
     <v-toolbar color="transparent" flat>
@@ -127,8 +126,8 @@
 export default {
   data() {
     return {
-        dropdown: 'Arial',
-        dropdown_font: ['Arial', 'Calibri', 'Courier', 'Verdana'],
+      dropdown: "Arial",
+      dropdown_font: ["Arial", "Calibri", "Courier", "Verdana"],
       date: null,
       menu: false,
       date2: null,
