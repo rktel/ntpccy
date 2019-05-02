@@ -127,7 +127,7 @@
 export default {
   data() {
     return {
-        dropdown:Arial,
+        dropdown: 'Arial',
         dropdown_font: ['Arial', 'Calibri', 'Courier', 'Verdana'],
       date: null,
       menu: false,
