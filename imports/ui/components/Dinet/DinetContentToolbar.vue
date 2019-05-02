@@ -1,6 +1,6 @@
 <template>
   <section>
-    <v-layout row>
+    <v-layout row wrap>
       <v-flex xs12 class="green">
           <div class="text-xs-center">
               <v-btn primary>Signup</v-btn>
