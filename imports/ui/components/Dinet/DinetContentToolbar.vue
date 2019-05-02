@@ -3,7 +3,7 @@
     <v-layout row wrap>
       <v-flex xs12 lg5 class="green">
 
-              <v-btn primary>Signup</v-btn>
+              <span class="title font-italic grey--text">Control de Velocidad</span>
  
       </v-flex>
       <v-flex xs12 offset-lg2 lg5 class="red">
