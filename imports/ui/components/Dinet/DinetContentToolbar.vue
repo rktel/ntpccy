@@ -10,7 +10,7 @@
 
                   <v-overflow-btn
           :items="dropdown_font"
-          label="Overflow Btn"
+         v-model="dropdown"
           
         ></v-overflow-btn>
     
@@ -127,6 +127,7 @@
 export default {
   data() {
     return {
+        dropdown:Arial,
         dropdown_font: ['Arial', 'Calibri', 'Courier', 'Verdana'],
       date: null,
       menu: false,
