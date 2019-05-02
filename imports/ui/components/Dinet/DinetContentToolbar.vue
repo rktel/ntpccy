@@ -10,7 +10,7 @@
             <v-overflow-btn :items="dropdown_font" v-model="dropdown"></v-overflow-btn>
           </v-flex>
           <v-flex>
-            <v-btn icon color="#11274c">
+            <v-btn icon color="#11274c" @mouseover="mouseOver">
                 <v-icon>search</v-icon>
             </v-btn>
           </v-flex>
@@ -136,6 +136,11 @@ export default {
       menu2: false,
       radios: "Dia"
     };
+  },
+  methods:{
+      mouseOver(){
+          alert('Demo')
+      }
   }
 };
 </script>
