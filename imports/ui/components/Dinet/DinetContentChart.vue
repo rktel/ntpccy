@@ -1,5 +1,5 @@
 <template>
-    <h1>Dinet Chart</h1>
+    <h1 class="red">Dinet Chart</h1>
 </template>
 
 <script>
