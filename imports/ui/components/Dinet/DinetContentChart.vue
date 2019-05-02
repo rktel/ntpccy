@@ -7,28 +7,28 @@
         </v-card>
       </v-flex>
       <v-flex lg3 xs12>
-        <v-card>
+        <v-card height="200">
           <v-btn>Mark</v-btn>
         </v-card>
       </v-flex>
       <v-flex lg3 xs12>
-        <v-card>
+        <v-card height="200">
           <v-btn>Mark</v-btn>
         </v-card>
       </v-flex>
       <v-flex lg3 xs12>
-        <v-card>
+        <v-card height="200">
           <v-btn>Mark</v-btn>
         </v-card>
       </v-flex>
 
       <v-flex lg9 xs12>
-        <v-card>
+        <v-card height="500">
           <v-btn>Jarvis</v-btn>
         </v-card>
       </v-flex>
       <v-flex lg3 xs12>
-        <v-card>
+        <v-card height="500">
           <v-btn>Jarvis</v-btn>
         </v-card>
       </v-flex>
