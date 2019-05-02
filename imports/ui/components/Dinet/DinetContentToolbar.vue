@@ -1,7 +1,7 @@
 <template>
   <section>
     <v-layout row wrap >
-      <v-flex xs12 lg4>
+      <v-flex xs12 lg4 pt-4>
         <div class="title font-italic grey--text">Control de Velocidad</div>
       </v-flex>
       <v-flex xs12 offset-lg2 lg2>
