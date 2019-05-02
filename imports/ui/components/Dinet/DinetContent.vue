@@ -3,8 +3,8 @@
     <v-container text-xs-center grid-list-lg>
       <v-layout align-center justify-center>
         <v-flex xs10>
-          <DinetContentToolbar\>
-          <DinetContentChart\>
+          <DinetContentToolbar>
+          <DinetContentChart>
         </v-flex>
       </v-layout>
     </v-container>
