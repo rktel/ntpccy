@@ -25,7 +25,7 @@
           <v-date-picker v-model="date" no-title @input="menu = false"></v-date-picker>
         </v-menu>
       </v-flex>
-      <v-flex v-else-if="dropdown === 'Mes'" xs12 lg2 mr-0 pr-0>
+      <v-flex v-else-if="dropdown === 'Mes'" xs12 lg2 >
         <v-menu
           ref="menu2"
           :close-on-content-click="false"
@@ -43,9 +43,9 @@
           <v-date-picker v-model="date2" no-title @input="menu2 = false" type="month"></v-date-picker>
         </v-menu>
       </v-flex>
-      <v-flex xs12 lg1 ml-0 pl-0>
+      <v-flex xs12 lg1 >
         <v-tooltip bottom>
-          <v-btn fab icon slot="activator">
+          <v-btn fab slot="activator">
             <v-icon>search</v-icon>
           </v-btn>
           <span>Buscar</span>
