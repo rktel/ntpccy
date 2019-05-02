@@ -9,20 +9,7 @@
           <v-flex>
             <v-overflow-btn :items="dropdown_font" v-model="dropdown"></v-overflow-btn>
           </v-flex>
-          <v-flex>
-            <v-btn icon color="#11274c" @mouseover="mouseOver">
-                <v-icon>search</v-icon>
-            </v-btn>
-          </v-flex>
-        </v-layout>
-      </v-flex>
-    </v-layout>
-    <v-toolbar color="transparent" flat>
-      <v-toolbar-title class="px-4">
-        <span class="title font-italic grey--text">Control de Velocidad</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-
+          <v-flex v-if="dropdown === 'Dia'">
       <v-menu
         ref="menu"
         lazy
@@ -43,6 +30,8 @@
         ></v-text-field>
         <v-date-picker v-model="date" no-title @input="menu = false"></v-date-picker>
       </v-menu>
+          </v-flex>
+          <v-flex v-else-if="dropdown === 'Mes'">
       <v-menu
         ref="menu2"
         lazy
@@ -63,64 +52,16 @@
         ></v-text-field>
         <v-date-picker v-model="date2" no-title @input="menu2 = false" type="month"></v-date-picker>
       </v-menu>
+          </v-flex>
+          <v-flex>
+            <v-btn icon color="#11274c" @mouseover="mouseOver">
+                <v-icon>search</v-icon>
+            </v-btn>
+          </v-flex>
+        </v-layout>
+      </v-flex>
+    </v-layout>
 
-      <v-radio-group v-model="radios" row>
-        <template slot="label">
-          <div>
-            Your favourite
-            <strong>search engine</strong>
-          </div>
-        </template>
-        <v-radio value="Dia">
-          <template slot="label">
-            <v-menu
-              ref="menu"
-              lazy
-              :close-on-content-click="false"
-              v-model="menu"
-              transition="scale-transition"
-              offset-y
-              full-width
-              :nudge-right="40"
-              min-width="290px"
-            >
-              <v-text-field
-                slot="activator"
-                label="Seleccione dia"
-                v-model="date"
-                prepend-icon="event"
-                readonly
-              ></v-text-field>
-              <v-date-picker v-model="date" no-title @input="menu = false"></v-date-picker>
-            </v-menu>
-          </template>
-        </v-radio>
-        <v-radio value="Mes">
-          <template slot="label">
-            <v-menu
-              ref="menu2"
-              lazy
-              :close-on-content-click="false"
-              v-model="menu2"
-              transition="scale-transition"
-              offset-y
-              full-width
-              :nudge-right="40"
-              min-width="290px"
-            >
-              <v-text-field
-                slot="activator"
-                label="Seleccione mes"
-                v-model="date2"
-                prepend-icon="event"
-                readonly
-              ></v-text-field>
-              <v-date-picker v-model="date2" no-title @input="menu2 = false" type="month"></v-date-picker>
-            </v-menu>
-          </template>
-        </v-radio>
-      </v-radio-group>
-    </v-toolbar>
   </section>
 </template>
 
@@ -128,8 +69,8 @@
 export default {
   data() {
     return {
-      dropdown: "Arial",
-      dropdown_font: ["Arial", "Calibri", "Courier", "Verdana"],
+      dropdown: "Dia",
+      dropdown_font: ["Mes", "Dia"],
       date: null,
       menu: false,
       date2: null,
