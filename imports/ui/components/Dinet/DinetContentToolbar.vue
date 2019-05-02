@@ -11,8 +11,6 @@
               label="Dia/Mes"
               placeholder=" "
               outline
-              dense
-              id="styled-input" class="styled-input"
             ></v-select>
       </v-flex>
           <v-flex v-if="dropdown === 'Dia'" xs12 lg2>
@@ -81,13 +79,6 @@ export default {
 };
 </script>
 
-<style scoped>
-#styled-input {
-  height: 40px !important;
-  font-size: 20pt !important;
-}
-.styled-input label[for] {
-  height: 40px !important;
-  font-size: 20pt !important;
-}
+<style>
+
 </style>
