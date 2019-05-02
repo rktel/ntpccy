@@ -1,10 +1,10 @@
 <template>
   <section>
       <v-layout row>
-          <v-flex xs5 justify-center>
+          <v-flex xs5 justify-center class="green">
               Hello
           </v-flex>
-          <v-flex xs5 offset-xs2 justify-center>
+          <v-flex xs5 offset-xs2 justify-center class="red">
               <v-btn>Active</v-btn>
           </v-flex>
       </v-layout>
