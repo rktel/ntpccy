@@ -8,7 +8,11 @@
       </v-flex>
       <v-flex xs12 offset-lg2 lg5 class="red">
 
-          <v-btn primary>Signup</v-btn>
+                  <v-overflow-btn
+          :items="dropdown_font"
+          label="Overflow Btn"
+          
+        ></v-overflow-btn>
     
       </v-flex>
     </v-layout>
@@ -123,6 +127,7 @@
 export default {
   data() {
     return {
+        dropdown_font: ['Arial', 'Calibri', 'Courier', 'Verdana'],
       date: null,
       menu: false,
       date2: null,
