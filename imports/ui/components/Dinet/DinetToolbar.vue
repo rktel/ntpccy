@@ -7,7 +7,6 @@
     <v-speed-dial
       v-model="fab"
       direction="bottom"
-      open-on-hover="true"
       transition="slide-y-reverse-transition"
     >
       <v-btn v-model="fab" fab slot="activator" flat>
