@@ -45,7 +45,7 @@
       </v-flex>
       <v-flex xs12 lg1>
         <v-tooltip bottom>
-          <v-btn fab dark slot="activator" color="grey">
+          <v-btn fab slot="activator" small>
             <v-icon>search</v-icon>
           </v-btn>
           <span>Buscar</span>
