@@ -28,7 +28,7 @@
               full-width
               :nudge-right="40"
  
-              max-width="200px"
+              max-width="100px"
             >
               <v-text-field
                 slot="activator"
