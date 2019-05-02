@@ -12,6 +12,7 @@
               placeholder=" "
               outline
               dense
+              id="styled-input" class="styled-input"
             ></v-select>
       </v-flex>
           <v-flex v-if="dropdown === 'Dia'" xs12 lg2>
@@ -80,5 +81,13 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+#styled-input {
+  height: 40px;
+  font-size: 20pt;
+}
+.styled-input label[for] {
+  height: 40px;
+  font-size: 20pt;
+}
 </style>

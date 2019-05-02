@@ -1,6 +1,6 @@
 <template>
   <v-content>
-    <v-container text-xs-center>
+    <v-container text-xs-center grid-list-lg>
       <v-layout align-center justify-center>
         <v-flex xs10>
           <DinetContentToolbar></DinetContentToolbar>
