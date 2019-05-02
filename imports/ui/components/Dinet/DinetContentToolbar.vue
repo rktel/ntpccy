@@ -1,7 +1,7 @@
 <template>
   <section>
-    <v-layout row wrap >
-      <v-flex xs12 lg4 pt-4>
+    <v-layout row wrap>
+      <v-flex xs12 lg4 pt-5>
         <div class="title font-italic grey--text">Control de Velocidad</div>
       </v-flex>
       <v-flex xs12 offset-lg2 lg2>
@@ -44,9 +44,12 @@
         </v-menu>
       </v-flex>
       <v-flex xs12 lg1>
-        <v-btn icon color="#11274c" dark>
-          <v-icon>search</v-icon>
-        </v-btn>
+        <v-tooltip>
+          <v-btn icon color="#11274c" dark slot="activator">
+            <v-icon>search</v-icon>
+          </v-btn>
+          <span>Buscar</span>
+        </v-tooltip>
       </v-flex>
     </v-layout>
   </section>
@@ -64,9 +67,7 @@ export default {
       menu2: false
     };
   },
-  methods: {
-
-  }
+  methods: {}
 };
 </script>
 
