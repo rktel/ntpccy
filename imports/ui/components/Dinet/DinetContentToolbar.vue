@@ -4,12 +4,11 @@
       <v-flex xs12 lg5>
         <div class="title font-italic grey--text">Control de Velocidad</div>
       </v-flex>
-      <v-flex xs12 offset-lg2 lg5 >
+      <v-flex xs12 offset-lg2 lg5>
         <v-layout row wrap align-center>
           <v-flex>
- 
             <v-select
-            v-model="dropdown"
+              v-model="dropdown"
               :items="dropdown_font"
               label="Dia/Mes"
               placeholder=" "
@@ -20,11 +19,9 @@
           <v-flex v-if="dropdown === 'Dia'">
             <v-menu
               ref="menu"
-      
               :close-on-content-click="false"
               v-model="menu"
               transition="scale-transition"
-
             >
               <v-text-field
                 slot="activator"
@@ -40,14 +37,9 @@
           <v-flex v-else-if="dropdown === 'Mes'">
             <v-menu
               ref="menu2"
-              lazy
               :close-on-content-click="false"
               v-model="menu2"
               transition="scale-transition"
-              offset-y
-              full-width
-              :nudge-right="40"
-              min-width="200px"
             >
               <v-text-field
                 slot="activator"
