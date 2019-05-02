@@ -7,7 +7,15 @@
       <v-flex xs12 offset-lg2 lg5 class="red">
         <v-layout row wrap align-center>
           <v-flex>
-            <v-overflow-btn :items="dropdown_font" v-model="dropdown"></v-overflow-btn>
+ 
+            <v-select
+            v-model="dropdown"
+              :items="dropdown_font"
+              label="Dia/Mes"
+              placeholder=" "
+              outline
+              dense
+            ></v-select>
           </v-flex>
           <v-flex v-if="dropdown === 'Dia'">
             <v-menu
