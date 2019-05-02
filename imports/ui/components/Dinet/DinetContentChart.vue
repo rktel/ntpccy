@@ -21,6 +21,17 @@
           <v-btn>Mark</v-btn>
         </v-card>
       </v-flex>
+
+      <v-flex lg6 xs12>
+        <v-card>
+          <v-btn>Jarvis</v-btn>
+        </v-card>
+      </v-flex>
+      <v-flex lg6 xs12>
+        <v-card>
+          <v-btn>Jarvis</v-btn>
+        </v-card>
+      </v-flex>
     </v-layout>
   </section>
 </template>
