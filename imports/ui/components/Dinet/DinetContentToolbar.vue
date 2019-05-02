@@ -1,5 +1,14 @@
 <template>
-  <v-toolbar color="transparent" flat>
+  <section>
+      <v-layout row>
+          <v-flex xs5>
+              Hello
+          </v-flex>
+          <v-flex xs5 offset-xs2>
+              <v-btn>Active</v-btn>
+          </v-flex>
+      </v-layout>
+    <v-toolbar color="transparent" flat>
     <v-toolbar-title class="px-4">
       <span class="title font-italic grey--text">Control de Velocidad</span>
     </v-toolbar-title>
@@ -101,6 +110,8 @@
     </v-radio-group>
 
   </v-toolbar>
+  </section>
+
 </template>
 
 <script>
