@@ -1,41 +1,38 @@
 <template>
   <v-toolbar app fixed>
-    <v-layout justify-space-between>
-      <v-avatar color="grey lighten-4">
-        <img src="img/Dinet_alt.png" alt="avatar">
-      </v-avatar>
-      <div>
-        <v-speed-dial
-          v-model="fab"
-          direction="bottom"
-          open-on-hover="true"
-          transition="slide-y-reverse-transition"
-        >
-          <v-btn v-model="fab" dark fab slot="activator">
-            <v-icon>more_vert</v-icon>
-            <v-icon>arrow_upward</v-icon>
-          </v-btn>
-          <v-tooltip left>
-            <v-btn fab dark small @click="fullscreen" slot="activator">
-              <v-icon>fullscreen</v-icon>
-            </v-btn>
-            <span>Pantalla completa</span>
-          </v-tooltip>
-          <v-tooltip left>
-            <v-btn fab dark small @click="invertColor" slot="activator">
-              <v-icon>invert_colors</v-icon>
-            </v-btn>
-            <span>Invertir color</span>
-          </v-tooltip>
-          <v-tooltip left>
-            <v-btn fab dark small @click="logout" slot="activator">
-              <v-icon>power_settings_new</v-icon>
-            </v-btn>
-            <span>Salir</span>
-          </v-tooltip>
-        </v-speed-dial>
-      </div>
-    </v-layout>
+    <v-avatar color="grey lighten-4">
+      <img src="img/Dinet_alt.png" alt="avatar">
+    </v-avatar>
+    <v-spacer></v-spacer>
+    <v-speed-dial
+      v-model="fab"
+      direction="bottom"
+      open-on-hover="true"
+      transition="slide-y-reverse-transition"
+    >
+      <v-btn v-model="fab" fab slot="activator">
+        <v-icon>more_vert</v-icon>
+        <v-icon>arrow_upward</v-icon>
+      </v-btn>
+      <v-tooltip left>
+        <v-btn fab small @click="fullscreen" slot="activator">
+          <v-icon>fullscreen</v-icon>
+        </v-btn>
+        <span>Pantalla completa</span>
+      </v-tooltip>
+      <v-tooltip left>
+        <v-btn fab small @click="invertColor" slot="activator">
+          <v-icon>invert_colors</v-icon>
+        </v-btn>
+        <span>Invertir color</span>
+      </v-tooltip>
+      <v-tooltip left>
+        <v-btn fab small @click="logout" slot="activator">
+          <v-icon>power_settings_new</v-icon>
+        </v-btn>
+        <span>Salir</span>
+      </v-tooltip>
+    </v-speed-dial>
   </v-toolbar>
 </template>
 
