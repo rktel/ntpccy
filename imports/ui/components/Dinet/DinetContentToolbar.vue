@@ -83,11 +83,11 @@ export default {
 
 <style scoped>
 #styled-input {
-  height: 40px;
-  font-size: 20pt;
+  height: 40px !important;
+  font-size: 20pt !important;
 }
 .styled-input label[for] {
-  height: 40px;
-  font-size: 20pt;
+  height: 40px !important;
+  font-size: 20pt !important;
 }
 </style>
