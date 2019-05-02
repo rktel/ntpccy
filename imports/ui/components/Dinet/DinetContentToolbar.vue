@@ -3,7 +3,7 @@
     <v-layout row>
       <v-flex xs5 class="green">
           <div class="text-xs-center">
-              <h1>Hello</h1>
+              <v-btn primary>Signup</v-btn>
           </div>
       </v-flex>
       <v-flex xs5 offset-xs2 class="red">
