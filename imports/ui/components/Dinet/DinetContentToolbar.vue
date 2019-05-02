@@ -5,56 +5,49 @@
         <div class="title font-italic grey--text">Control de Velocidad</div>
       </v-flex>
       <v-flex xs12 offset-lg2 lg2>
-            <v-select
-              v-model="dropdown"
-              :items="dropdown_font"
-              label="Dia/Mes"
-              placeholder=" "
-              outline
-            ></v-select>
+        <v-select v-model="dropdown" :items="dropdown_font" label="Dia/Mes" placeholder=" " outline></v-select>
       </v-flex>
-          <v-flex v-if="dropdown === 'Dia'" xs12 lg2>
-            <v-menu
-              ref="menu"
-              :close-on-content-click="false"
-              v-model="menu"
-              transition="scale-transition"
-            >
-              <v-text-field
-                slot="activator"
-                label="Seleccione dia"
-                v-model="date"
-                prepend-inner-icon="event"
-                readonly
-                outline
-              ></v-text-field>
-              <v-date-picker v-model="date" no-title @input="menu = false"></v-date-picker>
-            </v-menu>
-          </v-flex>
-          <v-flex v-else-if="dropdown === 'Mes'" xs12 lg2>
-            <v-menu
-              ref="menu2"
-              :close-on-content-click="false"
-              v-model="menu2"
-              transition="scale-transition"
-            >
-              <v-text-field
-                slot="activator"
-                label="Seleccione mes"
-                v-model="date2"
-                prepend-inner-icon="event"
-                readonly
-                outline
-              ></v-text-field>
-              <v-date-picker v-model="date2" no-title @input="menu2 = false" type="month"></v-date-picker>
-            </v-menu>
-          </v-flex>
+      <v-flex v-if="dropdown === 'Dia'" xs12 lg2>
+        <v-menu
+          ref="menu"
+          :close-on-content-click="false"
+          v-model="menu"
+          transition="scale-transition"
+        >
+          <v-text-field
+            slot="activator"
+            label="Seleccione dia"
+            v-model="date"
+            prepend-inner-icon="event"
+            readonly
+            outline
+          ></v-text-field>
+          <v-date-picker v-model="date" no-title @input="menu = false"></v-date-picker>
+        </v-menu>
+      </v-flex>
+      <v-flex v-else-if="dropdown === 'Mes'" xs12 lg2>
+        <v-menu
+          ref="menu2"
+          :close-on-content-click="false"
+          v-model="menu2"
+          transition="scale-transition"
+        >
+          <v-text-field
+            slot="activator"
+            label="Seleccione mes"
+            v-model="date2"
+            prepend-inner-icon="event"
+            readonly
+            outline
+          ></v-text-field>
+          <v-date-picker v-model="date2" no-title @input="menu2 = false" type="month"></v-date-picker>
+        </v-menu>
+      </v-flex>
       <v-flex xs12 lg2>
-            <v-btn icon color="#11274c" @mouseover="mouseOver">
-              <v-icon>search</v-icon>
-            </v-btn>
+        <v-btn color="#11274c" @mouseover="mouseOver" dark>
+          Buscar
+        </v-btn>
       </v-flex>
-
     </v-layout>
   </section>
 </template>
@@ -80,5 +73,4 @@ export default {
 </script>
 
 <style>
-
 </style>
