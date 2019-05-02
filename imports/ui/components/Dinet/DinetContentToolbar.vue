@@ -1,117 +1,118 @@
 <template>
   <section>
-      <v-layout row justify-center>
-          <v-flex xs5  class="green">
-              Hello
-          </v-flex>
-          <v-flex xs5 offset-xs2 class="red">
-              <v-btn>Active</v-btn>
-          </v-flex>
-      </v-layout>
+    <v-layout row>
+      <v-flex xs5 class="green">Hello</v-flex>
+      <v-flex xs5 offset-xs2 class="red">
+        <div class="text-xs-center">
+          <v-btn primary>Signup</v-btn>
+        </div>
+      </v-flex>
+    </v-layout>
     <v-toolbar color="transparent" flat>
-    <v-toolbar-title class="px-4">
-      <span class="title font-italic grey--text">Control de Velocidad</span>
-    </v-toolbar-title>
-    <v-spacer></v-spacer>
+      <v-toolbar-title class="px-4">
+        <span class="title font-italic grey--text">Control de Velocidad</span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
 
-    <v-menu
-      ref="menu"
-      lazy
-      :close-on-content-click="false"
-      v-model="menu"
-      transition="scale-transition"
-      offset-y
-      full-width
-      :nudge-right="40"
-      min-width="290px"
-    >
-      <v-text-field
-        slot="activator"
-        label="Seleccione dia"
-        v-model="date"
-        prepend-icon="event"
-        readonly
-      ></v-text-field>
-      <v-date-picker v-model="date" no-title @input="menu = false"></v-date-picker>
-    </v-menu>
-    <v-menu
-      ref="menu2"
-      lazy
-      :close-on-content-click="false"
-      v-model="menu2"
-      transition="scale-transition"
-      offset-y
-      full-width
-      :nudge-right="40"
-      min-width="290px"
-    >
-      <v-text-field
-        slot="activator"
-        label="Seleccione mes"
-        v-model="date2"
-        prepend-icon="event"
-        readonly
-      ></v-text-field>
-      <v-date-picker v-model="date2" no-title @input="menu2 = false" type="month"></v-date-picker>
-    </v-menu>
+      <v-menu
+        ref="menu"
+        lazy
+        :close-on-content-click="false"
+        v-model="menu"
+        transition="scale-transition"
+        offset-y
+        full-width
+        :nudge-right="40"
+        min-width="290px"
+      >
+        <v-text-field
+          slot="activator"
+          label="Seleccione dia"
+          v-model="date"
+          prepend-icon="event"
+          readonly
+        ></v-text-field>
+        <v-date-picker v-model="date" no-title @input="menu = false"></v-date-picker>
+      </v-menu>
+      <v-menu
+        ref="menu2"
+        lazy
+        :close-on-content-click="false"
+        v-model="menu2"
+        transition="scale-transition"
+        offset-y
+        full-width
+        :nudge-right="40"
+        min-width="290px"
+      >
+        <v-text-field
+          slot="activator"
+          label="Seleccione mes"
+          v-model="date2"
+          prepend-icon="event"
+          readonly
+        ></v-text-field>
+        <v-date-picker v-model="date2" no-title @input="menu2 = false" type="month"></v-date-picker>
+      </v-menu>
 
-    <v-radio-group v-model="radios" row>
-      <template slot="label">
-        <div>Your favourite <strong>search engine</strong></div>
-      </template>
-      <v-radio value="Dia">
+      <v-radio-group v-model="radios" row>
         <template slot="label">
-    <v-menu
-      ref="menu"
-      lazy
-      :close-on-content-click="false"
-      v-model="menu"
-      transition="scale-transition"
-      offset-y
-      full-width
-      :nudge-right="40"
-      min-width="290px"
-    >
-      <v-text-field
-        slot="activator"
-        label="Seleccione dia"
-        v-model="date"
-        prepend-icon="event"
-        readonly
-      ></v-text-field>
-      <v-date-picker v-model="date" no-title @input="menu = false"></v-date-picker>
-    </v-menu>
+          <div>
+            Your favourite
+            <strong>search engine</strong>
+          </div>
         </template>
-      </v-radio>
-      <v-radio value="Mes">
-        <template slot="label">
-     <v-menu
-      ref="menu2"
-      lazy
-      :close-on-content-click="false"
-      v-model="menu2"
-      transition="scale-transition"
-      offset-y
-      full-width
-      :nudge-right="40"
-      min-width="290px"
-    >
-      <v-text-field
-        slot="activator"
-        label="Seleccione mes"
-        v-model="date2"
-        prepend-icon="event"
-        readonly
-      ></v-text-field>
-      <v-date-picker v-model="date2" no-title @input="menu2 = false" type="month"></v-date-picker>
-    </v-menu>
-        </template>
-      </v-radio>
-    </v-radio-group>
-
-  </v-toolbar>
+        <v-radio value="Dia">
+          <template slot="label">
+            <v-menu
+              ref="menu"
+              lazy
+              :close-on-content-click="false"
+              v-model="menu"
+              transition="scale-transition"
+              offset-y
+              full-width
+              :nudge-right="40"
+              min-width="290px"
+            >
+              <v-text-field
+                slot="activator"
+                label="Seleccione dia"
+                v-model="date"
+                prepend-icon="event"
+                readonly
+              ></v-text-field>
+              <v-date-picker v-model="date" no-title @input="menu = false"></v-date-picker>
+            </v-menu>
+          </template>
+        </v-radio>
+        <v-radio value="Mes">
+          <template slot="label">
+            <v-menu
+              ref="menu2"
+              lazy
+              :close-on-content-click="false"
+              v-model="menu2"
+              transition="scale-transition"
+              offset-y
+              full-width
+              :nudge-right="40"
+              min-width="290px"
+            >
+              <v-text-field
+                slot="activator"
+                label="Seleccione mes"
+                v-model="date2"
+                prepend-icon="event"
+                readonly
+              ></v-text-field>
+              <v-date-picker v-model="date2" no-title @input="menu2 = false" type="month"></v-date-picker>
+            </v-menu>
+          </template>
+        </v-radio>
+      </v-radio-group>
+    </v-toolbar>
   </section>
-
 </template>
 
 <script>
@@ -122,7 +123,7 @@ export default {
       menu: false,
       date2: null,
       menu2: false,
-      radios: 'Dia'
+      radios: "Dia"
     };
   }
 };
