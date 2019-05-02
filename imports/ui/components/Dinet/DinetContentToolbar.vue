@@ -1,6 +1,6 @@
 <template>
   <section>
-    <v-layout row wrap align-center>
+    <v-layout row wrap >
       <v-flex xs12 lg4>
         <div class="title font-italic grey--text">Control de Velocidad</div>
       </v-flex>
@@ -44,7 +44,7 @@
         </v-menu>
       </v-flex>
       <v-flex xs12 lg2>
-        <v-btn color="#11274c" @mouseover="mouseOver" dark>
+        <v-btn color="#11274c" dark>
           Buscar
         </v-btn>
       </v-flex>
@@ -65,9 +65,7 @@ export default {
     };
   },
   methods: {
-    mouseOver() {
-      alert("Demo");
-    }
+
   }
 };
 </script>
