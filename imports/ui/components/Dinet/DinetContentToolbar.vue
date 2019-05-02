@@ -2,7 +2,7 @@
   <section>
     <v-layout row wrap>
       <v-flex xs12 lg4 pt-4>
-        <div class="title font-italic grey--text">Control de Velocidad</div>
+        <div class="headline font-italic grey--text">Control de Velocidad</div>
       </v-flex>
       <v-flex xs12 offset-lg2 lg2>
         <v-select v-model="dropdown" :items="dropdown_font" label="Dia/Mes" placeholder=" " outline></v-select>
