@@ -10,7 +10,7 @@
       open-on-hover="true"
       transition="slide-y-reverse-transition"
     >
-      <v-btn v-model="fab" slot="activator">
+      <v-btn v-model="fab" fab slot="activator" flat>
         <v-icon>more_vert</v-icon>
         <v-icon>arrow_upward</v-icon>
       </v-btn>
