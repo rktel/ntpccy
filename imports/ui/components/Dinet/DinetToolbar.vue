@@ -1,7 +1,8 @@
 <template>
   <v-toolbar app fixed>
-    <v-avatar color="grey lighten-4">
-      <img src="img/Dinet_alt.png" alt="avatar">
+    <v-avatar >
+      <img v-if="!avatar" src="img/Dinet_alt.png" alt="avatar">
+      <img v-else src="img/Dinet_white.png" alt="avatar">
     </v-avatar>
     <v-spacer></v-spacer>
     <v-speed-dial
@@ -39,6 +40,11 @@
 import { Session } from "meteor/session";
 import Util from "../../../util";
 export default {
+  meteor:{
+    avatar(){
+      return Session.get("dark")
+    }
+  },
   data() {
     return {
       fab: false
