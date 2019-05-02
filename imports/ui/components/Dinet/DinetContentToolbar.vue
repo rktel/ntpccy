@@ -11,7 +11,7 @@
                   <v-overflow-btn
           :items="dropdown_font"
          v-model="dropdown"
-          
+          width="50px"
         ></v-overflow-btn>
     
       </v-flex>
