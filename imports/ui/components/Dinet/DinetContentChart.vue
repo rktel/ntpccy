@@ -25,7 +25,7 @@
       <v-flex lg9 xs12>
         <v-card height="500">
           <div>
-            <apexchart width="500" type="line" :options="options" :series="series"></apexchart>
+            <apexchart width="500" type="bar" :options="options" :series="series"></apexchart>
           </div>
         </v-card>
       </v-flex>
