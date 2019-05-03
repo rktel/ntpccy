@@ -41,16 +41,8 @@
 <script>
 export default {
   mounted() {
-    
-    function increment() {
-    let seriesData = this.series.data;
-      seriesData = seriesData.map(element => {
-        return element + 1;
-      });
-       this.series.data = seriesData;
-    }
-
-    setInterval(increment, 2000)
+    setInterval(this.increment, 2000);
+ 
   },
   data: function() {
     return {
@@ -69,6 +61,16 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+   increment() {
+      let seriesData = this.series.data;
+      seriesData = seriesData.map(element => {
+        return element + 1;
+      });
+      this.series.data = seriesData;
+    }
+
   }
 };
 </script>
