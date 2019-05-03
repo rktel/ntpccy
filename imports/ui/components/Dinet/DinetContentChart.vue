@@ -3,7 +3,7 @@
     <v-layout row wrap>
       <v-flex lg3 xs12 h>
         <v-card height="200">
-          <v-btn>Mark</v-btn>
+          <apexchart width="250" type="bar" :options="options1" :series="series1"></apexchart>
         </v-card>
       </v-flex>
       <v-flex lg3 xs12>
@@ -24,9 +24,7 @@
 
       <v-flex lg9 xs12>
         <v-card height="500">
-          <div>
-            <apexchart width="500" type="bar" :options="options" :series="series"></apexchart>
-          </div>
+          <v-btn>Jarvis</v-btn>
         </v-card>
       </v-flex>
       <v-flex lg3 xs12>
@@ -42,11 +40,10 @@
 export default {
   mounted() {
     setInterval(this.increment, 2000);
- 
   },
   data: function() {
     return {
-      options: {
+      options1: {
         chart: {
           id: "vuechart-example"
         },
@@ -54,7 +51,7 @@ export default {
           categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
         }
       },
-      series: [
+      series1: [
         {
           name: "series-1",
           data: [30, 40, 45, 50, 49, 60, 70, 91]
@@ -63,20 +60,17 @@ export default {
     };
   },
   methods: {
-   increment() {
-      let seriesData = this.series[0].data;
+    increment() {
+      let seriesData = this.series1[0].data;
       seriesData = seriesData.map(element => {
         return element + 1;
       });
-      this.series[0].data = seriesData;
+      this.series1[0].data = seriesData;
     }
-
   }
 };
 </script>
 
 <style scoped>
-#vuechart-example {
-  background-color: brown;
-}
+
 </style>
