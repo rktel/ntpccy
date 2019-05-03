@@ -64,7 +64,7 @@ export default {
   },
   methods: {
    increment() {
-      let seriesData = this.series.data;
+      let seriesData = this.series[0].data;
       seriesData = seriesData.map(element => {
         return element + 1;
       });
