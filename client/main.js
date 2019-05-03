@@ -19,6 +19,10 @@ import 'vuetify/dist/vuetify.min.css'
 import VueMeteorTracker from 'vue-meteor-tracker'
 Vue.use(VueMeteorTracker)
 
+// ApexCharts
+import VueApexCharts from 'vue-apexcharts'
+Vue.component('apexchart', VueApexCharts)
+
 // Inicio de Vue en Meteor Client Side
 Meteor.startup(() => {
     new Vue({
