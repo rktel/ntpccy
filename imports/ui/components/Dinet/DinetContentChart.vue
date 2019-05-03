@@ -63,6 +63,6 @@ export default {
 
 <style scoped>
 #vuechart-example {
-  color: grey;
+  background-color: brown
 }
 </style>
