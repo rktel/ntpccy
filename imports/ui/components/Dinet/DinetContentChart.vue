@@ -40,6 +40,18 @@
 
 <script>
 export default {
+  mounted() {
+    let seriesData = this.series.data;
+
+    function increment() {
+      seriesData = seriesData.map(element => {
+        return element + 1;
+      });
+       this.series.data = seriesData;
+    }
+
+    setInterval(increment, 2000)
+  },
   data: function() {
     return {
       options: {
@@ -63,6 +75,6 @@ export default {
 
 <style scoped>
 #vuechart-example {
-  background-color: brown
+  background-color: brown;
 }
 </style>
