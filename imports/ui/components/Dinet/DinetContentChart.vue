@@ -41,9 +41,9 @@
 <script>
 export default {
   mounted() {
-    let seriesData = this.series.data;
-
+    
     function increment() {
+    let seriesData = this.series.data;
       seriesData = seriesData.map(element => {
         return element + 1;
       });
