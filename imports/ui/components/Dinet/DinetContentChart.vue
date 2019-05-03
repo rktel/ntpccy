@@ -68,7 +68,7 @@ export default {
       seriesData = seriesData.map(element => {
         return element + 1;
       });
-      this.series.data = seriesData;
+      this.series[0].data = seriesData;
     }
 
   }
