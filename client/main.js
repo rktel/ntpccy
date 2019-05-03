@@ -21,7 +21,7 @@ Vue.use(VueMeteorTracker)
 
 // ApexCharts
 import VueApexCharts from 'vue-apexcharts'
-Vue.use(VueApexCharts)
+Vue.component('apexchart', VueApexCharts)
 
 // Inicio de Vue en Meteor Client Side
 Meteor.startup(() => {
