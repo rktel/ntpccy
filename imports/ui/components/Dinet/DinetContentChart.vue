@@ -56,7 +56,7 @@ export default {
             colors:['#EEEEEE'],
             chart:{
               background:'#003',
-              foreColor: '#373d3f'
+              foreColor: '#500'
             }
           }
         }]
