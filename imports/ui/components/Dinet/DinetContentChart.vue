@@ -56,7 +56,12 @@ export default {
             colors:['#EEEEEE'],
             chart:{
               background:'#003',
-              foreColor: '#500'
+              foreColor: '#500',
+              events:{
+                dataPointSelection: function(event, chartContext, config){
+                  console.log('event:',event, 'chartContext:',chartContext, 'config:',config)
+                }
+              }
             }
           }
         }]
