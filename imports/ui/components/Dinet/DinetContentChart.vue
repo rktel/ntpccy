@@ -44,9 +44,7 @@ export default {
   data: function() {
     return {
       options1: {
-        chart: {
-          id: "vuechart-example"
-        },
+
         xaxis: {
           categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
         },
