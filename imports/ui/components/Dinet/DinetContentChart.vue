@@ -3,7 +3,7 @@
     <v-layout row wrap>
       <v-flex lg3 xs12>
         <v-card height="200" color="grey lighten-2">
-          <apexchart  type="bar" :options="options1" :series="series1"></apexchart>
+          <apexchart height="180" type="bar" :options="options1" :series="series1"></apexchart>
         </v-card>
       </v-flex>
       <v-flex lg3 xs12>
