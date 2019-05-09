@@ -1,11 +1,16 @@
 <template>
   <section>
     <v-layout row wrap>
-
       <v-flex lg3 xs12>
         <v-card height="250" color="grey lighten-2">
           <div>
-            <apexchart height="250" type="bar" :options="options1" :series="series1"></apexchart>
+            <apexchart
+              class="vertical-bar"
+              height="250"
+              type="bar"
+              :options="options"
+              :series="series"
+            ></apexchart>
           </div>
         </v-card>
       </v-flex>
@@ -41,54 +46,34 @@ export default {
   },
   data: function() {
     return {
-      options1: {
+      options: {
         xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
-        },
-        responsive: [
-          {
-            breakpoint: 800,
-            options: {
-              colors: ["#EEEEEE"],
-              chart: {
-                background: "#003",
-                foreColor: "#500",
-                events: {
-                  dataPointSelection: function(event, chartContext, config) {
-                    console.log(
-                      "event:",
-                      event,
-                      "chartContext:",
-                      chartContext,
-                      "config:",
-                      config
-                    );
-                  }
-                }
-              }
-            }
-          }
-        ]
+          categories: [1991, 1992]
+        }
       },
-      series1: [
+      series: [
         {
           name: "series-1",
-          data: [30, 40, 45, 50, 49, 60, 70, 91]
+          data: [30, 40]
         }
       ]
     };
   },
   methods: {
     increment() {
-      let seriesData = this.series1[0].data;
+      let seriesData = this.series[0].data;
       seriesData = seriesData.map(element => {
         return element + 1;
       });
-      this.series1[0].data = seriesData;
+      this.series[0].data = seriesData;
     }
   }
 };
 </script>
 
 <style scoped>
+.vertical-bar {
+  max-width: 600px;
+  margin: 35px auto;
+}
 </style>
