@@ -2,7 +2,7 @@
   <section>
     <v-layout row wrap>
       <v-flex lg3 xs12>
-        <v-card height="600">
+        <v-card height="250">
           <div class="example">
             <apexcharts
 
