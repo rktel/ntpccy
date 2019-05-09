@@ -1,16 +1,21 @@
 <template>
   <section>
     <v-layout row wrap>
-      <v-flex lg6 xs12>
-        <v-card height="300" color="grey lighten-2">
-          <div>
-          <apexchart height="180" type="bar" :options="options1" :series="series1"></apexchart>
 
+      <v-flex lg5 xs12>
+        <v-card height="250" color="grey lighten-2">
+          <div>
+            <apexchart height="250" type="bar" :options="options1" :series="series1"></apexchart>
           </div>
         </v-card>
       </v-flex>
-      <v-flex lg6 xs12>
-        <v-card height="300">
+      <v-flex lg5 xs12>
+        <v-card height="250">
+          <v-btn>Mark</v-btn>
+        </v-card>
+      </v-flex>
+      <v-flex lg2 xs12>
+        <v-card height="250">
           <v-btn>Mark</v-btn>
         </v-card>
       </v-flex>
@@ -37,26 +42,33 @@ export default {
   data: function() {
     return {
       options1: {
-
         xaxis: {
           categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
         },
-        responsive:[{
-          breakpoint: 800,
-          options:{
-            colors:['#EEEEEE'],
-            chart:{
-              background:'#003',
-              foreColor: '#500',
-              events:{
-                dataPointSelection: function(event, chartContext, config){
-                  console.log('event:',event, 'chartContext:',chartContext, 'config:',config)
+        responsive: [
+          {
+            breakpoint: 800,
+            options: {
+              colors: ["#EEEEEE"],
+              chart: {
+                background: "#003",
+                foreColor: "#500",
+                events: {
+                  dataPointSelection: function(event, chartContext, config) {
+                    console.log(
+                      "event:",
+                      event,
+                      "chartContext:",
+                      chartContext,
+                      "config:",
+                      config
+                    );
+                  }
                 }
               }
             }
           }
-        }]
-
+        ]
       },
       series1: [
         {
