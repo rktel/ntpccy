@@ -17,12 +17,12 @@
         </v-card>
       </v-flex>
 
-      <v-flex lg9 xs12>
+      <v-flex lg8 xs12>
         <v-card height="500">
           <v-btn>Jarvis</v-btn>
         </v-card>
       </v-flex>
-      <v-flex lg3 xs12>
+      <v-flex lg4 xs12>
         <v-card height="500">
           <v-btn>Jarvis</v-btn>
         </v-card>
