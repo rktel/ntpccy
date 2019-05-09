@@ -5,8 +5,7 @@
         <v-card height="600">
           <div class="example">
             <apexcharts
-              width="500"
-              height="350"
+
               type="bar"
               :options="chartOptions"
               :series="series"
