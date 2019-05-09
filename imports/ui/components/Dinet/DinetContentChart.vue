@@ -42,7 +42,7 @@
 <script>
 export default {
   mounted() {
-    setInterval(this.increment, 2000);
+   // setInterval(this.increment, 2000);
   },
   data: function() {
     return {
