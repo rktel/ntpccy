@@ -2,19 +2,19 @@
   <section>
     <v-layout row wrap>
 
-      <v-flex lg5 xs12>
+      <v-flex lg3 xs12>
         <v-card height="250" color="grey lighten-2">
           <div>
             <apexchart height="250" type="bar" :options="options1" :series="series1"></apexchart>
           </div>
         </v-card>
       </v-flex>
-      <v-flex lg5 xs12>
+      <v-flex lg3 xs12>
         <v-card height="250">
           <v-btn>Mark</v-btn>
         </v-card>
       </v-flex>
-      <v-flex lg2 xs12>
+      <v-flex lg6 xs12>
         <v-card height="250">
           <v-btn>Mark</v-btn>
         </v-card>
