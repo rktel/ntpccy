@@ -2,15 +2,15 @@
   <section>
     <v-layout row wrap>
       <v-flex lg3 xs12>
-        <v-card height="250" color="grey lighten-2">
-          <div>
-            <apexchart
-              class="vertical-bar"
-              height="250"
+        <v-card height="600">
+          <div class="example">
+            <apexcharts
+              width="500"
+              height="350"
               type="bar"
-              :options="options"
+              :options="chartOptions"
               :series="series"
-            ></apexchart>
+            ></apexcharts>
           </div>
         </v-card>
       </v-flex>
@@ -40,40 +40,33 @@
 </template>
 
 <script>
+import VueApexCharts from "vue-apexcharts";
+
 export default {
-  mounted() {
-   // setInterval(this.increment, 2000);
+  name: "Chart",
+  components: {
+    apexcharts: VueApexCharts
   },
   data: function() {
     return {
-      options: {
+      chartOptions: {
+        chart: {
+          id: "basic-bar"
+        },
         xaxis: {
-          categories: [1991, 1992]
+          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
         }
       },
       series: [
         {
           name: "series-1",
-          data: [30, 40]
+          data: [30, 40, 45, 50, 49, 60, 70, 91]
         }
       ]
     };
-  },
-  methods: {
-    increment() {
-      let seriesData = this.series[0].data;
-      seriesData = seriesData.map(element => {
-        return element + 1;
-      });
-      this.series[0].data = seriesData;
-    }
   }
 };
 </script>
 
 <style scoped>
-.vertical-bar {
-  max-width: 600px;
-  margin: 35px auto;
-}
 </style>
