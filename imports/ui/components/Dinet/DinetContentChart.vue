@@ -58,7 +58,7 @@ export default {
           breakpoint: 650,
           options:{
             chart:{
-              height:300
+              height:260
             }
           }
         }],
