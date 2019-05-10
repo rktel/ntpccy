@@ -2,7 +2,7 @@
   <section>
     <v-layout row wrap>
       <v-flex lg3 xs12>
-        <v-card height="250" class="pr-3 pt-3">
+        <v-card height="300" class="pr-3 pt-3">
           <div class="example">
             <apexcharts type="bar" :options="chartOptions" :series="series"></apexcharts>
           </div>
@@ -55,7 +55,8 @@ export default {
       ],
       chartOptions: {
         title:{
-          text:"Exceso 15 Km/h"
+          text:"Exceso 15 Km/h",
+          align: 'center'
         },
         plotOptions: {
           bar: {
