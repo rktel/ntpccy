@@ -54,7 +54,7 @@ export default {
       chartOptions: {
   theme: {
       mode: 'dark', 
-      palette: 'palette1', 
+      palette: 'palette2', 
       monochrome: {
           enabled: false,
           color: '#255aee',
