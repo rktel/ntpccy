@@ -3,7 +3,7 @@
     <v-layout row wrap>
       <v-flex lg4 xs12>
         <v-card height="300" class="pr-3 pt-3">
-          <div class="example">
+          <div class="card-bg">
             <apexcharts type="bar" :options="chartOptions" :series="series"></apexcharts>
           </div>
         </v-card>
@@ -25,14 +25,17 @@
 
 <script>
 import VueApexCharts from "vue-apexcharts";
+import { Session } from "meteor/session";
 
 export default {
   name: "Chart",
   components: {
     apexcharts: VueApexCharts
   },
-  mounted() {
-    console.log(this.$vuetify.breakpoint);
+  meteor: {
+    dark() {
+      return Session.get("dark");
+    }
   },
   data() {
     return {
@@ -106,4 +109,7 @@ export default {
 </script>
 
 <style scoped>
+  .card-bg{
+    background-color: transparent;
+  }
 </style>
