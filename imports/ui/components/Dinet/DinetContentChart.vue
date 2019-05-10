@@ -4,7 +4,7 @@
       <v-flex lg4 xs12>
         <v-card height="300" class="pr-3 pt-3" v->
           <div class="example">
-            <apexcharts type="bar" :options="chartOptions" :series="series" height="100%"></apexcharts>
+            <apexcharts type="bar" :options="chartOptions" :series="series"></apexcharts>
           </div>
         </v-card>
       </v-flex>
@@ -54,6 +54,14 @@ export default {
         }
       ],
       chartOptions: {
+        responsive:[{
+          breakpoint: 650,
+          options:{
+            chart:{
+              height:400
+            }
+          }
+        }],
         title:{
           text:"Exceso 15 Km/h",
           align: 'center'
