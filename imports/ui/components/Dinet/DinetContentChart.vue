@@ -41,8 +41,9 @@ export default {
   components: {
     apexcharts: VueApexCharts
   },
-  data =() => ({
-       series: [
+  data(){
+    return{
+      series: [
       {
         name: "Net Profit",
         data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
@@ -102,7 +103,10 @@ export default {
         }
       }
     }
-  })
+  }
+    }
+  }
+ 
 };
 </script>
 
