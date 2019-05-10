@@ -4,11 +4,7 @@
       <v-flex lg3 xs12>
         <v-card height="250">
           <div class="example">
-            <apexcharts
-              type="bar"
-              :options="chartOptions"
-              :series="series"
-            ></apexcharts>
+            <apexcharts type="bar" :options="chartOptions" :series="series"></apexcharts>
           </div>
         </v-card>
       </v-flex>
@@ -45,23 +41,67 @@ export default {
   components: {
     apexcharts: VueApexCharts
   },
-  data: function() {
-    return {
-      chartOptions: {
-        chart: {
-          id: "basic-bar"
-        },
-        xaxis: {
-          categories: [1998, 1999]
+  data: {
+    series: [
+      {
+        name: "Net Profit",
+        data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+      },
+      {
+        name: "Revenue",
+        data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+      },
+      {
+        name: "Free Cash Flow",
+        data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+      }
+    ],
+    chartOptions: {
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          columnWidth: "55%",
+          endingShape: "rounded"
         }
       },
-      series: [
-        {
-          name: "series-1",
-          data: [70, 91]
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        show: true,
+        width: 2,
+        colors: ["transparent"]
+      },
+
+      xaxis: {
+        categories: [
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct"
+        ]
+      },
+      yaxis: {
+        title: {
+          text: "$ (thousands)"
         }
-      ]
-    };
+      },
+      fill: {
+        opacity: 1
+      },
+      tooltip: {
+        y: {
+          formatter: function(val) {
+            return "$ " + val + " thousands";
+          }
+        }
+      }
+    }
   }
 };
 </script>
