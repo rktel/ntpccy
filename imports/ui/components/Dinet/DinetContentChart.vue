@@ -64,9 +64,9 @@ export default {
           enabled: true
         },
         stroke: {
-          show: false,
-          width: 2,
-          colors: ["transparent"]
+          show: true,
+          width: 7,
+          colors: ["red"]
         },
 
         xaxis: {
@@ -80,7 +80,7 @@ export default {
         tooltip: {
           y: {
             formatter: function(val) {
-              return val + " eventos";
+              return val
             }
           }
         }
