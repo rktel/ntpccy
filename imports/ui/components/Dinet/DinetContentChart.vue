@@ -56,7 +56,7 @@ export default {
       mode: 'dark', 
       palette: 'palette2', 
       monochrome: {
-          enabled: false,
+          enabled: true,
           color: '#255aee',
           shadeTo: 'light',
           shadeIntensity: 0.65
