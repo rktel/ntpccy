@@ -4,7 +4,7 @@
       <v-flex lg3 xs12>
         <v-card height="250">
           <div class="example">
-            <apexcharts type="bar" :options="chartOptions" :series="series"></apexcharts>
+            <apexcharts type="bar" :options="chartOptions" :series="series" heigth="250"></apexcharts>
           </div>
         </v-card>
       </v-flex>
@@ -63,12 +63,6 @@ export default {
         dataLabels: {
           enabled: true
         },
-        stroke: {
-          show: true,
-          width: 7,
-          colors: ["red"]
-        },
-
         xaxis: {
           categories: [
             "1° Turno",
