@@ -61,10 +61,10 @@ export default {
           }
         },
         dataLabels: {
-          enabled: false
+          enabled: true
         },
         stroke: {
-          show: false,
+          show: true,
           width: 2,
           colors: ["transparent"]
         },
@@ -75,7 +75,7 @@ export default {
           ]
         },
           fill: {
-          opacity: 1
+          opacity: 0
         },
         tooltip: {
           y: {
