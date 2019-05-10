@@ -1,6 +1,7 @@
 <template>
   <section>
     <v-layout row wrap>
+
       <v-flex lg4 xs12>
         <v-card height="300" class="pr-3 pt-3">
           <div class="example">
@@ -8,6 +9,7 @@
           </div>
         </v-card>
       </v-flex>
+
       <v-flex lg4 xs12>
         <v-card height="300">
           <v-btn>Mark</v-btn>
@@ -19,16 +21,6 @@
         </v-card>
       </v-flex>
 
-      <!--v-flex lg8 xs12>
-        <v-card height="450">
-          <v-btn>Jarvis</v-btn>
-        </v-card>
-      </v-flex>
-      <v-flex lg4 xs12>
-        <v-card height="450">
-          <v-btn>Jarvis</v-btn>
-        </v-card>
-      </v-flex-->
     </v-layout>
   </section>
 </template>
@@ -40,6 +32,12 @@ export default {
   name: "Chart",
   components: {
     apexcharts: VueApexCharts
+  },
+  mounted(){
+    console.log(this.$vuetify.breakpoint)
+  },
+  computed:{
+
   },
   data() {
     return {
@@ -55,7 +53,7 @@ export default {
       ],
       chartOptions: {
         responsive:[{
-          breakpoint: 650,
+          breakpoint: 850,
           options:{
             chart:{
               height:260
