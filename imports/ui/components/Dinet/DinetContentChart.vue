@@ -64,7 +64,7 @@ export default {
           enabled: true
         },
         stroke: {
-          show: true,
+          show: false,
           width: 2,
           colors: ["transparent"]
         },
@@ -75,12 +75,12 @@ export default {
           ]
         },
           fill: {
-          opacity: 0.5
+          opacity: 0.8
         },
         tooltip: {
           y: {
             formatter: function(val) {
-              return "$ " + val + " thousands";
+              return val + " eventos";
             }
           }
         }
