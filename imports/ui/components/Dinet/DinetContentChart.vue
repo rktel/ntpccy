@@ -34,7 +34,6 @@ export default {
   mounted() {
     console.log(this.$vuetify.breakpoint);
   },
-  computed: {},
   data() {
     return {
       series: [
@@ -48,8 +47,8 @@ export default {
         }
       ],
       chartOptions: {
-        chart:{
-          foreColor:'#636e72'
+        chart: {
+          foreColor: "#2d3436"
         },
         theme: {
           mode: "light",
@@ -73,7 +72,10 @@ export default {
         ],
         title: {
           text: "Exceso 15 Km/h",
-          align: "center"
+          align: "center",
+          style: {
+            fontSize: "16px"
+          }
         },
         plotOptions: {
           bar: {
