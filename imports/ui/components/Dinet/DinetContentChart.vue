@@ -75,7 +75,7 @@ export default {
           ]
         },
           fill: {
-          opacity: 0
+          opacity: 0.5
         },
         tooltip: {
           y: {
