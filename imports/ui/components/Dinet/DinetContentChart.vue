@@ -1,7 +1,6 @@
 <template>
   <section>
     <v-layout row wrap>
-
       <v-flex lg4 xs12>
         <v-card height="300" class="pr-3 pt-3">
           <div class="example">
@@ -20,7 +19,6 @@
           <v-btn>Mark</v-btn>
         </v-card>
       </v-flex>
-
     </v-layout>
   </section>
 </template>
@@ -33,12 +31,10 @@ export default {
   components: {
     apexcharts: VueApexCharts
   },
-  mounted(){
-    console.log(this.$vuetify.breakpoint)
+  mounted() {
+    console.log(this.$vuetify.breakpoint);
   },
-  computed:{
-
-  },
+  computed: {},
   data() {
     return {
       series: [
@@ -52,27 +48,29 @@ export default {
         }
       ],
       chartOptions: {
-  theme: {
-      mode: 'dark', 
-      palette: 'palette2', 
-      monochrome: {
-          enabled: true,
-          color: '#255aee',
-          shadeTo: 'light',
-          shadeIntensity: 0.65
-      },
-  },
-        responsive:[{
-          breakpoint: 850,
-          options:{
-            chart:{
-              height:260
+        theme: {
+          mode: "light",
+          palette: "palette2",
+          monochrome: {
+            enabled: true,
+            color: "#255aee",
+            shadeTo: "light",
+            shadeIntensity: 0.65
+          }
+        },
+        responsive: [
+          {
+            breakpoint: 850,
+            options: {
+              chart: {
+                height: 260
+              }
             }
           }
-        }],
-        title:{
-          text:"Exceso 15 Km/h",
-          align: 'center'
+        ],
+        title: {
+          text: "Exceso 15 Km/h",
+          align: "center"
         },
         plotOptions: {
           bar: {
@@ -84,17 +82,15 @@ export default {
           enabled: true
         },
         xaxis: {
-          categories: [
-            "Turno A",
-          ]
+          categories: ["Turno A"]
         },
-          fill: {
+        fill: {
           opacity: 0.9
         },
         tooltip: {
           y: {
             formatter: function(val) {
-              return val
+              return val;
             }
           }
         }
@@ -105,5 +101,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
