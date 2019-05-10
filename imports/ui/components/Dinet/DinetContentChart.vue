@@ -61,7 +61,7 @@ export default {
         plotOptions: {
           bar: {
             horizontal: false,
-            columnWidth: "35%"
+            columnWidth: "30%"
           }
         },
         dataLabels: {
@@ -69,7 +69,7 @@ export default {
         },
         xaxis: {
           categories: [
-            "",
+            "Turno A",
           ]
         },
           fill: {
