@@ -54,6 +54,9 @@ export default {
         }
       ],
       chartOptions: {
+        title:{
+          text:"Exceso 15 Km/h"
+        },
         plotOptions: {
           bar: {
             horizontal: false,
