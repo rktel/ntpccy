@@ -1,20 +1,20 @@
 <template>
   <section>
     <v-layout row wrap>
-      <v-flex lg3 xs12>
+      <v-flex lg4 xs12>
         <v-card height="300" class="pr-3 pt-3">
           <div class="example">
             <apexcharts type="bar" :options="chartOptions" :series="series"></apexcharts>
           </div>
         </v-card>
       </v-flex>
-      <v-flex lg3 xs12>
-        <v-card height="250">
+      <v-flex lg4 xs12>
+        <v-card height="300">
           <v-btn>Mark</v-btn>
         </v-card>
       </v-flex>
-      <v-flex lg6 xs12>
-        <v-card height="250">
+      <v-flex lg4 xs12>
+        <v-card height="300">
           <v-btn>Mark</v-btn>
         </v-card>
       </v-flex>
