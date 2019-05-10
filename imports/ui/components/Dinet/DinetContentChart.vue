@@ -55,7 +55,7 @@ export default {
       ],
       chartOptions: {
         title:{
-          text:"Exceso 15 Km/h",
+          text:"Exceso 15 Km/h [1° Turno]",
           align: 'center'
         },
         plotOptions: {
@@ -66,11 +66,6 @@ export default {
         },
         dataLabels: {
           enabled: true
-        },
-        xaxis: {
-          categories: [
-            "1° Turno",
-          ]
         },
           fill: {
           opacity: 0.9
