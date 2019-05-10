@@ -2,7 +2,7 @@
   <section>
     <v-layout row wrap>
       <v-flex lg3 xs12>
-        <v-card height="250">
+        <v-card height="250" class="pr-2">
           <div class="example">
             <apexcharts type="bar" :options="chartOptions" :series="series" :height="250"></apexcharts>
           </div>
@@ -69,7 +69,7 @@ export default {
           ]
         },
           fill: {
-          opacity: 0.8
+          opacity: 0.9
         },
         tooltip: {
           y: {
