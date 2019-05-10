@@ -4,7 +4,7 @@
       <v-flex lg3 xs12>
         <v-card height="250">
           <div class="example">
-            <apexcharts type="bar" :options="chartOptions" :series="series" heigth="250"></apexcharts>
+            <apexcharts type="bar" :options="chartOptions" :series="series" :height="250"></apexcharts>
           </div>
         </v-card>
       </v-flex>
