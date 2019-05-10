@@ -105,7 +105,5 @@ export default {
 </script>
 
 <style scoped>
-.apexcharts-canvas.dark {
-    background: transparent !important;
-}
+
 </style>
