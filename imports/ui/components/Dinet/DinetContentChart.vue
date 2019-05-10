@@ -57,8 +57,7 @@ export default {
         plotOptions: {
           bar: {
             horizontal: false,
-            columnWidth: "55%",
-            endingShape: "rounded"
+            columnWidth: "45%"
           }
         },
         dataLabels: {
