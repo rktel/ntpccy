@@ -2,9 +2,9 @@
   <section>
     <v-layout row wrap>
       <v-flex lg4 xs12>
-        <v-card height="300" class="pr-3 pt-3">
+        <v-card height="300" class="pr-3 pt-3" v->
           <div class="example">
-            <apexcharts type="bar" :options="chartOptions" :series="series"></apexcharts>
+            <apexcharts type="bar" :options="chartOptions" :series="series" :height="'100%'"></apexcharts>
           </div>
         </v-card>
       </v-flex>
