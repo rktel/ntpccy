@@ -3,7 +3,7 @@
     <v-layout row wrap>
 
       <v-flex lg4 xs12>
-        <v-card height="300">
+        <v-card height="300" class="pr-3 pt-3">
           <div class="example">
             <apexcharts type="bar" :options="chartOptions" :series="series"></apexcharts>
           </div>
@@ -52,9 +52,16 @@ export default {
         }
       ],
       chartOptions: {
-        theme:{
-          mode:'dark'
-        },
+  theme: {
+      mode: 'dark', 
+      palette: 'palette1', 
+      monochrome: {
+          enabled: false,
+          color: '#255aee',
+          shadeTo: 'light',
+          shadeIntensity: 0.65
+      },
+  },
         responsive:[{
           breakpoint: 850,
           options:{
