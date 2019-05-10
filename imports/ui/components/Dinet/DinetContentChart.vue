@@ -54,9 +54,9 @@ export default {
         }
       ],
       chartOptions: {
-        title: {
-          text: "Exceso 15 Km/h",
-          align: "center"
+        title:{
+          text:"Exceso 15 Km/h",
+          align: 'center'
         },
         plotOptions: {
           bar: {
@@ -68,15 +68,17 @@ export default {
           enabled: true
         },
         xaxis: {
-          categories: []
+          categories: [
+            "",
+          ]
         },
-        fill: {
+          fill: {
           opacity: 0.9
         },
         tooltip: {
           y: {
             formatter: function(val) {
-              return val;
+              return val
             }
           }
         }
