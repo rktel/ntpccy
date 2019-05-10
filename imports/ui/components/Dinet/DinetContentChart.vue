@@ -48,10 +48,13 @@ export default {
         },
         {
           name: "Distancia(Km)",
-          data: [35]
+          data: [30]
         }
       ],
       chartOptions: {
+        theme:{
+          mode:'dark'
+        },
         responsive:[{
           breakpoint: 850,
           options:{
