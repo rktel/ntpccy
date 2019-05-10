@@ -64,7 +64,7 @@ export default {
           enabled: false
         },
         stroke: {
-          show: true,
+          show: false,
           width: 2,
           colors: ["transparent"]
         },
