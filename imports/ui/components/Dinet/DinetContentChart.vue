@@ -48,6 +48,9 @@ export default {
         }
       ],
       chartOptions: {
+        chart:{
+          foreColor:'#636e72'
+        },
         theme: {
           mode: "light",
           palette: "palette2",
