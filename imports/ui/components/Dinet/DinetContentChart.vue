@@ -40,9 +40,17 @@ export default {
   watch:{
     dark: function(){
       if(Session.get("dark")){
-        console.log(Session.get("dark"))
+        this.chartOptions = {
+          theme:{
+            mode: "dark"
+          }
+        }
       }else{
-        console.log(Session.get("dark"))
+        this.chartOptions = {
+          theme:{
+            mode: "light"
+          }
+        }        
       }
     }
   },
