@@ -70,8 +70,8 @@ export default {
         }
       ],
       optionsA: {
-        chart:{
-          toolbar:{
+        chart: {
+          toolbar: {
             show: false
           }
         },
@@ -109,8 +109,8 @@ export default {
           }
         }
       },
-    /******************************* TURNO B ***************************************/
-          seriesB: [
+      /******************************* TURNO B ***************************************/
+      seriesB: [
         {
           name: "#Eventos",
           data: [44]
@@ -121,10 +121,10 @@ export default {
         }
       ],
       optionsB: {
-          chart:{
-            toolbar:{
-              show: false
-            }
+        chart: {
+          toolbar: {
+            show: false
+          }
         },
         theme: {
           mode: "dark",
@@ -160,7 +160,7 @@ export default {
           }
         }
       }
-  /***********************************END TURNO B ***********************************/
+      /***********************************END TURNO B ***********************************/
     };
   }
 };
