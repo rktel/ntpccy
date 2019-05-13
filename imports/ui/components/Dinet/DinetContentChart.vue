@@ -70,6 +70,11 @@ export default {
         }
       ],
       optionsA: {
+        chart:{
+          toolbar:{
+            show: false
+          }
+        },
         theme: {
           mode: "dark",
           palette: "palette3"
@@ -116,9 +121,14 @@ export default {
         }
       ],
       optionsB: {
+          chart:{
+            toolbar:{
+              show: false
+            }
+        },
         theme: {
           mode: "dark",
-          palette: "palette4"
+          palette: "palette2"
         },
         title: {
           text: "Exceso 15 Km/h",
