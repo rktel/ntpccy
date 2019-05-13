@@ -3,7 +3,7 @@
     <v-layout row wrap>
       <v-flex lg4 xs12>
         <v-card height="300" class="pr-3 pt-3">
-          <div class="card-bg">
+          <div>
             <apexcharts type="bar" :options="chartOptions" :series="series"></apexcharts>
           </div>
         </v-card>
@@ -54,7 +54,7 @@ export default {
           foreColor: "#2d3436"
         },
         theme: {
-          mode: "light",
+          mode: "dark",
           palette: "palette2",
           monochrome: {
             enabled: true,
@@ -109,7 +109,5 @@ export default {
 </script>
 
 <style scoped>
-  .card-bg{
-    background-color: transparent;
-  }
+
 </style>
