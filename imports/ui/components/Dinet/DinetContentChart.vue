@@ -3,12 +3,12 @@
     <v-layout row wrap>
       <v-flex lg6 xs12>
         <v-card>
-          <apexcharts type="bar" :options="chartOptions" :series="series"></apexcharts>
+          <apexcharts type="bar" :options="optionsA" :series="seriesA"></apexcharts>
         </v-card>
       </v-flex>
       <v-flex lg6 xs12>
         <v-card>
-          <v-btn>Mark</v-btn>
+          <apexcharts type="bar" :options="optionsB" :series="seriesB"></apexcharts>
         </v-card>
       </v-flex>
     </v-layout>
@@ -32,13 +32,23 @@ export default {
   watch: {
     dark: function() {
       if (Session.get("dark")) {
-        this.chartOptions = {
+        this.optionsA = {
+          theme: {
+            mode: "dark"
+          }
+        };
+        this.optionsB = {
           theme: {
             mode: "dark"
           }
         };
       } else {
-        this.chartOptions = {
+        this.optionsA = {
+          theme: {
+            mode: "light"
+          }
+        };
+        this.optionsB = {
           theme: {
             mode: "light"
           }
@@ -48,7 +58,8 @@ export default {
   },
   data() {
     return {
-      series: [
+      /******************************* TURNO A ***************************************/
+      seriesA: [
         {
           name: "#Eventos",
           data: [76]
@@ -58,24 +69,11 @@ export default {
           data: [30]
         }
       ],
-      chartOptions: {
-        chart: {
-          /*  foreColor: "#2d3436" */
-        },
+      optionsA: {
         theme: {
           mode: "dark",
           palette: "palette3"
         },
-        responsive: [
-          {
-            breakpoint: 850,
-            options: {
-              chart: {
-                height: 260
-              }
-            }
-          }
-        ],
         title: {
           text: "Exceso 15 Km/h",
           align: "center",
@@ -105,7 +103,54 @@ export default {
             }
           }
         }
+      },
+    /******************************* TURNO B ***************************************/
+          seriesB: [
+        {
+          name: "#Eventos",
+          data: [44]
+        },
+        {
+          name: "Distancia(Km)",
+          data: [80]
+        }
+      ],
+      optionsB: {
+        theme: {
+          mode: "dark",
+          palette: "palette4"
+        },
+        title: {
+          text: "Exceso 15 Km/h",
+          align: "center",
+          style: {
+            fontSize: "16px"
+          }
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "30%"
+          }
+        },
+        dataLabels: {
+          enabled: true
+        },
+        xaxis: {
+          categories: ["Turno B"]
+        },
+        fill: {
+          opacity: 0.9
+        },
+        tooltip: {
+          y: {
+            formatter: function(val) {
+              return val;
+            }
+          }
+        }
       }
+  /***********************************END TURNO B ***********************************/
     };
   }
 };
