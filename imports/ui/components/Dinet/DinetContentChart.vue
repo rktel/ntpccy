@@ -3,18 +3,14 @@
     <v-layout row wrap>
       <v-flex lg6 xs12>
         <v-card>
-
-            <apexcharts type="bar" :options="chartOptions" :series="series"></apexcharts>
-
+          <apexcharts type="bar" :options="chartOptions" :series="series"></apexcharts>
         </v-card>
       </v-flex>
-
       <v-flex lg6 xs12>
         <v-card>
           <v-btn>Mark</v-btn>
         </v-card>
       </v-flex>
-
     </v-layout>
   </section>
 </template>
@@ -33,20 +29,20 @@ export default {
       return Session.get("dark");
     }
   },
-  watch:{
-    dark: function(){
-      if(Session.get("dark")){
+  watch: {
+    dark: function() {
+      if (Session.get("dark")) {
         this.chartOptions = {
-          theme:{
+          theme: {
             mode: "dark"
           }
-        }
-      }else{
+        };
+      } else {
         this.chartOptions = {
-          theme:{
+          theme: {
             mode: "light"
           }
-        }        
+        };
       }
     }
   },
@@ -64,17 +60,11 @@ export default {
       ],
       chartOptions: {
         chart: {
-         /*  foreColor: "#2d3436" */
+          /*  foreColor: "#2d3436" */
         },
         theme: {
           mode: "dark",
-          palette: "palette2",
-          monochrome: {
-            enabled: true,
-            color: "#255aee",
-            shadeTo: "light",
-            shadeIntensity: 0.65
-          }
+          palette: "palette3"
         },
         responsive: [
           {
@@ -122,5 +112,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
