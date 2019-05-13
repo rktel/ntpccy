@@ -51,7 +51,7 @@ export default {
       ],
       chartOptions: {
         chart: {
-          foreColor: "#2d3436"
+         /*  foreColor: "#2d3436" */
         },
         theme: {
           mode: "dark",
