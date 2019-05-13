@@ -37,6 +37,11 @@ export default {
       return Session.get("dark");
     }
   },
+  watch:{
+    dark: function(){
+      console.log("message dark");
+    }
+  },
   data() {
     return {
       series: [
