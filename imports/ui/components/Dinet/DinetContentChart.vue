@@ -39,7 +39,11 @@ export default {
   },
   watch:{
     dark: function(){
-      console.log("message dark");
+      if(Session.get("dark")){
+        console.log(Session.get("dark"))
+      }else{
+        console.log(Session.get("dark"))
+      }
     }
   },
   data() {
