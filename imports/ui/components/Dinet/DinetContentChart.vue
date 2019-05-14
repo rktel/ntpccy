@@ -1,15 +1,6 @@
 <template>
   <section>
     <v-layout row wrap>
-      <v-flex xs12>
-        <v-card>
-          <template>
-            <ul v-for="(plate,index) in plates" :key="index">
-              <li>{{plate}}</li>
-            </ul>
-          </template>
-        </v-card>
-      </v-flex>
       <v-flex lg6 xs12>
         <v-card>
           <apexcharts type="bar" :options="optionsA" :series="seriesA"></apexcharts>
@@ -34,6 +25,7 @@ export default {
     apexcharts: VueApexCharts
   },
   mounted() {
+    /*
     Meteor.call("DNT_getPlates", (error, plates) => {
       if (!error) {
         console.log("plates:", plates);
@@ -41,6 +33,7 @@ export default {
        // Meteor.call("DNT_getData")
       }
     });
+    */
   },
   meteor: {
     dark() {

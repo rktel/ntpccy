@@ -5,7 +5,7 @@
         <v-select v-model="vehicle" :items="plates" label="Unidades" placeholder=" " outline></v-select>
       </v-flex>
       <v-flex xs12 lg3>
-        <v-select v-model="searchItem" :items="searchItems" label="Dia/Mes" placeholder=" " outline></v-select>
+        <v-select v-model="searchItem" :items="searchItems" label="Tipo de reporte" placeholder=" " outline></v-select>
       </v-flex>
       <v-flex v-if="searchItem === 'Dia'" xs12 lg3>
         <v-menu
