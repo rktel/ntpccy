@@ -25,7 +25,7 @@ export default {
     apexcharts: VueApexCharts
   },
   mounted() {
-    Meteor.call("DNT_getPlates", function(error, plates) {
+    Meteor.call("DNT_getPlates", (error, plates) => {
       if (!error) {
         console.log("plates:", plates);
       }
@@ -80,6 +80,14 @@ export default {
         chart: {
           toolbar: {
             show: false
+          },
+          events: {
+            dataPointSelection: function(event, chartContext, config) {
+              console.log('event:',event);
+              console.log('chartContext:',chartContext);
+              console.log('config:',config);
+              
+            }
           }
         },
         theme: {
