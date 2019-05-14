@@ -1,6 +1,6 @@
 <template>
   <section>
-    <v-layout row wrap>
+    <v-layout row wrap transition="slide-x-transition">
       <v-flex xs12>
         <v-card>
           <template>
