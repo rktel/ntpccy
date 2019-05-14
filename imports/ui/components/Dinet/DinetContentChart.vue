@@ -32,7 +32,7 @@ export default {
       dinet_plates: []
     },
     dinet_plates() {
-      return Dinet.rawCollection().distinct("events.vehicle");
+      return Dinet.find({});
     }
   },
   watch: {
