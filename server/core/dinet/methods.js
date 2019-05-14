@@ -58,11 +58,10 @@ Meteor.methods({
         // console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
         // Meteor.call('DNT_getMonthData', month, this.vehicle)
         console.log('Usuario: ', Meteor.user().username)
-        console.log('Fecha y Tiempo de Inicio: ', dateTimeStart)
-        console.log('Fecha y Tiempo de Fin: ', dateTimeEnd)
+        console.log('Mes: ', month)
 
-        const dateTimeStart5 = addHours(dateTimeStart, 5)
-        const dateTimeEnd5 = addHours(dateTimeEnd, 5)
+        //const dateTimeStart5 = addHours(dateTimeStart, 5)
+        //const dateTimeEnd5 = addHours(dateTimeEnd, 5)
         // Exceso 15km/h : 97,  Exceso 30km/h : 93, Exceso 80km/h : 89, Fatiga : 81
         const arrayEvents = [97, 93, 89]
         const report = await Dinet.rawCollection().
