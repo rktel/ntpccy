@@ -1,6 +1,6 @@
 import { Dinet } from '../../../imports/api/collections'
 
-
+/*
 Meteor.publish('dinet_plates', () => {
     return Dinet.rawCollection().distinct('events.vehicle')
 })
@@ -10,6 +10,7 @@ Meteor.publish('dinet_day', () => {
 Meteor.publish('dinet_month', () => {
     
 })
+*/
 
 /**
  * 

@@ -24,15 +24,16 @@ export default {
   components: {
     apexcharts: VueApexCharts
   },
+  mounted() {
+    Meteor.call("DNT_getPlates", function(error, plates) {
+      if (!error) {
+        console.log("plates:", plates);
+      }
+    });
+  },
   meteor: {
     dark() {
       return Session.get("dark");
-    },
-    $subscribe: {
-      dinet_plates: []
-    },
-    dinet_plates() {
-      return Dinet.find({});
     }
   },
   watch: {
