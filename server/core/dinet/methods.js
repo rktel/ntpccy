@@ -1,13 +1,14 @@
 import { Dinet } from '../../../imports/api/collections'
 
-Meteor.methods({ 
+Meteor.methods({
     async DNT_getPlates() {
         const plates = await Dinet.rawCollection().distinct('events.vehicle')
         return plates
     },
-    async  DNT_getData(plates, dateTimeStart, dateTimeEnd) {
+    async  DNT_getDayData(dateTimeStart, dateTimeEnd, plate) {
         console.log('........................Dinet_X...............................')
         // console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
+        // Meteor.call('getDayData', timeStart, timeEnd, this.vehicle)
         console.log('Usuario: ', Meteor.user().username)
         console.log('Fecha y Tiempo de Inicio: ', dateTimeStart)
         console.log('Fecha y Tiempo de Fin: ', dateTimeEnd)
@@ -18,7 +19,7 @@ Meteor.methods({
         const arrayEvents = [97, 93, 89]
         const report = await Dinet.rawCollection().
             aggregate([
-                { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
+                { $match: { 'events.vehicle': { $in: plate }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
                 { $match: { 'events.original': { $in: arrayEvents } } },
                 {
@@ -54,3 +55,13 @@ Meteor.methods({
 
     }
 });
+
+
+
+/** Helpers Function */
+
+function addHours(datetime, hours) {
+    let date = new Date(datetime);
+    date.setHours(date.getHours() + hours);
+    return date.toISOString()
+}

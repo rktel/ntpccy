@@ -106,10 +106,16 @@ export default {
         if (this.vehicle && this.pickerDayModel) {
           const timeStart = this.pickerDayModel+"T"+"00:00:00.000Z"
           const timeEnd = this.pickerDayModel+"T"+"23:59:59.000Z"
+          Meteor.call('DNT_getDayData', timeStart, timeEnd, this.vehicle, (error, report)=>{
+            if(!error){
+              console.log(report);
+            }
+          })
         }
       } else {
         if (this.vehicle && this.pickerMonthModel) {
-          console.log(this.pickerMonthModel);
+          const month = /this.pickerMonthModel/
+         // Meteor.call('DNT_getMonthData', month, this.vehicle)
           
         }
       }
