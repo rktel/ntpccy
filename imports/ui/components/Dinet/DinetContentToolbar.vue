@@ -102,10 +102,17 @@ export default {
   },
   methods: {
     getVehicleData() {
-      console.log("pickerDayModel:", this.pickerDayModel);
-      console.log("pickerMonthModel:", this.pickerMonthModel);
-      console.log("vehicle:", this.vehicle);
-      console.log("searchItem:", this.searchItem);
+      if (this.searchItem === "Dia") {
+        if (this.vehicle && this.pickerDayModel) {
+          const timeStart = this.pickerDayModel+"T"+"00:00:00.000Z"
+          const timeEnd = this.pickerDayModel+"T"+"23:59:59.000Z"
+        }
+      } else {
+        if (this.vehicle && this.pickerMonthModel) {
+          console.log(this.pickerMonthModel);
+          
+        }
+      }
     }
   }
 };
