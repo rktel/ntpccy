@@ -9,38 +9,38 @@
       </v-flex>
       <v-flex v-if="searchItem === 'Dia'" xs12 lg3>
         <v-menu
-          ref="menu"
+          ref="pickerDay"
           :close-on-content-click="false"
-          v-model="menu"
+          v-model="pickerDay"
           transition="scale-transition"
         >
           <v-text-field
             slot="activator"
             label="Seleccione dia"
-            v-model="date"
+            v-model="pickerDayModel"
             prepend-inner-icon="event"
             readonly
             outline
           ></v-text-field>
-          <v-date-picker v-model="date" no-title @input="menu = false"></v-date-picker>
+          <v-date-picker v-model="pickerDayModel" no-title @input="pickerDay = false"></v-date-picker>
         </v-menu>
       </v-flex>
       <v-flex v-else-if="searchItem === 'Mes'" xs12 lg3>
         <v-menu
-          ref="menu2"
+          ref="pickerMonth"
           :close-on-content-click="false"
-          v-model="menu2"
+          v-model="pickerMonth"
           transition="scale-transition"
         >
           <v-text-field
             slot="activator"
             label="Seleccione mes"
-            v-model="date2"
+            v-model="pickerMonthModel"
             prepend-inner-icon="event"
             readonly
             outline
           ></v-text-field>
-          <v-date-picker v-model="date2" no-title @input="menu2 = false" type="month"></v-date-picker>
+          <v-date-picker v-model="pickerMonthModel" no-title @input="pickerMonth = false" type="month"></v-date-picker>
         </v-menu>
       </v-flex>
       <v-flex xs12 lg1 pt-0>
@@ -76,10 +76,10 @@ export default {
     return {
       searchItem: "Dia",
       searchItems: ["Mes", "Dia"],
-      date: new Date().toISOString().substr(0, 10),
-      menu: false,
-      date2: null,
-      menu2: false
+      pickerDayModel: new Date().toISOString().substr(0, 10),
+      pickerDay: false,
+      pickerMonthModel: null,
+      pickerMonth: false
     };
   },
   methods: {}
