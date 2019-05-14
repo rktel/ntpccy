@@ -96,12 +96,15 @@ export default {
       pickerDayModel: new Date().toISOString().substr(0, 10),
       pickerDay: false,
       pickerMonthModel: null,
-      pickerMonth: false
+      pickerMonth: false,
+      vehicle: false
     };
   },
   methods: {
     getVehicleData() {
-      console.log("Press Boton");
+      console.log("pickerDayModel:",pickerDayModel)
+      console.log("pickerMonthModel:",pickerMonthModel)
+      console.log("vehicle:",vehicle)
     }
   }
 };
