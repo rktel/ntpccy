@@ -102,9 +102,9 @@ export default {
   },
   methods: {
     getVehicleData() {
-      console.log("pickerDayModel:",pickerDayModel)
-      console.log("pickerMonthModel:",pickerMonthModel)
-      console.log("vehicle:",vehicle)
+      console.log("pickerDayModel:", this.pickerDayModel);
+      console.log("pickerMonthModel:", this.pickerMonthModel);
+      console.log("vehicle:", this.vehicle);
     }
   }
 };
