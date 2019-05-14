@@ -1,6 +1,15 @@
 <template>
   <section>
     <v-layout row wrap>
+      <v-flex xs12>
+        <v-card>
+          <template v-if="plates">
+            <ul v-for="(plate,index) in plates" :key="index">
+              <li>{{plate}}</li>
+            </ul>
+          </template>
+        </v-card>
+      </v-flex>
       <v-flex lg6 xs12>
         <v-card>
           <apexcharts type="bar" :options="optionsA" :series="seriesA"></apexcharts>
@@ -28,12 +37,16 @@ export default {
     Meteor.call("DNT_getPlates", (error, plates) => {
       if (!error) {
         console.log("plates:", plates);
+        Session.set("DNT_plates", plates);
       }
     });
   },
   meteor: {
     dark() {
       return Session.get("dark");
+    },
+    plates() {
+      return Session.get("DNT_plates");
     }
   },
   watch: {
@@ -83,8 +96,7 @@ export default {
           },
           events: {
             dataPointSelection: function(event, chartContext, config) {
-               console.log('SeriesAconfig:',config);
-              
+              //console.log("SeriesAconfig:", config);
             }
           }
         },
@@ -140,8 +152,7 @@ export default {
           },
           events: {
             dataPointSelection: function(event, chartContext, config) {
-              console.log('SeriesBconfig:',config);
-              
+              // console.log("SeriesBconfig:", config);
             }
           }
         },
