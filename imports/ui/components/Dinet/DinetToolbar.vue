@@ -3,7 +3,7 @@
     <v-avatar v-if="!avatar">
       <img v-if="!avatar" src="img/Dinet_alt.png" alt="avatar">
     </v-avatar>
-    <img v-else src="img/Dinet_white.png" alt="avatar" width="50">
+    <img v-else src="img/Dinet_white.png" alt="avatar" width="55">
     <v-toolbar-title>
       Control de Velocidad
     </v-toolbar-title>
