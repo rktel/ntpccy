@@ -18,7 +18,7 @@
 <script>
 import VueApexCharts from "vue-apexcharts";
 import { Session } from "meteor/session";
-import { Dinet } from "../../imports/api/collections.js";
+import { Dinet } from "../../../api/collections.js";
 export default {
   name: "Chart",
   components: {
