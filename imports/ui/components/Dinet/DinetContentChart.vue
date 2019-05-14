@@ -1,6 +1,6 @@
 <template>
   <section>
-    <v-layout row wrap transition="slide-x-transition">
+    <v-layout row wrap>
       <v-flex xs12>
         <v-card>
           <template>
@@ -38,6 +38,7 @@ export default {
       if (!error) {
         console.log("plates:", plates);
         Session.set("DNT_plates", plates);
+       // Meteor.call("DNT_getData")
       }
     });
   },
