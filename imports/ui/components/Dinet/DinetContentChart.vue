@@ -1,9 +1,9 @@
 <template>
   <section>
-    <v-layout row wrap>
+    <v-layout row wrap v-if="plates">
       <v-flex xs12>
         <v-card>
-          <template v-if="plates">
+          <template>
             <ul v-for="(plate,index) in plates" :key="index">
               <li>{{plate}}</li>
             </ul>
@@ -19,6 +19,11 @@
         <v-card>
           <apexcharts type="bar" :options="optionsB" :series="seriesB"></apexcharts>
         </v-card>
+      </v-flex>
+    </v-layout>
+    <v-layout row wrap v-else>
+      <v-flex xs12>
+        <v-progress-circular indeterminate color="primary"></v-progress-circular>
       </v-flex>
     </v-layout>
   </section>
