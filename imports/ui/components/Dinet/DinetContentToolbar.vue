@@ -2,12 +2,12 @@
   <section>
     <v-layout row wrap>
       <v-flex xs12 lg3>
-        <v-select v-model="dropdown" :items="dropdown_font" label="Dia/Mes" placeholder=" " outline></v-select>
+        <v-select v-model="vehicle" :items="plates" label="Unidades" placeholder=" " outline></v-select>
       </v-flex>
       <v-flex xs12 lg3>
-        <v-select v-model="dropdown" :items="dropdown_font" label="Dia/Mes" placeholder=" " outline></v-select>
+        <v-select v-model="searchItem" :items="searchItems" label="Dia/Mes" placeholder=" " outline></v-select>
       </v-flex>
-      <v-flex v-if="dropdown === 'Dia'" xs12 lg3>
+      <v-flex v-if="searchItem === 'Dia'" xs12 lg3>
         <v-menu
           ref="menu"
           :close-on-content-click="false"
@@ -25,7 +25,7 @@
           <v-date-picker v-model="date" no-title @input="menu = false"></v-date-picker>
         </v-menu>
       </v-flex>
-      <v-flex v-else-if="dropdown === 'Mes'" xs12 lg3>
+      <v-flex v-else-if="searchItem === 'Mes'" xs12 lg3>
         <v-menu
           ref="menu2"
           :close-on-content-click="false"
@@ -56,11 +56,26 @@
 </template>
 
 <script>
+import { Session } from "meteor/session";
 export default {
+  mounted() {
+    Meteor.call("DNT_getPlates", (error, plates) => {
+      if (!error) {
+        console.log("plates:", plates);
+        Session.set("DNT_plates", plates);
+        // Meteor.call("DNT_getData")
+      }
+    });
+  },
+  meteor: {
+    plates() {
+      return Session.get("DNT_plates");
+    }
+  },
   data() {
     return {
-      dropdown: "Dia",
-      dropdown_font: ["Mes", "Dia"],
+      searchItem: "Dia",
+      searchItems: ["Mes", "Dia"],
       date: new Date().toISOString().substr(0, 10),
       menu: false,
       date2: null,
