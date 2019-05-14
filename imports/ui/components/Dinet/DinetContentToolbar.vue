@@ -105,6 +105,7 @@ export default {
       console.log("pickerDayModel:", this.pickerDayModel);
       console.log("pickerMonthModel:", this.pickerMonthModel);
       console.log("vehicle:", this.vehicle);
+      console.log("searchItem:", this.searchItem);
     }
   }
 };
