@@ -1,0 +1,1 @@
+import { Dinet } from '../../../imports/api/collections'
