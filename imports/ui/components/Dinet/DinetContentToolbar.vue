@@ -1,13 +1,13 @@
 <template>
   <section>
     <v-layout row wrap>
-      <v-flex xs12 lg4 pt-4>
-        <div class="headline font-italic grey--text">Control de Velocidad</div>
-      </v-flex>
-      <v-flex xs12 offset-lg2 lg2>
+      <v-flex xs12 lg3>
         <v-select v-model="dropdown" :items="dropdown_font" label="Dia/Mes" placeholder=" " outline></v-select>
       </v-flex>
-      <v-flex v-if="dropdown === 'Dia'" xs12 lg2>
+      <v-flex xs12 lg3>
+        <v-select v-model="dropdown" :items="dropdown_font" label="Dia/Mes" placeholder=" " outline></v-select>
+      </v-flex>
+      <v-flex v-if="dropdown === 'Dia'" xs12 lg3>
         <v-menu
           ref="menu"
           :close-on-content-click="false"
@@ -25,7 +25,7 @@
           <v-date-picker v-model="date" no-title @input="menu = false"></v-date-picker>
         </v-menu>
       </v-flex>
-      <v-flex v-else-if="dropdown === 'Mes'" xs12 lg2 >
+      <v-flex v-else-if="dropdown === 'Mes'" xs12 lg3>
         <v-menu
           ref="menu2"
           :close-on-content-click="false"
