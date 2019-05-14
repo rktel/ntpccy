@@ -27,6 +27,12 @@ export default {
   meteor: {
     dark() {
       return Session.get("dark");
+    },
+    $subscribe: {
+      dinet_plates: []
+    },
+    dinet_plates() {
+      return Dinet.rawCollection().distinct("events.vehicle");
     }
   },
   watch: {
