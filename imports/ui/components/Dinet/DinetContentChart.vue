@@ -83,9 +83,7 @@ export default {
           },
           events: {
             dataPointSelection: function(event, chartContext, config) {
-              console.log('event:',event);
-              console.log('chartContext:',chartContext);
-              console.log('config:',config);
+               console.log('SeriesAconfig:',config);
               
             }
           }
@@ -139,6 +137,12 @@ export default {
         chart: {
           toolbar: {
             show: false
+          },
+          events: {
+            dataPointSelection: function(event, chartContext, config) {
+              console.log('SeriesBconfig:',config);
+              
+            }
           }
         },
         theme: {
