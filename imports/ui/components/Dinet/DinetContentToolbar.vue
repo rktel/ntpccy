@@ -114,8 +114,7 @@ export default {
         }
       } else {
         if (this.vehicle && this.pickerMonthModel) {
-          const month = /this.pickerMonthModel/
-         Meteor.call('DNT_getMonthData', month, this.vehicle, (error, report)=>{
+         Meteor.call('DNT_getMonthData', this.pickerMonthModel, this.vehicle, (error, report)=>{
             if(!error){
               console.log(report);
             }

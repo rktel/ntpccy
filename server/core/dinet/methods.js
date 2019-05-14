@@ -66,7 +66,7 @@ Meteor.methods({
         const arrayEvents = [97, 93, 89]
         const report = await Dinet.rawCollection().
             aggregate([
-                { $match: { 'events.vehicle': { $in: [plate] }, 'events.created': month } },
+                { $match: { 'events.vehicle': { $in: [plate] }, 'events.created': new RegExp(month)} },
                 { $unwind: '$events' },
                 { $match: { 'events.original': { $in: arrayEvents } } },
                 {
