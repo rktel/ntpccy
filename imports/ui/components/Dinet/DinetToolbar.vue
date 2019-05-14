@@ -1,8 +1,12 @@
 <template>
   <v-toolbar app fixed>
-    <img v-if="!avatar" src="img/Dinet_alt.png" alt="avatar" width="40">
-    <img v-else src="img/Dinet_white.png" alt="avatar" width="40">
-    <v-toolbar-title>Control de Velocidad</v-toolbar-title>
+    <v-avatar v-if="!avatar">
+      <img v-if="!avatar" src="img/Dinet_alt.png" alt="avatar">
+    </v-avatar>
+    <img v-else src="img/Dinet_white.png" alt="avatar" width="50">
+    <v-toolbar-title>
+      Control de Velocidad
+    </v-toolbar-title>
     <v-spacer></v-spacer>
     <v-speed-dial v-model="fab" direction="bottom" transition="slide-y-reverse-transition">
       <v-btn v-model="fab" fab slot="activator" flat>
