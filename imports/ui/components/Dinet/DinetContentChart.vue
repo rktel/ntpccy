@@ -1,6 +1,6 @@
 <template>
   <section>
-    <v-layout row wrap v-if="plates">
+    <v-layout row wrap>
       <v-flex xs12>
         <v-card>
           <template>
@@ -19,11 +19,6 @@
         <v-card>
           <apexcharts type="bar" :options="optionsB" :series="seriesB"></apexcharts>
         </v-card>
-      </v-flex>
-    </v-layout>
-    <v-layout row wrap v-else>
-      <v-flex xs12>
-        <v-progress-circular indeterminate color="primary"></v-progress-circular>
       </v-flex>
     </v-layout>
   </section>
