@@ -2,10 +2,22 @@
   <section>
     <v-layout row wrap>
       <v-flex xs12 lg3>
-        <v-select v-model="vehicle" :items="plates" label="Seleccione unidad" paceholder=" " outline></v-select>
+        <v-select
+          v-model="vehicle"
+          :items="plates"
+          label="Seleccione unidad"
+          paceholder=" "
+          outline
+        ></v-select>
       </v-flex>
       <v-flex xs12 lg3>
-        <v-select v-model="searchItem" :items="searchItems" label="Tipo de reporte" placeholder=" " outline></v-select>
+        <v-select
+          v-model="searchItem"
+          :items="searchItems"
+          label="Tipo de reporte"
+          placeholder=" "
+          outline
+        ></v-select>
       </v-flex>
       <v-flex v-if="searchItem === 'Dia'" xs12 lg3>
         <v-menu
@@ -40,12 +52,17 @@
             readonly
             outline
           ></v-text-field>
-          <v-date-picker v-model="pickerMonthModel" no-title @input="pickerMonth = false" type="month"></v-date-picker>
+          <v-date-picker
+            v-model="pickerMonthModel"
+            no-title
+            @input="pickerMonth = false"
+            type="month"
+          ></v-date-picker>
         </v-menu>
       </v-flex>
       <v-flex xs12 lg1 pt-0>
         <v-tooltip bottom>
-          <v-btn fab slot="activator">
+          <v-btn fab slot="activator" @click="getVehicleData">
             <v-icon>search</v-icon>
           </v-btn>
           <span>Buscar</span>
@@ -82,7 +99,11 @@ export default {
       pickerMonth: false
     };
   },
-  methods: {}
+  methods: {
+    getVehicleData() {
+      console.log("Press Boton");
+    }
+  }
 };
 </script>
 
