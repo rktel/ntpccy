@@ -55,7 +55,7 @@ Meteor.methods({
                 //               { $sort: { 'placa': 1 } },
             ]).toArray()
 
-        if(report.length>0){
+        if (report.length > 0) {
             report = report[0]
             const placa = report.placa;
             const exceso15 = report.exceso15;
@@ -63,11 +63,15 @@ Meteor.methods({
             const exceso80 = report.exceso80;
             const primerEvento = report.primerEvento
             const ultimoEvento = report.ultimoEvento
-          const primerDistancia = primerEvento.counters.find(el => el.type === 9)
-          const ultimoDistancia = ultimoEvento.counters.find(el => el.type === 9)
-
-            console.log(primerDistancia, ultimoDistancia);
+            const primerDistancia = primerEvento.counters.find(el => el.type === 9)
+            const ultimoDistancia = ultimoEvento.counters.find(el => el.type === 9)
+            let distanciaRecorrida = false
+            if (primerDistancia && ultimoDistancia && ultimoDistancia > primerDistancia) {
+                distanciaRecorrida = ultimoDistancia - primerDistancia
+            }
+            console.log("distanciaRecorrida:", distanciaRecorrida);
             
+
         }
         return report
     },
