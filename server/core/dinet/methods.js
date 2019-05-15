@@ -19,7 +19,7 @@ Meteor.methods({
         const arrayEvents = [97, 93, 89]
         let report = await Dinet.rawCollection().
             aggregate([
-                { $match: { 'events.vehicle': { $in: [plate] }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
+                { $match: { 'events.vehicle': { $in: [plate] }, 'events.created': { $gte: dateTimeStart5, $lte: dateTimeEnd5 } } },
                 { $unwind: '$events' },
                 { $match: { 'events.original': { $in: arrayEvents } } },
                 { $sort: { 'events.created': 1 } },
@@ -67,7 +67,7 @@ Meteor.methods({
             primerDistancia = primerDistancia.value
             let ultimoDistancia = ultimoEvento.counters.find(el => el.type === 9)
             ultimoDistancia = ultimoDistancia.value
-            const distanciaRecorrida = (ultimoDistancia > primerDistancia) ? parseInt( (ultimoDistancia - primerDistancia)/1000) : 0
+            const distanciaRecorrida = (ultimoDistancia > primerDistancia) ? parseInt((ultimoDistancia - primerDistancia) / 1000) : 0
             report = {
                 placa,
                 exceso15,
@@ -75,9 +75,11 @@ Meteor.methods({
                 exceso80,
                 distanciaRecorrida
             }
+            return report
 
+        } else {
+            return false
         }
-        return report
     },
     async  DNT_getMonthData(month, plate) {
         console.log('........................Dinet_X...............................')
@@ -90,14 +92,17 @@ Meteor.methods({
         //const dateTimeEnd5 = addHours(dateTimeEnd, 5)
         // Exceso 15km/h : 97,  Exceso 30km/h : 93, Exceso 80km/h : 89, Fatiga : 81
         const arrayEvents = [97, 93, 89]
-        const report = await Dinet.rawCollection().
+        let report = await Dinet.rawCollection().
             aggregate([
                 { $match: { 'events.vehicle': { $in: [plate] }, 'events.created': new RegExp(month) } },
                 { $unwind: '$events' },
                 { $match: { 'events.original': { $in: arrayEvents } } },
+                { $sort: { 'events.created': 1 } },
                 {
                     $group: {
                         _id: '$events.vehicle',
+                        primerEvento: { $first: '$events' },
+                        ultimoEvento: { $last: '$events' },
                         exceso15: {
                             $sum: {
                                 $cond: [
@@ -122,9 +127,33 @@ Meteor.methods({
                     }
                 },
                 { $project: { _id: 0, placa: '$_id', exceso15: '$exceso15', exceso30: '$exceso30', exceso80: '$exceso80' } },
-                { $sort: { 'placa': 1 } },
+                //               { $sort: { 'placa': 1 } },
             ]).toArray()
-        return report
+        if (report.length > 0) {
+            report = report[0]
+            const placa = report.placa;
+            const exceso15 = report.exceso15;
+            const exceso30 = report.exceso30;
+            const exceso80 = report.exceso80;
+            const primerEvento = report.primerEvento
+            const ultimoEvento = report.ultimoEvento
+            let primerDistancia = primerEvento.counters.find(el => el.type === 9)
+            primerDistancia = primerDistancia.value
+            let ultimoDistancia = ultimoEvento.counters.find(el => el.type === 9)
+            ultimoDistancia = ultimoDistancia.value
+            const distanciaRecorrida = (ultimoDistancia > primerDistancia) ? parseInt((ultimoDistancia - primerDistancia) / 1000) : 0
+            report = {
+                placa,
+                exceso15,
+                exceso30,
+                exceso80,
+                distanciaRecorrida
+            }
+            return report
+
+        } else {
+            return false
+        }
 
     }
 });
