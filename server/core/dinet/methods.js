@@ -22,11 +22,12 @@ Meteor.methods({
                 { $match: { 'events.vehicle': { $in: [plate] }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
                 { $match: { 'events.original': { $in: arrayEvents } } },
-                { $sort: { 'events.created': -1}},
+                { $sort: { 'events.created': -1 } },
                 {
                     $group: {
                         _id: '$events.vehicle',
-                        firstRow:{$first: ['$events.counters', '$events.created']},
+                        primerEvento: { $first: '$events' },
+                        ultimoEvento: { $last: '$events' },
                         exceso15: {
                             $sum: {
                                 $cond: [
@@ -50,8 +51,8 @@ Meteor.methods({
                         }
                     }
                 },
-                { $project: { _id: 0, placa: '$_id', exceso15: '$exceso15', exceso30: '$exceso30', exceso80: '$exceso80', firstRow: '$firstRow' } },
- //               { $sort: { 'placa': 1 } },
+                { $project: { _id: 0, placa: '$_id', exceso15: '$exceso15', exceso30: '$exceso30', exceso80: '$exceso80', primerEvento: '$primerEvento' , ultimoEvento: '$ultimoEvento' } },
+                //               { $sort: { 'placa': 1 } },
             ]).toArray()
         return report
     },
@@ -68,7 +69,7 @@ Meteor.methods({
         const arrayEvents = [97, 93, 89]
         const report = await Dinet.rawCollection().
             aggregate([
-                { $match: { 'events.vehicle': { $in: [plate] }, 'events.created': new RegExp(month)} },
+                { $match: { 'events.vehicle': { $in: [plate] }, 'events.created': new RegExp(month) } },
                 { $unwind: '$events' },
                 { $match: { 'events.original': { $in: arrayEvents } } },
                 {
