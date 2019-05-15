@@ -67,11 +67,14 @@ Meteor.methods({
             primerDistancia = primerDistancia.value
             let ultimoDistancia = ultimoEvento.counters.find(el => el.type === 9)
             ultimoDistancia = ultimoDistancia.value
-          //  let distanciaRecorrida = false
-
-            console.log(primerDistancia, ultimoDistancia);
-            console.log(ultimoDistancia-primerDistancia);
-            
+            const distanciaRecorrida = (ultimoDistancia > primerDistancia) ? parseInt( (ultimoDistancia - primerDistancia)/1000) : 0
+            report = {
+                placa,
+                exceso15,
+                exceso30,
+                exceso80,
+                distanciaRecorrida
+            }
 
         }
         return report
