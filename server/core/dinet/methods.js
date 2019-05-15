@@ -26,7 +26,7 @@ Meteor.methods({
                 {
                     $group: {
                         _id: '$events.vehicle',
-                        firstRow:{$first: '$events.counters'},
+                        firstRow:{$first: ['$events.counters', '$events.created']},
                         exceso15: {
                             $sum: {
                                 $cond: [
