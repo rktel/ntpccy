@@ -25,7 +25,7 @@ export default {
     apexcharts: VueApexCharts
   },
   mounted() {
-
+    /** */
   },
   meteor: {
     dark() {
@@ -36,8 +36,19 @@ export default {
     }
   },
   watch: {
-    report: function(){
-      console.log("Report change", this.report);
+    report: function() {
+      if (Session.get("report")) {
+        this.seriesA = [
+          {
+            name: "#Eventos",
+            data: [this.report.exceso15]
+          },
+          {
+            name: "Distancia(Km)",
+            data: [this.report.distanciaRecorrida]
+          }
+        ];
+      }
     },
     dark: function() {
       if (Session.get("dark")) {
