@@ -25,25 +25,20 @@ export default {
     apexcharts: VueApexCharts
   },
   mounted() {
-    /*
-    Meteor.call("DNT_getPlates", (error, plates) => {
-      if (!error) {
-        console.log("plates:", plates);
-        Session.set("DNT_plates", plates);
-       // Meteor.call("DNT_getData")
-      }
-    });
-    */
+
   },
   meteor: {
     dark() {
       return Session.get("dark");
     },
-    plates() {
-      return Session.get("DNT_plates");
+    report() {
+      return Session.get("report");
     }
   },
   watch: {
+    report: function(){
+      console.log("Report change", this.report);
+    },
     dark: function() {
       if (Session.get("dark")) {
         this.optionsA = {
