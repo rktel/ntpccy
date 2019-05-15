@@ -92,7 +92,7 @@ export default {
   data() {
     return {
       searchItem: "Dia",
-      searchItems: ["Mes", "Dia"],
+      searchItems: ["Dia"],
       pickerDayModel: new Date().toISOString().substr(0, 10),
       pickerDay: false,
       pickerMonthModel: null,

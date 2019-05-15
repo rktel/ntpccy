@@ -1,16 +1,16 @@
 <template>
   <section>
     <v-layout row wrap>
-      <v-flex lg6 xs12>
+      <v-flex lg6 offset-lg3 xs12>
         <v-card>
           <apexcharts type="bar" :options="optionsA" :series="seriesA"></apexcharts>
         </v-card>
       </v-flex>
-      <v-flex lg6 xs12>
+      <!--v-flex lg6 xs12>
         <v-card>
           <apexcharts type="bar" :options="optionsB" :series="seriesB"></apexcharts>
         </v-card>
-      </v-flex>
+      </v-flex-->
     </v-layout>
   </section>
 </template>
