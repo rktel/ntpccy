@@ -1,4 +1,5 @@
-import { Dinet } from '../../../imports/api/collections'
+/**
+ * import { Dinet } from '../../../imports/api/collections'
 
 Meteor.methods({
     async DNT_getPlates() {
@@ -22,7 +23,6 @@ Meteor.methods({
                 { $match: { 'events.vehicle': { $in: [plate] }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
                 { $match: { 'events.original': { $in: arrayEvents } } },
-                { $sort: { 'events.created': -1}},
                 {
                     $group: {
                         _id: '$events.vehicle',
@@ -50,7 +50,7 @@ Meteor.methods({
                     }
                 },
                 { $project: { _id: 0, placa: '$_id', exceso15: '$exceso15', exceso30: '$exceso30', exceso80: '$exceso80' } },
- //               { $sort: { 'placa': 1 } },
+                { $sort: { 'placa': 1 } },
             ]).toArray()
         return report
     },
@@ -106,10 +106,11 @@ Meteor.methods({
 
 
 
-/** Helpers Function */
+/** Helpers Function 
 
 function addHours(datetime, hours) {
     let date = new Date(datetime);
     date.setHours(date.getHours() + hours);
     return date.toISOString()
 }
+ */
