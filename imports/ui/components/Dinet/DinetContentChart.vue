@@ -121,7 +121,8 @@ export default {
           enabled: true
         },
         xaxis: {
-          categories: ["Turno A"]
+        //  categories: ["Turno A"]
+          categories: [""]
         },
         fill: {
           opacity: 0.9
