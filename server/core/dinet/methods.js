@@ -26,6 +26,7 @@ Meteor.methods({
                 {
                     $group: {
                         _id: '$events.vehicle',
+                        firstRow:{$first: '$events.counters'},
                         exceso15: {
                             $sum: {
                                 $cond: [
@@ -49,7 +50,7 @@ Meteor.methods({
                         }
                     }
                 },
-                { $project: { _id: 0, placa: '$_id', exceso15: '$exceso15', exceso30: '$exceso30', exceso80: '$exceso80' } },
+                { $project: { _id: 0, placa: '$_id', exceso15: '$exceso15', exceso30: '$exceso30', exceso80: '$exceso80', firstRow: '$firstRow' } },
  //               { $sort: { 'placa': 1 } },
             ]).toArray()
         return report
