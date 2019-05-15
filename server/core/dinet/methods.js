@@ -126,7 +126,7 @@ Meteor.methods({
                         }
                     }
                 },
-                { $project: { _id: 0, placa: '$_id', exceso15: '$exceso15', exceso30: '$exceso30', exceso80: '$exceso80' } },
+                { $project: { _id: 0, placa: '$_id', exceso15: '$exceso15', exceso30: '$exceso30', exceso80: '$exceso80', primerEvento: '$primerEvento', ultimoEvento: '$ultimoEvento' } },
                 //               { $sort: { 'placa': 1 } },
             ]).toArray()
         if (report.length > 0) {
