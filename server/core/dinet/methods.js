@@ -63,8 +63,10 @@ Meteor.methods({
             const exceso80 = report.exceso80;
             const primerEvento = report.primerEvento
             const ultimoEvento = report.ultimoEvento
-            const primerDistancia = primerEvento.counters.find(el => el.type === 9)
-            const ultimoDistancia = ultimoEvento.counters.find(el => el.type === 9)
+            let primerDistancia = primerEvento.counters.find(el => el.type === 9)
+            primerDistancia = primerDistancia.value
+            let ultimoDistancia = ultimoEvento.counters.find(el => el.type === 9)
+            ultimoDistancia = ultimoDistancia.value
           //  let distanciaRecorrida = false
 
             console.log(primerDistancia, ultimoDistancia);
