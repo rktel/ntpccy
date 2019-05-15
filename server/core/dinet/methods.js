@@ -17,7 +17,7 @@ Meteor.methods({
         const dateTimeEnd5 = addHours(dateTimeEnd, 5)
         // Exceso 15km/h : 97,  Exceso 30km/h : 93, Exceso 80km/h : 89, Fatiga : 81
         const arrayEvents = [97, 93, 89]
-        const report = await Dinet.rawCollection().
+        let report = await Dinet.rawCollection().
             aggregate([
                 { $match: { 'events.vehicle': { $in: [plate] }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
@@ -54,6 +54,21 @@ Meteor.methods({
                 { $project: { _id: 0, placa: '$_id', exceso15: '$exceso15', exceso30: '$exceso30', exceso80: '$exceso80', primerEvento: '$primerEvento', ultimoEvento: '$ultimoEvento' } },
                 //               { $sort: { 'placa': 1 } },
             ]).toArray()
+
+        if(report.length>0){
+            report = report[0]
+            const placa = report.placa;
+            const exceso15 = report.exceso15;
+            const exceso30 = report.exceso30;
+            const exceso80 = report.exceso80;
+            const primerEvento = report.primerEvento
+            const ultimoEvento = report.ultimoEvento
+            const primerDistancia = primerEvento.counters.type[9]
+            const ultimoDistancia = ultimoEvento.counters.type[9]
+
+            console.log(primerDistancia, ultimoDistancia);
+            
+        }
         return report
     },
     async  DNT_getMonthData(month, plate) {
