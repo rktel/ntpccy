@@ -22,12 +22,11 @@ Meteor.methods({
                 { $match: { 'events.vehicle': { $in: [plate] }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
                 { $unwind: '$events' },
                 { $match: { 'events.original': { $in: arrayEvents } } },
-                { $sort: { 'events.created': -1 } },
+                { $sort: { 'events.created': 1 } },
                 {
                     $group: {
                         _id: '$events.vehicle',
-                        primerEvento: { $first: '$events' },
-                        ultimoEvento: { $last: '$events' },
+                        eventosTodos: '$events',
                         exceso15: {
                             $sum: {
                                 $cond: [
