@@ -106,7 +106,7 @@ export default {
         if (this.vehicle && this.pickerDayModel) {
           const timeStart = this.pickerDayModel+"T"+"00:00:00.000Z"
           const timeEnd = this.pickerDayModel+"T"+"23:59:59.000Z"
-          Meteor.call('DNT_getDayData', timeStart, timeEnd, this.vehicle, (error, report)=>{
+          Meteor.call('DNT_TEST_getDayData', timeStart, timeEnd, this.vehicle, (error, report)=>{
             if(!error){
              // console.log(report);
               Session.set("report", report)
