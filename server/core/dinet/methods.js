@@ -31,7 +31,13 @@ Meteor.methods({
                         exceso15A: {
                             $sum: {
                                 $cond: [
-                                    { $and: [{ $gte: [{ "$hour": new Date("$events.created") }, 0] }, { $lte: [{ "$hour": new Date("$events.created") }, 12] }, {$eq:['$events.original', 97]}] }, 1, 0
+                                    {
+                                        $and: [
+                                            { $gte: [{ "$hour": new Date("$events.created") }, 0] },
+                                            { $lte: [{ "$hour": new Date("$events.created") }, 1] },
+                                            { $eq: ['$events.original', 97] }
+                                        ]
+                                    }, 1, 0
                                 ]
                             }
                         },
