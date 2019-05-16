@@ -34,7 +34,7 @@ Meteor.methods({
                                     {
                                         $and: [
                                             { $eq: ['$events.original', 97] },
-                                            { $gte: ['$events.original', '2019-05-12T00:00:00.000Z'] }
+                                            { $gte: ['$events.created', '2019-05-12T00:00:00.000Z'] }
                                         ]
                                     }, 1, 0
                                 ]
