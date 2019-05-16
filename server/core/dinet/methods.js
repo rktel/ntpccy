@@ -34,7 +34,7 @@ Meteor.methods({
                                     { 
                                         $and:[
                                             {$eq: ['$events.original', 97] },
-                                            {$gte: [{$hour: "$events.created"}, 12]}
+                                            {$gte: [{$hour: new Date("$events.created")}, 12]}
                                         ]
                                     }, 1, 0
                                 ]
