@@ -31,7 +31,7 @@ Meteor.methods({
                         exceso15A: {
                             $sum: {
                                 $cond: [
-                                    { $and: [{ $gte: [{"$hour" : new Date("$events.created")}, 0] } ,{$lte: [{"$hour":new Date("$events.created")}, 12]}] }, 1, 0
+                                    { $and: [{ $gte: [{ "$hour": new Date("$events.created") }, 0] }, { $lte: [{ "$hour": new Date("$events.created") }, 12] }, {$eq:['$events.original', 97]}] }, 1, 0
                                 ]
                             }
                         },
@@ -75,11 +75,11 @@ Meteor.methods({
                 exceso80,
                 distanciaRecorrida
             }
-           // return report
+            // return report
             console.log(report);
-            
+
         } else {
-          //  return false
+            //  return false
         }
     },
     async  DNT_getDayData(dateTimeStart, dateTimeEnd, plate) {
