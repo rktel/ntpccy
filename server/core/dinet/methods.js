@@ -75,10 +75,11 @@ Meteor.methods({
                 exceso80,
                 distanciaRecorrida
             }
-            return report
-
+           // return report
+            console.log(report);
+            
         } else {
-            return false
+          //  return false
         }
     },
     async  DNT_getDayData(dateTimeStart, dateTimeEnd, plate) {
