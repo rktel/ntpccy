@@ -33,8 +33,7 @@ Meteor.methods({
                                 $cond: [
                                     {
                                         $and: [
-                                            { $gte: [{ "$hour": new Date("$events.created") }, 0] },
-                                            { $lte: [{ "$hour": new Date("$events.created") }, 1] },
+
                                             { $eq: ['$events.original', 97] }
                                         ]
                                     }, 1, 0
