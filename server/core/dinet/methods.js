@@ -31,12 +31,7 @@ Meteor.methods({
                         exceso15A: {
                             $sum: {
                                 $cond: [
-                                    {
-                                        $and: [
-
-                                            { $eq: ['$events.original', 97] }
-                                        ]
-                                    }, 1, 0
+                                    { $eq: ['$events.original', 97] }, 1, 0
                                 ]
                             }
                         },
