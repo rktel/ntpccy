@@ -72,17 +72,11 @@ Meteor.methods({
         TURN_B_E = addHours(TURN_B_E, 5)
         // console.log(TURN_A_S, TURN_A_E, TURN_B_E);
 
-        Meteor.call('DNT_getOverspeedEvents', PLATE, TURN_A_S, TURN_A_E, (error, result) => {
-            if (!error) {
-                console.log('TurnoA:',new Date(),result);
-            }
-        })
-        Meteor.call('DNT_getOverspeedEvents', PLATE, TURN_A_E, TURN_B_E, (error, result) => {
-            if (!error) {
-                console.log('TurnoB:',new Date(),result);
-            }
-        })
-
+        let result1 = Meteor.call('DNT_getOverspeedEvents', PLATE, TURN_A_S, TURN_A_E)
+        let result2 = Meteor.call('DNT_getOverspeedEvents', PLATE, TURN_A_E, TURN_B_E)
+        console.log(new Date(), 'result1: ', result1);
+        console.log(new Date(), 'result2: ', result2);
+        
         // const dateTimeStart5 = addHours(dateTimeStart, 5)
         // const dateTimeEnd5 = addHours(dateTimeEnd, 5)
         // Exceso 15km/h : 97,  Exceso 30km/h : 93, Exceso 80km/h : 89, Fatiga : 81
