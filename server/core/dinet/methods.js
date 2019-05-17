@@ -21,6 +21,8 @@ Meteor.methods({
                 {
                     $group: {
                         _id: '$events.vehicle',
+                        primerEvento: { $first: '$events' },
+                        ultimoEvento: { $last: '$events' },
                         exceso15: {
                             $sum: {
                                 $cond: [
@@ -44,7 +46,7 @@ Meteor.methods({
                         }
                     }
                 },
-                { $project: { _id: 0, exceso15: '$exceso15', exceso30: '$exceso30', exceso80: '$exceso80' } },
+                { $project: { _id: 0, exceso15: '$exceso15', exceso30: '$exceso30', exceso80: '$exceso80', primerEvento: '$primerEvento', ultimoEvento: '$ultimoEvento' } },
             ]).toArray()
 
         return report
@@ -79,13 +81,21 @@ Meteor.methods({
         resultDay.day = getDateString(DAY)
 
         if (turnA && turnA.length > 0) {
+            const distanceA = getDistance(turnA[0].primerEvento, turnA[0].ultimoEvento)
+            delete turnA[0].primerEvento
+            delete turnA[0].ultimoEvento
+            turnA[0].distancia = distanceA
             resultDay.turnA = turnA[0]
-        }else{
+        } else {
             resultDay.turnA = serieNULL()
         }
         if (turnB && turnB.length > 0) {
+            const distanceB = getDistance(turnB[0].primerEvento, turnB[0].ultimoEvento)
+            delete turnB[0].primerEvento
+            delete turnB[0].ultimoEvento
+            turnB[0].distancia = distanceB
             resultDay.turnB = turnB[0]
-        }else{
+        } else {
             resultDay.turnB = serieNULL()
         }
         console.log(resultDay)
@@ -301,6 +311,14 @@ function serieNULL() {
     return {
         exceso15: 0,
         exceso30: 0,
-        exceso80: 0
+        exceso80: 0,
+        distancia: 0
     }
+}
+function getDistance(eveS, eveE) {
+    let firstD = eveS.counters.find(el => el.type === 9)
+    firstD = (firstD && firstD.value) ? firstD.value : 0
+    let lastD = eveE.counters.find(el => el.type === 9)
+    lastD = (lastD && lastD.value) ? lastD.value : 0
+    return (lastD > firstD) ? parseInt((lastD - firstD) / 1000) : 0
 }
