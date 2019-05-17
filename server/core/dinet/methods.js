@@ -44,7 +44,7 @@ Meteor.methods({
                         }
                     }
                 },
-                { $project: { _id: 0, placa: '$_id', exceso15: '$exceso15', exceso30: '$exceso30', exceso80: '$exceso80' } },
+                { $project: { _id: 0, exceso15: '$exceso15', exceso30: '$exceso30', exceso80: '$exceso80' } },
             ]).toArray()
 
         return report
