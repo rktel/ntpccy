@@ -79,12 +79,12 @@ Meteor.methods({
         resultDay.day = getDateString(DAY)
 
         if (turnA && turnA.length > 0) {
-            resultDay.turnA = turnA
+            resultDay.turnA = turnA[0]
         }else{
             resultDay.turnA = serieNULL()
         }
         if (turnB && turnB.length > 0) {
-            resultDay.turnB = turnB
+            resultDay.turnB = turnB[0]
         }else{
             resultDay.turnB = serieNULL()
         }
