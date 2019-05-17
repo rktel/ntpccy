@@ -9,6 +9,46 @@ Meteor.methods({
         const plates = await Dinet.rawCollection().distinct('events.vehicle')
         return plates
     },
+    async DNT_getOverspeedEvents(PLATE, TIME_S, TIME_E) {
+        // Exceso 15km/h : 97,  Exceso 30km/h : 93, Exceso 80km/h : 89
+        const arrayEvents = [97, 93, 89]
+        let report = await Dinet.rawCollection().
+            aggregate([
+                { $match: { 'events.vehicle': { $in: [PLATE] }, 'events.created': { $gt: TIME_S, $lt: TIME_E } } },
+                { $unwind: '$events' },
+                { $match: { 'events.original': { $in: arrayEvents } } },
+                { $sort: { 'events.created': 1 } },
+                {
+                    $group: {
+                        _id: '$events.vehicle',
+                        exceso15: {
+                            $sum: {
+                                $cond: [
+                                    { $eq: ['$events.original', 97] }, 1, 0
+                                ]
+                            }
+                        },
+                        exceso30: {
+                            $sum: {
+                                $cond: [
+                                    { $eq: ['$events.original', 93] }, 1, 0
+                                ]
+                            }
+                        },
+                        exceso80: {
+                            $sum: {
+                                $cond: [
+                                    { $eq: ['$events.original', 89] }, 1, 0
+                                ]
+                            }
+                        }
+                    }
+                },
+                { $project: { _id: 0, placa: '$_id', exceso15: '$exceso15', exceso30: '$exceso30', exceso80: '$exceso80' } },
+            ]).toArray()
+
+        return report
+    },
     async  DNT_TEST_getDayData(DAY, PLATE) {
         // DAY: 2019-05-16
         //TURNO A 
@@ -26,13 +66,22 @@ Meteor.methods({
         let TURN_A_E = new Date(new Date(DAY).getTime() + parseInt(NINETEEN))
         let TURN_B_E = new Date(new Date(DAY).getTime() + parseInt(THIRTYONE))
 
-        console.log(TURN_A_S, TURN_A_E, TURN_B_E);
+        // console.log(TURN_A_S, TURN_A_E, TURN_B_E);
         TURN_A_S = addHours(TURN_A_S, 5)
         TURN_A_E = addHours(TURN_A_E, 5)
         TURN_B_E = addHours(TURN_B_E, 5)
-        console.log(TURN_A_S, TURN_A_E, TURN_B_E);
+        // console.log(TURN_A_S, TURN_A_E, TURN_B_E);
 
-
+        Meteor.call('DNT_getOverspeedEvents', PLATE, TURN_A_S, TURN_A_E, (error, result) => {
+            if (!error) {
+                console.log(result);
+            }
+        })
+        Meteor.call('DNT_getOverspeedEvents', PLATE, TURN_A_E, TURN_B_E, (error, result) => {
+            if (!error) {
+                console.log(result);
+            }
+        })
 
         // const dateTimeStart5 = addHours(dateTimeStart, 5)
         // const dateTimeEnd5 = addHours(dateTimeEnd, 5)
