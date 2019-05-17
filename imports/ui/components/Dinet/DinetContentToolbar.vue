@@ -104,12 +104,11 @@ export default {
     getVehicleData() {
       if (this.searchItem === "Dia") {
         if (this.vehicle && this.pickerDayModel) {
-          const timeStart = this.pickerDayModel+"T"+"00:00:00.000Z"
-          const timeEnd = this.pickerDayModel+"T"+"23:59:59.000Z"
-          Meteor.call('DNT_TEST_getDayData', timeStart, timeEnd, this.vehicle, (error, report)=>{
+          // DAY: 2019-05-16
+           Meteor.call('DNT_TEST_getDayData', this.pickerDayModel, this.vehicle, (error, report)=>{
             if(!error){
              // console.log(report);
-              Session.set("report", report)
+             // Session.set("report", report)
             }
           })
         }

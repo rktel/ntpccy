@@ -1,21 +1,43 @@
 import { Dinet } from '../../../imports/api/collections'
 
+const SEVEN = 7 * 60 * 60 * 1000
+const NINETEEN = 19 * 60 * 60 * 1000
+const THIRTYONE = 31 * 60 * 60 * 1000
+
 Meteor.methods({
     async DNT_getPlates() {
         const plates = await Dinet.rawCollection().distinct('events.vehicle')
         return plates
     },
-    async  DNT_TEST_getDayData(dateTimeStart, dateTimeEnd, plate) {
-        console.log('........................Dinet_X...............................')
-        // console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
-        // Meteor.call('getDayData', timeStart, timeEnd, this.vehicle)
-        console.log('Usuario: ', Meteor.user().username)
-        console.log('Fecha y Tiempo de Inicio: ', dateTimeStart)
-        console.log('Fecha y Tiempo de Fin: ', dateTimeEnd)
+    async  DNT_TEST_getDayData(DAY, PLATE) {
+        // DAY: 2019-05-16
+        //TURNO A 
+        //2019-05-16T07:00:00.000Z TO 2019-05-16T19:00:00.000Z
 
-        const dateTimeStart5 = addHours(dateTimeStart, 5)
-        const dateTimeEnd5 = addHours(dateTimeEnd, 5)
+        //TURNO B
+        //2019-05-16T19:00:00.000Z TO 2019-05-17T07:00:00.000Z
+
+        console.log('........................Dinet_X...............................')
+
+        console.log('Usuario: ', Meteor.user().username)
+        console.log('Dia: ', DAY)
+
+        let TURN_A_S = new Date(new Date(DAY).getTime() + parseInt(SEVEN))
+        let TURN_A_E = new Date(new Date(DAY).getTime() + parseInt(NINETEEN))
+        let TURN_B_E = new Date(new Date(DAY).getTime() + parseInt(THIRTYONE))
+
+        console.log(TURN_A_S, TURN_A_E, TURN_B_E);
+        TURN_A_S = addHours(TURN_A_S, 5)
+        TURN_A_E = addHours(TURN_A_E, 5)
+        TURN_B_E = addHours(TURN_B_E, 5)
+        console.log(TURN_A_S, TURN_A_E, TURN_B_E);
+
+
+
+        // const dateTimeStart5 = addHours(dateTimeStart, 5)
+        // const dateTimeEnd5 = addHours(dateTimeEnd, 5)
         // Exceso 15km/h : 97,  Exceso 30km/h : 93, Exceso 80km/h : 89, Fatiga : 81
+        /*
         const arrayEvents = [97, 93, 89]
         let report = await Dinet.rawCollection().
             aggregate([
@@ -86,6 +108,7 @@ Meteor.methods({
         } else {
             //  return false
         }
+        */
     },
     async  DNT_getDayData(dateTimeStart, dateTimeEnd, plate) {
         console.log('........................Dinet_X...............................')
