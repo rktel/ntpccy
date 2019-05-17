@@ -74,12 +74,12 @@ Meteor.methods({
 
         Meteor.call('DNT_getOverspeedEvents', PLATE, TURN_A_S, TURN_A_E, (error, result) => {
             if (!error) {
-                console.log('TurnoA:',result);
+                console.log('TurnoA:',new Date(),result);
             }
         })
         Meteor.call('DNT_getOverspeedEvents', PLATE, TURN_A_E, TURN_B_E, (error, result) => {
             if (!error) {
-                console.log('TurnoB:',result);
+                console.log('TurnoB:',new Date(),result);
             }
         })
 
