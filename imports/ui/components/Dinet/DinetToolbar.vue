@@ -1,13 +1,11 @@
 <template>
   <v-toolbar app fixed clipped-left>
-    <v-toolbar-side-icon></v-toolbar-side-icon>
+    <v-toolbar-side-icon @click="toggleSidebar"></v-toolbar-side-icon>
     <v-avatar v-if="!avatar">
       <img v-if="!avatar" src="img/Dinet_alt.png" alt="avatar">
     </v-avatar>
     <img v-else src="img/Dinet_white.png" alt="avatar" width="55">
-    <v-toolbar-title>
-      Control de Velocidad
-    </v-toolbar-title>
+    <v-toolbar-title>Control de Velocidad</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-speed-dial v-model="fab" direction="bottom" transition="slide-y-reverse-transition">
       <v-btn v-model="fab" fab slot="activator" flat>
@@ -63,6 +61,9 @@ export default {
     },
     fullscreen() {
       Util.toggleFullScreen();
+    },
+    toggleSidebar() {
+      Session.set("openSidebar", !Session.get("openSidebar"));
     }
   }
 };

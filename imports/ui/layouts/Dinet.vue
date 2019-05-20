@@ -24,6 +24,7 @@ export default {
   },
   beforeCreate() {
     Session.set("dark", true);
+    Session.set("openSidebar", true);
   },
   meteor: {
     dark() {
