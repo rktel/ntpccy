@@ -100,7 +100,7 @@
         <v-subheader>ACCION</v-subheader>
         <v-divider></v-divider>
         <div class="pa-4">
-          <v-btn small block>Buscar</v-btn>
+          <v-btn block>Buscar</v-btn>
         </div>
       </v-flex>
     </v-layout>
