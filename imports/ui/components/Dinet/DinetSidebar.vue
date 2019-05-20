@@ -4,7 +4,7 @@
       <v-flex>
         <v-subheader>OBJETO</v-subheader>
         <v-divider></v-divider>
-        <div class="px-4 mb-5">
+        <div class="pa-4">
           <v-select
             v-model="vehicle"
             :items="plates"
