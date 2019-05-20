@@ -42,9 +42,6 @@
 <script>
 import { Session } from "meteor/session";
 export default {
-  beforeCreate() {
-    this.openSidebar = Session.get("openSidebar");
-  },
   meteor: {
     openSidebar() {
       return Session.get("openSidebar");

@@ -63,7 +63,9 @@ export default {
       Util.toggleFullScreen();
     },
     toggleSidebar() {
-      Session.set("openSidebar", !Session.get("openSidebar"));
+      Session.get("openSidebar")
+        ? Session.set("openSidebar", false)
+        : Session.set("openSidebar", true);
     }
   }
 };
