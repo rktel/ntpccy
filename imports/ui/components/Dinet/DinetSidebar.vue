@@ -42,6 +42,9 @@
 <script>
 import { Session } from "meteor/session";
 export default {
+  beforeCreate() {
+    this.openSidebar = Session.get("openSidebar");
+  },
   meteor: {
     openSidebar() {
       return Session.get("openSidebar");
@@ -55,10 +58,10 @@ export default {
       periodo: "dia"
     };
   },
-  methods:{
-      changePeriodo(){
-          console.log(this.periodo);
-      }
+  methods: {
+    changePeriodo() {
+      console.log(this.periodo);
+    }
   }
 };
 </script>
