@@ -7,7 +7,7 @@
           :items="plates"
           hint="Seleccione unidad"
           persistent-hint
-          height ="20"
+          height="20"
           flat
         ></v-select>
       </v-flex>
@@ -17,9 +17,8 @@
           :items="searchItems"
           hint="Tipo de reporte"
           persistent-hint
-          height ="20"
+          height="20"
           flat
-          
         ></v-select>
       </v-flex>
       <v-flex v-if="searchItem === 'Dia'" xs12 lg3>
@@ -31,11 +30,13 @@
         >
           <v-text-field
             slot="activator"
-            label="Seleccione dia"
             v-model="pickerDayModel"
             prepend-inner-icon="event"
             readonly
-            
+            hint="Seleccione dia"
+            persistent-hint
+            height="20"
+            flat
           ></v-text-field>
           <v-date-picker v-model="pickerDayModel" no-title @input="pickerDay = false"></v-date-picker>
         </v-menu>
@@ -49,11 +50,13 @@
         >
           <v-text-field
             slot="activator"
-            label="Seleccione mes"
             v-model="pickerMonthModel"
             prepend-inner-icon="event"
             readonly
-            
+            label="Seleccione mes"
+            persistent-hint
+            height="20"
+            flat
           ></v-text-field>
           <v-date-picker
             v-model="pickerMonthModel"
@@ -108,27 +111,40 @@ export default {
       if (this.searchItem === "Dia") {
         if (this.vehicle && this.pickerDayModel) {
           // DAY: 2019-05-16
-           Meteor.call('DNT_TEST_getDayData', this.pickerDayModel, this.vehicle, (error, report)=>{
-            if(!error){
-             // console.log(report);
-             // Session.set("report", report)
+          Meteor.call(
+            "DNT_TEST_getDayData",
+            this.pickerDayModel,
+            this.vehicle,
+            (error, report) => {
+              if (!error) {
+                // console.log(report);
+                // Session.set("report", report)
+              }
             }
-          })
+          );
         }
-      }else if(this.searchItem === "Rango"){
-        if(this.vehicle && this.pickerDayModel_S && this.pickerDayModel_E){
-          Meteor.call('DNT_getRangeDayData', this.pickerDayModel_S, this.pickerDayModel_E, this.vehicle )
+      } else if (this.searchItem === "Rango") {
+        if (this.vehicle && this.pickerDayModel_S && this.pickerDayModel_E) {
+          Meteor.call(
+            "DNT_getRangeDayData",
+            this.pickerDayModel_S,
+            this.pickerDayModel_E,
+            this.vehicle
+          );
         }
-      }
-      else {
+      } else {
         if (this.vehicle && this.pickerMonthModel) {
-         Meteor.call('DNT_getMonthData', this.pickerMonthModel, this.vehicle, (error, report)=>{
-            if(!error){
-             // console.log(report);
-              Session.set("report", report)
+          Meteor.call(
+            "DNT_getMonthData",
+            this.pickerMonthModel,
+            this.vehicle,
+            (error, report) => {
+              if (!error) {
+                // console.log(report);
+                Session.set("report", report);
+              }
             }
-          })
-          
+          );
         }
       }
     }
