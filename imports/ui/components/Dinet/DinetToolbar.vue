@@ -1,6 +1,6 @@
 <template>
   <v-toolbar app fixed clipped-left>
-    <v-toolbar-side-icon @click='Session.set("openSidebar", !Session.get("openSidebar"))'></v-toolbar-side-icon>
+    <v-toolbar-side-icon @click.stop="toggleSidebar"></v-toolbar-side-icon>
     <v-avatar v-if="!avatar">
       <img v-if="!avatar" src="img/Dinet_alt.png" alt="Dinet">
     </v-avatar>
@@ -63,7 +63,7 @@ export default {
       Util.toggleFullScreen();
     },
     toggleSidebar() {
-
+      Session.set("openSidebar", !Session.get("openSidebar"));
     }
   }
 };
