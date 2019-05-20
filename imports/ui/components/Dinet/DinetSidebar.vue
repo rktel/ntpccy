@@ -134,7 +134,38 @@ export default {
   },
   methods: {
     getData() {
-      this.loadingData = true;
+      if (this.period === "day") {
+        if (this.vehicle && this.pickerDayModel) {
+          // DAY: 2019-05-16
+          Meteor.call(
+            "DNT_TEST_getDayData",
+            this.pickerDayModel,
+            this.vehicle,
+            (error, report) => {
+              if (!error) {
+                // console.log(report);
+                // Session.set("report", report)
+              }
+            }
+          );
+        }
+      } else if (this.period === "range") {
+        if (
+          this.vehicle &&
+          this.pickerDayStartModel &&
+          this.pickerDayEndModel
+        ) {
+          console.log(
+            "range:",
+            this.pickerDayStartModel,
+            this.pickerDayEndModel
+          );
+        }
+      } else if (this.period === "month") {
+        if (this.vehicle && this.pickerMonthModel) {
+          console.log("month:", this.pickerMonthModel);
+        }
+      }
     }
   }
 };
