@@ -31,7 +31,6 @@
           <v-text-field
             slot="activator"
             v-model="pickerDayModel"
-            prepend-inner-icon="event"
             readonly
             hint="Seleccione dia"
             persistent-hint
@@ -51,7 +50,6 @@
           <v-text-field
             slot="activator"
             v-model="pickerMonthModel"
-            prepend-inner-icon="event"
             readonly
             label="Seleccione mes"
             persistent-hint
