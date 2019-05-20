@@ -58,40 +58,40 @@
             ></v-date-picker>
           </v-menu>
           <section>
-          <v-menu
-            ref="pickerDayStart"
-            :close-on-content-click="false"
-            v-model="pickerDayStart"
-            transition="scale-transition"
-            v-if="period == 'range'"
-          >
-            <v-text-field
-              slot="activator"
-              v-model="pickerDayStartModel"
-              readonly
-              height="20"
-              flat
-              label="Desde"
-            ></v-text-field>
-            <v-date-picker v-model="pickerDayStartModel" no-title @input="pickerDayStart = false"></v-date-picker>
-          </v-menu>
-          <v-menu
-            ref="pickerDayEnd"
-            :close-on-content-click="false"
-            v-model="pickerDayEnd"
-            transition="scale-transition"
-            v-if="period == 'range'"
-          >
-            <v-text-field
-              slot="activator"
-              v-model="pickerDayEndModel"
-              readonly
-              height="20"
-              flat
-              label="Hasta"
-            ></v-text-field>
-            <v-date-picker v-model="pickerDayEndModel" no-title @input="pickerDayEnd = false"></v-date-picker>
-          </v-menu>               
+            <v-menu
+              ref="pickerDayStart"
+              :close-on-content-click="false"
+              v-model="pickerDayStart"
+              transition="scale-transition"
+              v-if="period == 'range'"
+            >
+              <v-text-field
+                slot="activator"
+                v-model="pickerDayStartModel"
+                readonly
+                height="20"
+                flat
+                label="Desde"
+              ></v-text-field>
+              <v-date-picker v-model="pickerDayStartModel" no-title @input="pickerDayStart = false"></v-date-picker>
+            </v-menu>
+            <v-menu
+              ref="pickerDayEnd"
+              :close-on-content-click="false"
+              v-model="pickerDayEnd"
+              transition="scale-transition"
+              v-if="period == 'range'"
+            >
+              <v-text-field
+                slot="activator"
+                v-model="pickerDayEndModel"
+                readonly
+                height="20"
+                flat
+                label="Hasta"
+              ></v-text-field>
+              <v-date-picker v-model="pickerDayEndModel" no-title @input="pickerDayEnd = false"></v-date-picker>
+            </v-menu>
           </section>
         </div>
         <v-divider></v-divider>
@@ -100,7 +100,7 @@
         <v-subheader>ACCION</v-subheader>
         <v-divider></v-divider>
         <div class="pa-4">
-          <v-btn block>Buscar</v-btn>
+          <v-btn block @click="getData" loading="loadingData">Buscar</v-btn>
         </div>
       </v-flex>
     </v-layout>
@@ -128,12 +128,13 @@ export default {
       pickerDayEndModel: null,
       pickerDayEnd: false,
       pickerMonthModel: null,
-      pickerMonth: false
+      pickerMonth: false,
+      loadingData: false
     };
   },
   methods: {
-    changePeriodo() {
-      console.log(this.period);
+    getData() {
+      this.loadingData = true;
     }
   }
 };
