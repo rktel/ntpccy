@@ -100,7 +100,7 @@
         <v-subheader>ACCION</v-subheader>
         <v-divider></v-divider>
         <div class="pa-4">
-          <v-btn block @click="getData" loading="loadingData">Buscar</v-btn>
+          <v-btn block @click="getData" :loading="loadingData">Buscar</v-btn>
         </div>
       </v-flex>
     </v-layout>
