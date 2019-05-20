@@ -7,7 +7,7 @@
           :items="plates"
           label="Seleccione unidad"
           paceholder=" "
-          outline
+          
         ></v-select>
       </v-flex>
       <v-flex xs12 lg3>
@@ -16,7 +16,7 @@
           :items="searchItems"
           label="Tipo de reporte"
           placeholder=" "
-          outline
+          
         ></v-select>
       </v-flex>
       <v-flex v-if="searchItem === 'Dia'" xs12 lg3>
@@ -32,7 +32,7 @@
             v-model="pickerDayModel"
             prepend-inner-icon="event"
             readonly
-            outline
+            
           ></v-text-field>
           <v-date-picker v-model="pickerDayModel" no-title @input="pickerDay = false"></v-date-picker>
         </v-menu>
@@ -50,7 +50,7 @@
             v-model="pickerMonthModel"
             prepend-inner-icon="event"
             readonly
-            outline
+            
           ></v-text-field>
           <v-date-picker
             v-model="pickerMonthModel"
@@ -112,7 +112,12 @@ export default {
             }
           })
         }
-      } else {
+      }else if(this.searchItem === "Rango"){
+        if(this.vehicle && this.pickerDayModel_S && this.pickerDayModel_E){
+          Meteor.call('DNT_getRangeDayData', this.pickerDayModel_S, this.pickerDayModel_E, this.vehicle )
+        }
+      }
+      else {
         if (this.vehicle && this.pickerMonthModel) {
          Meteor.call('DNT_getMonthData', this.pickerMonthModel, this.vehicle, (error, report)=>{
             if(!error){

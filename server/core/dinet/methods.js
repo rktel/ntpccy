@@ -102,6 +102,10 @@ Meteor.methods({
 
 
     },
+    async DNT_getRangeDayData(dayS, dayE){
+        console.log(dayS, dayE);
+        
+    },
     async  DNT_getDayData(dateTimeStart, dateTimeEnd, plate) {
         console.log('........................Dinet_X...............................')
         // console.log('dateTimeStart', dateTimeStart, 'dateTimeEnd', dateTimeEnd)
