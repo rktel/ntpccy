@@ -92,7 +92,7 @@ export default {
   data() {
     return {
       period: "day",
-      pickerDayModel: new Date().toISOString().substr(0, 10),
+      pickerDayModel: null,
       pickerDay: false,
       pickerMonthModel: null,
       pickerMonth: false,
