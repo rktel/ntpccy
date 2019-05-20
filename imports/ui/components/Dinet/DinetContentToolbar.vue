@@ -79,20 +79,6 @@
 <script>
 import { Session } from "meteor/session";
 export default {
-  mounted() {
-    Meteor.call("DNT_getPlates", (error, plates) => {
-      if (!error) {
-        console.log("plates:", plates);
-        Session.set("DNT_plates", plates);
-        // Meteor.call("DNT_getData")
-      }
-    });
-  },
-  meteor: {
-    plates() {
-      return Session.get("DNT_plates");
-    }
-  },
   data() {
     return {
       searchItem: "Dia",

@@ -2,12 +2,26 @@
   <v-navigation-drawer app clipped floating v-model="openSidebar">
     <v-layout column>
       <v-flex>
-        <v-btn>Buscar</v-btn>
+        <v-subheader>OBJETO</v-subheader>
+        <v-select
+          v-model="vehicle"
+          :items="plates"
+          hint="Seleccione unidad"
+          persistent-hint
+          height="20"
+          flat
+        ></v-select>
       </v-flex>
       <v-flex>
-        <v-btn>Buscar</v-btn>
+        <v-subheader>PERIODO</v-subheader>
+        <v-radio-group v-model="periodo" row>
+          <v-radio label="Dia" value="dia"></v-radio>
+          <v-radio label="Rango" value="rango"></v-radio>
+          <v-radio label="Mes" value="mes"></v-radio>
+        </v-radio-group>
       </v-flex>
       <v-flex>
+        <v-subheader>ACCION</v-subheader>
         <v-btn small>Buscar</v-btn>
       </v-flex>
     </v-layout>
@@ -20,7 +34,15 @@ export default {
   meteor: {
     openSidebar() {
       return Session.get("openSidebar");
+    },
+    plates() {
+      return Session.get("DNT_plates");
     }
+  },
+  data(){
+      return{
+          periodo: "dia"
+      }
   }
 };
 </script>
