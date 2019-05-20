@@ -15,8 +15,10 @@
         <v-select
           v-model="searchItem"
           :items="searchItems"
-          label="Tipo de reporte"
-          placeholder=" "
+          hint="Tipo de reporte"
+          persistent-hint
+          height ="20"
+          flat
           
         ></v-select>
       </v-flex>
