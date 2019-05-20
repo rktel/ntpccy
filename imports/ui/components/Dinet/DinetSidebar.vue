@@ -19,17 +19,21 @@
       <v-flex>
         <v-subheader>PERIODO</v-subheader>
         <v-divider></v-divider>
-        <v-radio-group v-model="periodo" row>
-          <v-radio label="Dia" value="dia"></v-radio>
-          <v-radio label="Rango" value="rango"></v-radio>
-          <v-radio label="Mes" value="mes"></v-radio>
-        </v-radio-group>
+        <div class="pa-4">
+          <v-radio-group v-model="periodo" row>
+            <v-radio label="Dia" value="dia"></v-radio>
+            <v-radio label="Rango" value="rango"></v-radio>
+            <v-radio label="Mes" value="mes"></v-radio>
+          </v-radio-group>
+        </div>
         <v-divider></v-divider>
       </v-flex>
       <v-flex>
         <v-subheader>ACCION</v-subheader>
         <v-divider></v-divider>
-        <v-btn small block>Buscar</v-btn>
+        <div class="pa-4">
+          <v-btn small block>Buscar</v-btn>
+        </div>
       </v-flex>
     </v-layout>
   </v-navigation-drawer>
