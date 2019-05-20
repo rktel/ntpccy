@@ -8,6 +8,7 @@
           hint="Seleccione unidad"
           persistent-hint
           height ="20"
+          flat
         ></v-select>
       </v-flex>
       <v-flex xs12 lg3>
