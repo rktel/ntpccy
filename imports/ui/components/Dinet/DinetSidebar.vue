@@ -8,7 +8,7 @@
           <v-select
             v-model="vehicle"
             :items="plates"
-            placeholder="Vehiculo"
+            label="Vehiculo"
             height="20"
             flat
           ></v-select>
@@ -37,7 +37,7 @@
               readonly
               height="20"
               flat
-              placeholder="Dia"
+              label="Dia"
             ></v-text-field>
             <v-date-picker v-model="pickerDayModel" no-title @input="pickerDay = false"></v-date-picker>
           </v-menu>
@@ -53,7 +53,6 @@
               v-model="pickerMonthModel"
               readonly
               label="Mes"
-              persistent-hint
               height="20"
               flat
             ></v-text-field>
