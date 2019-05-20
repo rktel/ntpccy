@@ -51,6 +51,25 @@ Meteor.methods({
 
         return report
     },
+    async DNT_TEST_getData(dataOptions) {
+        const { vehicle, type, day, month, dayStart, dayEnd } = dataOptions
+
+        switch (type) {
+            case 'day':
+                console.log("day:",vehicle, day);
+                break;
+            case 'range':
+                console.log("range:",vehicle, dayStart, dayEnd);
+                break;
+            case 'month':
+                console.log("month:",vehicle, month);
+                break;
+        
+            default:
+                break;
+        }
+        
+    },
     async  DNT_TEST_getDayData(DAY, PLATE) {
         // DAY: 2019-05-16
         //TURNO A 
@@ -102,9 +121,9 @@ Meteor.methods({
 
 
     },
-    async DNT_getRangeDayData(dayS, dayE){
+    async DNT_getRangeDayData(dayS, dayE) {
         console.log(dayS, dayE);
-        
+
     },
     async  DNT_getDayData(dateTimeStart, dateTimeEnd, plate) {
         console.log('........................Dinet_X...............................')
