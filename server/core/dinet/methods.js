@@ -57,6 +57,7 @@ Meteor.methods({
         switch (type) {
             case 'day':
                 console.log("day:",vehicle, day);
+                Meteor.call("DNT_TEST_getDayData", day, vehicle)
                 break;
             case 'range':
                 console.log("range:",vehicle, dayStart, dayEnd);
@@ -68,7 +69,7 @@ Meteor.methods({
             default:
                 break;
         }
-        
+
     },
     async  DNT_TEST_getDayData(DAY, PLATE) {
         // DAY: 2019-05-16
