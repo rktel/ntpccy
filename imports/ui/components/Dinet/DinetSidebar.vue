@@ -6,7 +6,7 @@
         <v-select
           v-model="vehicle"
           :items="plates"
-          hint="Seleccione unidad"
+          placeholder="Vehiculo"
           persistent-hint
           height="20"
           flat
@@ -22,7 +22,7 @@
       </v-flex>
       <v-flex>
         <v-subheader>ACCION</v-subheader>
-        <v-btn small>Buscar</v-btn>
+        <v-btn small block>Buscar</v-btn>
       </v-flex>
     </v-layout>
   </v-navigation-drawer>
