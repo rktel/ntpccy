@@ -20,7 +20,7 @@
         <v-subheader>PERIODO</v-subheader>
         <v-divider></v-divider>
         <div class="pa-4">
-          <v-radio-group v-model="periodo" row>
+          <v-radio-group v-model="periodo" row @change="changePeriodo">
             <v-radio label="Dia" value="dia"></v-radio>
             <v-radio label="Rango" value="rango"></v-radio>
             <v-radio label="Mes" value="mes"></v-radio>
@@ -54,6 +54,11 @@ export default {
     return {
       periodo: "dia"
     };
+  },
+  methods:{
+      changePeriodo(){
+          console.log(this.periodo);
+      }
   }
 };
 </script>
