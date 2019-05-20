@@ -5,8 +5,8 @@
         <v-select
           v-model="vehicle"
           :items="plates"
-          label="Seleccione unidad"
-          paceholder=" "
+          hint="Seleccione unidad"
+          persistent-hint
           
         ></v-select>
       </v-flex>
