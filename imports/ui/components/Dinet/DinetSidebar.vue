@@ -11,6 +11,7 @@
           height="20"
           flat
         ></v-select>
+        <v-divider></v-divider>
       </v-flex>
       <v-flex>
         <v-subheader>PERIODO</v-subheader>
