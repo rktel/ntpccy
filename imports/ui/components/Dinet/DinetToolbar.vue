@@ -1,5 +1,6 @@
 <template>
   <v-toolbar app fixed clipped-left>
+    <v-toolbar-side-icon></v-toolbar-side-icon>
     <v-avatar v-if="!avatar">
       <img v-if="!avatar" src="img/Dinet_alt.png" alt="avatar">
     </v-avatar>
