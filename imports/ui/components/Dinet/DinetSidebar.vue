@@ -1,6 +1,15 @@
 <template>
     <v-navigation-drawer app clipped floating>
-        <h1>Sidebar</h1>
+        <v-layout column>
+            <v-flex>
+                <v-spacer></v-spacer>
+                <v-btn icon>
+                    <v-icon>
+                        keyboard_arrow_left
+                    </v-icon>
+                </v-btn>
+            </v-flex>
+        </v-layout>
     </v-navigation-drawer>
 </template>
 
