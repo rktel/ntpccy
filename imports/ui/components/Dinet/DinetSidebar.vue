@@ -4,7 +4,7 @@
       <v-flex>
         <v-subheader>OBJETO</v-subheader>
         <v-divider></v-divider>
-        <div class="pa-4">
+        <div class="pa-3">
           <v-select v-model="vehicle" :items="plates" label="Vehiculo" height="20" flat></v-select>
         </div>
         <v-divider></v-divider>
@@ -12,7 +12,7 @@
       <v-flex>
         <v-subheader>PERIODO</v-subheader>
         <v-divider></v-divider>
-        <div class="pa-4">
+        <div class="pa-3">
           <v-radio-group v-model="period" row @change="changePeriod">
             <v-radio label="Dia" value="day"></v-radio>
             <v-radio label="Mes" value="month"></v-radio>
@@ -99,7 +99,7 @@
       <v-flex>
         <v-subheader>ACCION</v-subheader>
         <v-divider></v-divider>
-        <div class="pa-4">
+        <div class="pa-3">
           <v-btn block @click="getData" :loading="loadingData">Buscar</v-btn>
         </div>
       </v-flex>
