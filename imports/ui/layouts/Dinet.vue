@@ -27,7 +27,7 @@ export default {
     Session.set("openSidebar", true);
     Meteor.call("DNT_getPlates", (error, plates) => {
       if (!error) {
-        console.log("plates:", plates);
+       // console.log("plates:", plates);
         Session.set("DNT_plates", plates);
         // Meteor.call("DNT_getData")
       }

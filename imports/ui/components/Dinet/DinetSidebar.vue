@@ -15,8 +15,8 @@
         <div class="pa-4">
           <v-radio-group v-model="period" row @change="changePeriod">
             <v-radio label="Dia" value="day"></v-radio>
-            <v-radio label="Rango" value="range"></v-radio>
             <v-radio label="Mes" value="month"></v-radio>
+            <v-radio label="Rango" value="range"></v-radio>
           </v-radio-group>
           <v-menu
             ref="pickerDay"
