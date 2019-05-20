@@ -5,13 +5,7 @@
         <v-subheader>OBJETO</v-subheader>
         <v-divider></v-divider>
         <div class="pa-4">
-          <v-select
-            v-model="vehicle"
-            :items="plates"
-            label="Vehiculo"
-            height="20"
-            flat
-          ></v-select>
+          <v-select v-model="vehicle" :items="plates" label="Vehiculo" height="20" flat></v-select>
         </div>
         <v-divider></v-divider>
       </v-flex>
@@ -63,6 +57,42 @@
               type="month"
             ></v-date-picker>
           </v-menu>
+          <section>
+          <v-menu
+            ref="pickerDayStart"
+            :close-on-content-click="false"
+            v-model="pickerDayStart"
+            transition="scale-transition"
+            v-if="period == 'range'"
+          >
+            <v-text-field
+              slot="activator"
+              v-model="pickerDayStartModel"
+              readonly
+              height="20"
+              flat
+              label="Desde"
+            ></v-text-field>
+            <v-date-picker v-model="pickerDayStartModel" no-title @input="pickerDayStart = false"></v-date-picker>
+          </v-menu>
+          <v-menu
+            ref="pickerDayEnd"
+            :close-on-content-click="false"
+            v-model="pickerDayEnd"
+            transition="scale-transition"
+            v-if="period == 'range'"
+          >
+            <v-text-field
+              slot="activator"
+              v-model="pickerDayEndModel"
+              readonly
+              height="20"
+              flat
+              label="Hasta"
+            ></v-text-field>
+            <v-date-picker v-model="pickerDayEndModel" no-title @input="pickerDayEnd = false"></v-date-picker>
+          </v-menu>               
+          </section>
         </div>
         <v-divider></v-divider>
       </v-flex>
@@ -93,8 +123,12 @@ export default {
       period: "day",
       pickerDayModel: null,
       pickerDay: false,
+      pickerDayStartModel: null,
+      pickerDayStart: false,
+      pickerDayEndModel: null,
+      pickerDayEnd: false,
       pickerMonthModel: null,
-      pickerMonth: false,
+      pickerMonth: false
     };
   },
   methods: {
