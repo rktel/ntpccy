@@ -121,7 +121,7 @@ export default {
   data() {
     return {
       period: "day",
-      pickerDayModel: null,
+      pickerDayModel: new Date().toISOString().substr(0, 10),
       pickerDay: false,
       pickerDayStartModel: null,
       pickerDayStart: false,
