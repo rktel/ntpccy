@@ -136,7 +136,7 @@ export default {
     getData() {
       if (this.period === "day") {
         if (this.vehicle && this.pickerDayModel) {
-            meteor.call("DNT_TEST_getData", {vehicle: this.vehicle, type: 'day', day: this.pickerDayModel })
+        //    meteor.call("DNT_TEST_getData", {vehicle: this.vehicle, type: 'day', day: this.pickerDayModel })
           // DAY: 2019-05-16
           /*
           Meteor.call(
@@ -154,11 +154,11 @@ export default {
         }
       } else if (this.period === "range") {
         if (this.vehicle && this.pickerDayStartModel && this.pickerDayEndModel) {
-            meteor.call("DNT_TEST_getData", {vehicle: this.vehicle, type: 'range', dayStart: this.pickerDayStartModel, dayEnd: this.pickerDayEndModel })
+         //   meteor.call("DNT_TEST_getData", {vehicle: this.vehicle, type: 'range', dayStart: this.pickerDayStartModel, dayEnd: this.pickerDayEndModel })
         }
       } else if (this.period === "month") {
         if (this.vehicle && this.pickerMonthModel) {
-           meteor.call("DNT_TEST_getData", {vehicle: this.vehicle, type: 'month', month: this.pickerMonthModel })
+        //   meteor.call("DNT_TEST_getData", {vehicle: this.vehicle, type: 'month', month: this.pickerMonthModel })
         }
       }
     }
