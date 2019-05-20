@@ -1,7 +1,7 @@
 {
     "name": "Dinet",
     "short_name": "dinet",
-    "start_url": "./main.html",
+    "start_url": "./dinet",
     "display": "standalone",
     "icons": [
         {
