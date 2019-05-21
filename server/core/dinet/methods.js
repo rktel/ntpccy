@@ -59,16 +59,19 @@ Meteor.methods({
                 console.log("day:", day, vehicle);
                 const data = Meteor.call("DNT_packetDayData", day, vehicle)
                 console.log(data);
+                return data;
                 break;
             case 'range':
                 console.log("range:", vehicle, dayStart, dayEnd);
                 const dataRange = Meteor.call("DNT_packetRangeData", dayStart, dayEnd, vehicle)
                 console.log(dataRange);
+                return dataRange;
                 break;
             case 'month':
                 console.log("month:", vehicle, month);
                 const dataMonth = Meteor.call("DNT_packetMonthData", month, vehicle)
                 console.log(dataMonth);
+                return dataMonth;
                 break;
 
             default:

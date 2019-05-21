@@ -196,30 +196,35 @@ export default {
       Util.toggleFullScreen();
     },
     getData() {
+      let data = {};
       if (this.period === "day") {
         if (this.vehicle && this.pickerDayModel) {
-          Meteor.call("DNT_TEST_getData", {
+          data = Meteor.call("DNT_TEST_getData", {
             vehicle: this.vehicle,
             type: "day",
             day: this.pickerDayModel
           });
+          console.log(data);
+          
         }
       } else if (this.period === "range") {
-        if (this.vehicle && this.pickerDayStartModel && this.pickerDayEndModel) {
-          Meteor.call("DNT_TEST_getData", {
+        if (this.vehicle &&  this.pickerDayStartModel && this.pickerDayEndModel) {
+          data = Meteor.call("DNT_TEST_getData", {
             vehicle: this.vehicle,
             type: "range",
             dayStart: this.pickerDayStartModel,
             dayEnd: this.pickerDayEndModel
           });
+          console.log(data);
         }
       } else if (this.period === "month") {
         if (this.vehicle && this.pickerMonthModel) {
-          Meteor.call("DNT_TEST_getData", {
+          data = Meteor.call("DNT_TEST_getData", {
             vehicle: this.vehicle,
             type: "month",
             month: this.pickerMonthModel
           });
+          console.log(data);
         }
       }
     }
