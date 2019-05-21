@@ -126,7 +126,8 @@ export default {
       pickerDayEnd: false,
       pickerMonthModel: null,
       pickerMonth: false,
-      loadingData: false
+      loadingData: false,
+      sidebar: true
     };
   },
   computed: {
