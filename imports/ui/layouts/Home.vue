@@ -96,12 +96,14 @@ export default {
     Meteor.call("getPersonal", (error, persona) => {
       if (!error) {
         this.ready = true;
-        if ( !persona.spa && persona.role == "Hyperadmin" || persona.role == "Superadmin"){
-            persona.api = "Antapaccay";
+        if ((!persona.spa && persona.role == "Hyperadmin") || persona.role == "Superadmin") {
+          persona.api = "Antapaccay";
         } else if (persona.spa && persona.spa == "Dinet") {
           this.$router.push({ name: "Dinet" });
+        } else if (persona.spa && persona.spa == "Phantom") {
+          this.$router.push({ name: "Phantom" });
         }
-          this.SET_USERPROFILE(persona);
+        this.SET_USERPROFILE(persona);
       }
     });
   },
