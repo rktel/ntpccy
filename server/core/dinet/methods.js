@@ -76,7 +76,7 @@ Meteor.methods({
     async DNT_packetDayData(day, vehicle) {
         const data = Meteor.call("DNT_TEST_getDayData", day, vehicle)
         const proData = {
-            plate: PLATE,
+            plate: vehicle,
             data: [data]
         }
         return proData
