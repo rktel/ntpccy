@@ -181,6 +181,7 @@ export default {
   methods: {
     loadingDataEnd() {
       this.loadingData = false;
+      this.drawer = false;
     },
     loadingDataStart() {
       this.loadingData = true;
