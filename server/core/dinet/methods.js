@@ -59,7 +59,6 @@ Meteor.methods({
                 console.log("day:", day, vehicle);
                 const data = Meteor.call("DNT_packetDayData", day, vehicle)
                 console.log(data);
-
                 break;
             case 'range':
                 console.log("range:", vehicle, dayStart, dayEnd);
@@ -68,12 +67,27 @@ Meteor.methods({
                 break;
             case 'month':
                 console.log("month:", vehicle, month);
+                const dataMonth = Meteor.call("DNT_packetMonthData", month, vehicle)
+                console.log(dataMonth);
                 break;
 
             default:
                 break;
         }
 
+    },
+    async DNT_packetMonthData(month, vehicle) {
+        const dates = getDaysInMonth(month)
+        let preData = []
+        dates.forEach((day) => {
+            const dayData = Meteor.call("DNT_TEST_getDayData", day, vehicle)
+            preData.push(dayData)
+        })
+        const proData = {
+            plate: vehicle,
+            data: preData
+        }
+        return proData
     },
     async DNT_packetDayData(day, vehicle) {
         const data = Meteor.call("DNT_TEST_getDayData", day, vehicle)
