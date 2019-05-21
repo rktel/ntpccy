@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar app fixed clipped-left>
+  <v-toolbar app clipped-left>
     <v-toolbar-side-icon @click.stop="toggleSidebar"></v-toolbar-side-icon>
     <v-avatar v-if="!avatar">
       <img v-if="!avatar" src="img/Dinet_alt.png" alt="Dinet">
