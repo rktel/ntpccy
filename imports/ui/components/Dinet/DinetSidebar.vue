@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer app  v-model="sidebar">
+  <v-navigation-drawer app clipped floating v-model="sidebar">
     <v-layout column>
       <v-flex>
         <v-subheader>OBJETO</v-subheader>
@@ -129,7 +129,8 @@ export default {
       pickerDayEnd: false,
       pickerMonthModel: null,
       pickerMonth: false,
-      loadingData: false
+      loadingData: false,
+      sidebar: true
     };
   },
   methods: {
