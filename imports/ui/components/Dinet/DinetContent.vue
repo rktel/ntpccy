@@ -3,7 +3,6 @@
     <v-container text-xs-center grid-list-xl>
       <v-layout align-center justify-center>
         <v-flex xs10>
-          <!--DinetContentToolbar></DinetContentToolbar-->
           <DinetContentChart></DinetContentChart>
         </v-flex>
       </v-layout>
@@ -12,11 +11,11 @@
 </template>
 
 <script>
-import DinetContentToolbar from "./DinetContentToolbar.vue";
+
 import DinetContentChart from "./DinetContentChart.vue";
 export default {
   components: {
-    DinetContentToolbar,
+
     DinetContentChart
   }
 };
