@@ -42,7 +42,7 @@
 
 <script>
 import { Session } from "meteor/session";
-import Util from "../../../util";
+import Util from "../../util";
 
 import DinetToolbar from "../../ui/components/Dinet/DinetToolbar.vue";
 import DinetContent from "../../ui/components/Dinet/DinetContent.vue";
