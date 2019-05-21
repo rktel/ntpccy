@@ -1,9 +1,40 @@
 <template>
   <v-app :dark="dark">
     <v-navigation-drawer app v-model="drawer"></v-navigation-drawer>
-    <v-toolbar color="primary" app>
-      <v-toolbar-side-icon @click="openDrawer"></v-toolbar-side-icon>
-    </v-toolbar>
+
+  <v-toolbar app clipped-left>
+    <v-toolbar-side-icon @click="openDrawer"></v-toolbar-side-icon>
+    <v-avatar v-if="!avatar">
+      <img v-if="!avatar" src="img/Dinet_alt.png" alt="Dinet">
+    </v-avatar>
+    <img v-else src="img/Dinet_white.png" alt="Dinet" width="55">
+    <v-toolbar-title>Control de Velocidad</v-toolbar-title>
+    <v-spacer></v-spacer>
+    <v-speed-dial v-model="fab" direction="bottom" transition="slide-y-reverse-transition">
+      <v-btn v-model="fab" fab slot="activator" flat>
+        <v-icon>more_vert</v-icon>
+        <v-icon>arrow_upward</v-icon>
+      </v-btn>
+      <v-tooltip left>
+        <v-btn fab small  slot="activator">
+          <v-icon>fullscreen</v-icon>
+        </v-btn>
+        <span>Pantalla completa</span>
+      </v-tooltip>
+      <v-tooltip left>
+        <v-btn fab small  slot="activator">
+          <v-icon>invert_colors</v-icon>
+        </v-btn>
+        <span>Invertir color</span>
+      </v-tooltip>
+      <v-tooltip left>
+        <v-btn fab small  slot="activator">
+          <v-icon>power_settings_new</v-icon>
+        </v-btn>
+        <span>Salir</span>
+      </v-tooltip>
+    </v-speed-dial>
+  </v-toolbar>
     <DinetContent></DinetContent>
     <DinetFooter></DinetFooter>
   </v-app>
