@@ -130,7 +130,7 @@ export default {
       pickerMonthModel: null,
       pickerMonth: false,
       loadingData: false,
-      sidebar: false
+      sidebar: Session.get("openSidebar")
     };
   },
   methods: {
