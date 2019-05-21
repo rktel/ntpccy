@@ -63,6 +63,7 @@ Meteor.methods({
                 break;
             case 'range':
                 console.log("range:", vehicle, dayStart, dayEnd);
+                const data = Meteor.call("DNT_packetRangeData",dayStart, dayEnd, vehicle)
                 break;
             case 'month':
                 console.log("month:", vehicle, month);
@@ -81,6 +82,11 @@ Meteor.methods({
         }
         return proData
     },
+    async DNT_packetRangeData(dayStart, dayEnd, vehicle){
+        const dates = getDates(dayStart, dayEnd)
+        console.log(dates);
+        
+    },
     async  DNT_TEST_getDayData(DAY, PLATE) {
         // DAY: 2019-05-16
         //TURNO A 
@@ -88,12 +94,12 @@ Meteor.methods({
 
         //TURNO B
         //2019-05-16T19:00:00.000Z TO 2019-05-17T07:00:00.000Z
-
+/*
         console.log('........................Dinet_X...............................')
 
         console.log('Usuario: ', Meteor.user().username)
         console.log('Dia: ', DAY)
-
+*/
         let TURN_A_S = new Date(new Date(DAY).getTime() + parseInt(SEVEN))
         let TURN_A_E = new Date(new Date(DAY).getTime() + parseInt(NINETEEN))
         let TURN_B_E = new Date(new Date(DAY).getTime() + parseInt(THIRTYONE))
