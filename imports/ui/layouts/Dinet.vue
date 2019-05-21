@@ -22,7 +22,7 @@ export default {
     DinetFooter,
     DinetSidebar
   },
-  beforeCreate() {
+  created() {
     Session.set("dark", true);
     Session.set("openSidebar", true);
     Meteor.call("DNT_getPlates", (error, plates) => {
