@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer app clipped floating v-model="openSidebar">
+  <v-navigation-drawer app clipped floating v-model="sidebar">
     <v-layout column>
       <v-flex>
         <v-subheader>OBJETO</v-subheader>
@@ -111,7 +111,7 @@
 import { Session } from "meteor/session";
 export default {
   meteor: {
-    openSidebar() {
+    sidebar() {
       return Session.get("openSidebar");
     },
     plates() {
