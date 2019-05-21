@@ -56,8 +56,10 @@ Meteor.methods({
 
         switch (type) {
             case 'day':
-                console.log("day:", vehicle, day);
-                console.log(DNT_packetDayData(day, vehicle));
+                console.log("day:", day, vehicle);
+                const data = Meteor.call("DNT_packetDayData",day, vehicle)
+                console.log(data);
+                
                 break;
             case 'range':
                 console.log("range:", vehicle, dayStart, dayEnd);
