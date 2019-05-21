@@ -149,7 +149,7 @@
 </template>
 
 <script>
-import { Session } from "meteor/session";
+// import { Session } from "meteor/session";
 import Util from "../../util";
 
 import DinetContent from "../../ui/components/Dinet/DinetContent.vue";
@@ -203,27 +203,9 @@ export default {
             type: "day",
             day: this.pickerDayModel
           });
-          // DAY: 2019-05-16
-          /*
-          Meteor.call(
-            "DNT_TEST_getDayData",
-            this.pickerDayModel,
-            this.vehicle,
-            (error, report) => {
-              if (!error) {
-                // console.log(report);
-                // Session.set("report", report)
-              }
-            }
-          );
-          */
         }
       } else if (this.period === "range") {
-        if (
-          this.vehicle &&
-          this.pickerDayStartModel &&
-          this.pickerDayEndModel
-        ) {
+        if (this.vehicle && this.pickerDayStartModel && this.pickerDayEndModel) {
           Meteor.call("DNT_TEST_getData", {
             vehicle: this.vehicle,
             type: "range",
