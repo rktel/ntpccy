@@ -1,7 +1,9 @@
 <template>
   <v-app :dark="dark">
-    <DinetSidebar></DinetSidebar>
-    <DinetToolbar></DinetToolbar>
+    <v-navigation-drawer app v-model="drawer"></v-navigation-drawer>
+    <v-toolbar color="primary" app>
+      <v-toolbar-side-icon @click="openDrawer"></v-toolbar-side-icon>
+    </v-toolbar>
     <DinetContent></DinetContent>
     <DinetFooter></DinetFooter>
   </v-app>
@@ -22,13 +24,23 @@ export default {
     DinetFooter,
     DinetSidebar
   },
+  data() {
+    return {
+      drawer: true
+    };
+  },
+  methods: {
+    openDrawer() {
+      this.drawer = !this.drawer;
+    }
+  },
   created() {
     Session.set("dark", true);
     Session.set("openSidebar", true);
-    
+
     Meteor.call("DNT_getPlates", (error, plates) => {
       if (!error) {
-       // console.log("plates:", plates);
+        // console.log("plates:", plates);
         Session.set("DNT_plates", plates);
         // Meteor.call("DNT_getData")
       }

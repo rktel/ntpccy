@@ -110,7 +110,11 @@
 <script>
 import { Session } from "meteor/session";
 export default {
+
   meteor: {
+    sidebar() {
+      return Session.get("openSidebar");
+    },
     plates() {
       return Session.get("DNT_plates");
     }
@@ -127,23 +131,13 @@ export default {
       pickerMonthModel: null,
       pickerMonth: false,
       loadingData: false,
-
     };
-  },
-  computed: {
-    sidebar() {
-      return this.$store.getters.drawer;
-    }
   },
   methods: {
     getData() {
       if (this.period === "day") {
         if (this.vehicle && this.pickerDayModel) {
-          Meteor.call("DNT_TEST_getData", {
-            vehicle: this.vehicle,
-            type: "day",
-            day: this.pickerDayModel
-          });
+            Meteor.call("DNT_TEST_getData", {vehicle: this.vehicle, type: 'day', day: this.pickerDayModel })
           // DAY: 2019-05-16
           /*
           Meteor.call(
@@ -160,25 +154,12 @@ export default {
           */
         }
       } else if (this.period === "range") {
-        if (
-          this.vehicle &&
-          this.pickerDayStartModel &&
-          this.pickerDayEndModel
-        ) {
-          Meteor.call("DNT_TEST_getData", {
-            vehicle: this.vehicle,
-            type: "range",
-            dayStart: this.pickerDayStartModel,
-            dayEnd: this.pickerDayEndModel
-          });
+        if (this.vehicle && this.pickerDayStartModel && this.pickerDayEndModel) {
+            Meteor.call("DNT_TEST_getData", {vehicle: this.vehicle, type: 'range', dayStart: this.pickerDayStartModel, dayEnd: this.pickerDayEndModel })
         }
       } else if (this.period === "month") {
         if (this.vehicle && this.pickerMonthModel) {
-          Meteor.call("DNT_TEST_getData", {
-            vehicle: this.vehicle,
-            type: "month",
-            month: this.pickerMonthModel
-          });
+            Meteor.call("DNT_TEST_getData", {vehicle: this.vehicle, type: 'month', month: this.pickerMonthModel })
         }
       }
     }
