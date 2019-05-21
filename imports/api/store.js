@@ -22,7 +22,7 @@ export default new Vuex.Store({
         HIDE_USERDIALOG: (state) => {
             state.userDialog = false
         },
-        TOGGLE_DRAWER:(state)=>{
+        TOGGLE_DRAWER: (state) => {
             state.drawer = !state.drawer
         }
     },
