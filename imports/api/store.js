@@ -6,10 +6,11 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         userProfile: {},
-        userDialog: false
+        userDialog: false,
+        drawer: true
     },
     getters: {
-
+        drawer: state => state.drawer
     },
     mutations: {
         SET_USERPROFILE: (state, payload) => {
@@ -20,6 +21,9 @@ export default new Vuex.Store({
         },
         HIDE_USERDIALOG: (state) => {
             state.userDialog = false
+        },
+        TOGGLE_DRAWER:()=>{
+            state.drawer = !state.drawer
         }
     },
     actions: {
