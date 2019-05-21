@@ -62,10 +62,7 @@ export default {
     fullscreen() {
       Util.toggleFullScreen();
     },
-    toggleSidebar() {
-      //Session.set("openSidebar", !Session.get("openSidebar"));
-      this.$store.commit("TOGGLE_DRAWER");
-    }
+
   }
 };
 </script>
