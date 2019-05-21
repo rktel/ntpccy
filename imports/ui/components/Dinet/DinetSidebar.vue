@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer app clipped floating v-model="sidebar">
+  <v-navigation-drawer app  v-model="sidebar">
     <v-layout column>
       <v-flex>
         <v-subheader>OBJETO</v-subheader>
