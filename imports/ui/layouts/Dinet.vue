@@ -179,6 +179,12 @@ export default {
     };
   },
   methods: {
+    loadingDataEnd() {
+      this.loadingData = false;
+    },
+    loadingDataStart() {
+      this.loadingData = true;
+    },
     openDrawer() {
       this.drawer = !this.drawer;
     },
@@ -198,39 +204,59 @@ export default {
     getData() {
       if (this.period === "day") {
         if (this.vehicle && this.pickerDayModel) {
-           Meteor.call("DNT_TEST_getData", {
-            vehicle: this.vehicle,
-            type: "day",
-            day: this.pickerDayModel
-          },(error, data)=>{
-            error?false: console.log(data)
-            
-          });
-          
-          
+          this.loadingDataStart();
+          Meteor.call(
+            "DNT_TEST_getData",
+            {
+              vehicle: this.vehicle,
+              type: "day",
+              day: this.pickerDayModel
+            },
+            (error, data) => {
+              if (!error) {
+                this.loadingDataEnd();
+              }
+            }
+          );
         }
       } else if (this.period === "range") {
-        if (this.vehicle &&  this.pickerDayStartModel && this.pickerDayEndModel) {
-           Meteor.call("DNT_TEST_getData", {
-            vehicle: this.vehicle,
-            type: "range",
-            dayStart: this.pickerDayStartModel,
-            dayEnd: this.pickerDayEndModel
-          },(error, data)=>{
-            error?false: console.log(data)
-          });
-          
+        if (
+          this.vehicle &&
+          this.pickerDayStartModel &&
+          this.pickerDayEndModel
+        ) {
+          this.loadingDataStart();
+          Meteor.call(
+            "DNT_TEST_getData",
+            {
+              vehicle: this.vehicle,
+              type: "range",
+              dayStart: this.pickerDayStartModel,
+              dayEnd: this.pickerDayEndModel
+            },
+            (error, data) => {
+              if (!error) {
+                this.loadingDataEnd();
+              }
+            }
+          );
         }
       } else if (this.period === "month") {
         if (this.vehicle && this.pickerMonthModel) {
-           Meteor.call("DNT_TEST_getData", {
-            vehicle: this.vehicle,
-            type: "month",
-            month: this.pickerMonthModel
-          },(error, data)=>{
-            error?false: console.log(data)
-          });
-          
+          this.loadingDataStart();
+          Meteor.call(
+            "DNT_TEST_getData",
+            {
+              vehicle: this.vehicle,
+              type: "month",
+              month: this.pickerMonthModel
+            },
+            (error, data) => {
+              if (!error) {
+                this.loadingDataEnd();
+              }
+            }
+          );
         }
       }
     }
