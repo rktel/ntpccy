@@ -127,7 +127,7 @@ export default {
       pickerMonthModel: null,
       pickerMonth: false,
       loadingData: false,
-      sidebar: true
+
     };
   },
   computed: {
