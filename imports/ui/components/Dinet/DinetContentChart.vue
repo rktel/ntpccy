@@ -3,11 +3,16 @@
     <v-layout row wrap>
       <v-flex lg6 xs12>
         <v-card v-show="report">
+          <apexcharts type="bar" :options="optionsAB" :series="seriesAB"></apexcharts>
+        </v-card>
+      </v-flex>
+      <v-flex lg6 xs12>
+        <v-card v-show="report">
           <apexcharts type="bar" :options="optionsA" :series="seriesA"></apexcharts>
         </v-card>
       </v-flex>
       <v-flex lg6 xs12>
-        <v-card>
+        <v-card v-show="report">
           <apexcharts type="bar" :options="optionsB" :series="seriesB"></apexcharts>
         </v-card>
       </v-flex>
@@ -54,14 +59,13 @@ export default {
             data: serieA_distancia
           }
         ];
-        this.optionsA ={
+        this.optionsA = {
           xaxis: {
             categories: serieA_days
           }
-        }
+        };
 
-
-                const serieB_exceso15 = data.map(el => el.turnB.exceso15);
+        const serieB_exceso15 = data.map(el => el.turnB.exceso15);
         const serieB_distancia = data.map(el => el.turnB.distancia);
         const serieB_days = data.map(el => el.day);
         console.log(serieB_exceso15, serieB_distancia, serieB_days);
@@ -75,11 +79,37 @@ export default {
             data: serieB_distancia
           }
         ];
-        this.optionsB ={
+        this.optionsB = {
           xaxis: {
             categories: serieB_days
           }
-        }
+        };
+
+
+        this.seriesAB = [
+          {
+            name: "#Eventos A",
+            data: serieA_exceso15
+          },
+          {
+            name: "Distancia(Km) A",
+            data: serieA_distancia
+          },
+          {
+            name: "#Eventos B",
+            data: serieB_exceso15
+          },
+          {
+            name: "Distancia(Km) B",
+            data: serieB_distancia
+          }
+        ];
+        this.optionsAB = {
+          xaxis: {
+            categories: serieB_days
+          }
+        };
+
       }
 
       /*
@@ -99,6 +129,11 @@ export default {
     },
     dark: function() {
       if (Session.get("dark")) {
+        this.optionsAB = {
+          theme: {
+            mode: "dark"
+          }
+        };
         this.optionsA = {
           theme: {
             mode: "dark"
@@ -110,6 +145,11 @@ export default {
           }
         };
       } else {
+        this.optionsAB = {
+          theme: {
+            mode: "light"
+          }
+        };
         this.optionsA = {
           theme: {
             mode: "light"
@@ -125,7 +165,72 @@ export default {
   },
   data() {
     return {
-      /******************************* TURNO A ***************************************/
+      /*********************************** AB ******************************************/
+      seriesAB: [
+        {
+          name: "#Eventos A",
+          data: [76]
+        },
+        {
+          name: "Distancia(Km) A",
+          data: [30]
+        },
+        {
+          name: "#Eventos B",
+          data: [76]
+        },
+        {
+          name: "Distancia(Km) B",
+          data: [30]
+        }
+      ],
+      optionsAB: {
+        chart: {
+          toolbar: {
+            show: false
+          },
+          events: {
+            dataPointSelection: function(event, chartContext, config) {
+              //console.log("SeriesAconfig:", config);
+            }
+          }
+        },
+        theme: {
+          mode: "dark",
+          palette: "palette4"
+        },
+        title: {
+          text: "Exceso 15 Km/h",
+          align: "center",
+          style: {
+            fontSize: "16px"
+          }
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "40%"
+          }
+        },
+        dataLabels: {
+          enabled: true
+        },
+        xaxis: {
+          //  categories: ["Turno A"]
+          categories: [""]
+        },
+        fill: {
+          opacity: 0.9
+        },
+        tooltip: {
+          y: {
+            formatter: function(val) {
+              return val;
+            }
+          }
+        }
+      },
+      /******************************* TURNO A *****************************************/
       seriesA: [
         {
           name: "#Eventos",
