@@ -35,6 +35,8 @@ export default {
   },
   watch: {
     report: function() {
+      console.log("Session.get(report): ",Session.get("report"));
+      /*
       if (Session.get("report")) {
         this.seriesA = [
           {
@@ -47,6 +49,7 @@ export default {
           }
         ];
       }
+      */
     },
     dark: function() {
       if (Session.get("dark")) {
