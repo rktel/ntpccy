@@ -36,6 +36,26 @@ export default {
   watch: {
     report: function() {
       console.log("Session.get(report): ",Session.get("report"));
+      if(Session.get("report")){
+        const report = Session.get("report")
+        const plate = report.plate
+        const data = report.data
+        const serieA_exceso15 = data.map(el=>el.turnA.exceso15)
+        console.log(serieA_exceso15);
+        
+        /*
+        this.seriesA = [
+          {
+            name: "#Eventos",
+            data: [this.report.exceso15]
+          },
+          {
+            name: "Distancia(Km)",
+            data: [this.report.distanciaRecorrida]
+          }
+        ];        
+      }
+      */
       /*
       if (Session.get("report")) {
         this.seriesA = [
