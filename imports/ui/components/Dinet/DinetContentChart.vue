@@ -54,6 +54,11 @@ export default {
             data: serieA_distancia
           }
         ];
+        this.optionsA ={
+          xaxis: {
+            categories: serieA_days
+          }
+        }
       }
 
       /*
