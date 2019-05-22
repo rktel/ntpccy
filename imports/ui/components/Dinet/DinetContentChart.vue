@@ -3,6 +3,11 @@
     <v-layout row wrap>
       <v-flex lg6 xs12>
         <v-card v-show="report">
+          <apexcharts type="bar" :options="optionsABRatio" :series="seriesABRatio"></apexcharts>
+        </v-card>
+      </v-flex>
+      <v-flex lg6 xs12>
+        <v-card v-show="report">
           <apexcharts type="bar" :options="optionsAB" :series="seriesAB"></apexcharts>
         </v-card>
       </v-flex>
@@ -47,6 +52,15 @@ export default {
         const data = report.data;
         const serieA_exceso15 = data.map(el => el.turnA.exceso15);
         const serieA_distancia = data.map(el => el.turnA.distancia);
+
+        const ratioA = serieA_distancia.map((el, index)=>{
+          if(!el && !serieA_exceso15[index]){
+            return parseInt(el/serieA_exceso15[index])
+          }else{
+            return 0
+          }
+        })
+
         const serieA_days = data.map(el => el.day);
         console.log(serieA_exceso15, serieA_distancia, serieA_days);
         this.seriesA = [
@@ -67,6 +81,13 @@ export default {
 
         const serieB_exceso15 = data.map(el => el.turnB.exceso15);
         const serieB_distancia = data.map(el => el.turnB.distancia);
+        const ratioB = serieB_distancia.map((el, index)=>{
+          if(!el && !serieB_exceso15[index]){
+            return parseInt(el/serieB_exceso15[index])
+          }else{
+            return 0
+          }
+        })
         const serieB_days = data.map(el => el.day);
         console.log(serieB_exceso15, serieB_distancia, serieB_days);
         this.seriesB = [
@@ -110,6 +131,24 @@ export default {
           }
         };
 
+
+        this.seriesABRatio = [
+          {
+            name: "Ratio A",
+            data: ratioA
+          },
+          {
+            name: "Ratio B",
+            data: ratioB
+          },
+
+        ];
+        this.optionsABRatio = {
+          xaxis: {
+            categories: serieB_days
+          }
+        };
+
       }
 
       /*
@@ -129,6 +168,11 @@ export default {
     },
     dark: function() {
       if (Session.get("dark")) {
+        this.optionsABRatio = {
+          theme: {
+            mode: "dark"
+          }
+        };
         this.optionsAB = {
           theme: {
             mode: "dark"
@@ -145,6 +189,11 @@ export default {
           }
         };
       } else {
+        this.optionsABRatio = {
+          theme: {
+            mode: "light"
+          }
+        };
         this.optionsAB = {
           theme: {
             mode: "light"
@@ -165,6 +214,62 @@ export default {
   },
   data() {
     return {
+      /**************************** ABRatio  *****************************/
+      seriesABRatio: [
+        {
+          name: "Ratio A",
+          data: [76]
+        },
+        {
+          name: "Ratio B",
+          data: [30]
+        },
+      ],
+      optionsABRatio: {
+        chart: {
+          toolbar: {
+            show: false
+          },
+          events: {
+            dataPointSelection: function(event, chartContext, config) {
+              //console.log("SeriesAconfig:", config);
+            }
+          }
+        },
+        theme: {
+          mode: "dark",
+         },
+        title: {
+          text: "Exceso 15 Km/h",
+          align: "center",
+          style: {
+            fontSize: "16px"
+          }
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "40%"
+          }
+        },
+        dataLabels: {
+          enabled: true
+        },
+        xaxis: {
+          //  categories: ["Turno A"]
+          categories: [""]
+        },
+        fill: {
+          opacity: 0.9
+        },
+        tooltip: {
+          y: {
+            formatter: function(val) {
+              return val;
+            }
+          }
+        }
+      },
       /*********************************** AB ******************************************/
       seriesAB: [
         {
