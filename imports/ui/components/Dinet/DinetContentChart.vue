@@ -41,7 +41,8 @@ export default {
         const plate = report.plate
         const data = report.data
         const serieA_exceso15 = data.map(el=>el.turnA.exceso15)
-        console.log(serieA_exceso15);
+        const serieA_distancia = data.map(el=>el.turnA.distancia)
+        console.log(serieA_exceso15,serieA_distancia);
       }
         /*
         this.seriesA = [
