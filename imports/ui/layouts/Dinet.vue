@@ -267,7 +267,7 @@ export default {
     }
   },
   created() {
-    Session.set("dark", false); // chart
+    Session.set("dark", true); // chart
     Meteor.call("DNT_getPlates", (error, plates) => {
       if (!error) {
         this.plates = plates;
