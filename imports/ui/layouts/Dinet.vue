@@ -149,7 +149,7 @@
 </template>
 
 <script>
-// import { Session } from "meteor/session";
+import { Session } from "meteor/session";
 import Util from "../../util";
 
 import DinetContent from "../../ui/components/Dinet/DinetContent.vue";
@@ -215,6 +215,7 @@ export default {
             },
             (error, data) => {
               if (!error) {
+                Session.set("report", data);
                 this.loadingDataEnd();
               }
             }
@@ -237,6 +238,7 @@ export default {
             },
             (error, data) => {
               if (!error) {
+                Session.set("report", data);
                 this.loadingDataEnd();
               }
             }
@@ -254,6 +256,7 @@ export default {
             },
             (error, data) => {
               if (!error) {
+                Session.set("report", data);
                 this.loadingDataEnd();
               }
             }
@@ -263,6 +266,7 @@ export default {
     }
   },
   created() {
+    Session.set("dark", true); // chart
     Meteor.call("DNT_getPlates", (error, plates) => {
       if (!error) {
         this.plates = plates;
