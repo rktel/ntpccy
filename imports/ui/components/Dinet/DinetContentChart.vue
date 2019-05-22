@@ -42,7 +42,8 @@ export default {
         const data = report.data
         const serieA_exceso15 = data.map(el=>el.turnA.exceso15)
         const serieA_distancia = data.map(el=>el.turnA.distancia)
-        console.log(serieA_exceso15,serieA_distancia);
+        const serieA_days = data.map(el=>el.day)
+        console.log(serieA_exceso15,serieA_distancia,serieA_days);
       }
         /*
         this.seriesA = [
