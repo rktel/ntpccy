@@ -197,8 +197,7 @@ export default {
         },
         theme: {
           mode: "dark",
-          palette: "palette4"
-        },
+         },
         title: {
           text: "Exceso 15 Km/h",
           align: "center",
