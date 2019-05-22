@@ -42,7 +42,7 @@ export default {
         const data = report.data
         const serieA_exceso15 = data.map(el=>el.turnA.exceso15)
         console.log(serieA_exceso15);
-        
+      }
         /*
         this.seriesA = [
           {
