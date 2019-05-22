@@ -1,16 +1,16 @@
 <template>
   <section>
     <v-layout row wrap>
-      <v-flex xs12>
+      <v-flex lg6 xs12>
         <v-card v-show="report">
           <apexcharts type="bar" :options="optionsA" :series="seriesA"></apexcharts>
         </v-card>
       </v-flex>
-      <!--v-flex lg6 xs12>
+      <v-flex lg6 xs12>
         <v-card>
           <apexcharts type="bar" :options="optionsB" :series="seriesB"></apexcharts>
         </v-card>
-      </v-flex-->
+      </v-flex>
     </v-layout>
   </section>
 </template>
@@ -57,6 +57,27 @@ export default {
         this.optionsA ={
           xaxis: {
             categories: serieA_days
+          }
+        }
+
+
+                const serieB_exceso15 = data.map(el => el.turnB.exceso15);
+        const serieB_distancia = data.map(el => el.turnB.distancia);
+        const serieB_days = data.map(el => el.day);
+        console.log(serieB_exceso15, serieB_distancia, serieB_days);
+        this.seriesB = [
+          {
+            name: "#Eventos",
+            data: serieB_exceso15
+          },
+          {
+            name: "Distancia(Km)",
+            data: serieB_distancia
+          }
+        ];
+        this.optionsB ={
+          xaxis: {
+            categories: serieB_days
           }
         }
       }
@@ -197,14 +218,14 @@ export default {
         plotOptions: {
           bar: {
             horizontal: false,
-            columnWidth: "30%"
+            columnWidth: "40%"
           }
         },
         dataLabels: {
           enabled: true
         },
         xaxis: {
-          categories: ["Turno B"]
+          categories: [""]
         },
         fill: {
           opacity: 0.9
