@@ -54,7 +54,7 @@ export default {
         const serieA_distancia = data.map(el => el.turnA.distancia);
 
         const ratioA = serieA_distancia.map((el, index)=>{
-          if(!el && !serieA_exceso15[index]){
+          if(el && serieA_exceso15[index]){
             return parseInt(el/serieA_exceso15[index])
           }else{
             return 0
@@ -82,7 +82,7 @@ export default {
         const serieB_exceso15 = data.map(el => el.turnB.exceso15);
         const serieB_distancia = data.map(el => el.turnB.distancia);
         const ratioB = serieB_distancia.map((el, index)=>{
-          if(!el && !serieB_exceso15[index]){
+          if(el && serieB_exceso15[index]){
             return parseInt(el/serieB_exceso15[index])
           }else{
             return 0
