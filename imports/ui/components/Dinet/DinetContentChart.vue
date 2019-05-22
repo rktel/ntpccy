@@ -35,17 +35,15 @@ export default {
   },
   watch: {
     report: function() {
-    //  console.log("Session.get(report): ",Session.get("report"));
-      if(this.report){
-        const report = this.report
-        const plate = report.plate
-        const data = report.data
-        const serieA_exceso15 = data.map(el=>el.turnA.exceso15)
-        const serieA_distancia = data.map(el=>el.turnA.distancia)
-        const serieA_days = data.map(el=>el.day)
-        console.log(serieA_exceso15,serieA_distancia,serieA_days);
-      }
-        
+      //  console.log("Session.get(report): ",Session.get("report"));
+      if (this.report) {
+        const report = this.report;
+        const plate = report.plate;
+        const data = report.data;
+        const serieA_exceso15 = data.map(el => el.turnA.exceso15);
+        const serieA_distancia = data.map(el => el.turnA.distancia);
+        const serieA_days = data.map(el => el.day);
+        console.log(serieA_exceso15, serieA_distancia, serieA_days);
         this.seriesA = [
           {
             name: "#Eventos",
@@ -55,9 +53,9 @@ export default {
             name: "Distancia(Km)",
             data: serieA_distancia
           }
-        ];        
-      
-      
+        ];
+      }
+
       /*
       if (Session.get("report")) {
         this.seriesA = [
@@ -144,7 +142,7 @@ export default {
           enabled: true
         },
         xaxis: {
-        //  categories: ["Turno A"]
+          //  categories: ["Turno A"]
           categories: [""]
         },
         fill: {
