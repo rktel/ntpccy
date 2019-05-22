@@ -198,6 +198,7 @@ export default {
     },
     invertColor() {
       this.dark = !this.dark;
+      Session.set("dark", !Session.get("dark"));
     },
     fullscreen() {
       Util.toggleFullScreen();
