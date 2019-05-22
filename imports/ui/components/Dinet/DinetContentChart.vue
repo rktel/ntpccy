@@ -1,7 +1,7 @@
 <template>
   <section>
     <v-layout row wrap>
-      <v-flex lg6 offset-lg3 xs12>
+      <v-flex xs12>
         <v-card v-show="report">
           <apexcharts type="bar" :options="optionsA" :series="seriesA"></apexcharts>
         </v-card>
