@@ -35,9 +35,9 @@ export default {
   },
   watch: {
     report: function() {
-      console.log("Session.get(report): ",Session.get("report"));
-      if(Session.get("report")){
-        const report = Session.get("report")
+    //  console.log("Session.get(report): ",Session.get("report"));
+      if(this.report){
+        const report = this.report
         const plate = report.plate
         const data = report.data
         const serieA_exceso15 = data.map(el=>el.turnA.exceso15)
@@ -45,19 +45,19 @@ export default {
         const serieA_days = data.map(el=>el.day)
         console.log(serieA_exceso15,serieA_distancia,serieA_days);
       }
-        /*
+        
         this.seriesA = [
           {
             name: "#Eventos",
-            data: [this.report.exceso15]
+            data: serieA_exceso15
           },
           {
             name: "Distancia(Km)",
-            data: [this.report.distanciaRecorrida]
+            data: serieA_distancia
           }
         ];        
-      }
-      */
+      
+      
       /*
       if (Session.get("report")) {
         this.seriesA = [
