@@ -204,6 +204,9 @@ export default {
       Util.toggleFullScreen();
     },
     getData() {
+      if (this.period === "range"){
+        Meteor.call('DNT_get_OverspeedPilots', this.pickerDayStartModel, this.pickerDayEndModel )
+      }
       if (this.period === "day") {
         if (this.vehicle && this.pickerDayModel) {
           this.loadingDataStart();
