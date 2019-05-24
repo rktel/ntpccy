@@ -20,7 +20,7 @@ Meteor.methods({
                     $group: {
                         _id: '$events.person',
                         firstEvent: { $first: '$events.counters' },
-                        lastEvent: { $first: '$events.counters' },
+                        lastEvent: { $last: '$events.counters' },
                         overspeed15: {
                             $sum: {
                                 $cond: [
