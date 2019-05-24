@@ -9,6 +9,45 @@ Meteor.methods({
         const plates = await Dinet.rawCollection().distinct('events.vehicle')
         return plates
     },
+    async DNT_get_OverspeedPilots(TIME_S, TIME_E) {
+        const arrayEvents = [97, 93, 89]
+        let report = await Dinet.rawCollection().
+            aggregate([
+                { $match: { 'events.created': { $gt: TIME_S, $lt: TIME_E } } },
+                { $unwind: '$events' },
+                { $match: { 'events.original': { $in: arrayEvents } } },
+                {
+                    $group: {
+                        _id: '$events.person',
+                        firstEvent: { $first: '$events.counters' },
+                        lastEvent: { $first: '$events.counters' },
+                        overspeed15: {
+                            $sum: {
+                                $cond: [
+                                    { $eq: ['$events.original', 97] }, 1, 0
+                                ]
+                            }
+                        },
+                        overspeed30: {
+                            $sum: {
+                                $cond: [
+                                    { $eq: ['$events.original', 93] }, 1, 0
+                                ]
+                            }
+                        },
+                        overspeed80: {
+                            $sum: {
+                                $cond: [
+                                    { $eq: ['$events.original', 89] }, 1, 0
+                                ]
+                            }
+                        }
+                    }
+                },
+                { $project: { _id: 0, pilot: '$_id', overspeed15: '$overspeed15', overspeed30: '$overspeed30', overspeed80: '$overspeed80', firstEvent: '$firstEvent', lastEvent: '$lastEvent' } },
+            ]).toArray()
+        console.log(report)
+    },
     async DNT_getOverspeedEvents(PLATE, TIME_S, TIME_E) {
         // Exceso 15km/h : 97,  Exceso 30km/h : 93, Exceso 80km/h : 89
         const arrayEvents = [97, 93, 89]
