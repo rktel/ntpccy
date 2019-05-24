@@ -204,8 +204,17 @@ export default {
       Util.toggleFullScreen();
     },
     getData() {
-      if (this.period === "range"){
-        Meteor.call('DNT_get_OverspeedPilots', this.pickerDayStartModel, this.pickerDayEndModel )
+      if (this.period === "range") {
+        Meteor.call(
+          "DNT_get_OverspeedPilots",
+          this.pickerDayStartModel,
+          this.pickerDayEndModel,
+          (error, data) => {
+            if (!error) {
+              console.log(data);
+            }
+          }
+        );
       }
       if (this.period === "day") {
         if (this.vehicle && this.pickerDayModel) {

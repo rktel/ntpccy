@@ -46,7 +46,7 @@ Meteor.methods({
                 },
                 { $project: { _id: 0, pilot: '$_id', overspeed15: '$overspeed15', overspeed30: '$overspeed30', overspeed80: '$overspeed80', firstEvent: '$firstEvent', lastEvent: '$lastEvent' } },
             ]).toArray()
-        console.log(report)
+        return report
     },
     async DNT_getOverspeedEvents(PLATE, TIME_S, TIME_E) {
         // Exceso 15km/h : 97,  Exceso 30km/h : 93, Exceso 80km/h : 89
