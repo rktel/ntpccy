@@ -2,7 +2,7 @@
   <section>
     <v-layout row wrap>
       <v-flex lg6 xs12>
-        <v-card v-show="report" class="pt-4">
+        <v-card v-if="report" class="pt-4">
           <apexcharts type="bar" :options="optionsABRatio" :series="seriesABRatio"></apexcharts>
         </v-card>
       </v-flex>
@@ -32,7 +32,7 @@ export default {
     report: function() {
       //  console.log("Session.get(report): ",Session.get("report"));
       if (this.report) {
-        console.log(this.report)
+        console.log(this.report);
         //Data por Placa
         const report = this.report;
         const plate = report.plate;
@@ -71,6 +71,30 @@ export default {
           }
         ];
         this.optionsABRatio = {
+          chart: {
+            toolbar: {
+              show: false
+            }
+          },
+          theme: {
+            mode: "dark"
+          },
+          title: {
+            text: "Ratio(10*d/e) 15Km/h  [d=distancia, e=eventos]",
+            align: "center",
+            style: {
+              fontSize: "16px"
+            }
+          },
+          plotOptions: {
+            bar: {
+              horizontal: false,
+              columnWidth: "40%"
+            }
+          },
+          dataLabels: {
+            enabled: true
+          },
           xaxis: {
             categories: seriesDays
           }
@@ -89,14 +113,11 @@ export default {
   data() {
     return {
       /**************************** ABRatio  *****************************/
-      seriesABRatio: seriesABRatioDefault,
-      optionsABRatio: optionsABRatioDefault
+      seriesABRatio: [],
+      optionsABRatio: {}
     };
   }
 };
-
-
-
 
 /* CONSTANTES DE INICIO */
 const darkTheme = {
