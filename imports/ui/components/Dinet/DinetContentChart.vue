@@ -32,6 +32,7 @@ export default {
     report: function() {
       //  console.log("Session.get(report): ",Session.get("report"));
       if (this.report) {
+        console.log(this.report)
         //Data por Placa
         const report = this.report;
         const plate = report.plate;
