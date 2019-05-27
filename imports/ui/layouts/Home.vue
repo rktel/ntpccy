@@ -100,14 +100,14 @@ export default {
           persona.api = "Antapaccay";
           
         } 
-        /*
+ 
         else if (persona.spa && persona.spa == "Dinet") {
           this.$router.push({ name: "Dinet" });
         } 
         else if (persona.spa && persona.spa == "Phantom") {
           this.$router.push({ name: "Phantom" });
         }
-        */
+
         this.SET_USERPROFILE(persona);
       }
     });
