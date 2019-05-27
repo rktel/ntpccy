@@ -113,7 +113,7 @@ export default {
           mode: "dark"
         },
         title: {
-          text: "Ratio 15Km/h  Distancia/Eventos",
+          text: "Ratio(10*d/e) 15Km/h  Distancia/Eventos",
           align: "center",
           style: {
             fontSize: "16px"
