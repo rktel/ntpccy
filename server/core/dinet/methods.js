@@ -137,7 +137,7 @@ Meteor.methods({
         let proData = []
         vehicles.forEach(vhc => {
             const data = Meteor.call("DNT_TEST_getDayData", day, vhc)
-            proData.push({ plate: vhc, data })
+            proData.push({ plate: vhc, data: [data] })
             // console.log('data:', data)
         })
         console.log('proData: ',proData)
