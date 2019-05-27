@@ -2,7 +2,7 @@
   <section>
     <v-layout row wrap>
       <v-flex lg6 xs12>
-        <v-card v-show="report">
+        <v-card v-show="report" class="mt-6">
           <apexcharts type="bar" :options="optionsABRatio" :series="seriesABRatio"></apexcharts>
         </v-card>
       </v-flex>
@@ -115,10 +115,6 @@ export default {
         title: {
           text: "Ratio 15Km/h  Distancia/Eventos",
           align: "center",
-          margin: 30,
-          offsetX: 0,
-          offsetY: 0,
-          floating: false,
           style: {
             fontSize: "16px"
           }
