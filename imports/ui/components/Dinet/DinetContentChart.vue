@@ -32,9 +32,11 @@ export default {
     report: function() {
       //  console.log("Session.get(report): ",Session.get("report"));
       if (this.report) {
+        //Data por Placa
         const report = this.report;
         const plate = report.plate;
         const data = report.data;
+        // Data Serie Turno A
         const serieA_exceso15 = data.map(el => el.turnA.exceso15);
         const serieA_distancia = data.map(el => el.turnA.distancia);
 
@@ -45,7 +47,7 @@ export default {
             return 0;
           }
         });
-
+        // Data Serie Turno B
         const seriesDays = data.map(el => el.day);
         const serieB_exceso15 = data.map(el => el.turnB.exceso15);
         const serieB_distancia = data.map(el => el.turnB.distancia);
@@ -56,14 +58,14 @@ export default {
             return 0;
           }
         });
-
+        // RatioAB
         this.seriesABRatio = [
           {
-            name: "Ratio A",
+            name: "Turno A",
             data: ratioA
           },
           {
-            name: "Ratio B",
+            name: "Turno B",
             data: ratioB
           }
         ];
@@ -72,6 +74,7 @@ export default {
             categories: seriesDays
           }
         };
+        // End RatioAB
       }
     },
     dark: function() {
