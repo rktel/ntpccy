@@ -116,8 +116,11 @@ export default {
           text: "Ratio 15Km/h  Distancia/Eventos",
           align: "center",
           margin: 30,
+          offsetX: 0,
+          offsetY: 0,
+          floating: false,
           style: {
-            fontSize: "16px",
+            fontSize: "16px"
           }
         },
         plotOptions: {
@@ -135,8 +138,8 @@ export default {
         },
         tooltip: {
           y: {
-            formatter: function(a,b) {
-              console.log("VAL:", a,b)
+            formatter: function(a, b) {
+              console.log("VAL:", a, b);
             }
           }
         }
