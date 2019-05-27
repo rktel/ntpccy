@@ -117,7 +117,7 @@ export default {
           align: "left",
           style: {
             fontSize: "16px",
-            fontWeight: "bold"
+            padding: "10px"
           }
         },
         plotOptions: {
