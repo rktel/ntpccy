@@ -76,71 +76,69 @@ export default {
     },
     dark: function() {
       if (Session.get("dark")) {
-        this.optionsABRatio = {
-          theme: {
-            mode: "dark"
-          }
-        };
+        this.optionsABRatio = darkTheme;
       } else {
-        this.optionsABRatio = {
-          theme: {
-            mode: "light"
-          }
-        };
+        this.optionsABRatio = lightTheme;
       }
     }
   },
   data() {
     return {
       /**************************** ABRatio  *****************************/
-      seriesABRatio: [
-        {
-          name: "Ratio A",
-          data: [99]
-        },
-        {
-          name: "Ratio B",
-          data: [99]
-        }
-      ],
-      optionsABRatio: {
-        chart: {
-          toolbar: {
-            show: false
-          }
-        },
-        theme: {
-          mode: "dark"
-        },
-        title: {
-          text: "Ratio(10*d/e) 15Km/h  [d=distancia, e=eventos]",
-          align: "center",
-          style: {
-            fontSize: "16px"
-          }
-        },
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            columnWidth: "40%"
-          }
-        },
-        dataLabels: {
-          enabled: true
-        },
-        xaxis: {
-          //  categories: ["Turno A"]
-          categories: [""]
-        },
-        tooltip: {
-          y: {
-            formatter: function(a, b) {
-              console.log("VAL:", a, b);
-            }
-          }
-        }
-      }
+      seriesABRatio: seriesABRatioDefault,
+      optionsABRatio: optionsABRatioDefault
     };
+  }
+};
+
+
+
+
+/* CONSTANTES DE INICIO */
+const darkTheme = {
+  theme: {
+    mode: "dark"
+  }
+};
+const lightTheme = {
+  theme: {
+    mode: "light"
+  }
+};
+const seriesABRatioDefault = [
+  {
+    name: "Ratio A",
+    data: [99]
+  },
+  {
+    name: "Ratio B",
+    data: [99]
+  }
+];
+const optionsABRatioDefault = {
+  chart: {
+    toolbar: {
+      show: false
+    }
+  },
+  theme: {
+    mode: "dark"
+  },
+  title: {
+    text: "Ratio(10*d/e) 15Km/h  [d=distancia, e=eventos]",
+    align: "center",
+    style: {
+      fontSize: "16px"
+    }
+  },
+  plotOptions: {
+    bar: {
+      horizontal: false,
+      columnWidth: "40%"
+    }
+  },
+  dataLabels: {
+    enabled: true
   }
 };
 </script>
