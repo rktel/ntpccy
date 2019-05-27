@@ -135,8 +135,8 @@ export default {
         },
         tooltip: {
           y: {
-            formatter: function(a,b,c) {
-              console.log("VAL:", a,b,c)
+            formatter: function(a,b) {
+              console.log("VAL:", a,b.seriesIndex)
             }
           }
         }
