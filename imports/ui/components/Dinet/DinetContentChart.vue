@@ -113,11 +113,11 @@ export default {
           mode: "dark"
         },
         title: {
-          text: "Ratio 10*Distancia/Eventos(15Km/h)",
-          align: "left",
+          text: "Ratio 15Km/h  Distancia/Eventos",
+          align: "center",
+          margin: 30,
           style: {
             fontSize: "16px",
-            padding: "10px"
           }
         },
         plotOptions: {
