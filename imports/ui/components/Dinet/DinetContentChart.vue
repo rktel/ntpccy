@@ -135,8 +135,8 @@ export default {
         },
         tooltip: {
           y: {
-            formatter: function(val) {
-              console.log("VAL:", val)
+            formatter: function(...val) {
+              console.log("VAL:", ...val)
             }
           }
         }
