@@ -38,25 +38,24 @@ export default {
         const serieA_exceso15 = data.map(el => el.turnA.exceso15);
         const serieA_distancia = data.map(el => el.turnA.distancia);
 
-        const ratioA = serieA_distancia.map((el, index)=>{
-          if(el && serieA_exceso15[index]){
-            return parseInt(10*el/serieA_exceso15[index])
-          }else{
-            return 0
+        const ratioA = serieA_distancia.map((el, index) => {
+          if (el && serieA_exceso15[index]) {
+            return parseInt((10 * el) / serieA_exceso15[index]);
+          } else {
+            return 0;
           }
-        })
+        });
 
         const seriesDays = data.map(el => el.day);
         const serieB_exceso15 = data.map(el => el.turnB.exceso15);
         const serieB_distancia = data.map(el => el.turnB.distancia);
-        const ratioB = serieB_distancia.map((el, index)=>{
-          if(el && serieB_exceso15[index]){
-            return parseInt(10*el/serieB_exceso15[index])
-          }else{
-            return 0
+        const ratioB = serieB_distancia.map((el, index) => {
+          if (el && serieB_exceso15[index]) {
+            return parseInt((10 * el) / serieB_exceso15[index]);
+          } else {
+            return 0;
           }
-        })
-
+        });
 
         this.seriesABRatio = [
           {
@@ -66,18 +65,14 @@ export default {
           {
             name: "Ratio B",
             data: ratioB
-          },
-
+          }
         ];
         this.optionsABRatio = {
           xaxis: {
             categories: seriesDays
           }
         };
-
       }
-
-
     },
     dark: function() {
       if (Session.get("dark")) {
@@ -86,14 +81,12 @@ export default {
             mode: "dark"
           }
         };
-
       } else {
         this.optionsABRatio = {
           theme: {
             mode: "light"
           }
         };
-
       }
     }
   },
@@ -108,23 +101,23 @@ export default {
         {
           name: "Ratio B",
           data: [99]
-        },
+        }
       ],
       optionsABRatio: {
         chart: {
           toolbar: {
             show: false
-          },
+          }
         },
         theme: {
-          mode: "dark",
-         },
+          mode: "dark"
+        },
         title: {
           text: "Ratio 10*Distancia/Eventos(15Km/h)",
           align: "left",
           style: {
             fontSize: "16px",
-            fontWeight:"bold"
+            fontWeight: "bold"
           }
         },
         plotOptions: {
@@ -140,9 +133,14 @@ export default {
           //  categories: ["Turno A"]
           categories: [""]
         },
- 
-      },
-
+        tooltip: {
+          y: {
+            formatter: function(val) {
+              console.log("VAL:", val)
+            }
+          }
+        }
+      }
     };
   }
 };
