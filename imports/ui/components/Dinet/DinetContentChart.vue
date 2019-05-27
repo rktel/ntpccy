@@ -2,7 +2,7 @@
   <section>
     <v-layout row wrap>
       <v-flex lg6 xs12>
-        <v-card v-show="report" class="mt-6">
+        <v-card v-show="report" class="pt-6">
           <apexcharts type="bar" :options="optionsABRatio" :series="seriesABRatio"></apexcharts>
         </v-card>
       </v-flex>
