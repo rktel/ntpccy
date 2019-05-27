@@ -98,10 +98,13 @@ export default {
         this.ready = true;
         if ((!persona.spa && persona.role == "Hyperadmin") || persona.role == "Superadmin") {
           persona.api = "Antapaccay";
-          /*
-        } else if (persona.spa && persona.spa == "Dinet") {
+          
+        } 
+        /*
+        else if (persona.spa && persona.spa == "Dinet") {
           this.$router.push({ name: "Dinet" });
-        } else if (persona.spa && persona.spa == "Phantom") {
+        } 
+        else if (persona.spa && persona.spa == "Phantom") {
           this.$router.push({ name: "Phantom" });
         }
         */
