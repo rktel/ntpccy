@@ -132,6 +132,9 @@ Meteor.methods({
         return proData
     },
     async DNT_packetDayData(day, vehicle) {
+        const vehicles = Meteor.call("DNT_getPlates")
+        console.log(vehicles);
+        
         const data = Meteor.call("DNT_TEST_getDayData", day, vehicle)
         const proData = {
             plate: vehicle,
