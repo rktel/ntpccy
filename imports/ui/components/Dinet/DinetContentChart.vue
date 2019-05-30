@@ -123,6 +123,7 @@ export default {
           }
         ];
         this.optionsABDistanceEvent = {
+          colors: ['#2E93fA', '#66DA26', '#546E7A', '#E91E63', '#FF9800'],
           chart: {
             toolbar: {
               show: false
@@ -130,21 +131,6 @@ export default {
           },
           theme: {
             mode: "dark"
-          },
-          plotOptions: {
-    radar: {
-      size: undefined,
-      offsetX: 0,
-      offsetY: 0,
-      polygons: {
-        strokeColors: '#e8e8e8',
-        connectorColors: '#e8e8e8',
-        fill: {
-          colors: undefined
-        }
-      }
-    }
- 
           },
           dataLabels: {
             enabled: false
