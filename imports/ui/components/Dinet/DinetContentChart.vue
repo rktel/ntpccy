@@ -3,9 +3,9 @@
     <v-layout row wrap>
       <v-flex lg6 xs12>
         <v-card v-if="report" class="pt-4">
-          <h3 class="text-xs-center">{{this.report.plate}}</h3>
+          <h3 class="text-xs-center">{{this.report.plate}} [Excesos de 15 Km/h]</h3>
           <span class="text-xs-left">Reporte tipo: Ratio [10 * d/e]</span>
-          <span class="text-xs-right caption">[d = distancia(Km), e = eventos]</span>
+          <h5 class="text-xs-left">[ d: distancia recorrida, e: numero de eventos]</h5>
           <apexcharts type="bar" :options="optionsABRatio" :series="seriesABRatio"></apexcharts>
         </v-card>
       </v-flex>
