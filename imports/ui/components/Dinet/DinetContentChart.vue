@@ -5,8 +5,8 @@
         <v-card v-if="report" class="pt-4">
           <h3 class="text-xs-center">{{this.report.plate}} [Excesos de 15 Km/h]</h3>
           <span class="text-xs-left">Reporte tipo: Ratio [10 * d/e]</span>
-          <h5 class="text-xs-left">[ d: distancia recorrida, e: numero de eventos]</h5>
           <apexcharts type="bar" :options="optionsABRatio" :series="seriesABRatio"></apexcharts>
+          <h5 class="text-xs-right">[ d: distancia recorrida, e: numero de eventos]</h5>
         </v-card>
       </v-flex>
     </v-layout>
@@ -83,7 +83,7 @@ export default {
             mode: "dark"
           },
           title: {
-           // text: `Placa: ${plate} \n \n Ratio(10*d/e) 15Km/h  [d=distancia, e=eventos]`,
+            // text: `Placa: ${plate} \n \n Ratio(10*d/e) 15Km/h  [d=distancia, e=eventos]`,
             align: "center",
             style: {
               fontSize: "16px"
