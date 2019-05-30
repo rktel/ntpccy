@@ -206,6 +206,7 @@ export default {
     getData() {
       if (this.period === "range") {
         console.log(this.pickerDayStartModel, this.pickerDayEndModel);
+        console.log(getNumberDays(this.pickerDayStartModel, this.pickerDayEndModel))
         Meteor.call(
           "DNT_get_OverspeedPilots",
           this.pickerDayStartModel,
@@ -289,6 +290,13 @@ export default {
     });
   }
 };
+
+function getNumberDays(a, b) {
+  let date2 = new Date(a);
+  let date1 = new Date(b);
+  let timeDiff = Math.abs(date2.getTime() - date1.getTime());
+  return Math.ceil(timeDiff / (1000 * 3600 * 24));
+}
 </script>
 
 <style scoped>
