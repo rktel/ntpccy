@@ -3,6 +3,7 @@
     <v-layout row wrap>
       <v-flex lg6 xs12>
         <v-card v-if="report" class="pt-4">
+          <h3 class="text-xs-center">{{this.report.plate}}</h3>
           <apexcharts type="bar" :options="optionsABRatio" :series="seriesABRatio"></apexcharts>
         </v-card>
       </v-flex>
@@ -80,7 +81,7 @@ export default {
             mode: "dark"
           },
           title: {
-            text: `Placa: ${plate} \n Ratio(10*d/e) 15Km/h  [d=distancia, e=eventos]`,
+            text: `Placa: ${plate} \n \n Ratio(10*d/e) 15Km/h  [d=distancia, e=eventos]`,
             align: "center",
             style: {
               fontSize: "16px"
