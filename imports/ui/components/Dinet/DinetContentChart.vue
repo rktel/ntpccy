@@ -5,7 +5,7 @@
         <v-card v-if="report" class="pt-4">
           <h3 class="text-xs-center">{{this.report.plate}}</h3>
           <span class="text-xs-left">Reporte tipo: Ratio [10 * d/e]</span>
-          <span class="text-xs-right">[d = distancia(Km), e = eventos]</span>
+          <span class="text-xs-right caption">[d = distancia(Km), e = eventos]</span>
           <apexcharts type="bar" :options="optionsABRatio" :series="seriesABRatio"></apexcharts>
         </v-card>
       </v-flex>
