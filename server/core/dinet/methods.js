@@ -128,11 +128,15 @@ Meteor.methods({
         let monthString
         let totalExceso15_A
         let totalExceso15_B
-        let totalDistancia_A
+        let totalDistancia_A = 0
         let totalDistancia_B
         monthString = preData[0].day.split(' ')[1]
-        console.log(monthString)
-        const proData = {
+        preData.forEach(element=>{
+            totalDistancia_A = totalDistancia_A + element.turnA.distancia
+            totalDistancia_B = totalDistancia_B + element.turnB.distancia
+        })
+        console.log(totalDistancia_A);
+         const proData = {
             plate: vehicle,
             data: preData
         }
