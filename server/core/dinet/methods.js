@@ -125,6 +125,13 @@ Meteor.methods({
             const dayData = Meteor.call("DNT_TEST_getDayData", day, vehicle)
             preData.push(dayData)
         })
+        let monthString
+        let totalExceso15_A
+        let totalExceso15_B
+        let totalDistancia_A
+        let totalDistancia_B
+        monthString = preData[0].day.split(' ')[1]
+        console.log(monthString)
         const proData = {
             plate: vehicle,
             data: preData
