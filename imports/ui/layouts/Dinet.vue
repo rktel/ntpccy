@@ -143,6 +143,9 @@
         </v-tooltip>
       </v-speed-dial>
     </v-toolbar>
+     <v-snackbar v-model="snackbar" top>
+      {{ snackbarText }}
+     </v-snackbar>
     <DinetContent></DinetContent>
     <DinetFooter></DinetFooter>
   </v-app>
@@ -175,7 +178,9 @@ export default {
       pickerMonthModel: null,
       pickerMonth: false,
       loadingData: false,
-      plates: []
+      plates: [],
+      snackbar: false,
+      snackbarText: ''
     };
   },
   methods: {
@@ -205,18 +210,17 @@ export default {
     },
     getData() {
       if (this.period === "range") {
-        console.log(this.pickerDayStartModel, this.pickerDayEndModel);
-        console.log(getNumberDays(this.pickerDayStartModel, this.pickerDayEndModel))
-        Meteor.call(
-          "DNT_get_OverspeedPilots",
-          this.pickerDayStartModel,
-          this.pickerDayEndModel,
-          (error, data) => {
-            if (!error) {
-              console.log(data);
-            }
-          }
-        );
+        const numberDays = getNumberDays(this.pickerDayStartModel, this.pickerDayEndModel)
+        if(numberDays<=6){
+          Meteor.call("DNT_get_OverspeedPilots",  this.pickerDayStartModel, this.pickerDayEndModel, (error, data) => {
+              if (!error) {
+                console.log(data);
+              }
+          });
+        }else{
+          this.snackbar = true;
+          this.snackbarText = 'Son 7 dias como maximo'
+        }
       }
       if (this.period === "day") {
         if (this.vehicle && this.pickerDayModel) {
