@@ -132,13 +132,22 @@ export default {
             mode: "dark"
           },
           plotOptions: {
-            bar: {
-              horizontal: true,
-              columnWidth: "40%"
-            }
+    radar: {
+      size: undefined,
+      offsetX: 0,
+      offsetY: 0,
+      polygons: {
+        strokeColors: '#e8e8e8',
+        connectorColors: '#e8e8e8',
+        fill: {
+          colors: undefined
+        }
+      }
+    }
+ 
           },
           dataLabels: {
-            enabled: true
+            enabled: false
           },
           xaxis: {
             categories: seriesDays
