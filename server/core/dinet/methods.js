@@ -125,20 +125,22 @@ Meteor.methods({
             const dayData = Meteor.call("DNT_TEST_getDayData", day, vehicle)
             preData.push(dayData)
         })
-        let monthString
-        let totalExceso15_A
-        let totalExceso15_B
+        let monthString = ''
+        let totalExceso15_A = 0
+        let totalExceso15_B = 0
         let totalDistancia_A = 0
-        let totalDistancia_B
+        let totalDistancia_B = 0
         monthString = preData[0].day.split(' ')[1]
         preData.forEach(element=>{
             totalDistancia_A = totalDistancia_A + element.turnA.distancia
             totalDistancia_B = totalDistancia_B + element.turnB.distancia
+            totalExceso15_A = totalExceso15_A + element.turnA.exceso15
+            totalExceso15_B = totalExceso15_B + element.turnB.exceso15
         })
         console.log(totalDistancia_A);
          const proData = {
             plate: vehicle,
-            data: preData
+            data: [{day:monthString, turnA: {distancia: totalDistancia_A, exceso15: totalExceso15_A},turnB: {distancia: totalDistancia_B, exceso15: totalExceso15_B} }]
         }
         return proData
     },
