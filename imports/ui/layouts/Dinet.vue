@@ -209,6 +209,7 @@ export default {
       Util.toggleFullScreen();
     },
     getData() {
+      /*
       if (this.period === "range") {
         const numberDays = getNumberDays(this.pickerDayStartModel, this.pickerDayEndModel)
         if(numberDays<=6){
@@ -222,17 +223,11 @@ export default {
           this.snackbarText = 'Son 7 dias como maximo'
         }
       }
+      */
       if (this.period === "day") {
         if (this.vehicle && this.pickerDayModel) {
           this.loadingDataStart();
-          Meteor.call(
-            "DNT_TEST_getData",
-            {
-              vehicle: this.vehicle,
-              type: "day",
-              day: this.pickerDayModel
-            },
-            (error, data) => {
+          Meteor.call("DNT_TEST_getData",  { vehicle: this.vehicle, type: "day", day: this.pickerDayModel }, (error, data) => {
               if (!error) {
                 Session.set("report", data);
                 this.loadingDataEnd();
@@ -241,38 +236,26 @@ export default {
           );
         }
       } else if (this.period === "range") {
-        if (
-          this.vehicle &&
-          this.pickerDayStartModel &&
-          this.pickerDayEndModel
-        ) {
-          this.loadingDataStart();
-          Meteor.call(
-            "DNT_TEST_getData",
-            {
-              vehicle: this.vehicle,
-              type: "range",
-              dayStart: this.pickerDayStartModel,
-              dayEnd: this.pickerDayEndModel
-            },
-            (error, data) => {
-              if (!error) {
-                Session.set("report", data);
-                this.loadingDataEnd();
-              }
+        if (this.vehicle &&  this.pickerDayStartModel &&  this.pickerDayEndModel ) {
+            const numberDays = getNumberDays(this.pickerDayStartModel, this.pickerDayEndModel)
+            if(numberDays <= 6){
+                this.loadingDataStart();
+                Meteor.call("DNT_TEST_getData", { vehicle: this.vehicle, type: "range", dayStart: this.pickerDayStartModel, dayEnd: this.pickerDayEndModel },
+                  (error, data) => {
+                    if (!error) {
+                      Session.set("report", data);
+                      this.loadingDataEnd();
+                    }
+                });
+            }else{
+              this.snackbar = true;
+              this.snackbarText = 'Son 7 dias como maximo'
             }
-          );
         }
       } else if (this.period === "month") {
         if (this.vehicle && this.pickerMonthModel) {
           this.loadingDataStart();
-          Meteor.call(
-            "DNT_TEST_getData",
-            {
-              vehicle: this.vehicle,
-              type: "month",
-              month: this.pickerMonthModel
-            },
+          Meteor.call("DNT_TEST_getData", { vehicle: this.vehicle, type: "month", month: this.pickerMonthModel },
             (error, data) => {
               if (!error) {
                 Session.set("report", data);
