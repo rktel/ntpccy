@@ -205,7 +205,7 @@ export default {
     },
     getData() {
       if (this.period === "range") {
-        console.log(pickerDayStartModel, pickerDayEndModel);
+        console.log(this.pickerDayStartModel, this.pickerDayEndModel);
         Meteor.call(
           "DNT_get_OverspeedPilots",
           this.pickerDayStartModel,
