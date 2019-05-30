@@ -112,7 +112,7 @@ export default {
           {
             name: "Distancia Turno B",
             data: serieB_distancia
-          }
+          },
           {
             name: "Eventos Turno A",
             data: serieA_exceso15
