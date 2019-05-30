@@ -82,6 +82,7 @@ export default {
           }
         ];
         this.optionsABRatio = {
+          colors: ['#3F51B5', '#4CAF50'],
           chart: {
             toolbar: {
               show: false
@@ -92,7 +93,7 @@ export default {
           },
           plotOptions: {
             bar: {
-              horizontal: true,
+              horizontal: false,
               columnWidth: "40%"
             }
           },
@@ -123,7 +124,7 @@ export default {
           }
         ];
         this.optionsABDistanceEvent = {
-          colors: ['#2E93fA', '#66DA26', '#546E7A', '#E91E63', '#FF9800'],
+          colors: ['#673AB7', '#009688', '#FFC107', '#607D8B'],
           chart: {
             toolbar: {
               show: false
@@ -131,6 +132,12 @@ export default {
           },
           theme: {
             mode: "dark"
+          },
+          plotOptions: {
+            bar: {
+              horizontal: true,
+              columnWidth: "40%"
+            }
           },
           dataLabels: {
             enabled: false
