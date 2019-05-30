@@ -179,6 +179,7 @@ export default {
       pickerMonth: false,
       loadingData: false,
       plates: [],
+      vehicle: null,
       snackbar: false,
       snackbarText: ''
     };
@@ -209,6 +210,10 @@ export default {
       Util.toggleFullScreen();
     },
     getData() {
+      if(!this.vehicle){
+          this.snackbar = true;
+          this.snackbarText = 'Debe seleccionar un vehiculo'
+      }
       /*
       if (this.period === "range") {
         const numberDays = getNumberDays(this.pickerDayStartModel, this.pickerDayEndModel)
