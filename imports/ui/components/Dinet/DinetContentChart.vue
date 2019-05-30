@@ -130,6 +130,7 @@ const lightTheme = {
     mode: "light"
   }
 };
+/*
 const seriesABRatioDefault = [
   {
     name: "Ratio A",
@@ -166,6 +167,7 @@ const optionsABRatioDefault = {
     enabled: true
   }
 };
+*/
 </script>
 
 <style scoped>
