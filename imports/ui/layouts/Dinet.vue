@@ -144,7 +144,7 @@
       </v-speed-dial>
     </v-toolbar>
      <v-snackbar v-model="snackbar" top>
-      {{ snackbarText }}
+       <p class="text-xs-center"> {{snackbarText}}</p>
      </v-snackbar>
     <DinetContent></DinetContent>
     <DinetFooter></DinetFooter>
