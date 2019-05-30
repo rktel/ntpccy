@@ -80,7 +80,7 @@ export default {
             mode: "dark"
           },
           title: {
-            text: "Ratio(10*d/e) 15Km/h  [d=distancia, e=eventos]",
+            text: `Placa: ${plate} \n Ratio(10*d/e) 15Km/h  [d=distancia, e=eventos]`,
             align: "center",
             style: {
               fontSize: "16px"
