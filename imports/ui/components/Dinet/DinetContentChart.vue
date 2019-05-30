@@ -13,7 +13,7 @@
         <v-card v-if="report" class="pt-4">
           <h3 class="text-xs-center">{{this.report.plate}} [Excesos de 15 Km/h]</h3>
           <span class="text-xs-left">Reporte tipo: Distancia/Eventos</span>
-          <apexcharts type="bar" :options="optionsABRatio" :series="seriesABRatio"></apexcharts>
+          <apexcharts type="bar" :options="optionsABDistanceEvent" :series="seriesABDistanceEvent"></apexcharts>
           <h5 class="text-xs-right">[ distancia recorrida en (Km)]</h5>
         </v-card>
       </v-flex>
@@ -70,7 +70,7 @@ export default {
             return 0;
           }
         });
-        // RatioAB
+        /********************** RatioAB ********************/ 
         this.seriesABRatio = [
           {
             name: "Turno A",
@@ -90,12 +90,46 @@ export default {
           theme: {
             mode: "dark"
           },
-          title: {
-            // text: `Placa: ${plate} \n \n Ratio(10*d/e) 15Km/h  [d=distancia, e=eventos]`,
-            align: "center",
-            style: {
-              fontSize: "16px"
+          plotOptions: {
+            bar: {
+              horizontal: true,
+              columnWidth: "40%"
             }
+          },
+          dataLabels: {
+            enabled: true
+          },
+          xaxis: {
+            categories: seriesDays
+          }
+        };
+        /********************** ABDistanciaEventos ********************/ 
+        this.seriesABDistanceEvent = [
+          {
+            name: "Distancia Turno A",
+            data: serieA_distancia
+          },
+          {
+            name: "Distancia Turno B",
+            data: serieB_distancia
+          }
+          {
+            name: "Eventos Turno A",
+            data: serieA_exceso15
+          },
+          {
+            name: "Eventos Turno B",
+            data: serieB_exceso15
+          }
+        ];
+        this.optionsABDistanceEvent = {
+          chart: {
+            toolbar: {
+              show: false
+            }
+          },
+          theme: {
+            mode: "dark"
           },
           plotOptions: {
             bar: {
@@ -110,14 +144,15 @@ export default {
             categories: seriesDays
           }
         };
-        // End RatioAB
       }
     },
     dark: function() {
       if (Session.get("dark")) {
         this.optionsABRatio = darkTheme;
+        this.optionsABDistanceEvent = darkTheme;
       } else {
         this.optionsABRatio = lightTheme;
+        this.optionsABDistanceEvent = lightTheme;
       }
     }
   },
@@ -125,7 +160,12 @@ export default {
     return {
       /**************************** ABRatio  *****************************/
       seriesABRatio: [],
-      optionsABRatio: {}
+      optionsABRatio: {},
+      /**************************** AB Distancia/Eventos  *****************************/
+      seriesABDistanceEvent: [],
+      optionsABDistanceEvent: {},
+
+
     };
   }
 };
