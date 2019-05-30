@@ -4,6 +4,8 @@
       <v-flex lg6 xs12>
         <v-card v-if="report" class="pt-4">
           <h3 class="text-xs-center">{{this.report.plate}}</h3>
+          <span class="text-xs-left">Reporte tipo: Ratio [10 * d/e]</span>
+          <span class="text-xs-right">[d = distancia(Km), e = eventos]</span>
           <apexcharts type="bar" :options="optionsABRatio" :series="seriesABRatio"></apexcharts>
         </v-card>
       </v-flex>
@@ -81,7 +83,7 @@ export default {
             mode: "dark"
           },
           title: {
-            text: `Placa: ${plate} \n \n Ratio(10*d/e) 15Km/h  [d=distancia, e=eventos]`,
+           // text: `Placa: ${plate} \n \n Ratio(10*d/e) 15Km/h  [d=distancia, e=eventos]`,
             align: "center",
             style: {
               fontSize: "16px"
@@ -121,6 +123,8 @@ export default {
 };
 
 /* CONSTANTES DE INICIO */
+
+//const ratioLabel = `Ratio(10*d/e) 15Km/h  [d=distancia, e=eventos]`,
 const darkTheme = {
   theme: {
     mode: "dark"
