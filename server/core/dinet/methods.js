@@ -118,8 +118,13 @@ Meteor.methods({
         return proData
     },
     async DNT_TEST_getDayDataPilots(DAY){
-        let TIME_START = new Date(DAY + 'T'+'00:00:00.000Z')
-        let TIME_END = new Date(DAY + 'T'+'23:59:59.000Z')
+
+
+     //   let TIME_START = new Date(DAY + 'T'+'00:00:00.000Z')
+     //   let TIME_END = new Date(DAY + 'T'+'23:59:59.000Z')
+
+        let TIME_START = new Date(new Date(DAY).getTime() + parseInt(SEVEN))
+        let TIME_END = new Date(new Date(DAY).getTime() + parseInt(THIRTYONE))
 
         TIME_START = addHours(TIME_START, 5)
         TIME_END = addHours(TIME_END, 5)
