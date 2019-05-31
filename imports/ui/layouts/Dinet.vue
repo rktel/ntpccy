@@ -1,5 +1,8 @@
 <template>
   <v-app :dark="dark">
+    <v-navigation-drawer app clipped right>
+
+    </v-navigation-drawer>
     <v-navigation-drawer app clipped floating v-model="drawer">
       <v-layout column>
         <v-flex>
