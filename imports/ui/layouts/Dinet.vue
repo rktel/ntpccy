@@ -1,7 +1,11 @@
 <template>
   <v-app :dark="dark">
     <v-navigation-drawer fixed v-model="drawerRight" right clipped app>
-
+      <v-layout fill-height row justify-center align-center>
+        <v-flex>
+          <h3 class="text-xs-center"> Ranking Conductores</h3>
+        </v-flex>
+      </v-layout>
     </v-navigation-drawer>
     <v-navigation-drawer app clipped floating v-model="drawer">
       <v-layout column>
