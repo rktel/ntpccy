@@ -82,7 +82,7 @@ export default {
           }
         ];
         this.optionsABRatio = {
-          colors: ['#3F51B5', '#4CAF50'],
+          colors: ['#01579b', '#006064'],
           chart: {
             toolbar: {
               show: false
@@ -124,7 +124,7 @@ export default {
           }
         ];
         this.optionsABDistanceEvent = {
-          colors: ['#1abc9c', '#16a085', '#f1c40f', '#f39c12'],
+          colors: ['#6200ea', '#304ffe', '#c51162', '#aa00ff'],
           chart: {
             toolbar: {
               show: false
