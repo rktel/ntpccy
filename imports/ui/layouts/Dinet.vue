@@ -1,6 +1,8 @@
 <template>
   <v-app :dark="dark">
+    <v-navigation-drawer fixed v-model="drawerRight" right clipped app>
 
+    </v-navigation-drawer>
     <v-navigation-drawer app clipped floating v-model="drawer">
       <v-layout column>
         <v-flex>
@@ -111,9 +113,7 @@
         </v-flex>
       </v-layout>
     </v-navigation-drawer>
-    <v-navigation-drawer app clipped floating temporary v-model="drawerRight">
 
-    </v-navigation-drawer>
     <v-toolbar app clipped-left clipped-right fixed>
       <v-toolbar-side-icon @click="openDrawer"></v-toolbar-side-icon>
       <v-avatar v-if="!dark">
