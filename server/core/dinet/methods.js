@@ -133,7 +133,7 @@ Meteor.methods({
         let dataDay = Meteor.call('DNT_get_OverspeedPilots', TIME_START, TIME_END)
 
         resultDay.day = getDateString(DAY)
-        console.log(dataDay);
+        console.log(dataDay.length);
         
 
         if (dataDay && dataDay.length > 0) {
