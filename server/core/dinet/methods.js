@@ -112,10 +112,8 @@ Meteor.methods({
     },
     async DNT_packetDayDataPilots(day) {
         const data = Meteor.call("DNT_TEST_getDayDataPilots", day)
-        const proData = {
-               data: [data]
-        }
-        return proData
+
+        return data
     },
     async DNT_TEST_getDayDataPilots(DAY){
 
