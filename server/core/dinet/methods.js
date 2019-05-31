@@ -19,8 +19,8 @@ Meteor.methods({
                 {
                     $group: {
                         _id: '$events.person',
-                        firstEvent: { $first: '$events.counters' },
-                        lastEvent: { $last: '$events.counters' },
+                        firstEvent: { $first: '$events' },
+                        lastEvent: { $last: '$events' },
                         overspeed15: {
                             $sum: {
                                 $cond: [
@@ -130,7 +130,7 @@ Meteor.methods({
         resultDay.day = getDateString(DAY)
         console.log(dataForDay);
         
-/*
+
         if (dataForDay && dataForDay.length > 0) {
             const distance = getDistance(dataForDay[0].firstEvent, dataForDay[0].lastEvent)
             delete dataForDay[0].firstEvent
@@ -140,7 +140,7 @@ Meteor.methods({
         } else {
             resultDay.dataForDay = serieNULL()
         }
-        */
+        
         return resultDay
     },
     async DNT_TEST_getData(dataOptions) {
