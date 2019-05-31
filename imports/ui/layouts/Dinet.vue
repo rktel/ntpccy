@@ -199,6 +199,9 @@ export default {
     openDrawer() {
       this.drawer = !this.drawer;
     },
+    openDrawerRight(){
+      this.drawerRight = true;
+    },
     logout() {
       Meteor.logout(error => {
         if (!error) {
@@ -239,7 +242,7 @@ export default {
               if (!error) {
                  // Session.set("report", data);
                  console.log(data);
-                 
+                 this.openDrawerRight()
                // this.loadingDataEnd();
               }
           });          
