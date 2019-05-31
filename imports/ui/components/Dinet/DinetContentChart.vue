@@ -82,7 +82,7 @@ export default {
           }
         ];
         this.optionsABRatio = {
-          colors: ['#01579b', '#006064'],
+          colors: ['#01579b', '#d50000'],
           chart: {
             toolbar: {
               show: false
@@ -94,7 +94,7 @@ export default {
           plotOptions: {
             bar: {
               horizontal: false,
-              columnWidth: "40%"
+              columnWidth: "50%"
             }
           },
           dataLabels: {
@@ -136,7 +136,7 @@ export default {
           plotOptions: {
             bar: {
               horizontal: true,
-              columnWidth: "40%"
+              columnWidth: "50%"
             }
           },
           dataLabels: {
