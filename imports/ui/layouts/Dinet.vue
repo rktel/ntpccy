@@ -5,7 +5,7 @@
         <v-flex>
           <h3 class="text-xs-center">Ranking Conductores</h3>
           <span class="text-xs-center">{{pilotsData.day}}</span>
-            <apexcharts type="bar" :options="optionsPilots" :series="seriesPilots"></apexcharts>
+            <!--apexcharts type="bar" :options="optionsPilots" :series="seriesPilots"></apexcharts-->
         </v-flex>
       </v-layout>
     </v-navigation-drawer>
