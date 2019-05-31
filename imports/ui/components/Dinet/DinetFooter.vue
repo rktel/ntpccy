@@ -1,5 +1,5 @@
 <template>
-    <v-footer app>
+    <v-footer>
       <v-layout justify-center row wrap>
           <v-flex py-3 xs12>
             <span class="px-1">&copy; {{ new Date().getFullYear() }}</span>
