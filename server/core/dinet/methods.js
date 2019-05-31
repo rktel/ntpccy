@@ -112,7 +112,6 @@ Meteor.methods({
     },
     async DNT_packetDayDataPilots(day) {
         const data = Meteor.call("DNT_TEST_getDayDataPilots", day)
-
         return data
     },
     async DNT_TEST_getDayDataPilots(DAY){
@@ -127,10 +126,11 @@ Meteor.methods({
         TIME_START = addHours(TIME_START, 5)
         TIME_END = addHours(TIME_END, 5)
         
-        let resultDay = []
+        let resultDay = {}
         let dataDay = Meteor.call('DNT_get_OverspeedPilots', TIME_START, TIME_END)
 
-       // resultDay.day = getDateString(DAY)
+        resultDay.day = getDateString(DAY)
+        let data = []
         console.log(dataDay.length);
         
 
@@ -140,13 +140,12 @@ Meteor.methods({
                 delete d.firstEvent
                 delete d.lastEvent
                 d.distancia = distance
-                resultDay.push(d)
+                d.day = getDateString(DAY)
+                data.push(d)
             })
-        } else {
-           // resultDay.dataDay = serieNULL()
-        }
-        
-        return resultDay
+            resultDay.data = data
+        } 
+       return resultDay
     },
     async DNT_TEST_getData(dataOptions) {
         const { vehicle, type, day, month, dayStart, dayEnd } = dataOptions
