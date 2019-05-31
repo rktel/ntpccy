@@ -242,7 +242,10 @@ export default {
               if (!error) {
                  // Session.set("report", data);
                  console.log(data);
-                 this.openDrawerRight()
+                 if(data.data.length>0){
+
+                   this.openDrawerRight()
+                 }
                // this.loadingDataEnd();
               }
           });          
