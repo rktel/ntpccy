@@ -1,7 +1,7 @@
 <template>
-    <v-footer app clipped-left clipped-right fixed>
+    <v-footer app>
       <v-spacer></v-spacer>
-      <span class="px-1">&copy; {{ new Date().getFullYear() }}</span>
+      <span class="px-4">&copy; {{ new Date().getFullYear() }}</span>
       <img class="mx-2" src="img/seclog.png" alt="Securitas" width="45">
     </v-footer>
 </template>
