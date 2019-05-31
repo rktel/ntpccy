@@ -129,7 +129,7 @@ Meteor.methods({
         TIME_START = addHours(TIME_START, 5)
         TIME_END = addHours(TIME_END, 5)
         
-        let resultDay = {}
+        let resultDay = []
         let dataDay = Meteor.call('DNT_get_OverspeedPilots', TIME_START, TIME_END)
 
         resultDay.day = getDateString(DAY)
@@ -137,12 +137,12 @@ Meteor.methods({
         
 
         if (dataDay && dataDay.length > 0) {
-            dataDay.forEach((d, index)=>{
-                const distance = getDistance(dataDay[index].firstEvent, dataDay[index].lastEvent)
-                delete dataDay[index].firstEvent
-                delete dataDay[index].lastEvent
-                dataDay[index].distancia = distance
-                resultDay.dataDay = dataDay[index]
+            dataDay.forEach((d)=>{
+                const distance = getDistance(d.firstEvent, d.lastEvent)
+                delete d.firstEvent
+                delete d.lastEvent
+                d.distancia = distance
+                resultDay.data.push(d)
             })
         } else {
             resultDay.dataDay = serieNULL()
