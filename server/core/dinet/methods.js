@@ -137,11 +137,13 @@ Meteor.methods({
         
 
         if (dataDay && dataDay.length > 0) {
-            const distance = getDistance(dataDay[0].firstEvent, dataDay[0].lastEvent)
-            delete dataDay[0].firstEvent
-            delete dataDay[0].lastEvent
-            dataDay[0].distancia = distance
-            resultDay.dataDay = dataDay[0]
+            dataDay.forEach((d, index)=>{
+                const distance = getDistance(dataDay[index].firstEvent, dataDay[index].lastEvent)
+                delete dataDay[index].firstEvent
+                delete dataDay[index].lastEvent
+                dataDay[index].distancia = distance
+                resultDay.dataDay = dataDay[index]
+            })
         } else {
             resultDay.dataDay = serieNULL()
         }
