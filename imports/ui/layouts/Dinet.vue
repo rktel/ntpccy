@@ -113,7 +113,7 @@
         </v-flex>
       </v-layout>
     </v-navigation-drawer>
-    <v-toolbar app clipped-left clipped-right>
+    <v-toolbar app clipped-left clipped-right fixed>
       <v-toolbar-side-icon @click="openDrawer"></v-toolbar-side-icon>
       <v-avatar v-if="!dark">
         <img v-if="!dark" src="img/Dinet_alt.png" alt="Dinet">
@@ -150,7 +150,11 @@
       {{snackbarText}}
      </v-snackbar>
     <DinetContent></DinetContent>
-    <DinetFooter></DinetFooter>
+    <v-footer app>
+      <v-spacer></v-spacer>
+      <span class="px-2">&copy; {{ new Date().getFullYear() }}</span>
+      <img class="mx-2" src="img/seclog.png" alt="Securitas" width="45">
+    </v-footer>
   </v-app>
 </template>
 
