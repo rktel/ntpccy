@@ -140,7 +140,7 @@ export default {
             }
           },
           dataLabels: {
-            enabled: false
+            enabled: true
           },
           xaxis: {
             categories: seriesDays
