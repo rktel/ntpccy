@@ -3,7 +3,8 @@
     <v-navigation-drawer floating v-model="drawerRight" right clipped app>
       <v-layout fill-height row justify-center align-center>
         <v-flex>
-          <h3 class="text-xs-center"> Ranking Conductores</h3>
+          <h3 class="text-xs-center">Ranking Conductores</h3>
+          <span class="text-xs-left">May 15</span>
         </v-flex>
       </v-layout>
     </v-navigation-drawer>
