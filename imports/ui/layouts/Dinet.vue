@@ -1,6 +1,6 @@
 <template>
   <v-app :dark="dark">
-    <v-navigation-drawer app clipped right>
+    <v-navigation-drawer app clipped right v-model="drawerRight">
 
     </v-navigation-drawer>
     <v-navigation-drawer app clipped floating v-model="drawer">
@@ -170,6 +170,7 @@ export default {
     return {
       dark: true,
       drawer: true,
+      drawerRight: false,
       fab: false,
       period: "day",
       pickerDayModel: new Date().toISOString().substr(0, 10),
@@ -240,8 +241,14 @@ export default {
                 Session.set("report", data);
                 this.loadingDataEnd();
               }
-            }
-          );
+          });
+        }else if(this.pickerDayModel){
+          Meteor.call("DNT_TEST_getDataPilots",  { type: "day", day: this.pickerDayModel }, (error, data) => {
+              if (!error) {
+               // Session.set("report", data);
+               // this.loadingDataEnd();
+              }
+          });          
         }
       } else if (this.period === "range") {
         if (this.vehicle &&  this.pickerDayStartModel &&  this.pickerDayEndModel ) {

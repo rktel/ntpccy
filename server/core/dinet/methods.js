@@ -90,6 +90,56 @@ Meteor.methods({
 
         return report
     },
+    async DNT_TEST_getDataPilots(dataOptions) {
+        const { type, day, month, dayStart, dayEnd } = dataOptions
+
+        switch (type) {
+            case 'day':
+                const data = Meteor.call("DNT_packetDayDataPilots", day)
+                console.log('Pilot Day data:', data);
+                
+                break;
+            case 'range':
+                const dataRange = Meteor.call("DNT_packetRangeDataPilots", dayStart, dayEnd)
+                break;
+            case 'month':
+                const dataMonth = Meteor.call("DNT_packetMonthDataPilots", month)
+                break;
+
+            default:
+                break;
+        }
+    },
+    async DNT_packetDayDataPilots(day) {
+        const data = Meteor.call("DNT_TEST_getDayDataPilots", day)
+        const proData = {
+               data: [data]
+        }
+        return proData
+    },
+    async DNT_TEST_getDayDataPilots(DAY){
+        let TIME_START = new Date(DAY + 'T'+'00:00:00.000Z')
+        let TIME_END = new Date(DAY + 'T'+'23:59:59.000Z')
+
+        TIME_START = addHours(TIME_START, 5)
+        TIME_END = addHours(TIME_END, 5)
+        
+        let resultDay = {}
+        let dataForDay = Meteor.call('DNT_get_OverspeedPilots', TIME_START, TIME_END)
+
+        resultDay.day = getDateString(DAY)
+
+        if (dataForDay && dataForDay.length > 0) {
+            const distance = getDistance(dataForDay[0].firstEvent, dataForDay[0].lastEvent)
+            delete dataForDay[0].firstEvent
+            delete dataForDay[0].lastEvent
+            dataForDay[0].distancia = distance
+            resultDay.dataForDay = dataForDay[0]
+        } else {
+            resultDay.dataForDay = serieNULL()
+        }
+        return resultDay
+    },
     async DNT_TEST_getData(dataOptions) {
         const { vehicle, type, day, month, dayStart, dayEnd } = dataOptions
 
@@ -131,16 +181,16 @@ Meteor.methods({
         let totalDistancia_A = 0
         let totalDistancia_B = 0
         monthString = preData[0].day.split(' ')[1]
-        preData.forEach(element=>{
+        preData.forEach(element => {
             totalDistancia_A = totalDistancia_A + element.turnA.distancia
             totalDistancia_B = totalDistancia_B + element.turnB.distancia
             totalExceso15_A = totalExceso15_A + element.turnA.exceso15
             totalExceso15_B = totalExceso15_B + element.turnB.exceso15
         })
         console.log(totalDistancia_A);
-         const proData = {
+        const proData = {
             plate: vehicle,
-            data: [{day:monthString, turnA: {distancia: totalDistancia_A, exceso15: totalExceso15_A},turnB: {distancia: totalDistancia_B, exceso15: totalExceso15_B} }]
+            data: [{ day: monthString, turnA: { distancia: totalDistancia_A, exceso15: totalExceso15_A }, turnB: { distancia: totalDistancia_B, exceso15: totalExceso15_B } }]
         }
         return proData
     },
