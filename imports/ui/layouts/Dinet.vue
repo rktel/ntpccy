@@ -194,7 +194,9 @@ export default {
       vehicle: null,
       snackbar: false,
       snackbarText: '',
-      pilotsData: {}
+      pilotsData: {},
+      seriesPilots: [],
+      optionsPilots: {},
     };
   },
   methods: {
@@ -235,7 +237,7 @@ export default {
           Meteor.call("DNT_TEST_getDataPilots",  { type: "day", day: this.pickerDayModel }, (error, data) => {
               if (!error) {
                  // Session.set("report", data);
-                 console.log(data);
+                 // console.log(data);
                  if(data.data.length>0){
                    this.pilotsData = data;
                    this.openDrawerRight()
@@ -293,6 +295,14 @@ export default {
         this.plates = plates;
       }
     });
+  },
+  watch:{
+    pilotsData: function () {
+       if (this.pilotsData) {
+         console.log(this.pilotsData);
+         
+       }
+    }
   }
 };
 

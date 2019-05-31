@@ -140,7 +140,6 @@ Meteor.methods({
                 delete d.firstEvent
                 delete d.lastEvent
                 d.distancia = distance
-                d.day = getDateString(DAY)
                 data.push(d)
             })
             resultDay.data = data
