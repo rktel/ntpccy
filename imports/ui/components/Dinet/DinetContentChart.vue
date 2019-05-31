@@ -124,7 +124,7 @@ export default {
           }
         ];
         this.optionsABDistanceEvent = {
-         // colors: ['#6200ea', '#304ffe', '#c51162', '#aa00ff'],
+          colors: ['#2196F3', '#3F51B5', '#CDDC39', '#4CAF50'],
           chart: {
             toolbar: {
               show: false
