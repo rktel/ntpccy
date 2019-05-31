@@ -237,7 +237,9 @@ export default {
         if(this.pickerDayModel){
           Meteor.call("DNT_TEST_getDataPilots",  { type: "day", day: this.pickerDayModel }, (error, data) => {
               if (!error) {
-               // Session.set("report", data);
+                 // Session.set("report", data);
+                 console.log(data);
+                 
                // this.loadingDataEnd();
               }
           });          
