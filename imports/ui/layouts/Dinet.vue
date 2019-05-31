@@ -234,6 +234,14 @@ export default {
       }
       */
       if (this.period === "day") {
+        if(this.pickerDayModel){
+          Meteor.call("DNT_TEST_getDataPilots",  { type: "day", day: this.pickerDayModel }, (error, data) => {
+              if (!error) {
+               // Session.set("report", data);
+               // this.loadingDataEnd();
+              }
+          });          
+        }
         if (this.vehicle && this.pickerDayModel) {
           this.loadingDataStart();
           Meteor.call("DNT_TEST_getData",  { vehicle: this.vehicle, type: "day", day: this.pickerDayModel }, (error, data) => {
@@ -242,13 +250,6 @@ export default {
                 this.loadingDataEnd();
               }
           });
-        }else if(this.pickerDayModel){
-          Meteor.call("DNT_TEST_getDataPilots",  { type: "day", day: this.pickerDayModel }, (error, data) => {
-              if (!error) {
-               // Session.set("report", data);
-               // this.loadingDataEnd();
-              }
-          });          
         }
       } else if (this.period === "range") {
         if (this.vehicle &&  this.pickerDayStartModel &&  this.pickerDayEndModel ) {
