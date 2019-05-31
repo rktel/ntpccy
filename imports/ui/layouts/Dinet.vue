@@ -4,7 +4,7 @@
       <v-layout fill-height row justify-center align-center>
         <v-flex>
           <h3 class="text-xs-center">Ranking Conductores</h3>
-          <span class="text-xs-center">{{pilotsData.day}}</span>
+          <h4 class="text-xs-center">{{pilotsData.day}}</h4>
             <!--apexcharts type="bar" :options="optionsPilots" :series="seriesPilots"></apexcharts-->
         </v-flex>
       </v-layout>
