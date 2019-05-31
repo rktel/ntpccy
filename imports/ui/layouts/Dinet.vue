@@ -114,7 +114,7 @@
       </v-layout>
     </v-navigation-drawer>
 
-    <v-toolbar app  clipped-right fixed>
+    <v-toolbar app clipped-left clipped-right fixed>
       <v-toolbar-side-icon @click="openDrawer"></v-toolbar-side-icon>
       <v-avatar v-if="!dark">
         <img v-if="!dark" src="img/Dinet_alt.png" alt="Dinet">
