@@ -93,7 +93,7 @@ export default {
           },
           plotOptions: {
             bar: {
-              horizontal: false,
+              horizontal: true,
               columnWidth: "50%"
             }
           },
