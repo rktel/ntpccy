@@ -150,11 +150,7 @@
       {{snackbarText}}
      </v-snackbar>
     <DinetContent></DinetContent>
-    <v-footer app>
-      <v-spacer></v-spacer>
-      <span class="px-2">&copy; {{ new Date().getFullYear() }}</span>
-      <img class="mx-2" src="img/seclog.png" alt="Securitas" width="45">
-    </v-footer>
+    <DinetFooter></DinetFooter>
   </v-app>
 </template>
 
@@ -174,7 +170,7 @@ export default {
     return {
       dark: true,
       drawer: true,
-      drawerRight: false,
+      drawerRight: true,
       fab: false,
       period: "day",
       pickerDayModel: new Date().toISOString().substr(0, 10),
