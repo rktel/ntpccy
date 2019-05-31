@@ -82,7 +82,7 @@ export default {
           }
         ];
         this.optionsABRatio = {
-          //colors: ['#009688', '#311b92'],
+          colors: ['#3F51B5', '#4CAF50'],
           chart: {
             toolbar: {
               show: false
