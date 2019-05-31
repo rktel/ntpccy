@@ -111,12 +111,12 @@ export default {
             data: serieA_distancia
           },
           {
-            name: "Distancia Turno B",
-            data: serieB_distancia
-          },
-          {
             name: "Eventos Turno A",
             data: serieA_exceso15
+          },
+          {
+            name: "Distancia Turno B",
+            data: serieB_distancia
           },
           {
             name: "Eventos Turno B",
@@ -124,7 +124,7 @@ export default {
           }
         ];
         this.optionsABDistanceEvent = {
-          colors: ['#673AB7', '#009688', '#FFC107', '#607D8B'],
+          colors: ['#1abc9c', '#16a085', '#f1c40f', '#f39c12'],
           chart: {
             toolbar: {
               show: false
