@@ -4,7 +4,8 @@
       <v-layout fill-height row justify-center align-center>
         <v-flex>
           <h3 class="text-xs-center">Ranking Conductores</h3>
-          <span class="text-xs-left">May 15</span>
+          <span class="text-xs-center">{{pilotsData.day}}</span>
+            <apexcharts type="bar" :options="optionsPilots" :series="seriesPilots"></apexcharts>
         </v-flex>
       </v-layout>
     </v-navigation-drawer>
@@ -161,6 +162,7 @@
 </template>
 
 <script>
+import VueApexCharts from "vue-apexcharts";
 import { Session } from "meteor/session";
 import Util from "../../util";
 
@@ -191,7 +193,8 @@ export default {
       plates: [],
       vehicle: null,
       snackbar: false,
-      snackbarText: ''
+      snackbarText: '',
+      pilotsData: {}
     };
   },
   methods: {
@@ -227,21 +230,6 @@ export default {
           this.snackbar = true;
           this.snackbarText = 'Debe seleccionar un vehiculo'
       }
-      /*
-      if (this.period === "range") {
-        const numberDays = getNumberDays(this.pickerDayStartModel, this.pickerDayEndModel)
-        if(numberDays<=6){
-          Meteor.call("DNT_get_OverspeedPilots",  this.pickerDayStartModel, this.pickerDayEndModel, (error, data) => {
-              if (!error) {
-                console.log(data);
-              }
-          });
-        }else{
-          this.snackbar = true;
-          this.snackbarText = 'Son 7 dias como maximo'
-        }
-      }
-      */
       if (this.period === "day") {
         if(this.pickerDayModel){
           Meteor.call("DNT_TEST_getDataPilots",  { type: "day", day: this.pickerDayModel }, (error, data) => {
@@ -249,7 +237,7 @@ export default {
                  // Session.set("report", data);
                  console.log(data);
                  if(data.data.length>0){
-
+                   this.pilotsData = data;
                    this.openDrawerRight()
                  }
                // this.loadingDataEnd();
