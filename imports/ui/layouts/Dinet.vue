@@ -152,6 +152,7 @@
           <span>Salir</span>
         </v-tooltip>
       </v-speed-dial>
+      <v-toolbar-side-icon @click="drawerRight = !drawerRight"></v-toolbar-side-icon>
     </v-toolbar>
      <v-snackbar v-model="snackbar" top>
       {{snackbarText}}
@@ -333,7 +334,7 @@ export default {
           plotOptions: {
             bar: {
               horizontal: true,
-              columnWidth: "25%"
+              columnWidth: "30%"
             }
           },
           dataLabels: {
