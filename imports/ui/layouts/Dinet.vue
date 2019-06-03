@@ -4,7 +4,7 @@
       <v-layout fill-height row  align-center>
         <v-flex pa-0>
           <h3 class="text-xs-center">Ranking Conductores</h3>
-          <span class="text-xs-left">Reporte tipo: Ratio [10 * d/e]</span>
+          <span class="text-xs-center">Reporte tipo: Ratio [10 * d/e]</span>
           <h4 class="text-xs-center">{{pilotsData.day}}</h4>
             <apexcharts type="bar" :options="optionsPilots" :series="seriesPilots"></apexcharts>
         </v-flex>
