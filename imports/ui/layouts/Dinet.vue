@@ -299,8 +299,45 @@ export default {
   watch:{
     pilotsData: function () {
        if (this.pilotsData) {
-         console.log(this.pilotsData);
-         
+         let data = this.pilotsData.data
+         const pilots = data.map(el => el.pilot);
+         console.log('pilots:', pilots)
+        /********************** Pilots ********************/ 
+        /*
+        this.seriesPilots = [
+          {
+            name: "Turno A",
+            data: ratioA
+          },
+          {
+            name: "Turno B",
+            data: ratioB
+          }
+        ];
+        this.optionsPilots = {
+          colors: ['#3F51B5', '#4CAF50'],
+          chart: {
+            toolbar: {
+              show: false
+            }
+          },
+          theme: {
+            mode: "dark"
+          },
+          plotOptions: {
+            bar: {
+              horizontal: true,
+              columnWidth: "50%"
+            }
+          },
+          dataLabels: {
+            enabled: true
+          },
+          xaxis: {
+            categories: seriesDays
+          }
+        };         
+*/
        }
     }
   }
