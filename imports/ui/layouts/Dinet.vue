@@ -172,7 +172,8 @@ import DinetFooter from "../../ui/components/Dinet/DinetFooter.vue";
 export default {
   components: {
     DinetContent,
-    DinetFooter
+    DinetFooter,
+    apexcharts: VueApexCharts
   },
   data() {
     return {
