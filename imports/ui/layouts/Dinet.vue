@@ -4,6 +4,7 @@
       <v-layout fill-height row  align-center>
         <v-flex pa-0>
           <h3 class="text-xs-center">Ranking Conductores</h3>
+          <span class="text-xs-left">Reporte tipo: Ratio [10 * d/e]</span>
           <h4 class="text-xs-center">{{pilotsData.day}}</h4>
             <apexcharts type="bar" :options="optionsPilots" :series="seriesPilots"></apexcharts>
         </v-flex>
@@ -291,6 +292,18 @@ export default {
             }
         }
       } else if (this.period === "month") {
+        if (this.pickerMonthModel) {
+          Meteor.call("DNT_TEST_getDataPilots", {  type: "month", month: this.pickerMonthModel },
+            (error, data) => {
+              if (!error) {
+                    if(data && data.data && data.data.length >0 ){
+                      this.pilotsData = data;
+                      this.openDrawerRight()
+                    }
+              }
+            }
+          );
+        }
         if (this.vehicle && this.pickerMonthModel) {
           this.loadingDataStart();
           Meteor.call("DNT_TEST_getData", { vehicle: this.vehicle, type: "month", month: this.pickerMonthModel },

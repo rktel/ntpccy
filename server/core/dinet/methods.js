@@ -106,6 +106,8 @@ Meteor.methods({
                 break;
             case 'month':
                 const dataMonth = Meteor.call("DNT_packetMonthDataPilots", month)
+                console.log('Pilot dataMonth:', dataMonth);
+                return dataMonth;
                 break;
 
             default:
@@ -119,16 +121,14 @@ Meteor.methods({
     async DNT_packetRangeDataPilots(dayStart, dayEnd) {
         dayStart = addHours(dayStart, 5)
         dayEnd = addHours(dayEnd, 5)
-        
+      
         let resultRange = {}
         let dataRange = Meteor.call('DNT_get_OverspeedPilots', dayStart, dayEnd)
 
         resultRange.day = getDateString(dayStart) + "-" + getDateString(dayEnd)
         let data = []
-        console.log(dataRange.length);
-        
-
-        if (dataRange && dataRange.length > 0) {
+      //  console.log(dataRange.length);
+         if (dataRange && dataRange.length > 0) {
             dataRange.forEach((d)=>{
                 const distance = getDistance(d.firstEvent, d.lastEvent)
                 delete d.firstEvent
@@ -138,25 +138,33 @@ Meteor.methods({
             })
             resultRange.data = data
         }
-       // console.log("resultRange:", resultRange) 
-       return resultRange
-        /*
-        const dates = getDates(dayStart, dayEnd)
-        let preData = []
-        dates.forEach((day) => {
-            const dayData = Meteor.call("DNT_TEST_getDayDataPilots", day)
-            preData.push(dayData)
-        })
+        return resultRange
+     },
+    async DNT_packetMonthDataPilots(month){
+        const dates = getDaysInMonth(month)
+        let firstDay = dates[0]
+        let lastDay = dates[dates.length-1]
+        firstDay = addHours(firstDay, 5)
+        lastDay = addHours(lastDay, 5)
+      
+        let resultRange = {}
+        let dataRange = Meteor.call('DNT_get_OverspeedPilots', firstDay, lastDay)
 
-        console.log(preData)
-        */
-        /*
-        const proData = {
-            plate: vehicle,
-            data: preData
+        resultRange.day = getDateString(firstDay) + "-" + getDateString(lastDay)
+        let data = []
+      //  console.log(dataRange.length);
+         if (dataRange && dataRange.length > 0) {
+            dataRange.forEach((d)=>{
+                const distance = getDistance(d.firstEvent, d.lastEvent)
+                delete d.firstEvent
+                delete d.lastEvent
+                d.distancia = distance
+                data.push(d)
+            })
+            resultRange.data = data
         }
-        return proData
-        */
+        return resultRange
+
     },
     async DNT_TEST_getDayDataPilots(DAY){
 
