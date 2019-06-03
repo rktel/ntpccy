@@ -304,7 +304,7 @@ export default {
          let data = this.pilotsData.data
          data.sort((a,b) => {
            if(a.distancia && a.overspeed15 && b.distancia && b.overspeed15){
-             return parseInt(10*(a.distancia/a.overspeed15)) - parseInt(10*(b.distancia/b.overspeed15))
+             return parseInt(10*(b.distancia/b.overspeed15)) - parseInt(10*(a.distancia/a.overspeed15))
            }else{
              return 0
            }
