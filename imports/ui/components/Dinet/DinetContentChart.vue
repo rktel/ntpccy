@@ -3,18 +3,18 @@
     <v-layout row wrap>
       <v-flex lg6 xs12>
         <v-card v-if="report" class="pt-4">
-          <h3 class="text-xs-center">{{this.report.plate}} [Excesos de 15 Km/h]</h3>
-          <span class="text-xs-left">Reporte tipo: Ratio [10 * d/e]</span>
+          <h3 class="text-xs-center">{{this.report.plate}} [ Excesos de 15 Km/h ]</h3>
+          <span class="text-xs-left">Reporte tipo: Ratio [ 10 * d/e ]</span>
           <apexcharts type="bar" :options="optionsABRatio" :series="seriesABRatio"></apexcharts>
-          <h5 class="text-xs-right">[ d: distancia recorrida (Km), e: numero de eventos]</h5>
+          <h5 class="text-xs-right">[ d: distancia recorrida en Km, e: numero de eventos]</h5>
         </v-card>
       </v-flex>
       <v-flex lg6 xs12>
         <v-card v-if="report" class="pt-4">
-          <h3 class="text-xs-center">{{this.report.plate}} [Excesos de 15 Km/h]</h3>
+          <h3 class="text-xs-center">{{this.report.plate}} [ Excesos de 15 Km/h ]</h3>
           <span class="text-xs-left">Reporte tipo: Distancia-Eventos</span>
           <apexcharts type="bar" :options="optionsABDistanceEvent" :series="seriesABDistanceEvent"></apexcharts>
-          <h5 class="text-xs-right">[ distancia recorrida en (Km)]</h5>
+          <h5 class="text-xs-right">[ distancia recorrida en Km ]</h5>
         </v-card>
       </v-flex>
     </v-layout>
