@@ -302,6 +302,13 @@ export default {
     pilotsData: function () {
        if (this.pilotsData) {
          let data = this.pilotsData.data
+         data.sort((a,b) => {
+           if(a.distancia && a.overspeed15 && b.distancia && b.overspeed15){
+             return parseInt(10*(a.distancia/a.overspeed15)) - parseInt(10*(b.distancia/b.overspeed15))
+           }else{
+             return 0
+           }
+         })
          const pilots = data.map(el => el.pilot);
          const ratios = data.map(el => {
            if(el.distancia && el.overspeed15){
