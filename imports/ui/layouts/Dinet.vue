@@ -238,7 +238,7 @@ export default {
               if (!error) {
                  // Session.set("report", data);
                  // console.log(data);
-                 if(data.data.length>0){
+                 if(1){
                    this.pilotsData = data;
                    this.openDrawerRight()
                  }
