@@ -115,6 +115,30 @@ Meteor.methods({
         return data
     },
     async DNT_packetRangeDataPilots(dayStart, dayEnd) {
+        dayStart = addHours(dayStart, 5)
+        dayEnd = addHours(dayEnd, 5)
+        
+        let resultDay = {}
+        let dataDay = Meteor.call('DNT_get_OverspeedPilots', dayStart, dayEnd)
+
+        resultDay.day = getDateString(dayStart) + "-" + getDateString(dayEnd)
+        let data = []
+        console.log(dataDay.length);
+        
+
+        if (dataDay && dataDay.length > 0) {
+            dataDay.forEach((d)=>{
+                const distance = getDistance(d.firstEvent, d.lastEvent)
+                delete d.firstEvent
+                delete d.lastEvent
+                d.distancia = distance
+                data.push(d)
+            })
+            resultDay.data = data
+        }
+        console.log("resultDay:", resultDay) 
+      // return resultDay
+        /*
         const dates = getDates(dayStart, dayEnd)
         let preData = []
         dates.forEach((day) => {
@@ -123,6 +147,7 @@ Meteor.methods({
         })
 
         console.log(preData)
+        */
         /*
         const proData = {
             plate: vehicle,
