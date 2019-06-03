@@ -7,7 +7,7 @@
           <h4 class="text-xs-center">Reporte tipo: Ratio [ 10 * d/e ]</h4>
           <h4 class="text-xs-center">{{pilotsData.day}}</h4>
           <apexcharts type="bar" :options="optionsPilots" :series="seriesPilots"></apexcharts>
-          <h5 class="text-xs-right">[ d: distancia recorrida en Km, e: numero de eventos ]</h5>
+          <h5 class="text-xs-center">[ d: distancia recorrida en Km, e: numero de eventos ]</h5>
         </v-flex>
       </v-layout>
     </v-navigation-drawer>
@@ -383,6 +383,12 @@ export default {
         };         
 
        }
+    },    dark: function() {
+      if (Session.get("dark")) {
+        this.optionsPilots= darkTheme;
+      } else {
+        this.optionsPilots = lightTheme;
+       }
     }
   }
 };
@@ -393,6 +399,17 @@ function getNumberDays(a, b) {
   let timeDiff = Math.abs(date2.getTime() - date1.getTime());
   return Math.ceil(timeDiff / (1000 * 3600 * 24));
 }
+
+const darkTheme = {
+  theme: {
+    mode: "dark"
+  }
+};
+const lightTheme = {
+  theme: {
+    mode: "light"
+  }
+};
 </script>
 
 <style scoped>
