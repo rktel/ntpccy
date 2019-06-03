@@ -301,7 +301,15 @@ export default {
        if (this.pilotsData) {
          let data = this.pilotsData.data
          const pilots = data.map(el => el.pilot);
+         const ratios = data.map(el => {
+           if(el.distancia && el.overspeed15){
+             return 10*(el.distancia/el.overspeed15)
+           }else{
+             return 0
+           }
+         })
          console.log('pilots:', pilots)
+         console.log('ratios:', ratios)
         /********************** Pilots ********************/ 
         /*
         this.seriesPilots = [
