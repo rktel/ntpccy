@@ -333,7 +333,7 @@ export default {
           plotOptions: {
             bar: {
               horizontal: true,
-              columnWidth: "30%"
+              columnWidth: "25%"
             }
           },
           dataLabels: {
