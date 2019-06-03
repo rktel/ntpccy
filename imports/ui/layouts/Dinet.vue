@@ -6,7 +6,8 @@
           <h3 class="text-xs-center">Ranking Conductores</h3>
           <h4 class="text-xs-center">Reporte tipo: Ratio [10 * d/e]</h4>
           <h4 class="text-xs-center">{{pilotsData.day}}</h4>
-            <apexcharts type="bar" :options="optionsPilots" :series="seriesPilots"></apexcharts>
+          <apexcharts type="bar" :options="optionsPilots" :series="seriesPilots"></apexcharts>
+          <h5 class="text-xs-right">[ d: distancia recorrida (Km), e: numero de eventos]</h5>
         </v-flex>
       </v-layout>
     </v-navigation-drawer>
