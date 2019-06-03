@@ -2,7 +2,7 @@
   <v-app :dark="dark">
     <v-navigation-drawer floating v-model="drawerRight" right clipped app width="400">
       <v-layout fill-height row  align-center>
-        <v-flex>
+        <v-flex pa-0>
           <h3 class="text-xs-center">Ranking Conductores</h3>
           <h4 class="text-xs-center">{{pilotsData.day}}</h4>
             <apexcharts type="bar" :options="optionsPilots" :series="seriesPilots"></apexcharts>
