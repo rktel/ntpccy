@@ -5,7 +5,7 @@
         <v-flex>
           <h3 class="text-xs-center">Ranking Conductores</h3>
           <h4 class="text-xs-center">{{pilotsData.day}}</h4>
-            <!--apexcharts type="bar" :options="optionsPilots" :series="seriesPilots"></apexcharts-->
+            <apexcharts type="bar" :options="optionsPilots" :series="seriesPilots"></apexcharts>
         </v-flex>
       </v-layout>
     </v-navigation-drawer>
@@ -303,7 +303,7 @@ export default {
          const pilots = data.map(el => el.pilot);
          const ratios = data.map(el => {
            if(el.distancia && el.overspeed15){
-             return 10*(el.distancia/el.overspeed15)
+             return parseInt(10*(el.distancia/el.overspeed15))
            }else{
              return 0
            }
@@ -311,19 +311,16 @@ export default {
          console.log('pilots:', pilots)
          console.log('ratios:', ratios)
         /********************** Pilots ********************/ 
-        /*
+        
         this.seriesPilots = [
           {
-            name: "Turno A",
-            data: ratioA
+            name: "Ratio",
+            data: ratios
           },
-          {
-            name: "Turno B",
-            data: ratioB
-          }
+
         ];
         this.optionsPilots = {
-          colors: ['#3F51B5', '#4CAF50'],
+          //colors: ['#3F51B5', '#4CAF50'],
           chart: {
             toolbar: {
               show: false
@@ -342,10 +339,10 @@ export default {
             enabled: true
           },
           xaxis: {
-            categories: seriesDays
+            categories: pilots
           }
         };         
-*/
+
        }
     }
   }
