@@ -1,6 +1,6 @@
 <template>
   <v-app :dark="dark">
-    <v-navigation-drawer floating v-model="drawerRight" right clipped app>
+    <v-navigation-drawer floating v-model="drawerRight" right clipped app width="400">
       <v-layout fill-height row justify-center align-center>
         <v-flex>
           <h3 class="text-xs-center">Ranking Conductores</h3>
