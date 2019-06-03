@@ -101,6 +101,8 @@ Meteor.methods({
                 break;
             case 'range':
                 const dataRange = Meteor.call("DNT_packetRangeDataPilots", dayStart, dayEnd)
+                console.log('Pilot dataRange:', dataRange);
+                return dataRange;
                 break;
             case 'month':
                 const dataMonth = Meteor.call("DNT_packetMonthDataPilots", month)
@@ -118,26 +120,26 @@ Meteor.methods({
         dayStart = addHours(dayStart, 5)
         dayEnd = addHours(dayEnd, 5)
         
-        let resultDay = {}
-        let dataDay = Meteor.call('DNT_get_OverspeedPilots', dayStart, dayEnd)
+        let resultRange = {}
+        let dataRange = Meteor.call('DNT_get_OverspeedPilots', dayStart, dayEnd)
 
-        resultDay.day = getDateString(dayStart) + "-" + getDateString(dayEnd)
+        resultRange.day = getDateString(dayStart) + "-" + getDateString(dayEnd)
         let data = []
-        console.log(dataDay.length);
+        console.log(dataRange.length);
         
 
-        if (dataDay && dataDay.length > 0) {
-            dataDay.forEach((d)=>{
+        if (dataRange && dataRange.length > 0) {
+            dataRange.forEach((d)=>{
                 const distance = getDistance(d.firstEvent, d.lastEvent)
                 delete d.firstEvent
                 delete d.lastEvent
                 d.distancia = distance
                 data.push(d)
             })
-            resultDay.data = data
+            resultRange.data = data
         }
-        console.log("resultDay:", resultDay) 
-      // return resultDay
+       // console.log("resultRange:", resultRange) 
+       return resultRange
         /*
         const dates = getDates(dayStart, dayEnd)
         let preData = []
