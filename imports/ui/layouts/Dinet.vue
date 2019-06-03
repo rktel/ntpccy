@@ -258,6 +258,22 @@ export default {
           });
         }
       } else if (this.period === "range") {
+        if(this.pickerDayStartModel &&  this.pickerDayEndModel){
+          const numberDays = getNumberDays (this.pickerDayStartModel, this.pickerDayEndModel)
+          if(numberDays <= 6){
+              Meteor.call("DNT_TEST_getDataPilots",  { type: "range", dayStart: this.pickerDayStartModel, dayEnd: this.pickerDayEndModel }, (error, data) => {
+                  if (!error) {
+                    // Session.set("report", data);
+                    // console.log(data);
+                    if(data && data.data && data.data.length >0 ){
+                      this.pilotsData = data;
+                      this.openDrawerRight()
+                    }
+                  // this.loadingDataEnd();
+                  }
+              });              
+          }
+        }
         if (this.vehicle &&  this.pickerDayStartModel &&  this.pickerDayEndModel ) {
             const numberDays = getNumberDays(this.pickerDayStartModel, this.pickerDayEndModel)
             if(numberDays <= 6){

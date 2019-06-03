@@ -114,6 +114,23 @@ Meteor.methods({
         const data = Meteor.call("DNT_TEST_getDayDataPilots", day)
         return data
     },
+    async DNT_packetRangeDataPilots(dayStart, dayEnd) {
+        const dates = getDates(dayStart, dayEnd)
+        let preData = []
+        dates.forEach((day) => {
+            const dayData = Meteor.call("DNT_TEST_getDayDataPilots", day)
+            preData.push(dayData)
+        })
+
+        console.log(preData)
+        /*
+        const proData = {
+            plate: vehicle,
+            data: preData
+        }
+        return proData
+        */
+    },
     async DNT_TEST_getDayDataPilots(DAY){
 
 
