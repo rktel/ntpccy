@@ -11,7 +11,8 @@
           <v-subheader>OBJETO</v-subheader>
           <v-divider></v-divider>
           <div class="pa-3">
-            <v-select v-model="vehicle" :items="plates" label="Vehiculo" height="20" flat></v-select>
+            <v-select v-if="plates.length>0" v-model="vehicle" :items="plates" label="Vehiculo" height="20" flat multiple></v-select>
+            <v-progress-linear :indeterminate="true" v-else></v-progress-linear>
           </div>
           <v-divider></v-divider>
         </v-flex>
