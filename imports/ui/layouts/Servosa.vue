@@ -5,7 +5,7 @@
             <v-toolbar-title>Servosa</v-toolbar-title>
             <v-spacer></v-spacer>
         </v-toolbar>
-        <VNavigationDrawer clipped app>
+        <VNavigationDrawer clipped app flat>
             
         </VNavigationDrawer>
     </v-app>
