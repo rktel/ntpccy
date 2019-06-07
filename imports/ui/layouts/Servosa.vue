@@ -5,13 +5,13 @@
       <img src="/img/Servosa.png" alt="Servosa" width="150">
       <v-spacer></v-spacer>
     </v-toolbar>
-    <v-navigation-drawer app clipped floating v-model="drawer">
+    <v-navigation-drawer app clipped floating v-model="drawer" width="350">
       <v-layout column>
         <v-flex>
           <v-subheader>OBJETO</v-subheader>
           <v-divider></v-divider>
           <div class="pa-3">
-            <v-select v-if="plates.length>0" v-model="vehicle" :items="plates" label="Vehiculos" height="20" flat multiple></v-select>
+            <v-select v-if="plates.length>0" v-model="vehicle" :items="plates" label="Vehiculos" height="20" flat multiple chips></v-select>
             <v-progress-linear v-else :indeterminate="true" ></v-progress-linear>
           </div>
           <v-divider></v-divider>
