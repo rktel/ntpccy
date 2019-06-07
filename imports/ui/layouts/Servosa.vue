@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-toolbar color="grey" dense dark app clipped-left>
+    <v-toolbar dense dark app clipped-left>
       <v-toolbar-side-icon></v-toolbar-side-icon>
       <img src="/img/Servosa.png" alt="Servosa" width="150">
       <v-spacer></v-spacer>
