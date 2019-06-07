@@ -120,6 +120,14 @@
 
 <script>
 export default {
+  created() {
+    Meteor.call("SRVS_getPlates", (error, plates) => {
+      if (!error) {
+        this.plates = plates;
+        console.log(this.plates);
+      }
+    });
+  },
   data() {
     return {
       drawer: true,
@@ -133,7 +141,7 @@ export default {
       pickerMonth: false,
       loadingData: false,
       plates: [],
-      period: "day",
+      period: "day"
     };
   }
 };
