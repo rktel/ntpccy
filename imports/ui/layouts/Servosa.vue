@@ -10,5 +10,8 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
+.application {
+  font-family: "Ubuntu", sans-serif !important;
+}
 </style>
