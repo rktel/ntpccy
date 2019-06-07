@@ -107,6 +107,9 @@ export default {
         else if (persona.spa && persona.spa == "Phantom") {
           this.$router.push({ name: "Phantom" });
         }
+        else if (persona.spa && persona.spa == "Servosa") {
+          this.$router.push({ name: "Servosa" });
+        }
 
         this.SET_USERPROFILE(persona);
       }
