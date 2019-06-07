@@ -2,7 +2,7 @@
   <v-app>
     <v-toolbar color="primary" dense dark app clipped-left>
       <v-toolbar-side-icon></v-toolbar-side-icon>
-      <v-toolbar-title>Servosa</v-toolbar-title>
+      <img src="/img/Servosa.png" alt="Servosa">
       <v-spacer></v-spacer>
     </v-toolbar>
     <v-navigation-drawer app clipped floating v-model="drawer">
