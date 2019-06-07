@@ -121,9 +121,9 @@
 <script>
 export default {
   created() {
-    Meteor.call("SRVS_getPlates", (error, plates) => {
+    Meteor.call("SRVS_getPlates", (error, data) => {
       if (!error) {
-        this.plates = plates;
+        this.plates = data[0].plates;
         console.log(this.plates);
       }
     });
