@@ -1,10 +1,13 @@
 <template>
     <v-app>
-        <v-toolbar color="primary" dense dark>
+        <v-toolbar color="primary" dense dark app>
             <v-toolbar-side-icon></v-toolbar-side-icon>
             <v-toolbar-title>Servosa</v-toolbar-title>
             <v-spacer></v-spacer>
         </v-toolbar>
+        <VNavigationDrawer clipped-left>
+            
+        </VNavigationDrawer>
     </v-app>
 </template>
 
