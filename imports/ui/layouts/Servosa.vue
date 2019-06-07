@@ -11,7 +11,7 @@
           <v-subheader>OBJETO</v-subheader>
           <v-divider></v-divider>
           <div class="pa-3">
-            <v-select v-if="plates.length>0" v-model="vehicle" :items="plates" label="Vehiculos" height="100" flat multiple></v-select>
+            <v-select v-if="plates.length>0" v-model="vehicle" :items="plates" label="Vehiculos" height="20" flat multiple></v-select>
             <v-progress-linear v-else :indeterminate="true" ></v-progress-linear>
           </div>
           <v-divider></v-divider>
