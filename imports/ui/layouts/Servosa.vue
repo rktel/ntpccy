@@ -6,7 +6,7 @@
             <v-spacer></v-spacer>
         </v-toolbar>
         <VNavigationDrawer clipped app flat>
-            
+            <h3>Drawer Left</h3>
         </VNavigationDrawer>
     </v-app>
 </template>
