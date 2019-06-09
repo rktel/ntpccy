@@ -4,7 +4,7 @@
           <VFlex xs5>
               <VCard>
                   <section>
-                      <h6 class="title">Opciones</h6>
+                      <VSubheader class="font-weight-medium">Opciones </VSubheader>
                       <VSubheader>0/{{names.length}} elegidos </VSubheader>
                   </section>
                   <VDivider/>
