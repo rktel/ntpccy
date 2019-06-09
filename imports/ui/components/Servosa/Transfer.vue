@@ -3,10 +3,10 @@
       <VLayout>
           <VFlex xs5>
               <VCard>
-                  <VCardTitle>
-                      <h3>Opciones</h3>
+                  <section>
+                      <h6 class="title">Opciones</h6>
                       <VSubheader>0/{{names.length}} elegidos </VSubheader>
-                  </VCardTitle>
+                  </section>
                   <VDivider/>
                   <VList dense>
                       <VListTile v-for="(item) in names" :key="item">
