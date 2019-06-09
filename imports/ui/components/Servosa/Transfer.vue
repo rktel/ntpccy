@@ -17,7 +17,7 @@
             </VList>
           </section>
           <VDivider/>
-          <VList dense height="250">
+          <VList dense style="{'height': '200px'}">
             <VListTile v-for="(item) in names" :key="item">
               <v-list-tile-action>
                 <v-checkbox></v-checkbox>
