@@ -116,11 +116,20 @@
         </v-flex>
       </v-layout>
     </v-navigation-drawer>
+    <VContent>
+      <VContainer>
+        <Transfer></Transfer>
+      </VContainer>
+    </VContent>
   </v-app>
 </template>
 
 <script>
+import Transfer from '../components/Servosa/Transfer'
 export default {
+  components:{
+    Transfer
+  },
   created() {
     Meteor.call("SRVS_getPlates", (error, data) => {
       if (!error) {
