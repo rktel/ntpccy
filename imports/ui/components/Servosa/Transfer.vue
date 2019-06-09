@@ -4,7 +4,7 @@
       <VFlex xs5>
         <VCard width="200">
           <section class="px-3">
-            <v-text-field label="Buscar nombre" append-icon="search"></v-text-field>
+            <v-text-field label="Filtrar nombre" append-icon="search"></v-text-field>
           </section>
           <VDivider/>
           <section>
