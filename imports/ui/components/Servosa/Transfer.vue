@@ -2,7 +2,7 @@
   <section>
     <VLayout>
       <VFlex xs5>
-        <VCard>
+        <VCard width="300">
           <section>
             <VList two-line dense>
               <VListTile>
