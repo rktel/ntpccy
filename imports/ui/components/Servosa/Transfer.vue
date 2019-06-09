@@ -35,11 +35,11 @@
       </VFlex>
       <VFlex xs2>
         <VLayout align-center justify-center column fill-height>
-          <VFlex>
+          
             <VBtn color="success" icon>
               <VIcon>chevron_left</VIcon>
             </VBtn>
-          </VFlex>
+          
         </VLayout>
       </VFlex>
       <VFlex xs5></VFlex>
