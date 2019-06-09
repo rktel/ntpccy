@@ -36,7 +36,10 @@
       <VFlex xs2>
         <VLayout align-center justify-center column fill-height>
           
-            <VBtn color="success" icon>
+            <VBtn color="primary" icon>
+              <VIcon>chevron_right</VIcon>
+            </VBtn>
+            <VBtn color="primary" icon>
               <VIcon>chevron_left</VIcon>
             </VBtn>
           
