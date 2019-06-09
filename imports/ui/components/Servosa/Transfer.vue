@@ -18,7 +18,7 @@
           </section>
           <VDivider/>
  
-            <VList dense :style="{height: 210+ 'px', overflow: 'scroll'}" >
+            <VList dense :style="{height: 205+ 'px', overflowY: 'scroll'}" >
               <VListTile v-for="(item) in names" :key="item">
                 <v-list-tile-action>
                   <v-checkbox></v-checkbox>
