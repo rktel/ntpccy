@@ -18,8 +18,7 @@
           </section>
           <VDivider/>
           <section class="px-2">
-            <v-input append-icon="search">
-             vehicle
+            <v-input append-icon="search" value="demio">
             </v-input>
           </section>
           <VDivider/>
