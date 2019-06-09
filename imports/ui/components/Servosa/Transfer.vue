@@ -33,7 +33,12 @@
           </VList>
         </VCard>
       </VFlex>
-      <VFlex xs2></VFlex>
+      <VFlex xs2>
+          <VLayout column>
+              <VBtn color="success" icon><VIcon>chevron_right</VIcon></VBtn>
+              <VBtn color="success" icon><VIcon>chevron_left</VIcon></VBtn>
+          </VLayout>
+      </VFlex>
       <VFlex xs5></VFlex>
     </VLayout>
   </section>
