@@ -19,7 +19,7 @@
           <VDivider/>
           <section>
             <v-input append-icon="search">
-                <input type="text" value="Text de prueba" :style="{height: 190 + 'px'}">
+                <input type="text" value="Text de prueba" :style="{width: 190 + 'px'}">
             </v-input>
           </section>
           <VDivider/>
