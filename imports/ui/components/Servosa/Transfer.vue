@@ -18,7 +18,8 @@
           </section>
           <VDivider/>
           <section class="px-2">
-            <v-input append-icon="search" value="demio">
+            <v-input append-icon="search">
+                <input type="text" value="Text de prueba">
             </v-input>
           </section>
           <VDivider/>
