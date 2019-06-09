@@ -19,7 +19,7 @@
           <VDivider/>
           <section class="px-2">
             <v-input append-icon="search">
-                <input type="text">
+             vehicle
             </v-input>
           </section>
           <VDivider/>
