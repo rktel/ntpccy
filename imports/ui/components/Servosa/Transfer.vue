@@ -34,7 +34,7 @@
         </VCard>
       </VFlex>
       <VFlex xs2>
-          <VLayout column>
+          <VLayout column fill-height align-center>
               <VBtn color="success" icon><VIcon>chevron_right</VIcon></VBtn>
               <VBtn color="success" icon><VIcon>chevron_left</VIcon></VBtn>
           </VLayout>
