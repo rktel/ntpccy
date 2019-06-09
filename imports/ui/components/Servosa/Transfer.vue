@@ -34,10 +34,13 @@
         </VCard>
       </VFlex>
       <VFlex xs2>
-          <VLayout column fill-height align-center>
-              <VBtn color="success" icon><VIcon>chevron_right</VIcon></VBtn>
-              <VBtn color="success" icon><VIcon>chevron_left</VIcon></VBtn>
-          </VLayout>
+        <VLayout column fill-height align-center>
+          <VFlex>
+            <VBtn color="success" icon>
+              <VIcon>chevron_left</VIcon>
+            </VBtn>
+          </VFlex>
+        </VLayout>
       </VFlex>
       <VFlex xs5></VFlex>
     </VLayout>
