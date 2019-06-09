@@ -17,7 +17,7 @@
             </VList>
           </section>
           <VDivider/>
-          <VList dense>
+          <VList dense height="250">
             <VListTile v-for="(item) in names" :key="item">
               <v-list-tile-action>
                 <v-checkbox></v-checkbox>
@@ -41,7 +41,10 @@ const NAMES = [
   "Gato con Botas",
   "Mappets Baby",
   "El Mundo de Luna",
-  "Kung FU Panda"
+  "Kung Fu Panda",
+  "Monchichi",
+  "Mini Beat Power Rocket",
+  "Gaby and Alex"
 ];
 export default {
   data() {
