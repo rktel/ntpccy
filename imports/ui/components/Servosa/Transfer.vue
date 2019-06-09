@@ -4,7 +4,7 @@
       <VFlex xs5>
         <VCard>
           <section>
-            <VList two-line>
+            <VList two-line dense>
               <VListTile>
                 <v-list-tile-content>
                   <v-list-tile-title>Opciones</v-list-tile-title>
