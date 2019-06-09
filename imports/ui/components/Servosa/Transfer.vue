@@ -44,7 +44,7 @@
         </VLayout>
       </VFlex>
       <VFlex xs5>
-        <VLayout align-center justify-center column fill-height>
+        <VLayout justify-center column fill-height>
           <VCard>
             <section>
               <VList two-line dense>
