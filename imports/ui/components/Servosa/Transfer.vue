@@ -17,8 +17,8 @@
             </VList>
           </section>
           <VDivider/>
-          <section>
-            <v-text-field label="Buscar nombre"></v-text-field>
+          <section class="px-3">
+            <v-text-field label="Buscar nombre" append-icon="search"></v-text-field>
           </section>
           <VDivider/>
           <VList dense :style="{height: 205+ 'px', overflowY: 'scroll'}">
