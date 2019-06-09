@@ -17,7 +17,7 @@
             </VList>
           </section>
           <VDivider/>
-          <section style="{height: 200px + 'px'}">
+          <section :style="{height: 200+ 'px'}">
             <VList dense>
               <VListTile v-for="(item) in names" :key="item">
                 <v-list-tile-action>
