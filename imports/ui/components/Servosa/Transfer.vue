@@ -17,18 +17,20 @@
             </VList>
           </section>
           <VDivider/>
- 
-            <VList dense :style="{height: 205+ 'px', overflowY: 'scroll'}" >
-              <VListTile v-for="(item) in names" :key="item">
-                <v-list-tile-action>
-                  <v-checkbox></v-checkbox>
-                </v-list-tile-action>
-                <VListTileContent>
-                  <v-list-tile-sub-title>{{item}}</v-list-tile-sub-title>
-                </VListTileContent>
-              </VListTile>
-            </VList>
- 
+          <section>
+            <VTextField label="Name" append-icon="search"/>
+          </section>
+          <VDivider/>
+          <VList dense :style="{height: 205+ 'px', overflowY: 'scroll'}">
+            <VListTile v-for="(item) in names" :key="item">
+              <v-list-tile-action>
+                <v-checkbox></v-checkbox>
+              </v-list-tile-action>
+              <VListTileContent>
+                <v-list-tile-sub-title>{{item}}</v-list-tile-sub-title>
+              </VListTileContent>
+            </VListTile>
+          </VList>
         </VCard>
       </VFlex>
       <VFlex xs2></VFlex>
