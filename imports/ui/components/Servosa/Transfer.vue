@@ -35,43 +35,43 @@
       </VFlex>
       <VFlex xs2>
         <VLayout align-center justify-center column fill-height>
-          
-            <VBtn color="primary" icon>
-              <VIcon>chevron_right</VIcon>
-            </VBtn>
-            <VBtn color="primary" icon>
-              <VIcon>chevron_left</VIcon>
-            </VBtn>
-          
+          <VBtn color="primary" icon>
+            <VIcon>chevron_right</VIcon>
+          </VBtn>
+          <VBtn color="primary" icon>
+            <VIcon>chevron_left</VIcon>
+          </VBtn>
         </VLayout>
       </VFlex>
       <VFlex xs5>
-        <VCard>
-          <section>
-            <VList two-line dense>
-              <VListTile>
+        <VLayout align-center justify-center column fill-height>
+          <VCard>
+            <section>
+              <VList two-line dense>
+                <VListTile>
+                  <v-list-tile-action>
+                    <v-checkbox></v-checkbox>
+                  </v-list-tile-action>
+                  <v-list-tile-content>
+                    <v-list-tile-title>Elegidos</v-list-tile-title>
+                    <v-list-tile-sub-title>0/{{names.length}} elegidos</v-list-tile-sub-title>
+                  </v-list-tile-content>
+                </VListTile>
+              </VList>
+            </section>
+            <VDivider/>
+            <VList dense :style="{height: 205+ 'px', overflowY: 'scroll'}">
+              <VListTile v-for="(item) in names" :key="item">
                 <v-list-tile-action>
                   <v-checkbox></v-checkbox>
                 </v-list-tile-action>
-                <v-list-tile-content>
-                  <v-list-tile-title>Elegidos</v-list-tile-title>
-                  <v-list-tile-sub-title>0/{{names.length}} elegidos</v-list-tile-sub-title>
-                </v-list-tile-content>
+                <VListTileContent>
+                  <v-list-tile-sub-title>{{item}}</v-list-tile-sub-title>
+                </VListTileContent>
               </VListTile>
             </VList>
-          </section>
-          <VDivider/>
-          <VList dense :style="{height: 205+ 'px', overflowY: 'scroll'}">
-            <VListTile v-for="(item) in names" :key="item">
-              <v-list-tile-action>
-                <v-checkbox></v-checkbox>
-              </v-list-tile-action>
-              <VListTileContent>
-                <v-list-tile-sub-title>{{item}}</v-list-tile-sub-title>
-              </VListTileContent>
-            </VListTile>
-          </VList>
-        </VCard>
+          </VCard>
+        </VLayout>
       </VFlex>
     </VLayout>
   </section>
