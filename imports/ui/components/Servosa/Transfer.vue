@@ -3,6 +3,10 @@
     <VLayout>
       <VFlex xs5>
         <VCard width="200">
+          <section class="px-3">
+            <v-text-field label="Buscar nombre" append-icon="search"></v-text-field>
+          </section>
+          <VDivider/>
           <section>
             <VList two-line dense>
               <VListTile>
@@ -15,10 +19,6 @@
                 </v-list-tile-content>
               </VListTile>
             </VList>
-          </section>
-          <VDivider/>
-          <section class="px-3">
-            <v-text-field label="Buscar nombre" append-icon="search"></v-text-field>
           </section>
           <VDivider/>
           <VList dense :style="{height: 205+ 'px', overflowY: 'scroll'}">
