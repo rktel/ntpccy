@@ -18,7 +18,7 @@
           </section>
           <VDivider/>
           <section class="px-2">
-            <VTextField  append-icon="search" solo/>
+            <v-input append-icon="search"></v-input>
           </section>
           <VDivider/>
           <VList dense :style="{height: 205+ 'px', overflowY: 'scroll'}">
