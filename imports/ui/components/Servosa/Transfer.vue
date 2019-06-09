@@ -6,6 +6,9 @@
           <section>
             <VList two-line dense>
               <VListTile>
+                <v-list-tile-action>
+                  <v-checkbox></v-checkbox>
+                </v-list-tile-action>
                 <v-list-tile-content>
                   <v-list-tile-title>Opciones</v-list-tile-title>
                   <v-list-tile-sub-title>0/{{names.length}} elegidos</v-list-tile-sub-title>
@@ -20,7 +23,7 @@
                 <v-checkbox></v-checkbox>
               </v-list-tile-action>
               <VListTileContent>
-                  <v-list-tile-sub-title>{{item}}</v-list-tile-sub-title>
+                <v-list-tile-sub-title>{{item}}</v-list-tile-sub-title>
               </VListTileContent>
             </VListTile>
           </VList>
