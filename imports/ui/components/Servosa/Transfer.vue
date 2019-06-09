@@ -17,16 +17,18 @@
             </VList>
           </section>
           <VDivider/>
-          <VList dense style="{height: 200px + 'px'}">
-            <VListTile v-for="(item) in names" :key="item">
-              <v-list-tile-action>
-                <v-checkbox></v-checkbox>
-              </v-list-tile-action>
-              <VListTileContent>
-                <v-list-tile-sub-title>{{item}}</v-list-tile-sub-title>
-              </VListTileContent>
-            </VListTile>
-          </VList>
+          <section style="{height: 200px + 'px'}">
+            <VList dense>
+              <VListTile v-for="(item) in names" :key="item">
+                <v-list-tile-action>
+                  <v-checkbox></v-checkbox>
+                </v-list-tile-action>
+                <VListTileContent>
+                  <v-list-tile-sub-title>{{item}}</v-list-tile-sub-title>
+                </VListTileContent>
+              </VListTile>
+            </VList>
+          </section>
         </VCard>
       </VFlex>
       <VFlex xs2></VFlex>
