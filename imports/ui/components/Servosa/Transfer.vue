@@ -17,9 +17,9 @@
             </VList>
           </section>
           <VDivider/>
-          <section class="px-2">
+          <section>
             <v-input append-icon="search">
-                <input type="text" value="Text de prueba">
+                <input type="text" value="Text de prueba" :style="{height: 190 + 'px'}">
             </v-input>
           </section>
           <VDivider/>
