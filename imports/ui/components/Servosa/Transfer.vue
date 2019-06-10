@@ -22,11 +22,11 @@
           </section>
           <VDivider/>
           <VList dense :style="{height: 205+ 'px', overflowY: 'scroll'}">
-            <VListTile v-for="(item) in names" :key="item.name" @click="item.checked=!item.checked">
+            <VListTile v-for="(item) in names" :key="item.name" @click="">
               <v-list-tile-action>
                 <v-checkbox v-model="item.checked"></v-checkbox>
               </v-list-tile-action>
-              <VListTileContent>
+              <VListTileContent @click="item.checked=!item.checked">
                 <v-list-tile-sub-title>{{item.name}}</v-list-tile-sub-title>
               </VListTileContent>
             </VListTile>
