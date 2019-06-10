@@ -1,7 +1,7 @@
 <template>
   <section>
     <VLayout>
-      <VFlex xs5>
+      <VFlex xs4>
         <VCard>
           <!--section class="px-3">
             <v-text-field label="Filtrar nombre" append-icon="search"></v-text-field>
@@ -33,7 +33,7 @@
           </VList>
         </VCard>
       </VFlex>
-      <VFlex xs2>
+      <VFlex xs1>
         <VLayout align-center justify-center column fill-height>
           <VBtn color="primary" icon>
             <VIcon>chevron_right</VIcon>
@@ -43,7 +43,7 @@
           </VBtn>
         </VLayout>
       </VFlex>
-      <VFlex xs5>
+      <VFlex xs4>
         <VLayout justify-center column fill-height>
           <VCard>
             <section>
