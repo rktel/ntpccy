@@ -15,14 +15,14 @@
                 </v-list-tile-action>
                 <v-list-tile-content>
                   <v-list-tile-title>Opciones</v-list-tile-title>
-                  <v-list-tile-sub-title>0/{{neoNames.length}} elegidos</v-list-tile-sub-title>
+                  <v-list-tile-sub-title>0/{{names.length}} elegidos</v-list-tile-sub-title>
                 </v-list-tile-content>
               </VListTile>
             </VList>
           </section>
           <VDivider/>
           <VList dense :style="{height: 205+ 'px', overflowY: 'scroll'}">
-            <VListTile v-for="(item) in neoNames" :key="item.name">
+            <VListTile v-for="(item) in names" :key="item.name">
               <v-list-tile-action>
                 <v-checkbox></v-checkbox>
               </v-list-tile-action>
@@ -54,14 +54,14 @@
                   </v-list-tile-action>
                   <v-list-tile-content>
                     <v-list-tile-title>Elegidos</v-list-tile-title>
-                    <v-list-tile-sub-title>0/{{neoNames.length}} elegidos</v-list-tile-sub-title>
+                    <v-list-tile-sub-title>0/{{names.length}} elegidos</v-list-tile-sub-title>
                   </v-list-tile-content>
                 </VListTile>
               </VList>
             </section>
             <VDivider/>
             <VList dense :style="{height: 205+ 'px', overflowY: 'scroll'}">
-              <VListTile v-for="(item) in neoNames" :key="item.name">
+              <VListTile v-for="(item) in names" :key="item.name">
                 <v-list-tile-action>
                   <v-checkbox></v-checkbox>
                 </v-list-tile-action>
