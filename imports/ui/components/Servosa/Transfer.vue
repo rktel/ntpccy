@@ -97,11 +97,11 @@ export default {
         name: el
       };
     });
-    console.log(neoNames);
+    this.names = neoNames
   },
   data() {
     return {
-      names: neoNames
+      names: []
     };
   }
 };
