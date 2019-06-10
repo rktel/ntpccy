@@ -6,7 +6,7 @@
                     <VList dense :style="{height: 205+ 'px', overflowY: 'scroll'}">
                         <VListTile v-for="value in left" :key="value">
                             <v-list-tile-action>
-                                <v-checkbox @change="checked.indexOf(value)!== -1"></v-checkbox>
+                                <v-checkbox @change="changeBox(value)"></v-checkbox>
                             </v-list-tile-action>
                             <VListTileContent @click="handleToggle(value)">
                                 <v-list-tile-sub-title>{{item +1}}</v-list-tile-sub-title>
@@ -41,7 +41,7 @@
                     <VList dense :style="{height: 205+ 'px', overflowY: 'scroll'}">
                         <VListTile v-for="value in right" :key="value">
                             <v-list-tile-action>
-                                <v-checkbox @change="checked.indexOf(value)!== -1"></v-checkbox>
+                                <v-checkbox @change="changeBox(value)"></v-checkbox>
                             </v-list-tile-action>
                             <VListTileContent @click="handleToggle(value)">
                                 <v-list-tile-sub-title>{{item +1}}</v-list-tile-sub-title>
@@ -65,6 +65,9 @@ export default {
         this.rightChecked = intersection(checked, right);
     },
     methods: {
+        changeBox(value){
+            this.checked.indexOf(value)!== -1
+        },
         handleToggle(value) {
             const currentIndex = this.checked.indexOf(value);
             const newChecked = [...this.checked];
