@@ -3,10 +3,10 @@
     <VLayout>
       <VFlex xs5>
         <VCard>
-          <section class="px-3">
+          <!--section class="px-3">
             <v-text-field label="Filtrar nombre" append-icon="search"></v-text-field>
           </section>
-          <VDivider/>
+          <VDivider/-->
           <section>
             <VList two-line dense>
               <VListTile>
