@@ -61,8 +61,8 @@ export default {
         this.checked = [];
         this.left = [0, 1, 2, 3];
         this.right = [4, 5, 6, 7];
-        this.leftChecked = intersection(checked, left);
-        this.rightChecked = intersection(checked, right);
+        this.leftChecked = intersection(this.checked, this.left);
+        this.rightChecked = intersection(this.checked, this.right);
     },
     methods: {
         changeBox(value){
