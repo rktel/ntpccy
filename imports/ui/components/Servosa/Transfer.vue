@@ -69,6 +69,7 @@ export default {
             this.checked.indexOf(value)!== -1
         },
         handleToggle(value) {
+            console.log("handleToggle:", value)
             const currentIndex = this.checked.indexOf(value);
             const newChecked = [...this.checked];
 
