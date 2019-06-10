@@ -6,10 +6,10 @@
                     <VList dense :style="{height: 205+ 'px', overflowY: 'scroll'}">
                         <VListTile v-for="value in left" :key="value">
                             <v-list-tile-action>
-                                <v-checkbox @change="changeBox(value)"></v-checkbox>
+                                <v-checkbox @change="checked.indexOf(value)!== -1"></v-checkbox>
                             </v-list-tile-action>
                             <VListTileContent @click="handleToggle(value)">
-                                <v-list-tile-sub-title>{{item +1}}</v-list-tile-sub-title>
+                                <v-list-tile-sub-title>{{value +1}}</v-list-tile-sub-title>
                             </VListTileContent>
                         </VListTile>
                     </VList>
@@ -41,10 +41,10 @@
                     <VList dense :style="{height: 205+ 'px', overflowY: 'scroll'}">
                         <VListTile v-for="value in right" :key="value">
                             <v-list-tile-action>
-                                <v-checkbox @change="changeBox(value)"></v-checkbox>
+                                <v-checkbox @change="checked.indexOf(value)!== -1"></v-checkbox>
                             </v-list-tile-action>
                             <VListTileContent @click="handleToggle(value)">
-                                <v-list-tile-sub-title>{{item +1}}</v-list-tile-sub-title>
+                                <v-list-tile-sub-title>{{value +1}}</v-list-tile-sub-title>
                             </VListTileContent>
                         </VListTile>
                     </VList>
