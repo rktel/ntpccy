@@ -97,6 +97,7 @@ export default {
         name: el
       };
     });
+    console.log(neoNames);
   },
   data() {
     return {
