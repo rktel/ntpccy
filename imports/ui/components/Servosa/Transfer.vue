@@ -11,7 +11,7 @@
             <VList two-line dense>
               <VListTile>
                 <v-list-tile-action>
-                  <v-checkbox></v-checkbox>
+                  <v-checkbox v-model="checkAll"></v-checkbox>
                 </v-list-tile-action>
                 <v-list-tile-content>
                   <v-list-tile-title>Opciones</v-list-tile-title>
@@ -24,9 +24,9 @@
           <VList dense :style="{height: 205+ 'px', overflowY: 'scroll'}">
             <VListTile v-for="(item) in names" :key="item.name">
               <v-list-tile-action>
-                <v-checkbox></v-checkbox>
+                <v-checkbox v-model="item.checked"></v-checkbox>
               </v-list-tile-action>
-              <VListTileContent>
+              <VListTileContent @click="item.checked=!item.checked">
                 <v-list-tile-sub-title>{{item.name}}</v-list-tile-sub-title>
               </VListTileContent>
             </VListTile>
@@ -35,7 +35,7 @@
       </VFlex>
       <VFlex xs1>
         <VLayout align-center justify-center column fill-height>
-          <VBtn color="primary" icon>
+          <VBtn color="primary" icon @click="transferRight">
             <VIcon>chevron_right</VIcon>
           </VBtn>
           <VBtn color="primary" icon>
@@ -99,9 +99,16 @@ export default {
     });
     this.names = neoNames
   },
+  methods:{
+      transferRight(){
+          const namesRight = this.names.filter(el => el.checked)
+          console.log('namesRight:', namesRight);
+      }
+  },
   data() {
     return {
-      names: []
+      names: [],
+      checkAll: false
     };
   }
 };
