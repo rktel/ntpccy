@@ -18,7 +18,7 @@ export default {
     },
     methods:{
         msg(a,b){
-            alert(a,b)
+            alert(a +"," +b)
         }
     }
 }
