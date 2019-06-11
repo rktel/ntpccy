@@ -55,13 +55,14 @@ export default {
             newRight = getCheckedTrue(this.left)
             this.left = newLeft
             this.right = newRight
+            console.log(this.left, this.right);
 		}
 	}
 };
 //End export default
 //Funciones de apoyo
 function addChecked(array) {
-	return array.map(el => ({ vehicle: el, checked: false }));
+	return array.map(el => ({ vehicle: el, checked: true }));
 }
 function getCheckedTrue(array) {
 	return array.filter(el => el.checked === true);
