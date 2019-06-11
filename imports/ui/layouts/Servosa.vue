@@ -118,7 +118,7 @@
     </v-navigation-drawer>
     <VContent>
       <VContainer>
-        <Transfer></Transfer>
+        <Transfer :universe='plates'></Transfer>
       </VContainer>
     </VContent>
   </v-app>

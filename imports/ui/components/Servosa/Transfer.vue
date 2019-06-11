@@ -6,7 +6,10 @@
 
 <script>
 export default {
-
+    props:['universe'],
+    created(){
+        console.log(this.universe);
+    },
 }
 </script>
 
