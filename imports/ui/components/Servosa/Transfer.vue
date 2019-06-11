@@ -1,6 +1,6 @@
 <template>
-	<VLayout :style="{width: 3*width + 'px'}" align-center justify-center>
-		<VFlex class="green">
+	<VLayout align-center justify-center>
+		<VFlex class="green" xs2>
 			<VCard :style="{width: width + 'px'}">
 				<VList dense>
 					<section :style="{height: height + 'px', overflowY: 'scroll'}">
@@ -14,7 +14,7 @@
 				</VList>
 			</VCard>
 		</VFlex>
-		<VFlex class="grey">
+		<VFlex class="grey" xs2>
 			<VLayout column fill-height align-center justify-center>
 				<VBtn color="success" icon @click="leftToRight">
 					<VIcon>chevron_right</VIcon>
@@ -24,7 +24,7 @@
 				</VBtn>
 			</VLayout>
 		</VFlex>
-		<VFlex class="green">
+		<VFlex class="green" xs2>
 			<VCard :style="{width: width + 'px'}">
 				<VList dense>
 					<section :style="{height: height + 'px', overflowY: 'scroll'}">
