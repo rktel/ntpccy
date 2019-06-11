@@ -46,21 +46,21 @@ export default {
 	name: "Transfer",
 	props: ["universe"],
 	created() {
-		this.left = addChecked(this.universe);
+		this.left = resetChecked(this.universe);
 		this.right = [];
 	},
 	methods: {
 		leftToRight() {
 			const newLeft = getCheckedFalse(this.left);
-			const newRight = getCheckedTrue(this.left);
-			this.left = newLeft;
-			this.right = newRight;
+			const newRight = this.right.concat(getCheckedTrue(this.left));
+			this.left = resetChecked(newLeft);
+			this.right = resetChecked(newRight);
 		},
 		rightToLeft() {
 			const newRight = getCheckedFalse(this.right);
-			const newLeft = getCheckedTrue(this.right);
-			this.left = newLeft;
-			this.right = newRight;
+			const newLeft = this.left.concat(getCheckedTrue(this.right));
+			this.left = resetChecked(newLeft);
+			this.right = resetChecked(newRight);
 		}
 	},
 	data() {
@@ -72,7 +72,7 @@ export default {
 };
 //End export default
 //Funciones de apoyo
-function addChecked(array) {
+function resetChecked(array) {
 	return array.map(el => ({ vehicle: el, checked: false }));
 }
 function getCheckedTrue(array) {
