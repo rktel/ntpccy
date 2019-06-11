@@ -1,6 +1,10 @@
 <template>
     <VLayout>
-        <h1>Transfer</h1>
+        <ul>
+            <li v-for="item in right" :key="item.vehicle" >
+                {{item.vehicle}}
+            </li>
+        </ul>
     </VLayout>
 </template>
 
@@ -16,7 +20,7 @@ export default {
 //End export default
 //Funciones de apoyo
 function addChecked(array) {
-    return array.map(el => ({name: el, checked: false}) )
+    return array.map(el => ({vehicle: el, checked: false}) )
 }
 function getCheckedTrue(array){
     return array.filter(el => el.checked===true)
