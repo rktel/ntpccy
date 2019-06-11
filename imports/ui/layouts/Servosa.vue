@@ -108,9 +108,7 @@
 		</v-navigation-drawer>
 		<VContent>
 			<VContainer>
-				<template v-if="plates.length>0">
-					<Transfer :universe="plates" v-on:childToParent="onChildClick"></Transfer>
-				</template>
+
 			</VContainer>
 		</VContent>
 	</v-app>

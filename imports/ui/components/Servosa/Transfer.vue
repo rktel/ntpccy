@@ -1,6 +1,6 @@
 <template>
 	<VLayout align-center justify-center>
-		<VFlex xs3>
+		<VFlex xs5>
 			<VCard >
 				<VList dense>
 					<section :style="{height: height + 'px', overflowY: 'scroll'}">
@@ -14,7 +14,7 @@
 				</VList>
 			</VCard>
 		</VFlex>
-		<VFlex xs1>
+		<VFlex xs2>
 			<VLayout column fill-height align-center justify-center>
 				<VBtn color="success" icon @click="leftToRight">
 					<VIcon>chevron_right</VIcon>
@@ -24,7 +24,7 @@
 				</VBtn>
 			</VLayout>
 		</VFlex>
-		<VFlex xs3>
+		<VFlex xs5>
 			<VCard >
 				<VList dense>
 					<section :style="{height: height + 'px', overflowY: 'scroll'}">
