@@ -1,7 +1,7 @@
 <template>
     <VLayout>
         <ul>
-            <li v-for="item in right" :key="item.vehicle" @click="alert(item.vehicle, item.checked)">
+            <li v-for="item in right" :key="item.vehicle" @click="msg(item.vehicle, item.checked)">
                 {{item.vehicle}}
             </li>
         </ul>
@@ -16,6 +16,11 @@ export default {
       this.right = addChecked(this.universe)
       this.left = []  
     },
+    methods:{
+        msg(a,b){
+            alert(a,b)
+        }
+    }
 }
 //End export default
 //Funciones de apoyo
