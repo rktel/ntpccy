@@ -118,7 +118,11 @@
     </v-navigation-drawer>
     <VContent>
       <VContainer>
+        <template v-if="plates.length>0">
+
         <Transfer :universe='plates'></Transfer>
+   
+        </template>
       </VContainer>
     </VContent>
   </v-app>
@@ -134,7 +138,7 @@ export default {
     Meteor.call("SRVS_getPlates", (error, data) => {
       if (!error) {
         this.plates = data[0].plates;
-        console.log(this.plates);
+       // console.log(this.plates);
       }
     });
   },

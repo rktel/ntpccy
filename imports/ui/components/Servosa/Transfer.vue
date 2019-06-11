@@ -6,11 +6,10 @@
 
 <script>
 export default {
+    name:'Transfer',
     props:['universe'],
     created(){
-        setInterval(ns=>{
-            console.log(this.universe);
-        }, 5000)
+        console.log(this.universe);
     },
 }
 </script>
