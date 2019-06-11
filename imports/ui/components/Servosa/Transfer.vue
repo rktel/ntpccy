@@ -76,7 +76,7 @@ function resetChecked(array) {
 	return array.map(el => ({ vehicle: el, checked: false }));
 }
 function setFalseChecked(array){
-    return array.map(el => el.checked = false)
+    return array.map(el => {el.checked = false})
 }
 function getCheckedTrue(array) {
 	return array.filter(el => el.checked === true);
