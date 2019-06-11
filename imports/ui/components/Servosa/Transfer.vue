@@ -73,7 +73,7 @@ export default {
 //End export default
 //Funciones de apoyo
 function addChecked(array) {
-	return array.map(el => ({ vehicle: el, checked: true }));
+	return array.map(el => ({ vehicle: el, checked: false }));
 }
 function getCheckedTrue(array) {
 	return array.filter(el => el.checked === true);
