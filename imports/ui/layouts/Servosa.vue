@@ -19,14 +19,12 @@
 					<v-subheader>PERIODO</v-subheader>
 					<v-divider></v-divider>
 					<div class="pa-3">
-
 						<section>
 							<v-menu
 								ref="pickerDayStart"
 								:close-on-content-click="false"
 								v-model="pickerDayStart"
 								transition="scale-transition"
-				
 							>
 								<v-text-field
 									slot="activator"
@@ -43,7 +41,6 @@
 								:close-on-content-click="false"
 								v-model="pickerDayEnd"
 								transition="scale-transition"
-								v-if="period == 'range'"
 							>
 								<v-text-field
 									slot="activator"
@@ -99,9 +96,13 @@ export default {
 
 			//const dateTimeStart = dateStart + T + timeStart + Z;
 			//const dateTimeEnd = dateEnd + T + timeEnd + Z;
-      if(this.vehicles.length>0){
-        console.log(this.vehicles, this.pickerDayStartModel, this.pickerDayEndModel);
-      }
+			if (this.vehicles.length > 0) {
+				console.log(
+					this.vehicles,
+					this.pickerDayStartModel,
+					this.pickerDayEndModel
+				);
+			}
 		}
 	},
 	data() {
@@ -112,7 +113,7 @@ export default {
 			pickerDayEndModel: null,
 			pickerDayEnd: false,
 			plates: [],
-			vehicles: [],
+			vehicles: []
 		};
 	}
 };
