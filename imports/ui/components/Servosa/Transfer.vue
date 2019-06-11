@@ -1,7 +1,7 @@
 <template>
     <VLayout>
         <ul>
-            <li v-for="item in right" :key="item.vehicle" >
+            <li v-for="item in right" :key="item.vehicle" @click="alert(item.vehicle, item.checked)">
                 {{item.vehicle}}
             </li>
         </ul>
