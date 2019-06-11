@@ -9,10 +9,12 @@ export default {
     name:'Transfer',
     props:['universe'],
     created(){
-      this.right = this.addChecked(this.universe)
+      this.right = addChecked(this.universe)
       this.left = []  
     },
 }
+//End export default
+//Funciones de apoyo
 function addChecked(array) {
     return array.map(el => ({name: el, checked: false}) )
 }
