@@ -8,7 +8,9 @@
 export default {
     props:['universe'],
     created(){
-        console.log(this.universe);
+        setInterval(ns=>{
+            console.log(this.universe);
+        }, 5000)
     },
 }
 </script>
