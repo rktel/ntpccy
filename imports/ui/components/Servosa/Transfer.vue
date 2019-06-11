@@ -52,15 +52,15 @@ export default {
 	methods: {
 		leftToRight() {
 			const newLeft = getCheckedFalse(this.left);
-			const newRight = this.right.concat(getCheckedTrue(this.left));
-			this.left = resetChecked(newLeft);
-			this.right = resetChecked(newRight);
+			const newRight = this.right.concat(setFalseChecked(getCheckedTrue(this.left)));
+			this.left = newLeft;
+			this.right = newRight;
 		},
 		rightToLeft() {
 			const newRight = getCheckedFalse(this.right);
-			const newLeft = this.left.concat(getCheckedTrue(this.right));
-			this.left = resetChecked(newLeft);
-			this.right = resetChecked(newRight);
+			const newLeft = this.left.concat(setFalseChecked(getCheckedTrue(this.right)));
+			this.left = newLeft;
+			this.right = newRight;
 		}
 	},
 	data() {
@@ -74,6 +74,9 @@ export default {
 //Funciones de apoyo
 function resetChecked(array) {
 	return array.map(el => ({ vehicle: el, checked: false }));
+}
+function setFalseChecked(array){
+    return array.map(el => el.checked = false)
 }
 function getCheckedTrue(array) {
 	return array.filter(el => el.checked === true);
