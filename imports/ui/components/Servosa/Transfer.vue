@@ -49,7 +49,7 @@ export default {
 		this.left = resetChecked(this.universe);
         this.right = [];
         this.height = 250;
-        this.width = 200;
+        this.width = 250;
 	},
 	methods: {
 		leftToRight() {
