@@ -5,7 +5,7 @@
 			<img src="/img/Servosa.png" alt="Servosa" width="150">
 			<v-spacer></v-spacer>
 		</v-toolbar>
-		<v-navigation-drawer app clipped floating v-model="drawer" width="400">
+		<v-navigation-drawer app clipped floating v-model="drawer" width="420">
 			<v-layout column>
 				<v-flex>
 					<v-subheader>VEHICULOS</v-subheader>
