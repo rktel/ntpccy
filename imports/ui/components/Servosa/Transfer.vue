@@ -48,8 +48,7 @@ export default {
 	created() {
 		this.left = resetChecked(this.universe);
         this.right = [];
-        this.height = 250;
-        this.width = 220;
+        this.height = 235;
 	},
 	methods: {
 		leftToRight() {
