@@ -21,6 +21,9 @@
                 <VBtn color="success" icon @click="leftToRight">
                     <VIcon>chevron_right</VIcon>
                 </VBtn>
+                <VBtn color="success" icon @click="rightToLeft">
+                    <VIcon>chevron_left</VIcon>
+                </VBtn>
             </VLayout>
         </VFlex>
 		<VFlex s3>
@@ -49,14 +52,13 @@ export default {
 	},
 	methods: {
 		leftToRight() {
-            let newLeft=[]
-            let newRight=[]
-            newLeft = getCheckedFalse(this.left)
-            newRight = getCheckedTrue(this.left)
-            this.left = newLeft
-            this.right = newRight
-            console.log(this.left, this.right);
-		}
+            this.left = getCheckedFalse(this.left)
+            this.right = getCheckedTrue(this.left)
+        },
+        rightToLeft(){
+            this.right = getCheckedFalse(this.right)            
+            this.left = getCheckedTrue(this.right)
+        }
     },
     data(){
         return{
