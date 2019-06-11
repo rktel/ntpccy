@@ -5,6 +5,9 @@
 				<VList dense>
 					<section :style="{height: 250 + 'px', overflowY: 'scroll'}">
 						<VListTile v-for="item in left" :key="item.vehicle">
+                            <VListTileAction>
+                                <VCheckbox  v-model="item.checked" ></VCheckbox>
+                            </VListTileAction>
                             <VListTileContent>
                                 {{item.vehicle}}
                             </VListTileContent>
