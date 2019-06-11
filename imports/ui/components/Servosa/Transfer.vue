@@ -57,7 +57,13 @@ export default {
             this.right = newRight
             console.log(this.left, this.right);
 		}
-	}
+    },
+    data(){
+        return{
+            left:[],
+            right:[]
+        }
+    }
 };
 //End export default
 //Funciones de apoyo
