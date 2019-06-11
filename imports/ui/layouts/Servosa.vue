@@ -119,9 +119,7 @@
     <VContent>
       <VContainer>
         <template v-if="plates.length>0">
-
-        <Transfer :universe='plates'></Transfer>
-   
+          <Transfer :universe='plates'></Transfer>
         </template>
       </VContainer>
     </VContent>
