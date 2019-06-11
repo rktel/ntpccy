@@ -57,14 +57,14 @@ export default {
 			const newRight = this.right.concat(setFalseChecked(getCheckedTrue(this.left)));
 			this.left = newLeft;
             this.right = newRight;
-            this.$emit('childToParent', this.right)
+            this.$emit('childToParent', dataToParent(this.right))
 		},
 		rightToLeft() {
 			const newRight = getCheckedFalse(this.right);
 			const newLeft = this.left.concat(setFalseChecked(getCheckedTrue(this.right)));
 			this.left = newLeft;
             this.right = newRight;
-            this.$emit('childToParent', this.right)
+            this.$emit('childToParent', dataToParent(this.right))
 		}
 	},
 	data() {
@@ -76,6 +76,9 @@ export default {
 };
 //End export default
 //Funciones de apoyo
+function dataToParent(array) {
+    return array.map(el => el.vehicle)
+}
 function resetChecked(array) {
 	return array.map(el => ({ vehicle: el, checked: false }));
 }
