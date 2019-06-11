@@ -1,5 +1,5 @@
 <template>
-	<VLayout fill-height>
+	<VLayout>
 		<VFlex s1>
 			<VCard :style="{width: width + 'px'}">
 				<VList dense>
