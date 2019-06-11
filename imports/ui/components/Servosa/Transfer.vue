@@ -15,7 +15,7 @@
 			</VCard>
 		</VFlex>
 		<VFlex s1>
-			<VLayout column fill-height align-center>
+			<VLayout column fill-height align-center justify-center>
 				<VBtn color="success" icon @click="leftToRight">
 					<VIcon>chevron_right</VIcon>
 				</VBtn>
