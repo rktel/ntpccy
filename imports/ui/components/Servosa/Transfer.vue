@@ -1,7 +1,7 @@
 <template>
 	<VLayout align-center justify-center>
 		<VFlex class="green" xs2>
-			<VCard :style="{width: width + 'px'}">
+			<VCard >
 				<VList dense>
 					<section :style="{height: height + 'px', overflowY: 'scroll'}">
 						<VListTile v-for="item in left" :key="item.vehicle">
@@ -25,7 +25,7 @@
 			</VLayout>
 		</VFlex>
 		<VFlex class="green" xs2>
-			<VCard :style="{width: width + 'px'}">
+			<VCard >
 				<VList dense>
 					<section :style="{height: height + 'px', overflowY: 'scroll'}">
 						<VListTile v-for="item in right" :key="item.vehicle">
