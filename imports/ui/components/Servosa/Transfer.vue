@@ -56,13 +56,15 @@ export default {
 			const newLeft = getCheckedFalse(this.left);
 			const newRight = this.right.concat(setFalseChecked(getCheckedTrue(this.left)));
 			this.left = newLeft;
-			this.right = newRight;
+            this.right = newRight;
+            this.$emit('childToParent', this.right)
 		},
 		rightToLeft() {
 			const newRight = getCheckedFalse(this.right);
 			const newLeft = this.left.concat(setFalseChecked(getCheckedTrue(this.right)));
 			this.left = newLeft;
-			this.right = newRight;
+            this.right = newRight;
+            this.$emit('childToParent', this.right)
 		}
 	},
 	data() {
