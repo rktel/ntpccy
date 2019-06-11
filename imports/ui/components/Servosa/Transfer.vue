@@ -1,9 +1,9 @@
 <template>
 	<VLayout fill-height>
 		<VFlex s1>
-			<VCard :style="{width: 150 + 'px'}">
+			<VCard :style="{width: width + 'px'}">
 				<VList dense>
-					<section :style="{height: 250 + 'px', overflowY: 'scroll'}">
+					<section :style="{height: height + 'px', overflowY: 'scroll'}">
 						<VListTile v-for="item in left" :key="item.vehicle">
 							<VListTileAction>
 								<VCheckbox v-model="item.checked"></VCheckbox>
@@ -25,9 +25,9 @@
 			</VLayout>
 		</VFlex>
 		<VFlex s1>
-			<VCard :style="{width: 150 + 'px'}">
+			<VCard :style="{width: width + 'px'}">
 				<VList dense>
-					<section :style="{height: 250 + 'px', overflowY: 'scroll'}">
+					<section :style="{height: height + 'px', overflowY: 'scroll'}">
 						<VListTile v-for="item in right" :key="item.vehicle">
 							<VListTileAction>
 								<VCheckbox v-model="item.checked"></VCheckbox>
@@ -47,7 +47,9 @@ export default {
 	props: ["universe"],
 	created() {
 		this.left = resetChecked(this.universe);
-		this.right = [];
+        this.right = [];
+        this.height = 250;
+        this.width = 200;
 	},
 	methods: {
 		leftToRight() {
