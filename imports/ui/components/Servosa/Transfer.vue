@@ -1,5 +1,5 @@
 <template>
-	<VLayout :style="{width: 3*width + 'px'}">
+	<VLayout :style="{width: 3*width + 'px'}" align-center justify-center>
 		<VFlex class="green">
 			<VCard :style="{width: width + 'px'}">
 				<VList dense>
