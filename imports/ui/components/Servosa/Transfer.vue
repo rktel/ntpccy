@@ -2,19 +2,37 @@
 	<VLayout fill-height>
 		<VFlex s3>
 			<VCard>
-				<VList>
-					<div :style="{height: 250 + 'px', overflowY: 'scroll'}">
+				<VList dense>
+					<section :style="{height: 250 + 'px', overflowY: 'scroll'}">
+						<VListTile v-for="item in left" :key="item.vehicle">
+                            <VListTileContent>
+                                {{item.vehicle}}
+                            </VListTileContent>
+                        </VListTile>
+					</section>
+				</VList>
+			</VCard>
+		</VFlex>
+		<VFlex s1>
+            <VLayout column fill-height>
+                <VBtn color="success" icon @click="leftToRight">
+                    <VIcon>chevron_right</VIcon>
+                </VBtn>
+            </VLayout>
+        </VFlex>
+		<VFlex s3>
+			<VCard>
+				<VList dense>
+					<section :style="{height: 250 + 'px', overflowY: 'scroll'}">
 						<VListTile v-for="item in right" :key="item.vehicle">
                             <VListTileContent>
                                 {{item.vehicle}}
                             </VListTileContent>
                         </VListTile>
-					</div>
+					</section>
 				</VList>
-			</VCard>
-		</VFlex>
-		<VFlex s1></VFlex>
-		<VFlex s3></VFlex>
+			</VCard>            
+        </VFlex>
 	</VLayout>
 </template>
 
@@ -23,12 +41,17 @@ export default {
 	name: "Transfer",
 	props: ["universe"],
 	created() {
-		this.right = addChecked(this.universe);
-		this.left = [];
+        this.left = addChecked(this.universe);
+		this.right = [];
 	},
 	methods: {
-		msg(a, b) {
-			alert(a + "," + b);
+		leftToRight() {
+            let newLeft=[]
+            let newRight=[]
+            newLeft = getCheckedFalse(this.left)
+            newRight = getCheckedTrue(this.left)
+            this.left = newLeft
+            this.right = newRight
 		}
 	}
 };
