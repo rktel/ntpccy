@@ -8,21 +8,11 @@
 		<v-navigation-drawer app clipped floating v-model="drawer" width="350">
 			<v-layout column>
 				<v-flex>
-					<v-subheader>OBJETO</v-subheader>
+					<v-subheader>VEHICULOS</v-subheader>
 					<v-divider></v-divider>
-					<div class="pa-3">
-						<v-select
-							v-if="plates.length>0"
-							v-model="vehicle"
-							:items="plates"
-							label="Vehiculos"
-							height="20"
-							flat
-							multiple
-							chips
-						></v-select>
-						<v-progress-linear v-else :indeterminate="true"></v-progress-linear>
-					</div>
+					<template v-if="plates.length>0">
+						<Transfer :universe="plates" v-on:childToParent="onChildClick"></Transfer>
+					</template>
 					<v-divider></v-divider>
 				</v-flex>
 				<v-flex>
@@ -141,8 +131,9 @@ export default {
 		});
 	},
 	methods: {
-		onChildClick(value) {
-			console.log('value: ',value);
+		onChildClick(data) {
+			console.log("data: ", data);
+			this.vehicles = data;
 		}
 	},
 	data() {
@@ -158,6 +149,7 @@ export default {
 			pickerMonth: false,
 			loadingData: false,
 			plates: [],
+			vehicles: [],
 			period: "day"
 		};
 	}
