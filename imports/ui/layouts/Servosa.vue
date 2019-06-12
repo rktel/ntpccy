@@ -26,11 +26,11 @@
 
 					<section class="pl-3">
 						<div class="mb-2">
-							<p class="body-2 grey pa-0">Desde:</p>
+							<p class="body-2 grey--text ma-0">Desde:</p>
 							<input type="datetime-local" value="2018-06-12T19:30">
 						</div>
 						<div class="mb-2">
-							<p class="body-2 grey pa-0">Hasta:</p>
+							<p class="body-2 grey--text ma-0">Hasta:</p>
 							<input type="datetime-local" value="2018-06-12T19:30">
 						</div>
 					</section>
