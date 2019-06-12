@@ -27,11 +27,11 @@
 					<section class="pl-3">
 						<div class="mb-2">
 							<p class="body-2 grey--text ma-0">Desde:</p>
-							<input type="datetime-local" value="2018-06-12T19:30">
+							<input type="datetime-local" v-model="datetimeStart">
 						</div>
 						<div class="mb-2">
 							<p class="body-2 grey--text ma-0">Hasta:</p>
-							<input type="datetime-local" value="2018-06-12T19:30">
+							<input type="datetime-local" v-model="datetimeEnd">
 						</div>
 					</section>
 
@@ -130,10 +130,22 @@ export default {
 			pickerDayEndModel: null,
 			pickerDayEnd: false,
 			plates: [],
-			vehicles: []
+      vehicles: [],
+      // test input date-time
+      datetimeStart: getDatetimeStart(),
+      datetimeEnd: getDatetimeEnd(),
 		};
 	}
 };
+
+function getDatetimeStart() {
+  let date = new Date().toISOString()
+  return date.substr(0,11)+'T:00:00'
+}
+function getDatetimeEnd() {
+  let date = new Date().toISOString()
+  return date.substr(0,11)+'T:23:59'
+}
 </script>
 
 <style scoped>
