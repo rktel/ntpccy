@@ -77,19 +77,7 @@
 					<v-subheader>ACCION</v-subheader>
 					<v-divider></v-divider>
 					<div class="pa-3">
-						<v-btn block color="primary" @click="onSRVSReport">Buscar</v-btn>
-    <v-btn
-    block
-      :loading="loading2"
-      :disabled="loading2"
-      color="primary"
-      @click="onSRVSReport"
-    >
-      Buscar
-      <template v-slot:loader>
-        <span>Buscando...</span>
-      </template>
-    </v-btn>
+						<v-btn block color="primary" @click="onSRVSReport" :loading="loadingData">Buscar</v-btn>
 					</div>
 				</v-flex>
 			</v-layout>
@@ -122,10 +110,11 @@ export default {
 		onSRVSReport() {
 			const { vehicles, datetimeStart, datetimeEnd } = this;
 			if (vehicles.length > 0) {
+        this.loadingData = true
 				Meteor.call("SRVS_getData",	vehicles,	datetimeStart, datetimeEnd, function(error, data) {
 						if (!error) {
+              this.loadingData = false
               console.log("data: ", data);
-              this.loader = null
 						}
 					}
 				);
@@ -144,9 +133,7 @@ export default {
 			// test input date-time
 			datetimeStart: getDatetimeStart(),
       datetimeEnd: getDatetimeEnd(),
-              loader: null,
-
-        loading2: false,
+      loadingData: false,
 		};
 	}
 };
