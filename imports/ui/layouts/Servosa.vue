@@ -78,6 +78,18 @@
 					<v-divider></v-divider>
 					<div class="pa-3">
 						<v-btn block color="primary" @click="onSRVSReport">Buscar</v-btn>
+    <v-btn
+    block
+      :loading="loading2"
+      :disabled="loading2"
+      color="primary"
+      @click="onSRVSReport"
+    >
+      Buscar
+      <template v-slot:loader>
+        <span>Buscando...</span>
+      </template>
+    </v-btn>
 					</div>
 				</v-flex>
 			</v-layout>
@@ -113,6 +125,7 @@ export default {
 				Meteor.call("SRVS_getData",	vehicles,	datetimeStart, datetimeEnd, function(error, data) {
 						if (!error) {
               console.log("data: ", data);
+              this.loader = null
 						}
 					}
 				);
@@ -130,7 +143,10 @@ export default {
 			vehicles: [],
 			// test input date-time
 			datetimeStart: getDatetimeStart(),
-			datetimeEnd: getDatetimeEnd()
+      datetimeEnd: getDatetimeEnd(),
+              loader: null,
+
+        loading2: false,
 		};
 	}
 };
