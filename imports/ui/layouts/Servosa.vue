@@ -14,7 +14,7 @@
 						<Transfer :universe="plates" v-on:childToParent="onChildClick"></Transfer>
 					</template>
 					<template v-else>
-						<v-progress-circular :size="50" color="amber" indeterminate></v-progress-circular>
+						<v-progress-linear :indeterminate="true"></v-progress-linear>
 					</template>
 					<v-divider></v-divider>
 				</v-flex>
