@@ -23,22 +23,15 @@
 				<v-flex>
 					<v-subheader>PERIODO</v-subheader>
 					<v-divider></v-divider>
-					<input
-						type="datetime-local"
-						id="meeting-time"
-						name="meeting-time"
-						value="2018-06-12T19:30"
-						min="2018-06-07T00:00"
-						max="2018-06-14T00:00"
-					>
-					<input
-						type="datetime-local"
-						id="meeting-time"
-						name="meeting-time"
-						value="2018-06-12T19:30"
-						min="2018-06-07T00:00"
-						max="2018-06-14T00:00"
-					>
+					<v-layout row>
+						<v-flex xs6>
+							<input type="datetime-local" value="2018-06-12T19:30">
+						</v-flex>
+						<v-flex xs6>
+							<input type="datetime-local" value="2018-06-12T19:30">
+						</v-flex>
+					</v-layout>
+
 					<!--div class="pa-3">
 						<section>
 							<v-menu
