@@ -140,11 +140,11 @@ export default {
 
 function getDatetimeStart() {
   let date = new Date().toISOString()
-  return date.substr(0,11)+'T:00:00:00.000Z'
+  return date.substr(0,10)+'T:00:00:00.000Z'
 }
 function getDatetimeEnd() {
   let date = new Date().toISOString()
-  return date.substr(0,11)+'T:23:59:59.000Z'
+  return date.substr(0,10)+'T:23:59:59.000Z'
 }
 </script>
 
