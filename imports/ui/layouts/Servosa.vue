@@ -113,7 +113,6 @@ export default {
 				Meteor.call("SRVS_getData",	vehicles,	datetimeStart, datetimeEnd, function(error, data) {
 						if (!error) {
               console.log("data: ", data);
-              
 						}
 					}
 				);
