@@ -23,7 +23,23 @@
 				<v-flex>
 					<v-subheader>PERIODO</v-subheader>
 					<v-divider></v-divider>
-					<div class="pa-3">
+					<input
+						type="datetime-local"
+						id="meeting-time"
+						name="meeting-time"
+						value="2018-06-12T19:30"
+						min="2018-06-07T00:00"
+						max="2018-06-14T00:00"
+					>
+					<input
+						type="datetime-local"
+						id="meeting-time"
+						name="meeting-time"
+						value="2018-06-12T19:30"
+						min="2018-06-07T00:00"
+						max="2018-06-14T00:00"
+					>
+					<!--div class="pa-3">
 						<section>
 							<v-menu
 								ref="pickerDayStart"
@@ -58,7 +74,7 @@
 								<v-date-picker v-model="pickerDayEndModel" no-title @input="pickerDayEnd = false"></v-date-picker>
 							</v-menu>
 						</section>
-					</div>
+					</div-->
 					<v-divider></v-divider>
 				</v-flex>
 				<v-flex>
