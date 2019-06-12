@@ -23,16 +23,15 @@
 				<v-flex>
 					<v-subheader>PERIODO</v-subheader>
 					<v-divider></v-divider>
-	
-						<section xs12 class="text-xs-center" pa-2>
-							<p class="body-1 text-xs-left">Desde:</p>
-							<input type="datetime-local" value="2018-06-12T19:30">
-						</section>
-						<section xs12 class="text-xs-center" pa-2>
-							<p class="body-1 text-xs-left">Hasta:</p>
-							<input type="datetime-local" value="2018-06-12T19:30">
-						</section>
-	
+
+					<section class="pl-2">
+						<p class="body-2">Desde:</p>
+						<input type="datetime-local" value="2018-06-12T19:30">
+					</section>
+					<section class="p">
+						<p class="body-2">Hasta:</p>
+						<input type="datetime-local" value="2018-06-12T19:30">
+					</section>
 
 					<!--div class="pa-3">
 						<section>
