@@ -104,20 +104,18 @@ export default {
 	},
 	methods: {
 		onChildClick(data) {
-			console.log("data: ", data);
+		//	console.log("data: ", data);
 			this.vehicles = data;
 		},
 		onSRVSReport() {
-			const T = "T";
-			const Z = ":00.000Z";
-
-			//const dateTimeStart = dateStart + T + timeStart + Z;
-			//const dateTimeEnd = dateEnd + T + timeEnd + Z;
-			if (this.vehicles.length > 0) {
-				console.log(
-					this.vehicles,
-					this.datetimeStart,
-					this.datetimeEnd
+			const { vehicles, datetimeStart, datetimeEnd } = this;
+			if (vehicles.length > 0) {
+				Meteor.call("SRVS_getData",	vehicles,	datetimeStart, datetimeEnd, function(error, data) {
+						if (!error) {
+              console.log("data: ", data);
+              
+						}
+					}
 				);
 			}
 		}
@@ -130,21 +128,21 @@ export default {
 			pickerDayEndModel: null,
 			pickerDayEnd: false,
 			plates: [],
-      vehicles: [],
-      // test input date-time
-      datetimeStart: getDatetimeStart(),
-      datetimeEnd: getDatetimeEnd(),
+			vehicles: [],
+			// test input date-time
+			datetimeStart: getDatetimeStart(),
+			datetimeEnd: getDatetimeEnd()
 		};
 	}
 };
 
 function getDatetimeStart() {
-  let date = new Date().toISOString()
-  return date.substr(0,10)+'T00:00'
+	let date = new Date().toISOString();
+	return date.substr(0, 10) + "T00:00";
 }
 function getDatetimeEnd() {
-  let date = new Date().toISOString()
-  return date.substr(0,10)+'T23:59'
+	let date = new Date().toISOString();
+	return date.substr(0, 10) + "T23:59";
 }
 </script>
 
