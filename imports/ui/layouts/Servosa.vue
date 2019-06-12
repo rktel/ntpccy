@@ -116,8 +116,8 @@ export default {
 			if (this.vehicles.length > 0) {
 				console.log(
 					this.vehicles,
-					this.pickerDayStartModel,
-					this.pickerDayEndModel
+					this.datetimeStart,
+					this.datetimeEnd
 				);
 			}
 		}
