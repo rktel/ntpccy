@@ -23,7 +23,7 @@
 				<v-flex>
 					<v-subheader>PERIODO</v-subheader>
 					<v-divider></v-divider>
-					<v-layout row justify-center>
+					<v-layout row align-center>
 						<v-flex xs6>
 							<input type="datetime-local" value="2018-06-12T19:30">
 						</v-flex>
