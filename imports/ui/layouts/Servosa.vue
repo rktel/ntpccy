@@ -25,10 +25,12 @@
 					<v-divider></v-divider>
 					<v-layout row>
 						<v-flex xs6 class="text-xs-center">
-							<input type="datetime-local" value="2018-06-12T19:30">
+              <label for="datetimeStart" class="body-1">Desde</label>
+							<input type="datetime-local" value="2018-06-12T19:30" id="datetimeStart">
 						</v-flex>
 						<v-flex xs6 class="text-xs-center">
-							<input type="datetime-local" value="2018-06-12T19:30">
+              <label for="datetimeEnd" class="body-1">Hasta</label>
+							<input type="datetime-local" value="2018-06-12T19:30" id="datetimeEnd">
 						</v-flex>
 					</v-layout>
 
