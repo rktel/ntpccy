@@ -24,12 +24,12 @@
 					<v-subheader>PERIODO</v-subheader>
 					<v-divider></v-divider>
 					<v-layout column>
-						<v-flex xs12 class="text-xs-center">
-              <label for="datetimeStart" class="body-1">Desde</label>
+						<v-flex xs12 class="text-xs-center" pa-4>
+              <label for="datetimeStart" class="body-1">Desde: </label>
 							<input type="datetime-local" value="2018-06-12T19:30" id="datetimeStart">
 						</v-flex>
-						<v-flex xs12 class="text-xs-center">
-              <label for="datetimeEnd" class="body-1">Hasta</label>
+						<v-flex xs12 class="text-xs-center" pa-4>
+              <label for="datetimeEnd" class="body-1">Hasta: </label>
 							<input type="datetime-local" value="2018-06-12T19:30" id="datetimeEnd">
 						</v-flex>
 					</v-layout>
