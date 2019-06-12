@@ -23,11 +23,11 @@
 				<v-flex>
 					<v-subheader>PERIODO</v-subheader>
 					<v-divider></v-divider>
-					<v-layout row fill-height align-center justify-center>
-						<v-flex xs6>
+					<v-layout row>
+						<v-flex xs6 class="text-xs-center">
 							<input type="datetime-local" value="2018-06-12T19:30">
 						</v-flex>
-						<v-flex xs6>
+						<v-flex xs6 class="text-xs-center">
 							<input type="datetime-local" value="2018-06-12T19:30">
 						</v-flex>
 					</v-layout>
