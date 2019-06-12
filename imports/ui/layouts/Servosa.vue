@@ -25,11 +25,11 @@
 					<v-divider></v-divider>
 					<v-layout column>
 						<v-flex xs12 class="text-xs-center" pa-2>
-							<p class="body-1">Desde:</p>
+							<p class="body-1 text-xs-left">Desde:</p>
 							<input type="datetime-local" value="2018-06-12T19:30">
 						</v-flex>
 						<v-flex xs12 class="text-xs-center" pa-2>
-							<p class="body-1">Hasta:</p>
+							<p class="body-1 text-xs-left">Hasta:</p>
 							<input type="datetime-local" value="2018-06-12T19:30">
 						</v-flex>
 					</v-layout>
