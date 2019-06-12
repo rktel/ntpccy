@@ -24,11 +24,9 @@
 					<v-subheader>PERIODO</v-subheader>
 					<v-divider></v-divider>
 
-					<section class="pl-2">
+					<section class="pl-3">
 						<p class="body-2">Desde:</p>
 						<input type="datetime-local" value="2018-06-12T19:30">
-					</section>
-					<section class="p">
 						<p class="body-2">Hasta:</p>
 						<input type="datetime-local" value="2018-06-12T19:30">
 					</section>
