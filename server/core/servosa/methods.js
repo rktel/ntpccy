@@ -57,8 +57,8 @@ Meteor.methods({
             ]).toArray()
         // Agrupacion de la Data Segun criterios del cliente:
         if (report && report.length > 0) {
-            report.forEach((el) => {
-                RowArray.push({
+            const auxArray = report.map(el =>
+                 ({
                     'MES': Servosa_getMonth(dateTimeStart),
                     'FECHA': Servosa_getDate(dateTimeStart),
                     'RUTA': '    ',
@@ -73,15 +73,11 @@ Meteor.methods({
                     'SUP. ESCOLTA': '    ',
                     'TRAMO': '   '
                 })
-            })
+            )
 
-            return report
+            return auxArray
 
         }
-
-
-
-
 
     }
 });
