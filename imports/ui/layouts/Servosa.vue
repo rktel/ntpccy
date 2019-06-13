@@ -23,7 +23,6 @@
 				<v-flex>
 					<v-subheader>PERIODO</v-subheader>
 					<v-divider></v-divider>
-
 					<section class="pl-3">
 						<div class="mb-2">
 							<p class="body-2 grey--text ma-0">Desde:</p>
@@ -34,43 +33,6 @@
 							<input type="datetime-local" v-model="datetimeEnd">
 						</div>
 					</section>
-
-					<!--div class="pa-3">
-						<section>
-							<v-menu
-								ref="pickerDayStart"
-								:close-on-content-click="false"
-								v-model="pickerDayStart"
-								transition="scale-transition"
-							>
-								<v-text-field
-									slot="activator"
-									v-model="pickerDayStartModel"
-									readonly
-									height="20"
-									flat
-									label="Desde"
-								></v-text-field>
-								<v-date-picker v-model="pickerDayStartModel" no-title @input="pickerDayStart = false"></v-date-picker>
-							</v-menu>
-							<v-menu
-								ref="pickerDayEnd"
-								:close-on-content-click="false"
-								v-model="pickerDayEnd"
-								transition="scale-transition"
-							>
-								<v-text-field
-									slot="activator"
-									v-model="pickerDayEndModel"
-									readonly
-									height="20"
-									flat
-									label="Hasta"
-								></v-text-field>
-								<v-date-picker v-model="pickerDayEndModel" no-title @input="pickerDayEnd = false"></v-date-picker>
-							</v-menu>
-						</section>
-					</div-->
 					<v-divider></v-divider>
 				</v-flex>
 				<v-flex>
@@ -124,10 +86,6 @@ export default {
 	data() {
 		return {
 			drawer: true,
-			pickerDayStartModel: null,
-			pickerDayStart: false,
-			pickerDayEndModel: null,
-			pickerDayEnd: false,
 			plates: [],
 			vehicles: [],
 			// test input date-time

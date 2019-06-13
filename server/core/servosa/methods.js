@@ -13,8 +13,8 @@ Meteor.methods({
          *      81          Fatiga
          *      80          No Rostro
          */
-        dateTimeStart = addHours(dateTimeStart,5)
-        dateTimeEnd = addHours(dateTimeEnd,5)
+        dateTimeStart = addHours(dateTimeStart, 5)
+        dateTimeEnd = addHours(dateTimeEnd, 5)
 
         console.log(dateTimeStart, dateTimeEnd);
         const eventOriginal_Array = [82, 81, 80]
@@ -55,9 +55,33 @@ Meteor.methods({
                 { $sort: { 'placa': 1 } },
 
             ]).toArray()
+        // Agrupacion de la Data Segun criterios del cliente:
+        if (report && report.length > 0) {
+            report.forEach((el) => {
+                RowArray.push({
+                    'MES': Servosa_getMonth(dateTimeStart),
+                    'FECHA': Servosa_getDate(dateTimeStart),
+                    'RUTA': '    ',
+                    'CODIGO': '  ',
+                    'PLACA': el.placa,
+                    'CONDUCTOR': '   ',
+                    'DNI': ' ',
+                    'N° DE REPORTES REGISTRADOS': el.fatiga,
+                    'N° DE NO ROSTRO': el.noRostro,
+                    'ACCION EN CAMPO': Servosa_Accion(el.fatiga),
+                    'HORA REAL': Servosa_getHoraReal(),
+                    'SUP. ESCOLTA': '    ',
+                    'TRAMO': '   '
+                })
+            })
+
+            return report
+
+        }
 
 
-        return report
+
+
 
     }
 });
@@ -68,4 +92,80 @@ function addHours(datetime, hours) {
     let date = new Date(datetime);
     date.setHours(date.getHours() + hours);
     return date.toISOString()
+}
+
+function Servosa_Accion(eventCount) {
+    if (eventCount <= 19) {
+        return 'Pausa Activa General'
+    } else if (eventCount >= 20 && eventCount <= 50) {
+        return 'Registro de Retroalimentacion'
+    } else if (eventCount >= 50 && eventCount <= 80) {
+        return 'Aplicar Test de Fatiga'
+    } else if (eventCount > 80) {
+        return 'Evaluacion del Caso'
+    }
+}
+function Servosa_getDate(dateTime_) {
+    const millis = getTimeMillis(dateTime_)
+    const dateTime = new Date(millis)
+    const year = dateTime.getFullYear()
+    const month = addZero(dateTime.getMonth() + 1)
+    const day = addZero(dateTime.getDate())
+    return day + '/' + month + '/' + year
+}
+function Servosa_getMonth(dateTime_) {
+    const millis = getTimeMillis(dateTime_)
+    const dateTime = new Date(millis)
+    let month
+    switch (dateTime.getMonth()) {
+        case 0:
+            month = 'ENERO';
+            break;
+        case 1:
+            month = 'FEBRERO';
+            break;
+        case 2:
+            month = 'MARZO';
+            break;
+        case 3:
+            month = 'ABRIL';
+            break;
+        case 4:
+            month = 'MAYO';
+            break;
+        case 5:
+            month = 'JUNIO';
+            break;
+        case 6:
+            month = 'JULIO';
+            break;
+        case 7:
+            month = 'AGOSTO';
+            break;
+        case 8:
+            month = 'SEPTIEMBRE';
+            break;
+        case 9:
+            month = 'OCTUBRE';
+            break;
+        case 10:
+            month = 'NOVIEMBRE';
+            break;
+        case 11:
+            month = 'DICIEMBRE';
+            break;
+
+        default:
+            break;
+    }
+    return month
+}
+function Servosa_getHoraReal() {
+    const dateTime = new Date(addHours(new Date(), -5))
+    const hour = addZero(dateTime.getHours())
+    const minute = addZero(dateTime.getMinutes())
+    const seconds = addZero(dateTime.getSeconds())
+    return hour + ':' + minute + ':' + seconds
+
+
 }
