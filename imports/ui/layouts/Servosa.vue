@@ -111,7 +111,7 @@ export default {
 			const { vehicles, datetimeStart, datetimeEnd } = this;
 			if (vehicles.length > 0) {
         this.loadingData = true
-				Meteor.call("SRVS_getData",	vehicles,	datetimeStart, datetimeEnd, function(error, data) {
+				Meteor.call("SRVS_getData",	vehicles,	datetimeStart, datetimeEnd, (error, data)=> {
 						if (!error) {
               this.loadingData = false
               console.log("data: ", data);
