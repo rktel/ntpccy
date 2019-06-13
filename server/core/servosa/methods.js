@@ -60,7 +60,8 @@ Meteor.methods({
             const auxArray = report.map(el =>
                  ({
                     // 'MES': Servosa_getMonth(dateTimeStart),
-                    'FECHA': Servosa_getDate(dateTimeStart) +"-"+ Servosa_getDate(dateTimeEnd),
+                    'FECHA DE INICIO': dateTimeStart,
+                    'FECHA DE FIN': dateTimeEnd,
                     'RUTA': '    ',
                     'CODIGO': '  ',
                     'PLACA': el.placa,
