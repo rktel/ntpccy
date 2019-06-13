@@ -166,3 +166,6 @@ function Servosa_getHoraReal() {
 function getTimeMillis(dateTime) {
     return (new Date(dateTime)).getTime()
 }
+function addZero(data) {
+    return data < 10 ? '0' + data : data
+}
