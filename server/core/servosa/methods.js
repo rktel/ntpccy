@@ -13,16 +13,16 @@ Meteor.methods({
          *      81          Fatiga
          *      80          No Rostro
          */
-        dateTimeStart = addHours(dateTimeStart, 5)
-        dateTimeEnd = addHours(dateTimeEnd, 5)
+        dateTimeStart5 = addHours(dateTimeStart, 5)
+        dateTimeEnd5 = addHours(dateTimeEnd, 5)
 
-        console.log(dateTimeStart, dateTimeEnd);
+       // console.log(dateTimeStart, dateTimeEnd);
         const eventOriginal_Array = [82, 81, 80]
         // const arrayEvents = [81,82]
 
         const report = await Servosa.rawCollection().
             aggregate([
-                { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart, $lte: dateTimeEnd } } },
+                { $match: { 'events.vehicle': { $in: plates }, 'events.created': { $gte: dateTimeStart5, $lte: dateTimeEnd5 } } },
                 { $unwind: '$events' },
                 { $match: { 'events.original': { $in: eventOriginal_Array } } },
                 {
