@@ -1085,7 +1085,6 @@ function getMinutesDiff(dateTimeMax, dateTimeMin) {
 }
 function getTimeMillis(dateTime) {
     return (new Date(dateTime)).getTime()
-
 }
 
 // END ANTAPACCAY API

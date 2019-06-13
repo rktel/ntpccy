@@ -162,6 +162,7 @@ function Servosa_getHoraReal() {
     const minute = addZero(dateTime.getMinutes())
     const seconds = addZero(dateTime.getSeconds())
     return hour + ':' + minute + ':' + seconds
-
-
+}
+function getTimeMillis(dateTime) {
+    return (new Date(dateTime)).getTime()
 }
