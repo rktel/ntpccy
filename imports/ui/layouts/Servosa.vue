@@ -52,6 +52,7 @@
 
 <script>
 import Transfer from "../components/Servosa/Transfer";
+import { json2excel } from "js2excel";
 export default {
 	components: {
 		Transfer
@@ -66,17 +67,26 @@ export default {
 	},
 	methods: {
 		onChildClick(data) {
-		//	console.log("data: ", data);
+			//	console.log("data: ", data);
 			this.vehicles = data;
 		},
 		onSRVSReport() {
 			const { vehicles, datetimeStart, datetimeEnd } = this;
 			if (vehicles.length > 0) {
-        this.loadingData = true
-				Meteor.call("SRVS_getData",	vehicles,	datetimeStart, datetimeEnd, (error, data)=> {
-						if (!error) {
-              this.loadingData = false
-              console.log("data: ", data);
+				this.loadingData = true;
+				Meteor.call("SRVS_getData",vehicles,datetimeStart,datetimeEnd,(error, data) => {
+						if (!error && data && data.length > 0) {
+							this.loadingData = false;
+							// console.log("data: ", data);
+							try {
+								json2excel({
+									data,
+									name: "Reporte",
+									formateDate: "yyyy/mm/dd"
+								});
+							} catch (e) {
+								console.error("export error");
+							}
 						}
 					}
 				);
@@ -90,8 +100,8 @@ export default {
 			vehicles: [],
 			// test input date-time
 			datetimeStart: getDatetimeStart(),
-      datetimeEnd: getDatetimeEnd(),
-      loadingData: false,
+			datetimeEnd: getDatetimeEnd(),
+			loadingData: false
 		};
 	}
 };
