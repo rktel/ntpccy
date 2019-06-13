@@ -87,7 +87,9 @@ export default {
 							} catch (e) {
 								console.error("export error");
 							}
-						}
+						}else{
+              this.loadingData = false;
+            }
 					}
 				);
 			}
