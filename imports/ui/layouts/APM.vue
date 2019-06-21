@@ -10,7 +10,7 @@
 								<v-toolbar flat>
 									<input type="file">
 									<v-spacer></v-spacer>
-									<v-btn icon fab>
+									<v-btn fab small dark color="grey">
                                         <v-icon>transform</v-icon>
                                     </v-btn>
 								</v-toolbar>
