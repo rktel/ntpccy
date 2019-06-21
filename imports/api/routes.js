@@ -8,6 +8,7 @@ import Home from '../ui/layouts/Home.vue'
 import Dinet from '../ui/layouts/Dinet.vue'
 import Phantom from '../ui/layouts/Phantom.vue'
 import Servosa from '../ui/layouts/Servosa.vue'
+import APM from '../ui/layouts/APM.vue'
 
 const routes = [
     { path: '/', redirect: '/rpt' },
@@ -27,6 +28,12 @@ const routes = [
     },
     {
         name: 'Servosa', path: '/servosa', component: Servosa,
+        meta: {
+            spa: true
+        }
+    },
+    {
+        name: 'APM', path: '/apm', component: APM,
         meta: {
             spa: true
         }
