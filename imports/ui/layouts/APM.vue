@@ -8,7 +8,7 @@
 							<v-card-title>Excel Report Convert</v-card-title>
 							<v-card-text>
 								<v-toolbar flat>
-									<input type="file">
+									<input type="file" @change="changeFile"/>
 									<v-spacer></v-spacer>
 									<v-btn fab small dark color="grey">
                                         <v-icon>get_app</v-icon>
@@ -24,7 +24,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+    methods:{
+        changeFile(e){
+            console.log(e);
+        }
+    }
+};
 </script>
 
 <style>
