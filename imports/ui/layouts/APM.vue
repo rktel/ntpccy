@@ -7,9 +7,11 @@
 						<v-card>
 							<v-card-title>Excel Report Convert</v-card-title>
 							<v-card-text>
-								<input type="file">
-								<v-spacer></v-spacer>
-								<v-btn>Convertir</v-btn>
+								<v-toolbar flat>
+									<input type="file">
+									<v-spacer></v-spacer>
+									<v-btn>Convertir</v-btn>
+								</v-toolbar>
 							</v-card-text>
 						</v-card>
 					</v-flex>
