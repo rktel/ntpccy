@@ -7,7 +7,7 @@
                         <v-card>
                             <v-card-title>Excel Convert</v-card-title>
                             <v-card-text>
-                                <v-text-field type="file"></v-text-field>
+                                <input type="file"/>
                             </v-card-text>
                         </v-card>
                     </v-flex>
