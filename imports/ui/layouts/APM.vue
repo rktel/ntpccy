@@ -3,7 +3,7 @@
         <v-content>
             <v-container fill-height>
                 <v-layout row justify-center>
-                    <v-flex xs8>
+                    <v-flex xs12 lg8>
                         <v-card>
                             <v-card-title>Excel Convert</v-card-title>
                             <v-card-text>
