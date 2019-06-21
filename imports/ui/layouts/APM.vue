@@ -11,7 +11,7 @@
 									<input type="file">
 									<v-spacer></v-spacer>
 									<v-btn fab small dark color="grey">
-                                        <v-icon>transform</v-icon>
+                                        <v-icon>get_app</v-icon>
                                     </v-btn>
 								</v-toolbar>
 							</v-card-text>
