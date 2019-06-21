@@ -10,7 +10,9 @@
 								<v-toolbar flat>
 									<input type="file">
 									<v-spacer></v-spacer>
-									<v-btn>Convertir</v-btn>
+									<v-btn icon>
+                                        <v-icon>transform</v-icon>
+                                    </v-btn>
 								</v-toolbar>
 							</v-card-text>
 						</v-card>
