@@ -5,9 +5,10 @@
                 <v-layout row justify-center>
                     <v-flex xs12 lg8>
                         <v-card>
-                            <v-card-title>Excel Convert</v-card-title>
+                            <v-card-title>Excel Report Convert</v-card-title>
                             <v-card-text>
                                 <input type="file"/>
+                                <v-btn>Convertir</v-btn>
                             </v-card-text>
                         </v-card>
                     </v-flex>
