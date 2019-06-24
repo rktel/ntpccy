@@ -3,12 +3,8 @@ import XLSX from "xlsx";
 Meteor.methods({
     APM_uploadS(bstr, name) {
 
-        let wb = XLSX.read(bstr, { type: 'binary' });
-        const ws = wb.Sheets[wb.SheetNames[0]];
-        console.log(ws);
-        const json = XLSX.utils.sheet_to_json(ws);
-        console.log(json);
-        return "hello"       
+        return XLSX.read(bstr, { type: 'binary' });
+     
         /*
         const wb: XLSX.WorkBook = XLSX.read(bstr, {type: 'binary'});
         const sheet = wb.Sheets[wb.SheetNames[0]];
