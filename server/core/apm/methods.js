@@ -15,7 +15,7 @@ Meteor.methods({
                     Dispositivo: el[1],
                     Persona: el[2],
                     Localizacion: el[3],
-                    Fecha: " " +el[7]
+                    Fecha: "ABC" +el[7]
                 });
             }
         });
