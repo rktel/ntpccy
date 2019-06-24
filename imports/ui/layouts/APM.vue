@@ -10,9 +10,9 @@
 								<v-toolbar flat>
 									<input type="file" @change="changeFile">
 									<v-spacer></v-spacer>
-									<v-btn fab small dark color="grey" @click="transformFile">
+									<!--v-btn fab small dark color="grey" @click="transformFile">
 										<v-icon>get_app</v-icon>
-									</v-btn>
+									</v-btn-->
 								</v-toolbar>
 							</v-card-text>
 						</v-card>
@@ -44,27 +44,29 @@ export default {
 					let out = [];
 					if (!err) {
 						const ws = wb.Sheets[wb.SheetNames[0]];
-						const json = XLSX.utils.sheet_to_json(ws, { header: 1});
-					//	console.log(json);
+						const json = XLSX.utils.sheet_to_json(ws, {
+							header: 1
+						});
+						//	console.log(json);
 
-						json.forEach((el, index)=>{
-							if(index >1){
+						json.forEach((el, index) => {
+							if (index > 1) {
 								out.push({
-									Tipo: el[0],
+									Tipo: el[0].substr(el[0].indexOf("Current Speed")+17, 7),
 									Dispositivo: el[1],
 									Persona: el[2],
 									Localizacion: el[3],
 									Fecha: el[7].toString()
-								})
+								});
 							}
-						})
+						});
 
 						console.log(out);
-						          json2excel({
-            data: out,
-            name: "Reporte",
-            formateDate: "yyyy/mm/dd"
-          });
+						json2excel({
+							data: out,
+							name: "Reporte",
+							formateDate: "yyyy/mm/dd"
+						});
 					}
 
 					/* generate HTML table and enable export 
@@ -78,7 +80,7 @@ export default {
 			//	else reader.readAsArrayBuffer(file);
 		},
 		transformFile() {
-			alert("hello");
+			//alert("hello");
 		}
 	}
 };
