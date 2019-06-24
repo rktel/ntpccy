@@ -52,7 +52,7 @@ export default {
 						json.forEach((el, index) => {
 							if (index > 1) {
 								out.push({
-									Tipo: el[0].substr(el[0].indexOf("Current Speed")+17, 7),
+									Tipo: el[0].substr(el[0].indexOf("Current Speed")+15, 7),
 									Dispositivo: el[1],
 									Persona: el[2],
 									Localizacion: el[3],
