@@ -59,7 +59,11 @@ export default {
 						})
 
 						console.log(out);
-						
+						          json2excel({
+            data: out,
+            name: "Reporte",
+            formateDate: "yyyy/mm/dd"
+          });
 					}
 
 					/* generate HTML table and enable export 
@@ -73,25 +77,7 @@ export default {
 			//	else reader.readAsArrayBuffer(file);
 		},
 		transformFile() {
-			/* original data */
-var data = [
-    {"name":"John", "city": "Seattle"},
-    {"name":"Mike", "city": "Los Angeles"},
-    {"name":"Zach", "city": "New York"}
-];
-
-/* this line is only needed if you are not adding a script tag reference */
-// if(typeof XLSX == 'undefined') XLSX = require('xlsx');
-
-/* make the worksheet */
-var ws = XLSX.utils.json_to_sheet(data);
-
-/* add to workbook */
-var wb = XLSX.utils.book_new();
-XLSX.utils.book_append_sheet(wb, ws, "People");
-
-/* write workbook */
-XLSX.write(wb, {bookType:'xlsx', type:'buffer'});
+			alert("hello");
 		}
 	}
 };
