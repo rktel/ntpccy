@@ -37,7 +37,7 @@ export default {
 				console.log("name:", name);
 				console.log("data:", data);
 				/* Meteor magic */
-				Meteor.call(rABS ? 'APM_uploadS' : 'APM_uploadU', rABS ? data : new Uint8Array(data), name, function(err, wb) {
+				Meteor.call('APM_uploadS' , data , name, (err, wb) => {
 					if (err) throw err;
 					/* load the first worksheet */
 					const ws = wb.Sheets[wb.SheetNames[0]];
@@ -50,7 +50,7 @@ export default {
 				});
 			};
 			if (rABS) reader.readAsBinaryString(file);
-			else reader.readAsArrayBuffer(file);
+		//	else reader.readAsArrayBuffer(file);
 		},
 		transformFile() {
 			alert("hello");
