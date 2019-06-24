@@ -5,7 +5,8 @@ Meteor.methods({
 
         let wb = XLSX.read(bstr, { type: 'binary' });
         let firstSheet = wb.SheetNames[0];
-        console.log(firstSheet);
+        let json = XLSX.utils.sheet_to_json(workbook.Sheets[firstSheet]);
+        console.log(json);
         return "hello"       
         /* DO SOMETHING WITH workbook HERE 
         var first_sheet_name = wb.SheetNames[0];
