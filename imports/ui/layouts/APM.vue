@@ -41,11 +41,10 @@ export default {
 					//if (err) throw err;
 					/* load the first worksheet */
 					if (!err) {
-						const ws = wb.Sheets[wb.SheetNames["Alertas_06242019_202816"]];
-						const json = XLSX.utils.sheet_to_json(ws);
-						console.log(json);
-						
-					}
+						const ws = wb.Sheets[wb.SheetNames[0]];
+						//const json = XLSX.utils.sheet_to_json(ws);
+						console.log(ws);
+				}
 
 					/* generate HTML table and enable export 
 					const html = XLSX.utils.sheet_to_html(ws, { editable: true });
