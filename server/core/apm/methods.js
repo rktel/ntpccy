@@ -5,7 +5,7 @@ Meteor.methods({
         let out = [];
         const wb = XLSX.read(bstr, { type: 'binary', cellDates: true });
         const ws = wb.Sheets[wb.SheetNames[0]];
-        const json = XLSX.utils.sheet_to_json(ws, {	header: 1 });
+        const json = XLSX.utils.sheet_to_json(ws, {	header: 1 }, {raw: false});
         //	console.log(json);
 
         json.forEach((el, index) => {
@@ -15,7 +15,7 @@ Meteor.methods({
                     Dispositivo: el[1],
                     Persona: el[2],
                     Localizacion: el[3],
-                    Fecha: "ABC" +el[7]
+                    Fecha: el[7]
                 });
             }
         });
