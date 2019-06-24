@@ -41,10 +41,12 @@ export default {
 					//if (err) throw err;
 					/* load the first worksheet */
 					if (!err) {
+						/*
 						const ws = wb.Sheets[wb.SheetNames[0]];
 						const json = XLSX.utils.sheet_to_json(ws ,
                                 { header: 1 });
 						console.log(json);
+						*/
 				}
 
 					/* generate HTML table and enable export 
