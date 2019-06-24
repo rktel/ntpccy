@@ -40,10 +40,26 @@ export default {
 				Meteor.call("APM_uploadS", data, name, (err, wb) => {
 					//if (err) throw err;
 					/* load the first worksheet */
+					let out = [];
 					if (!err) {
 						const ws = wb.Sheets[wb.SheetNames[0]];
 						const json = XLSX.utils.sheet_to_json(ws, { header: 1});
-						console.log(json);
+					//	console.log(json);
+
+						json.forEach((el, index)=>{
+							if(index >1){
+								out.push({
+									Tipo: el[0],
+									Dispositivo: el[1],
+									Persona: el[2],
+									Localizacion: el[3],
+									Fecha: el[7]
+								})
+							}
+						})
+
+						console.log(out);
+						
 					}
 
 					/* generate HTML table and enable export 
