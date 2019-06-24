@@ -25,6 +25,7 @@
 
 <script>
 import XLSX from "xlsx";
+import { json2excel } from "js2excel";
 export default {
 	methods: {
 		changeFile(event) {
