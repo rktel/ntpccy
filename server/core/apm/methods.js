@@ -4,11 +4,17 @@ Meteor.methods({
     APM_uploadS(bstr, name) {
 
         let wb = XLSX.read(bstr, { type: 'binary' });
-        let firstSheet = wb.SheetNames[0];
-        let json = XLSX.utils.sheet_to_json(wb.Sheets[firstSheet]);
-        console.log(json);
+        const ws = wb.Sheets[wb.SheetNames[0]];
+        console.log(ws);
         return "hello"       
-        /* DO SOMETHING WITH workbook HERE 
+        /*
+        const wb: XLSX.WorkBook = XLSX.read(bstr, {type: 'binary'});
+        const sheet = wb.Sheets[wb.SheetNames[0]];
+        const json = XLSX.utils.sheet_to_json(sheet);    
+        
+        
+        
+        DO SOMETHING WITH workbook HERE 
         var first_sheet_name = wb.SheetNames[0];
    
         var ws = wb.Sheets[first_sheet_name];
