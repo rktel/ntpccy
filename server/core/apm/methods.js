@@ -3,7 +3,7 @@ import XLSX from "xlsx";
 Meteor.methods({
     APM_uploadS(bstr, name) {
         let out = [];
-        const wb = XLSX.read(bstr, { type: 'binary' });
+        const wb = XLSX.read(bstr, { type: 'binary', cellDates: true });
         const ws = wb.Sheets[wb.SheetNames[0]];
         const json = XLSX.utils.sheet_to_json(ws, {	header: 1 });
         //	console.log(json);
@@ -15,7 +15,7 @@ Meteor.methods({
                     Dispositivo: el[1],
                     Persona: el[2],
                     Localizacion: el[3],
-                    Fecha: ""+el[7]
+                    Fecha: " " +el[7]
                 });
             }
         });
