@@ -8,11 +8,11 @@
 							<v-card-title>Excel Report Convert</v-card-title>
 							<v-card-text>
 								<v-toolbar flat>
-									<input type="file" @change="changeFile"/>
+									<input type="file" @change="changeFile">
 									<v-spacer></v-spacer>
-									<v-btn fab small dark color="grey">
-                                        <v-icon>get_app</v-icon>
-                                    </v-btn>
+									<v-btn fab small dark color="grey" @click="transformFile">
+										<v-icon>get_app</v-icon>
+									</v-btn>
 								</v-toolbar>
 							</v-card-text>
 						</v-card>
@@ -24,12 +24,19 @@
 </template>
 
 <script>
+import XLSX from "xlsx";
 export default {
-    methods:{
-        changeFile(e){
-            console.log(e);
-        }
-    }
+	methods: {
+		changeFile(event) {
+			const file = event.currentTarget.files[0];
+			const reader = new FileReader();
+			const rABS = !!reader.readAsBinaryString;
+			console.log(rABS);
+		},
+		transformFile() {
+			alert("hello");
+		}
+	}
 };
 </script>
 
