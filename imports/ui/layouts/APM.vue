@@ -38,13 +38,36 @@ export default {
 				console.log("name:", name);
 				// console.log("data:", data);
 				/* Meteor magic */
-				Meteor.call("APM_uploadS", data, name, (err, data) => {
+				Meteor.call("APM_uploadS", data, name, (err, wb) => {
 					//if (err) throw err;
 					/* load the first worksheet */
 
 					if (!err) {
+						let out = [];
+
+						const ws = wb.Sheets[wb.SheetNames[0]];
+						const json = XLSX.utils.sheet_to_json(ws,{ header: 1 },{ raw: false });
+						console.log(json);
+
+						json.forEach((el, index) => {
+							if (index > 1) {
+								out.push({
+									Tipo: el[0].substr(
+										el[0].indexOf("Current Speed") + 15,
+										7
+									),
+									Dispositivo: el[1],
+									Persona: el[2],
+									Localizacion: el[3],
+									Fecha: el[7]
+								});
+							}
+						});
+
+	
+
 						json2excel({
-							data,
+							data: out,
 							name: "Reporte",
 							formateDate: "yyyy/mm/dd"
 						});
