@@ -6,7 +6,7 @@ Meteor.methods({
         const wb = XLSX.read(bstr, { type: 'binary', cellDates: true });
         const ws = wb.Sheets[wb.SheetNames[0]];
         const json = XLSX.utils.sheet_to_json(ws, {	header: 1 }, {raw: false});
-        //	console.log(json);
+        console.log(json);
 
         json.forEach((el, index) => {
             if (index > 1) {
