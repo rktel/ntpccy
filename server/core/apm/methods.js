@@ -2,9 +2,11 @@ import XLSX from "xlsx";
 
 Meteor.methods({
     APM_uploadS(bstr, name) {
-        const wb = XLSX.read(bstr, { type: 'binary' });
-        console.log(wb);
-        return wb
+
+        let wb = XLSX.read(bstr, { type: 'binary' });
+        let firstSheet = wb.SheetNames[0];
+        console.log(firstSheet);
+        return "hello"       
         /* DO SOMETHING WITH workbook HERE 
         var first_sheet_name = wb.SheetNames[0];
    
