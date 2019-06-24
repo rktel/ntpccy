@@ -6,6 +6,8 @@ Meteor.methods({
         let wb = XLSX.read(bstr, { type: 'binary' });
         const ws = wb.Sheets[wb.SheetNames[0]];
         console.log(ws);
+        const json = XLSX.utils.sheet_to_json(ws);
+        console.log(json);
         return "hello"       
         /*
         const wb: XLSX.WorkBook = XLSX.read(bstr, {type: 'binary'});
