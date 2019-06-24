@@ -43,7 +43,7 @@ export default {
 					if (!err) {
 						const ws = wb.Sheets[wb.SheetNames[0]];
 						//const json = XLSX.utils.sheet_to_json(ws);
-						console.log(ws);
+						console.log(wb.SheetNames[0]);
 				}
 
 					/* generate HTML table and enable export 
