@@ -37,7 +37,17 @@ export default {
 				console.log("name:", name);
 				console.log("data:", data);
 				/* Meteor magic */
-
+				Meteor.call(rABS ? 'uploadS' : 'uploadU', rABS ? data : new Uint8Array(data), name, function(err, wb) {
+					if (err) throw err;
+					/* load the first worksheet */
+					const ws = wb.Sheets[wb.SheetNames[0]];
+					console.log(ws)
+					/* generate HTML table and enable export 
+					const html = XLSX.utils.sheet_to_html(ws, { editable: true });
+					document.getElementById('out').innerHTML = html;
+					document.getElementById('dnload').disabled = false;
+				*/
+				});
 			};
 			if (rABS) reader.readAsBinaryString(file);
 			else reader.readAsArrayBuffer(file);
