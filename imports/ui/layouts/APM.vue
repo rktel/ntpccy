@@ -35,7 +35,7 @@ export default {
 				const data = e.target.result;
 				const name = file.name;
 				console.log("name:", name);
-				console.log("data:", data);
+				// console.log("data:", data);
 				/* Meteor magic */
 				Meteor.call("APM_uploadS", data, name, (err, wb) => {
 					//if (err) throw err;
