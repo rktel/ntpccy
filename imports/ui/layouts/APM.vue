@@ -41,8 +41,8 @@ export default {
 					//if (err) throw err;
 					/* load the first worksheet */
 					if (!err) {
-						const ws = wb.Sheets[wb.SheetNames[0]];
-						console.log(ws);
+					//	const ws = wb.Sheets[wb.SheetNames[0]];
+					//	console.log(ws);
 					}
 
 					/* generate HTML table and enable export 
