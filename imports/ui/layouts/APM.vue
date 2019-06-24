@@ -31,7 +31,16 @@ export default {
 			const file = event.currentTarget.files[0];
 			const reader = new FileReader();
 			const rABS = !!reader.readAsBinaryString;
-			console.log(rABS);
+			reader.onload = function(e) {
+				const data = e.target.result;
+				const name = file.name;
+				console.log("name:", name);
+				console.log("data:", data);
+				/* Meteor magic */
+
+			};
+			if (rABS) reader.readAsBinaryString(file);
+			else reader.readAsArrayBuffer(file);
 		},
 		transformFile() {
 			alert("hello");
