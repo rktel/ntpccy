@@ -37,11 +37,14 @@ export default {
 				console.log("name:", name);
 				console.log("data:", data);
 				/* Meteor magic */
-				Meteor.call('APM_uploadS' , data , name, (err, wb) => {
-					if (err) throw err;
+				Meteor.call("APM_uploadS", data, name, (err, wb) => {
+					//if (err) throw err;
 					/* load the first worksheet */
-					const ws = wb.Sheets[wb.SheetNames[0]];
-					console.log(ws)
+					if (!err) {
+						const ws = wb.Sheets[wb.SheetNames[0]];
+						console.log(ws);
+					}
+
 					/* generate HTML table and enable export 
 					const html = XLSX.utils.sheet_to_html(ws, { editable: true });
 					document.getElementById('out').innerHTML = html;
@@ -50,7 +53,7 @@ export default {
 				});
 			};
 			if (rABS) reader.readAsBinaryString(file);
-		//	else reader.readAsArrayBuffer(file);
+			//	else reader.readAsArrayBuffer(file);
 		},
 		transformFile() {
 			alert("hello");
