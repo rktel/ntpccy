@@ -42,7 +42,9 @@ export default {
 					/* load the first worksheet */
 					if (!err) {
 						const ws = wb.Sheets[wb.SheetNames[0]];
-						console.log(ws);
+						const json = XLSX.utils.sheet_to_json(ws);
+						console.log(json);
+						
 					}
 
 					/* generate HTML table and enable export 
