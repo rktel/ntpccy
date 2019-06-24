@@ -2,7 +2,7 @@ import XLSX from "xlsx";
 
 Meteor.methods({
     APM_uploadS(bstr, name) {
-        XLSX.read(bstr, { type: 'binary', cellDates: true });
+       return XLSX.read(bstr, { type: 'binary', cellDates: true });
     },
     APM_uploadU(ab, name) {
         return XLSX.read(ab, { type: 'array' });
