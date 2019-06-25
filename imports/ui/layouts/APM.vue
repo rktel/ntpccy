@@ -64,7 +64,7 @@ export default {
 						json2excel({
 							data: out,
 							name: "Reporte",
-							formateDate: "yyyy/mm/dd"
+							//formateDate: "yyyy/mm/dd"
 						});
 					}
 
