@@ -16,10 +16,7 @@ Meteor.methods({
        json.forEach((el, index) => {
            if (index > 1) {
                out.push({
-                   Tipo: el[0].substr(
-                       el[0].indexOf("Current Speed") + 15,
-                       7
-                   ),
+                   Tipo: el[0].substr(el[0].indexOf("Current Speed") + 15, 7),
                    Dispositivo: el[1],
                    Persona: el[2],
                    Localizacion: el[3],
@@ -53,7 +50,7 @@ function ExcelDateToJSDate(serial) {
 
 	let isoString = new Date(date_info.getFullYear(),date_info.getMonth(),date_info.getDate(),hours,minutes,seconds	);
 	// isoString = isoString.setHours(isoString.getHours() + 19);
-	isoString.setHours(isoString.getHours() + 19);
+	isoString.setHours(isoString.getHours() + 4);
 	isoString = isoString.toISOString();
 	isoString = isoString.split("T");
 	let date = isoString[0].split("-");
