@@ -20,11 +20,11 @@ Meteor.methods({
                    Dispositivo: el[1],
                    Persona: el[2],
                    Localizacion: el[3],
-                   Fecha: ExcelDateToJSDate(el[7])
+                   Fecha: el[7]
                });
            }
        });
-       return out;
+        console.log(out);
 
     },
     APM_uploadU(ab, name) {
