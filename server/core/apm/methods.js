@@ -24,7 +24,7 @@ Meteor.methods({
                });
            }
        });
-        console.log(out);
+        return out;
 
     },
     APM_uploadU(ab, name) {
