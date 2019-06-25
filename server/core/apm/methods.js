@@ -50,7 +50,7 @@ function ExcelDateToJSDate(serial) {
 
 	let isoString = new Date(date_info.getFullYear(),date_info.getMonth(),date_info.getDate(),hours,minutes,seconds	);
 	// isoString = isoString.setHours(isoString.getHours() + 19);
-	isoString.setHours(isoString.getHours() + 4);
+	isoString.setHours(isoString.getHours());
 	isoString = isoString.toISOString();
 	isoString = isoString.split("T");
 	let date = isoString[0].split("-");
