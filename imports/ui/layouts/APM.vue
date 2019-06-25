@@ -102,8 +102,8 @@ function ExcelDateToJSDate(serial) {
  
 	let isoString = new Date(date_info.getFullYear(), date_info.getMonth(), date_info.getDate(), hours, minutes, seconds);
 	// isoString = isoString.setHours(isoString.getHours() + 19);
-
-	return isoString.toISOString()
+	isoString.setHours( isoString.getHours() + 19 );
+	return isoString
 
 
  }
