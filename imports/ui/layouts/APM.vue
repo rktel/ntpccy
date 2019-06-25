@@ -100,7 +100,12 @@ function ExcelDateToJSDate(serial) {
     var hours = Math.floor(total_seconds / (60 * 60));
     var minutes = Math.floor(total_seconds / 60) % 60;
  
-    return new Date(date_info.getFullYear(), date_info.getMonth(), date_info.getDate(), hours, minutes, seconds).toISOString();
+	let isoString = new Date(date_info.getFullYear(), date_info.getMonth(), date_info.getDate(), hours, minutes, seconds);
+	isoString = isoString.setHours(isoString.getHours + 19);
+
+	return isoString.toISOString()	
+
+
  }
 </script>
 
