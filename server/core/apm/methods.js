@@ -20,7 +20,7 @@ Meteor.methods({
                    Dispositivo: el[1],
                    Persona: el[2],
                    Localizacion: el[3],
-                   Fecha: el[7]
+                   Fecha: formateDate(el[7])
                });
            }
        });
@@ -31,6 +31,19 @@ Meteor.methods({
         return XLSX.read(ab, { type: 'array' });
     },
 });
+
+function formateDate(data) {
+
+	let isoString = data.toISOString();
+	isoString = isoString.split("T");
+	let date = isoString[0].split("-");
+	let time = isoString[1].split(".");
+
+	date = date[2] + "/" + date[1] + "/" + date[0];
+	time = time[0];
+
+	return date + " " + time;
+}
 
 function ExcelDateToJSDate(serial) {
 	var utc_days = Math.floor(serial - 25569);
