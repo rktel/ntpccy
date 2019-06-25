@@ -43,6 +43,11 @@ export default {
 					/* load the first worksheet */
 
 					if (!err) {
+						json2excel({
+							data: wb,
+							name: "Reporte",
+							formateDate: "yyyy/mm/dd"
+						});
 						/*
 						let out = [];
 
@@ -69,14 +74,13 @@ export default {
 							}
 						});
 */
-/*
+						/*
 						json2excel({
 							data: out,
 							name: "Reporte",
 							formateDate: "yyyy/mm/dd"
 						});
 */
-
 					}
 
 					/* generate HTML table and enable export 
