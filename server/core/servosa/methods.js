@@ -17,6 +17,7 @@ Meteor.methods({
 
         console.log('Usuario:', Meteor.user().username)
         console.log('Inicio:',dateTimeStart, "  Fin:", dateTimeEnd);
+        console.log('Placas:',plates);
         const dateTimeStart5 = addHours(dateTimeStart, 5)
         const dateTimeEnd5 = addHours(dateTimeEnd, 5)
      
