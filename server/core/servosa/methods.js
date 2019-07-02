@@ -13,10 +13,13 @@ Meteor.methods({
          *      81          Fatiga
          *      80          No Rostro
          */
-        console.log(dateTimeStart, "  ", dateTimeEnd);
+        console.log('........................SERVOSA...............................')
+
+        console.log('Usuario:', Meteor.user().username)
+        console.log('Inicio:',dateTimeStart, "  Fin:", dateTimeEnd);
         const dateTimeStart5 = addHours(dateTimeStart, 5)
         const dateTimeEnd5 = addHours(dateTimeEnd, 5)
-        console.log(dateTimeStart5, "  ", dateTimeEnd5);
+     
        // console.log(dateTimeStart, dateTimeEnd);
         const eventOriginal_Array = [82, 81, 80]
         // const arrayEvents = [81,82]
