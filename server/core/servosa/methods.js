@@ -38,9 +38,16 @@ Meteor.methods({
                         },
                         fatiga: {
                             $sum: {
-                                $cond: [
-                                    { $eq: ['$events.original', 81] }, 1, 0
-                                ]
+                                $cond: {
+                                    if: {
+                                        $and: [
+                                            { $eq: ['$events.original', 81] },
+                                            { $eq: ['$events.type', 305] }
+                                        ]
+                                    },
+                                    then: 1,
+                                    else: 0
+                                }
                             }
                         },
                         distraccion: {
